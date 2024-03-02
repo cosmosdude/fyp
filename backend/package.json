@@ -14,9 +14,9 @@
     "uuid": "^9.0.1"
   },
   "scripts": {
-    "dev": "nodemon app.js",
-    "prod": "node app.js",
-    "route:list": "node route-list.js"
+    "dev": "nodemon index.js",
+    "prod": "node index.js",
+    "route:list": "node list-routes.js"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
