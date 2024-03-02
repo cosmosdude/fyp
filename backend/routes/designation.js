@@ -12,6 +12,7 @@ router.use(require('../middlewares/authenticated'))
 router.use(require('../middlewares/formidable-multipart'))
 // application/json
 router.use(express.json())
+router.use(express.urlencoded({extended: true}))
 
 // Routes
 router.get('/', controller.getAll)

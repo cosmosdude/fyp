@@ -4,8 +4,6 @@ const {randomUUID: uuid} = require('crypto')
 
 exports.getAll = async (req, res) => {
     let [results] = await con.promise().query('select * from departments')
-    console.log(results)
-    console.log(req.authentication)
     res.json(results)
 }
 
@@ -57,5 +55,5 @@ exports.delete = async(req, res) => {
         'update departments set deleted_at=? where id=?',
         [format(new Date(), 'yyyy-MM-dd'), id]
     )
-    res.sendStatus(202)
+    res.sendStatus(204)
 }
