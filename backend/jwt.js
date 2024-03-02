@@ -1,9 +1,10 @@
 const jwt = require('jsonwebtoken')
+const config = require('./configs/jwt.config')
 
 exports.sign = (str) => {
-    return jwt.sign(str, process.env.JWT_SECRET)
+    return jwt.sign(str, config.secret)
 }
 
 exports.verify = (token) => {
-    return jwt.verify(token, process.env.JWT_SECRET)
+    return jwt.verify(token, config.secret)
 }

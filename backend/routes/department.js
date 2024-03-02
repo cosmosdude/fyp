@@ -9,7 +9,7 @@ router.use(require('../middlewares/authenticated'))
 
 // form-data
 // x-www-urlencoded
-router.use(require('../middlewares/formidable-multipart'))
+// router.use(require('../middlewares/formidable-multipart'))
 // application/json
 router.use(express.json())
 
@@ -17,5 +17,6 @@ router.use(express.json())
 router.get('/', controller.getAll)
 router.post('/department', controller.store)
 router.put('/department/:id', controller.update)
+router.delete('/department/:id', controller.delete)
 
 module.exports = router
