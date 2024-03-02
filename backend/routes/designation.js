@@ -2,7 +2,7 @@
 const express = require('express') 
 const router = express.Router();
 
-const controller = require('../controllers/department')
+const controller = require('../controllers/designation')
 
 // requires authentication
 router.use(require('../middlewares/authenticated'))
@@ -15,9 +15,9 @@ router.use(express.json())
 
 // Routes
 router.get('/', controller.getAll)
-router.get('/department/:id', controller.get)
-router.post('/department', controller.store)
-router.put('/department/:id', controller.update)
-router.delete('/department/:id', controller.delete)
+router.post('/designation', controller.store)
+router.get('/designation/:id', controller.get)
+router.put('/designation/:id', controller.update)
+router.delete('/designation/:id', controller.delete)
 
 module.exports = router

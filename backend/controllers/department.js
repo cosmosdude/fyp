@@ -9,6 +9,13 @@ exports.getAll = async (req, res) => {
     res.json(results)
 }
 
+exports.get = async (req, res) => {
+    let {id} = req.params
+    let [results] = await con.promise().query('select * from departments where id=?', [id])
+    if (results.length !== 1) return res.status(400).send('No such department')
+    res.json(results[0])
+}
+
 exports.store = async (req, res) => {
     let {name} = req.body
     console.log(name)
@@ -22,7 +29,7 @@ exports.store = async (req, res) => {
     console.log("Results", results)
     console.log("Fields", fields)
 
-    res.sendStatus(200)
+    res.sendStatus(202)
 }
 
 exports.update = async (req, res) => {
@@ -38,7 +45,7 @@ exports.update = async (req, res) => {
         [name, id]
     )
 
-    res.sendStatus(201)
+    res.sendStatus(202)
 }
 
 exports.delete = async(req, res) => {
@@ -50,5 +57,5 @@ exports.delete = async(req, res) => {
         'update departments set deleted_at=? where id=?',
         [format(new Date(), 'yyyy-MM-dd'), id]
     )
-    res.sendStatus(201)
+    res.sendStatus(202)
 }
