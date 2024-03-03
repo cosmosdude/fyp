@@ -18,8 +18,9 @@ create table users (\
     emergency_number2 varchar(20),\
     emergency_relation2 varchar(30),\
     dob date,\
-    status varchar(16),\
+    status varchar(16) default 'active',\
     role_id varchar(36) not null,\
+    deleted_at date,\
     PRIMARY KEY (id)\
 );\
     ",
