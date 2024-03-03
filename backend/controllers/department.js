@@ -20,8 +20,8 @@ exports.store = async (req, res) => {
     if (!name) return res.sendStatus(400)
 
     let [results, fields] = await con.promise().query(
-        'insert into departments(id, name) values(?, ?)', 
-        [uuid(), name]
+        'insert into departments(name) values(?)', 
+        [name]
     ) 
 
     console.log("Results", results)

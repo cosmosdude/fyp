@@ -13,16 +13,19 @@ exports.login = async function login(req, res) {
     if (!password) return sendError('Password is missing')
  
     try {
-        let [results] = await con.promise().query('select * from users where username = ?', [username])
+        let [results] = await con.promise().query(
+            'select * from users where username=? and password=?', 
+            [username, md5(password)]
+        )
         // there must be at least one result
         if (results.length != 1) return sendError('Invalid credential')
         // take the first result as the sole user
         let user = results[0]
         //
-        if (md5(password) !== user['password']) return sendError('Invalid credential')
 
         let theUser = {
             id: user.id,
+            username: user.username,
             workEmail: user.work_email,
             roleId: user.role_id
         }

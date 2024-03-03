@@ -23,6 +23,10 @@ module.exports = async (req, res, next) => {
             else flatFields[key] = each
         }
         req.flatFields = flatFields
+
+        // similar to express.json(),
+        // make normal fields available as body too
+        req.body = flatFields
         console.log('FlatFields', flatFields)
 
         req.files = files

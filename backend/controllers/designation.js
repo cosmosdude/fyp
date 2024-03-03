@@ -53,8 +53,8 @@ exports.store = async (req, res) => {
 
     // create new designation
     let [results, fields] = await con.promise().query(
-        'insert into designations(id, name, department_id) values(?, ?, ?)', 
-        [uuid(), name, departmentId]
+        'insert into designations(name, department_id) values(?, ?)', 
+        [name, departmentId]
     )
 
     console.log("Results", results)

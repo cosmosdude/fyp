@@ -17,7 +17,7 @@
     "dev": "nodemon index.js",
     "prod": "node index.js",
     
-    "route:list": "node list-routes.js",
+    "route:list": "node list-routes",
     
     "migration": "node migration add migration",
     "migration:seed": "node migration add seed",
