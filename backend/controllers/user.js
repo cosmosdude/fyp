@@ -76,9 +76,11 @@ exports.store = async (req, res) => {
             return res.status(400).send('Invalid dob')
     }
 
-    await userdao.insert(newUser)
+    let [result] = await userdao.insert(newUser)
 
-    res.sendStatus(202)
+    let [users] = await userdao.getByInsertId(result.insertId)
+
+    res.status(202).json(users[0])
 }
 
 exports.update = async (req, res) => {

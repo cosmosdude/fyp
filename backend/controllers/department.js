@@ -19,13 +19,15 @@ exports.store = async (req, res) => {
     console.log(name)
     if (!name) return res.sendStatus(400)
 
-    let [results, fields] = await con.promise().query(
+    let [result] = await con.promise().query(
         'insert into departments(name) values(?)', 
         [name]
     ) 
-    console.log("Results", results)
-    console.log("Fields", fields)
-    res.sendStatus(202)
+    console.log("Results", result)
+    let [inserted] = await con.promise().query(
+        'select * from departments where insertId=?', [result.insertId]
+    )
+    res.status(202).json(inserted)
 }
 
 exports.update = async (req, res) => {
@@ -33,13 +35,15 @@ exports.update = async (req, res) => {
     if (!name) return res.sendStatus(400)
 
     let id = req.params.id
-    let [results] = await con.promise().query('select * from departments where id=?', [id])
-    if (results.length !== 1) return res.status(400).send('No such department')
-
-    await con.promise().query(
+    // let [results] = await con.promise().query('select * from departments where id=?', [id])
+    
+    let [results] = await con.promise().query(
         'update departments set name=? where id=?',
         [name, id]
     )
+    console.log('Insertion Results', results)
+    if (results.affectedRows !== 1) return res.status(400).send('No such department')
+    
 
     res.sendStatus(202)
 }

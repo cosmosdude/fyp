@@ -52,15 +52,17 @@ exports.store = async (req, res) => {
     return res.status(400).send('No such department')
 
     // create new designation
-    let [results, fields] = await con.promise().query(
+    let [result] = await con.promise().query(
         'insert into designations(name, department_id) values(?, ?)', 
         [name, departmentId]
     )
 
-    console.log("Results", results)
-    console.log("Fields", fields)
+    let [inserted] = await con.promise().query(
+        'select * from designations where insertId=?',
+        [result.insertId]
+    )
 
-    res.sendStatus(202)
+    res.status(200).json(inserted[0])
 }
 
 exports.update = async (req, res) => {

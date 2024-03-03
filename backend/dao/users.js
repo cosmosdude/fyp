@@ -13,6 +13,11 @@ module.exports = {
         return await db.promise().query('select *, DATE_FORMAT(dob, "%Y-%m-%d") as dob from users')
     },
 
+    async getByInsertId(id) {
+        return await db.promise()
+            .query('select *, DATE_FORMAT(dob, "%Y-%m-%d") as dob from users where insertId=?', [id])
+    },
+
     // get users by id
     async getById(id) {
         let [users] = await db.promise().query(

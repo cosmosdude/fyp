@@ -1,6 +1,7 @@
 module.exports = {
     up: "\
 create table users (\
+    insertId int unique auto_increment,\
     id varchar(36) not null default (uuid()),\
     first_name varchar(50),\
     last_name varchar(50),\
