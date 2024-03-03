@@ -23,10 +23,8 @@ exports.store = async (req, res) => {
         'insert into departments(name) values(?)', 
         [name]
     ) 
-
     console.log("Results", results)
     console.log("Fields", fields)
-
     res.sendStatus(202)
 }
 

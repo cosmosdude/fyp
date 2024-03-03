@@ -26,8 +26,8 @@ exports.login = async function login(req, res) {
         let theUser = {
             id: user.id,
             username: user.username,
-            workEmail: user.work_email,
-            roleId: user.role_id
+            work_email: user.work_email,
+            role_id: user.role_id
         }
         let token = jwt.sign(theUser, { algorithm: 'RS512' })
         res.json({accessToken: token})
