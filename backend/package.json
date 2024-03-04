@@ -18,11 +18,11 @@
     "dev": "nodemon index.js",
     "prod": "node index.js",
     "route:list": "node list-routes",
-    "migration": "node migration add migration",
+    "migration:add": "node migration add migration",
     "migration:seed": "node migration add seed",
-    "migrate": "node migration up",
-    "migrate:down": "node migration down",
-    "migrate:refresh": "node migration refresh"
+    "migration": "node migration up",
+    "migration:down": "node migration down",
+    "migration:refresh": "node migration refresh"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"

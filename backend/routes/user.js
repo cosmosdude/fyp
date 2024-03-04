@@ -6,6 +6,8 @@ const controller = require('../controllers/user')
 
 const { limitExactly } = require('../middlewares/role-limitation')
 
+const { dirname } = require('path')
+
 // requires authentication
 router.use(require('../middlewares/authenticated'))
 
@@ -46,5 +48,10 @@ router.delete(
     limitExactly(['admin', 'hr']), 
     controller.delete
 )
+
+router.use('/test', (req, res) => {
+    // res.send(dirname(require.main.filename))
+    res.send("")
+})
 
 module.exports = router

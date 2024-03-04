@@ -1,0 +1,8 @@
+Hello World!
+
+
+name <- mangled name
+original_name <- original name
+ext <- file extension
+mimetype <- mimetype
+size <- file size in bytes
