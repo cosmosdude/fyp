@@ -1,14 +1,19 @@
-import notFound1 from '../assets/Illustration/NotFound/NotFound.png'
-import notFound2 from '../assets/Illustration/NotFound/NotFound2.png'
-import notFound3 from '../assets/Illustration/NotFound/NotFound3.png'
+export default function LoginPage() {
 
-export default function NotFoundPage() {
-    let images = [notFound1, notFound2, notFound3]
+    let codes = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900]
+
 
     return (
-        <img
-            className=""
-            src={images[Math.floor(Math.random() * images.length)]}
-        />
+        <>
+        <div className="flex h-screen p-[24px] gap-[24px]">
+            <div className="grow h-full rounded-[14px] bg-gradient-to-r from-blue-100 to-transparent">
+
+            </div>
+
+            <div className="w-1/2 h-full">
+
+            </div>
+        </div>
+        </>
     )
 }

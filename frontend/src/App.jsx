@@ -1,18 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-// import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import './style/tailwind.css'
 
 import NotFoundPage from './pages/NotFoundPage'
+import LoginPage from './pages/LoginPage'
 
 function App() {
 
   return (
     <Routes>
-      <Route index element={<p>Hello World</p>}/>
+      <Route index element={<LoginPage/>}/>
       <Route path='*' element={<NotFoundPage/>}/>
     </Routes>
   )
