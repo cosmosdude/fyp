@@ -11,7 +11,7 @@ npm install --verbose
 echo
 
 echo "# Migrating Database"
-npm run migrate
+npm run migration
 echo
 
 echo "# Available API Routes"

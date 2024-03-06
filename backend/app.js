@@ -1,14 +1,17 @@
 require('dotenv').config()
 
-const {uuidv4: uuid} = require('uuid')
 
 const express = require('express')
+const cors = require('cors')
+
 const app = express()
 
-// Configure logger middleware
+// MW: Logging
 app.use(require('./middlewares/log'))
+// MW: Cross-Origin Resource Sharing
+app.use(cors())
 
-// Configure statis file server middleware
+// MW: Static file server
 app.use(express.static('public'))
 
 // Configure Routers middlewares
@@ -18,9 +21,8 @@ app.use('/api/designations', require('./routes/designation'))
 app.use('/api/users', require('./routes/user'))
 
 
-const fs = require('fs')
-const { dirname } = require('path')
 
+// # Tests
 const upload = require('./services/moveToUploads')
 
 app.use('/test', require('./middlewares/formidable-multipart'), async (req, res) => {
@@ -42,8 +44,9 @@ app.use('/test', require('./middlewares/formidable-multipart'), async (req, res)
     })
 })
 
-// Configure rudimentary middlewares
+// MW: 404
 app.use(require('./middlewares/404')) // catch unhandled routes as 404
+// MW: 500
 app.use(require('./middlewares/500')) // catch unhandled errors as 500
 
 module.exports = app

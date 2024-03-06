@@ -3,7 +3,7 @@ const md5 = require('md5')
 const con = require('../mysql')
 
 exports.login = async function login(req, res) {
-    let {username, password} = req.flatFields
+    let { username, password } = req.body
  
     function sendError(error) {
         res.status(400).json({error})
