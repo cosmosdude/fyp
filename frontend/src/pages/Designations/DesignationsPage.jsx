@@ -4,8 +4,41 @@ import FilledButton from "../../components/Buttons/FilledButton";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
 import DesignationCard from "./Cards/DesignationCard";
+import { useAuthContext } from "../../hooks/AuthStateContext";
+import { useEffect, useState } from "react";
+import departmentService from "../../services/department";
+import designationService from "../../services/designations";
+import { useNavigate } from "react-router-dom";
 
 export default function DesignationsPage() {
+    let navigate = useNavigate()
+    let accessToken = useAuthContext()
+    let [designations, setDesignations] = useState([])
+
+    useEffect(() => {
+        let aborter = new AbortController()
+        async function fetchData() {
+            try {
+                let res = await designationService.getAll({
+                    accessToken,
+                    signal: aborter.signal
+                })
+
+                console.log("status", res.status)
+
+                let json = await res.json()
+                console.log("response", json)
+                if (res.status === 200) {
+                    setDesignations(json)
+                }
+            } catch (error) {
+                console.log("error", error)
+            }
+        }
+        fetchData()
+        return () => aborter.abort()
+    }, [])
+
     return(
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
             {/* Top nav */}
@@ -16,22 +49,22 @@ export default function DesignationsPage() {
                     <BreadcrumbItem title="Designations" current/>
                 </Breadcrumb>
                 <div className="grow"/>
-                <FilledButton src={PlusIcon}>New Designation</FilledButton>
+                <FilledButton src={PlusIcon} to="new">New Designation</FilledButton>
             </div>
             {/* Title */}
             <div className="flex flex-col">
-                <h1 className="text-neutral-900 text-tl font-tl">Designations (3)</h1>
+                <h1 className="text-neutral-900 text-tl font-tl">Designations ({designations.length})</h1>
                 <p className="text-neutral-900 text-bm font-bm">All designations are listed here.</p>
             </div>
 
             <div className="grid grid-cols-3 gap-[20px]">
-                <DesignationCard title="iOS Developer"/>
-                <DesignationCard title="Senior iOS Developer"/>
-                <DesignationCard title="Junior iOS Developer"/>
-                <DesignationCard title="Android Developer"/>
-                <DesignationCard title="Senior Android Developer"/>
-                <DesignationCard title="Junior Android Developer"/>
-                <DesignationCard title="Fullstack Developer"/>
+                {designations.map(department => {
+                    return <DesignationCard 
+                        key={department.id}
+                        title={department.name}
+                        onClick={() => navigate(`/designations/${department.id}`)}
+                    />    
+                })}
             </div>
         </div>
     )

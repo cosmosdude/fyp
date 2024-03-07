@@ -8,32 +8,12 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import departmentService from "../../services/department";
 import { useAuthContext } from "../../hooks/AuthStateContext";
+import useEffectAllDepartments from "../../hooks/useEffectAllDepartments";
 
 export default function DepartmentsPage() {
     let navigate = useNavigate()
 
-    let auth = useAuthContext()
-    let [departments, setDepartments] = useState([])
-
-    useEffect(() => {
-        let aborter = new AbortController()
-        async function fetchData() {
-            try {
-                let res = await departmentService.getAllDepartments({
-                    accessToken: auth,
-                    signal: aborter.signal
-                })
-
-                console.log("status", res.status)
-
-                let json = await res.json()
-                console.log("response", json)
-                if (res.status === 200) setDepartments(json)
-            } catch {}
-        }
-        fetchData()
-        return () => aborter.abort()
-    }, [])
+    let departments = useEffectAllDepartments()
 
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
@@ -49,7 +29,7 @@ export default function DepartmentsPage() {
             </div>
             {/* Title */}
             <div className="flex flex-col">
-                <h1 className="text-neutral-900 text-tl font-tl">Departments (3)</h1>
+                <h1 className="text-neutral-900 text-tl font-tl">Departments ({departments.length})</h1>
                 <p className="text-neutral-900 text-bm font-bm">All departments are listed here.</p>
             </div>
 

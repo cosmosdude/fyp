@@ -8,23 +8,29 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import departmentService from "../../services/department";
 import { useAuthContext } from "../../hooks/AuthStateContext";
+import designationService from "../../services/designations";
+import useEffectAllDepartments from "../../hooks/useEffectAllDepartments";
+import SelectBox from "../../components/SelectBox";
 
-function DepartmentDetailPage() {
+function DesignationDetailPage() {
     let navigate = useNavigate()
 
     let { id } = useParams()
     let { pathname } = useLocation()
 
-
     let type = 'detail'
     if (pathname.includes('update')) type = 'update'
     if (id === 'new') type = 'new'
 
-    // console.log(id, pathname)
-
     let accessToken = useAuthContext()
 
+    let departments = useEffectAllDepartments()
+
     const [name, setName] = useState("");
+    const [selectedIndex, setSelectedIndex] = useState(null)
+    const [departmentName, setDepartmentName] = useState("");
+
+    console.log(selectedIndex, departmentName)
 
     useEffect(() => {
         if (type === 'new') return
@@ -32,7 +38,7 @@ function DepartmentDetailPage() {
         let aborter = new AbortController()
         async function fetchData() {
             try {
-                let res = await departmentService.getDepartment(
+                let res = await designationService.get(
                     {id: id, signal: aborter.signal, accessToken: accessToken}
                 )
 
@@ -40,6 +46,7 @@ function DepartmentDetailPage() {
                     let json = await res.json()
                     console.log(json)
                     setName(json.name)
+                    setDepartmentName(json.department_name)
                 }
             } catch { }
         }
@@ -50,25 +57,25 @@ function DepartmentDetailPage() {
 
     async function update() {
         try {
-            let res = await departmentService.update(
-                {id, departmentName: name, accessToken}
-            )
-            console.log(res.status)
-            if (res.status === 202)  navigate('/departments/' + id)
+            // let res = await departmentService.update(
+            //     {id, departmentName: name, accessToken}
+            // )
+            // console.log(res.status)
+            // if (res.status === 202)  navigate('/designations/' + id)
         } catch { }
     }
 
     async function create() {
         try {
-            let res = await departmentService.create(
-                {departmentName: name, accessToken}
-            )
-            console.log(res.status)
-            if (res.status === 202) {
-                let json = await res.json()
-                let department = json[0]
-                navigate('/departments/' + department.id)
-            }
+            // let res = await departmentService.create(
+            //     {departmentName: name, accessToken}
+            // )
+            // console.log(res.status)
+            // if (res.status === 202) {
+            //     let json = await res.json()
+            //     let department = json[0]
+            //     navigate('/designations/' + department.id)
+            // }
         } catch { }
     }
 
@@ -79,14 +86,14 @@ function DepartmentDetailPage() {
                 <Breadcrumb>
                     <BreadcrumbItem title="Home" to='/'/>
                     <BreadcrumbItem title="/"/>
-                    <BreadcrumbItem title="Departments" to='/departments'/>
+                    <BreadcrumbItem title="Designations" to='/designations'/>
                     <BreadcrumbItem title="/"/>
                     {/* New if new */}
                     { type === 'new' && <BreadcrumbItem title="New" current/>}
                     {/* Detail if detail */}
                     { type == 'detail' && <BreadcrumbItem title="Detail" current/>}
                     { type === 'update' && <>
-                        <BreadcrumbItem title="Detail" to={`/departments/${id}`}/>
+                        <BreadcrumbItem title="Detail" to={`/designations/${id}`}/>
                         <BreadcrumbItem title="/"/>
                         <BreadcrumbItem title="Update" current/>
                     </>}
@@ -102,7 +109,7 @@ function DepartmentDetailPage() {
                     {/* Left side */}
                     <div className="flex flex-col">
                         <h1 className="text-neutral-900 text-ts font-ts">Detail</h1>
-                        <p className="text-neutral-900 text-ll font-ll">Department information.</p>
+                        <p className="text-neutral-900 text-ll font-ll">Designation information. {type}</p>
                     </div>
                     {/* Right side */}
                     <form className="flex flex-col gap-[20px]" onSubmit={(e) => {
@@ -112,8 +119,8 @@ function DepartmentDetailPage() {
                     }}>
                         {/* One item row */}
                         <TextField 
-                            title={`Department Name ${type !== 'detail' ? '(required)' : ''}`} 
-                            placeholder="eg. Marketing Department"
+                            title={`Name ${type !== 'detail' ? '(required)' : ''}`} 
+                            placeholder="eg. Principal Software Engineer"
                             text={name}
                             // disable only when type is detail
                             disabled={type === 'detail'}
@@ -121,6 +128,20 @@ function DepartmentDetailPage() {
                             onChange={(e) => {
                                 setName(e.target.value)
                             }}
+                        />
+                        <SelectBox
+                            title="Department" 
+                            text={departmentName}
+                            placeholder="Select Department"
+                            selected={selectedIndex}
+                            onSelect={(item, index) => {
+                                setDepartmentName(item.name)
+                                setSelectedIndex(index)
+                                console.log("DesignationDetailPage.onSelect", item, index)
+                            }}
+                            // error="Testing"
+                            options={departments}
+                            // disabled={type === 'detail'}
                         />
                         {/* Row */}
                         <div className="grid grid-cols-2 gap-[20px]">
@@ -139,4 +160,4 @@ function DepartmentDetailPage() {
     );
 }
 
-export default DepartmentDetailPage;
+export default DesignationDetailPage;

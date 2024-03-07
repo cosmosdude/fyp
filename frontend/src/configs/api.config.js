@@ -41,7 +41,36 @@ export const apiPaths = {
      * 
      * @param id Department id
      * */
-    deleteDepartment(id) { return this.getDepartment(id) }
+    deleteDepartment(id) { return this.getDepartment(id) },
 
 
+    // Designations
+    /**
+     * API Path for getting all designations
+     * */
+    getAllDesignations: '/api/designations',
+    /**
+     * API Path for creating designation
+     * */
+    createDesignation: '/api/designations/designation',
+    /**
+     * API Path for getting designation
+     * 
+     * @param id Designation id
+     * */
+    getDesignation(id) { return `/api/designations/designation/${id}` },
+    /**
+     * API Path for updating designation.
+     * Same api path with get designation
+     * 
+     * @param id Designation id
+     * */
+    updateDesignation(id) { return this.getDepartment(id) },
+    /**
+     * API path for deleting designation.
+     * Same api path with get designation.
+     * 
+     * @param id Designation id
+     * */
+    deleteDesignation(id) { return this.getDepartment(id) }
 }
