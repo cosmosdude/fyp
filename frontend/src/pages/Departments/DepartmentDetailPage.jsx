@@ -4,20 +4,73 @@ import FilledButton from "../../components/Buttons/FilledButton";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
 import TextField from "../../components/TextField";
-import { useLocation, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import departmentService from "../../services/department";
+import { useAuthContext } from "../../hooks/AuthStateContext";
 
 function DepartmentDetailPage() {
+    let navigate = useNavigate()
+
     let { id } = useParams()
     let { pathname } = useLocation()
+
 
     let type = 'detail'
     if (pathname.includes('update')) type = 'update'
     if (id === 'new') type = 'new'
 
-    console.log(id, pathname)
+    // console.log(id, pathname)
+
+    let accessToken = useAuthContext()
 
     const [name, setName] = useState("");
+
+    useEffect(() => {
+        if (type === 'new') return
+
+        let aborter = new AbortController()
+        async function fetchData() {
+            try {
+                let res = await departmentService.getDepartment(
+                    {id: id, signal: aborter.signal, accessToken: accessToken}
+                )
+
+                if (res.status === 200) {
+                    let json = await res.json()
+                    console.log(json)
+                    setName(json.name)
+                }
+            } catch { }
+        }
+
+        fetchData()
+        return () => aborter.abort()
+    }, [])
+
+    async function update() {
+        try {
+            let res = await departmentService.update(
+                {id, departmentName: name, accessToken}
+            )
+            console.log(res.status)
+            if (res.status === 202)  navigate('/departments/' + id)
+        } catch { }
+    }
+
+    async function create() {
+        try {
+            let res = await departmentService.create(
+                {departmentName: name, accessToken}
+            )
+            console.log(res.status)
+            if (res.status === 202) {
+                let json = await res.json()
+                let department = json[0]
+                navigate('/departments/' + department.id)
+            }
+        } catch { }
+    }
 
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
@@ -52,7 +105,11 @@ function DepartmentDetailPage() {
                         <p className="text-neutral-900 text-ll font-ll">Department information. {type}</p>
                     </div>
                     {/* Right side */}
-                    <form className="flex flex-col gap-[20px]">
+                    <form className="flex flex-col gap-[20px]" onSubmit={(e) => {
+                        e.preventDefault()
+                        if (type === 'update') update()
+                        if (type === 'new') create()
+                    }}>
                         {/* One item row */}
                         <TextField 
                             title={`Department Name ${type !== 'detail' ? '(required)' : ''}`} 

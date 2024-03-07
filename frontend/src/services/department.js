@@ -18,17 +18,47 @@ const departmentService = {
         )
     },
 
-    async createDepartment({
+    async getDepartment({accessToken, id, signal}) {
+        return fetch(
+            apiRoute(apiPaths.getDepartment(id)), {
+                method: 'GET',
+                signal,
+                headers: { 
+                    'content-type': "application/json",
+                    'authorization': `Bearer ${accessToken}`
+                }
+            }
+        )
+    },
+
+    async create({
         departmentName, accessToken, signal
     }) {
         return fetch(
-            apiRoute(apiPaths.signIn), {
+            apiRoute(apiPaths.createDepartment), {
                 method: 'POST',
                 signal,
                 headers: { 
                     'content-type': "application/json",
+                    'authorization': `Bearer ${accessToken}`
                 },
-                body: JSON.stringify({username, password})
+                body: JSON.stringify({name: departmentName})
+            }
+        )
+    },
+
+    async update({
+        id, departmentName, accessToken, signal
+    }) {
+        return fetch(
+            apiRoute(apiPaths.updateDepartment(id)), {
+                method: 'PUT',
+                signal,
+                headers: { 
+                    'content-type': "application/json",
+                    'authorization': `Bearer ${accessToken}`
+                },
+                body: JSON.stringify({name: departmentName})
             }
         )
     }
