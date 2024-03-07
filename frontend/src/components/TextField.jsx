@@ -30,10 +30,14 @@ const TextField = forwardRef(function TextField({
                 className={`
                 flex items-center gap-[10px] 
                 px-[10px] h-[41px] 
-                rounded-[4px] border 
+                focus-within:px-[9px]
+                rounded-[4px] 
+                border 
+                focus-within:border-[2px]
                 ${ (!isInvalid && !error) ? 'border-neutral-200' : 'border-danger-200'}
                 focus-within:border-primary-400
                 ${disabled ? 'bg-background-2' : 'bg-background-0'}
+                transition-all
                 `}
             >
                 {/* Left Image */}

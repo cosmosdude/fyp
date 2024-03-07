@@ -16,7 +16,7 @@ function EmployeesPage() {
                     <BreadcrumbItem title="Employees" current/>
                 </Breadcrumb>
                 <div className="grow"/>
-                <FilledButton src={PlusIcon}>New Employee</FilledButton>
+                <FilledButton src={PlusIcon} to='new'>New Employee</FilledButton>
             </div>
             {/* Title */}
             <div className="flex flex-col">

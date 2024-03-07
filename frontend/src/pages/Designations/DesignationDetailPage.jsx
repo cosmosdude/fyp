@@ -26,9 +26,14 @@ function DesignationDetailPage() {
 
     let departments = useEffectAllDepartments()
 
-    const [name, setName] = useState("");
-    const [selectedIndex, setSelectedIndex] = useState(null)
-    const [departmentName, setDepartmentName] = useState("");
+    let [name, setName] = useState("");
+    let [selectedIndex, setSelectedIndex] = useState(null)
+    let [departmentName, setDepartmentName] = useState("");
+    let [departmentError, setDepartmentError] = useState();
+
+    function isValidSelectedIndex() {
+        return !(isNaN(parseInt(selectedIndex)) || (parseInt(selectedIndex) < 0))
+    }
 
     console.log(selectedIndex, departmentName)
 
@@ -47,35 +52,65 @@ function DesignationDetailPage() {
                     console.log(json)
                     setName(json.name)
                     setDepartmentName(json.department_name)
+
+                    // console.log("Found index", departments.findIndex(x => x.id === json.department_id))
+                    // let index = -1
+                    // for (var i = 0; i < departments.length; i++) {
+                    //     let each = departments[i]
+                    //     console.log(id, each.id)
+                    //     if (each.id === id) { index = i}
+                    // }
+                    setSelectedIndex(
+                        departments.findIndex(x => x.id === json.department_id)
+                    )
+                } else {
+                    console.log(await res.json())
                 }
             } catch { }
         }
 
         fetchData()
         return () => aborter.abort()
-    }, [])
+    }, [departments])
 
     async function update() {
+        setDepartmentError(null)
+        console.log("is valid", isValidSelectedIndex())
+        if (!isValidSelectedIndex())  return setDepartmentError("Please select department")
+
         try {
-            // let res = await departmentService.update(
-            //     {id, departmentName: name, accessToken}
-            // )
-            // console.log(res.status)
-            // if (res.status === 202)  navigate('/designations/' + id)
+            let res = await designationService.update(
+                {
+                    id, designationName: name,
+                    departmentId: departments[selectedIndex].id,
+                    accessToken
+                }
+            )
+            console.log(res.status)
+            if (res.status === 202)  navigate('/designations/' + id)
+            
         } catch { }
     }
 
     async function create() {
+        setDepartmentError(null)
+        console.log("is valid", isValidSelectedIndex())
+        if (!isValidSelectedIndex()) return setDepartmentError("Please select department")
+
         try {
-            // let res = await departmentService.create(
-            //     {departmentName: name, accessToken}
-            // )
-            // console.log(res.status)
-            // if (res.status === 202) {
-            //     let json = await res.json()
-            //     let department = json[0]
-            //     navigate('/designations/' + department.id)
-            // }
+            let res = await designationService.create(
+                {
+                    designationName: name, 
+                    departmentId: departments[selectedIndex].id,
+                    accessToken
+                }
+            )
+            console.log(res.status)
+            if (res.status === 200) {
+                let json = await res.json()
+                let department = json
+                navigate('/designations/' + department.id)
+            }
         } catch { }
     }
 
@@ -135,13 +170,14 @@ function DesignationDetailPage() {
                             placeholder="Select Department"
                             selected={selectedIndex}
                             onSelect={(item, index) => {
+                                setDepartmentError(null)
                                 setDepartmentName(item.name)
                                 setSelectedIndex(index)
                                 console.log("DesignationDetailPage.onSelect", item, index)
                             }}
-                            // error="Testing"
+                            error={departmentError}
                             options={departments}
-                            // disabled={type === 'detail'}
+                            disabled={type === 'detail'}
                         />
                         {/* Row */}
                         <div className="grid grid-cols-2 gap-[20px]">

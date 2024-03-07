@@ -13,6 +13,8 @@ import DepartmentsPage from './pages/Departments/DepartmentsPage'
 import DesignationsPage from './pages/Designations/DesignationsPage'
 import DepartmentDetailPage from './pages/Departments/DepartmentDetailPage'
 import DesignationDetailPage from './pages/Designations/DesignationDetailPage'
+import EmployeeDetailPage from './pages/Employees/EmployeeDetailPage'
+import EmployeeNewPage from './pages/Employees/EmployeeNewPage'
 
 
 function App() {
@@ -31,6 +33,9 @@ function App() {
         <Route element={<HomePage/>}>
             <Route path="/" element={<DashboardPage/>}/>
             <Route path="/employees" element={<EmployeesPage/>}/>
+            <Route path="/employees/new" element={<EmployeeNewPage/>}/>
+            <Route path="/employees/:id" element={<EmployeeDetailPage/>}/>
+            <Route path="/employees/:id/update" element={<EmployeeDetailPage/>}/>
 
             <Route path="/departments" element={<DepartmentsPage/>}/>
             {/* New and detail */}

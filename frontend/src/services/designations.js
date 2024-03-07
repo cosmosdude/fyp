@@ -62,6 +62,7 @@ const designationService = {
     async update({
         id, designationName, departmentId, accessToken, signal
     }) {
+        console.log(id, designationName, departmentId, accessToken, signal)
         return fetch(
             apiRoute(apiPaths.updateDesignation(id)), {
                 method: 'PUT',

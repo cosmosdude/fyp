@@ -65,12 +65,12 @@ export const apiPaths = {
      * 
      * @param id Designation id
      * */
-    updateDesignation(id) { return this.getDepartment(id) },
+    updateDesignation(id) { return this.getDesignation(id) },
     /**
      * API path for deleting designation.
      * Same api path with get designation.
      * 
      * @param id Designation id
      * */
-    deleteDesignation(id) { return this.getDepartment(id) }
+    deleteDesignation(id) { return this.getDesignation(id) }
 }

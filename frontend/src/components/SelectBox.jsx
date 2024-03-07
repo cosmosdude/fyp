@@ -11,7 +11,7 @@ function SelectBox({
 }) {
     if (!options) options = []
     console.log()
-    let [show, setShow] = useState(true)
+    let [show, setShow] = useState(false)
 
     return (
         <div className="relative flex flex-col gap-[4px]">
@@ -22,7 +22,8 @@ function SelectBox({
                 className={`
                 flex items-center gap-[10px] 
                 px-[10px] h-[41px] 
-                rounded-[4px] border 
+                rounded-[4px] 
+                ${ show ? 'border-[2px]' : 'border'}
                 ${ show ? 'border-primary-500' : error ? 'border-danger-300' : 'border-neutral-200'} 
                 ${ !disabled && 'hover:bg-primary-50'}
                 ${ disabled ? 'bg-background-1' : ''}
@@ -33,6 +34,7 @@ function SelectBox({
                     e.preventDefault()
                     setShow(x => !x)
                 }}
+                onFocus={undefined}
             >
                 {/* Left Image */}
                 {!!leftImageSrc && <img className="w-[18px] h-[18px]" src={leftImageSrc}/>}
@@ -53,9 +55,10 @@ function SelectBox({
                 absolute 
                 left-0 top-full
                 pt-[5px]
-                z-5
-                ${show ? 'block opacity-100': 'hidden opacity-0'}
+                z-50
+                ${show ? 'visible opacity-100': 'invisible opacity-0'}
                 w-full
+                transition-all
                 `}
             >
                 <ul 
