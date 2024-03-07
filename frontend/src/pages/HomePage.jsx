@@ -75,7 +75,7 @@ export default function HomePage() {
                         <p className="text-wrap text-ll font-ll">admin@yopmail.com</p>
                     </div>
                     {/* Logout Button */}
-                    <button className="hover:opacity-25" onClick={logout}>
+                    <button className="hover:opacity-25 transition-all" onClick={logout}>
                         <img 
                             src={LogoutIcon}
                             className="min-w-[24px] w-[24px] h-[24px] rounded" 
@@ -83,6 +83,7 @@ export default function HomePage() {
                     </button>
                 </div>
             </div>
+
             {/* Right Content */}
             <div className="flex grow overflow-hidden overflow-y-scroll">
                 <Outlet/>

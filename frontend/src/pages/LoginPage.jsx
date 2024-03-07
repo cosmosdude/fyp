@@ -65,6 +65,8 @@ export default function LoginPage() {
     return (
         <>
         <div className="flex h-screen p-[20px] gap-[20px]">
+
+            {/* Left Side */}
             <div className="
             grow h-full basis-0
             flex items-center justify-end  
@@ -77,7 +79,10 @@ export default function LoginPage() {
                 />
             </div>
 
-            <div className="flex grow basis-0">
+            {/* Right side */}
+            <div className="relative flex flex-col grow basis-0 items-center">
+
+                {/* Form in the center */}
                 <form 
                     className="flex flex-col gap-[20px] m-auto p-[20px] w-[375px]"
                     onSubmit={(e) => {
@@ -120,6 +125,8 @@ export default function LoginPage() {
                         By signing in, you agree to terms and policy.
                     </p>
                 </form>
+
+                <p className="self-center text-lm font-lm">University of Greenwich • ta1458z@gre.ac.uk • FYP</p>
             </div>
         </div>
         </>

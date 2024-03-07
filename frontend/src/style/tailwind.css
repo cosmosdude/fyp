@@ -564,6 +564,10 @@ video {
   right: 0px;
 }
 
+.bottom-0 {
+  bottom: 0px;
+}
+
 .m-auto {
   margin: auto;
 }
@@ -583,6 +587,10 @@ video {
   margin-bottom: auto;
 }
 
+.mt-auto {
+  margin-top: auto;
+}
+
 .block {
   display: block;
 }
@@ -593,6 +601,10 @@ video {
 
 .table {
   display: table;
+}
+
+.grid {
+  display: grid;
 }
 
 .contents {
@@ -637,6 +649,14 @@ video {
 
 .h-\[30px\] {
   height: 30px;
+}
+
+.h-\[65px\] {
+  height: 65px;
+}
+
+.h-\[50px\] {
+  height: 50px;
 }
 
 .max-h-\[76px\] {
@@ -685,6 +705,14 @@ video {
 
 .w-\[30px\] {
   width: 30px;
+}
+
+.w-\[65px\] {
+  width: 65px;
+}
+
+.w-\[50px\] {
+  width: 50px;
 }
 
 .min-w-\[40px\] {
@@ -759,6 +787,10 @@ video {
           appearance: none;
 }
 
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -791,12 +823,32 @@ video {
   gap: 4px;
 }
 
+.gap-\[-4px\] {
+  gap: -4px;
+}
+
+.gap-\[0px\] {
+  gap: 0px;
+}
+
+.self-end {
+  align-self: flex-end;
+}
+
+.self-center {
+  align-self: center;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
 
 .overflow-scroll {
   overflow: scroll;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
 }
 
 .overflow-y-hidden {
@@ -909,6 +961,11 @@ video {
 .border-danger-300 {
   --tw-border-opacity: 1;
   border-color: rgb(255 107 102 / var(--tw-border-opacity));
+}
+
+.border-primary-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(32 77 223 / var(--tw-border-opacity));
 }
 
 .bg-background-0 {
@@ -1066,6 +1123,11 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-background-5 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(216 216 216 / var(--tw-bg-opacity));
+}
+
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
@@ -1198,6 +1260,10 @@ video {
 .py-\[12px\] {
   padding-top: 12px;
   padding-bottom: 12px;
+}
+
+.text-left {
+  text-align: left;
 }
 
 .text-center {
@@ -1361,6 +1427,16 @@ video {
   color: rgb(255 8 0 / var(--tw-text-opacity));
 }
 
+.text-neutral-700 {
+  --tw-text-opacity: 1;
+  color: rgb(77 77 77 / var(--tw-text-opacity));
+}
+
+.text-neutral-500 {
+  --tw-text-opacity: 1;
+  color: rgb(128 128 128 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -1463,6 +1539,10 @@ video {
 
 .hover\:opacity-25:hover {
   opacity: 0.25;
+}
+
+.hover\:opacity-50:hover {
+  opacity: 0.5;
 }
 
 .focus\:bg-primary-700:focus {
