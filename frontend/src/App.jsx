@@ -6,7 +6,11 @@ import NotFoundPage from './pages/NotFoundPage'
 import LoginPage from './pages/LoginPage'
 import AuthStateContext, { AuthContext, useAuthState } from './hooks/AuthStateContext'
 
-import HomeNavigationPage from './pages/HomeNavigationPage'
+import HomePage from './pages/HomePage'
+import DashboardPage from './pages/Dashboard/DashboardPage'
+import EmployeesPage from './pages/Employees/EmployeesPage'
+import DepartmentsPage from './pages/Departments/DepartmentsPage'
+import DesignationsPage from './pages/Designations/DesignationsPage'
 
 
 function App() {
@@ -22,11 +26,11 @@ function App() {
         <Routes>
         <Route path="signin" element={<LoginPage/>}/>
 
-        <Route element={<HomeNavigationPage/>}>
-            <Route path="/" element={<p>Dashboard</p>}/>
-            <Route path="/employees" element={<p>Employees</p>}/>
-            <Route path="/departments" element={<p>Departments</p>}/>
-            <Route path="/designations" element={<p>Designations</p>}/>
+        <Route element={<HomePage/>}>
+            <Route path="/" element={<DashboardPage/>}/>
+            <Route path="/employees" element={<EmployeesPage/>}/>
+            <Route path="/departments" element={<DepartmentsPage/>}/>
+            <Route path="/designations" element={<DesignationsPage/>}/>
         </Route>
           {/* <Route path='/' element={<IndexPage/>}>
             <Route path="" element={<HomeNavigationPage/>}>

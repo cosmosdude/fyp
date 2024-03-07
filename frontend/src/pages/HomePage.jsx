@@ -15,35 +15,10 @@ import DesignationsIcon from '../assets/Icons/sidenav/designations-unselected.sv
 import DesignationsSelectedIcon from '../assets/Icons/sidenav/designations.svg'
 
 import LogoutIcon from '../assets/Icons/sidenav/logout.svg'
+import SideNavItem from "../components/SideNavItem";
 
 
-function SideNavItem({to, title, unselected, selected}) {
-
-    let {pathname} = useLocation()
-    console.log('location', location)
-    console.log('to', to)
-    let isCurrent = pathname === to
-
-    let bgColor = !isCurrent 
-    ? 'hover:bg-primary-50'
-    : 'bg-primary-500'
-
-    let tintColor = !isCurrent 
-    ? 'text-primary-500'
-    : 'text-white'
-
-    return (
-        <Link to={to} className={`flex gap-[20px] px-[16px] py-[12px] items-center ${bgColor} transition-all duration-300`}>
-            <img 
-                src={isCurrent ? selected : unselected}
-                className="w-[30px] h-[30px]"
-            />
-            <h1 className={`text-bs font-bs text-primary-500 ${tintColor} transition-all`}>{title}</h1>
-        </Link>
-    )
-}
-
-export default function HomeNavigationPage() {
+export default function HomePage() {
     let [auth, setAuth] = useAuthStateContext()
 
     if (!auth) return <Navigate to='/signin'/>
