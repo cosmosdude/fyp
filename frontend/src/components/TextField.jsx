@@ -4,10 +4,11 @@ import { forwardRef, useRef, useState } from 'react'
 
 const TextField = forwardRef(function TextField({
     title, placeholder, error, 
-    text, secureTextEntry,
+    text = undefined, secureTextEntry,
     name, required,
+    disabled,
     leftImageSrc, rightImageSrc,
-    onTextChange
+    onChange
 }, ref) {
 
     let eye = { on: EyeOnSVG, off: EyeOffSVG }
@@ -32,6 +33,7 @@ const TextField = forwardRef(function TextField({
                 rounded-[4px] border 
                 ${ (!isInvalid && !error) ? 'border-neutral-200' : 'border-danger-200'}
                 focus-within:border-primary-400
+                ${disabled ? 'bg-background-2' : 'bg-background-0'}
                 `}
             >
                 {/* Left Image */}
@@ -39,15 +41,18 @@ const TextField = forwardRef(function TextField({
                 {/* Input Field - text|password */}
                 <input 
                     ref={ref}
-                    className="
+                    className={`
                     peer 
                     grow outline-none text-neutral-900 placeholder-neutral-300
-                    "
+                    disabled:bg-transparent
+                    
+                    `}
                     name={name}
                     placeholder={placeholder}
-                    value={text ? text : undefined}
+                    value={text}
                     type={(secureTextEntry && !revealed) ? 'password' : 'text'}
                     required={required}
+                    disabled={disabled}
                     onInvalid={(e) => { 
                         console.log(e)
                         setIsInvalid(true) // set error
@@ -55,7 +60,7 @@ const TextField = forwardRef(function TextField({
                         console.log(e.value)
                     }}
                     onInput={(e) => {
-                        onTextChange && onTextChange(e.target.value)
+                        onChange && onChange(e)
                         setIsInvalid(false) // clear error
                     }}
                 />

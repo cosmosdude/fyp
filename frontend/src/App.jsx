@@ -11,6 +11,7 @@ import DashboardPage from './pages/Dashboard/DashboardPage'
 import EmployeesPage from './pages/Employees/EmployeesPage'
 import DepartmentsPage from './pages/Departments/DepartmentsPage'
 import DesignationsPage from './pages/Designations/DesignationsPage'
+import DepartmentDetailPage from './pages/Departments/DepartmentDetailPage'
 
 
 function App() {
@@ -29,7 +30,14 @@ function App() {
         <Route element={<HomePage/>}>
             <Route path="/" element={<DashboardPage/>}/>
             <Route path="/employees" element={<EmployeesPage/>}/>
+
             <Route path="/departments" element={<DepartmentsPage/>}/>
+            
+            {/* New and detail */}
+            <Route path="/departments/:id" element={<DepartmentDetailPage/>}/>
+            {/* Department Update */}
+            <Route path="/departments/:id/update" element={<DepartmentDetailPage/>}/>
+
             <Route path="/designations" element={<DesignationsPage/>}/>
         </Route>
           {/* <Route path='/' element={<IndexPage/>}>
