@@ -13,6 +13,15 @@ function SelectBox({
     console.log()
     let [show, setShow] = useState(false)
 
+    function isIndexSelected(index) {
+        // if given selected is set, fast search it
+        if (selected instanceof Set) return selected.has(index)
+        // if given selected is array, linear search it
+        if (Array.isArray(selected)) return selected.includes(index)
+        // if normal, just check if two are equal
+        return selected === index
+    }
+
     return (
         <div className="relative flex flex-col gap-[4px]">
             { !!title && <p className="font-bs text-lm text-neutral-900">{title}</p> }
@@ -71,7 +80,7 @@ function SelectBox({
                     "
                 >
                     {options.map((o, index) => {
-                        let isSelected = index === selected
+                        let isSelected = isIndexSelected(index)
                         return <li 
                             key={index}
                             className={`

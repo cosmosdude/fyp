@@ -43,6 +43,40 @@ export const apiPaths = {
      * */
     deleteDepartment(id) { return this.getDepartment(id) },
 
+    /**
+     * Department API Resources
+     * */
+    department: {
+        /**
+         * API Path for getting all departments
+         * */
+        getAll: '/api/departments',
+        /**
+         * API Path for creating department
+         * */
+        create: '/api/departments/department',
+        /**
+         * API Path for getting department
+         * 
+         * @param id Department id
+         * */
+        get(id) { return `/api/departments/department/${id}` },
+        /**
+         * API Path for updating department.
+         * Same api path with get department
+         * 
+         * @param id Department id
+         * */
+        update(id) { return this.getDepartment(id) },
+        /**
+         * API path for deleting department.
+         * Same api path with get department.
+         * 
+         * @param id Department id
+         * */
+        delete(id) { return this.getDepartment(id) },
+    },
+
 
     // Designations
     /**
@@ -72,5 +106,39 @@ export const apiPaths = {
      * 
      * @param id Designation id
      * */
-    deleteDesignation(id) { return this.getDesignation(id) }
+    deleteDesignation(id) { return this.getDesignation(id) },
+
+    /**
+     * Designation API Resource
+     * */
+    designation: {
+        /**
+         * API Path for getting all designations
+         * */
+        getAll: '/api/designations',
+        /**
+         * API Path for creating designation
+         * */
+        create: '/api/designations/designation',
+        /**
+         * API Path for getting designation
+         * 
+         * @param id Designation id
+         * */
+        get(id) { return `/api/designations/designation/${id}` },
+        /**
+         * API Path for updating designation.
+         * Same api path with get designation
+         * 
+         * @param id Designation id
+         * */
+        update(id) { return this.getDesignation(id) },
+        /**
+         * API path for deleting designation.
+         * Same api path with get designation.
+         * 
+         * @param id Designation id
+         * */
+        delete(id) { return this.getDesignation(id) },
+    }
 }

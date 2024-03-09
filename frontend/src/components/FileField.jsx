@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import Icon from '../assets/Icons/calendar.svg'
+import Icon from '../assets/Icons/file.svg'
 
 import { format }  from 'date-fns'
 
@@ -7,22 +7,19 @@ import { format }  from 'date-fns'
  * @param title Title label
  * @param placeholder Placeholder text for absence of text
  * @param text Display text
- * @param date Date object to control input type
  * @param error Error text
  * @param disabled Disable state
  * @param onDateSelect Date selection callback
 */
-function DatePicker({
+function FileField({
     title, placeholder, 
     text = undefined,  // to display
-    date, // to control input
     error, disabled, 
-    onDateSelect,
+    onFileSelect,
 }) {
     let [fallbackText, setFallbackText] = useState("")
     let textToDisplay = text === undefined ? fallbackText : text
-    // for input type
-    let inputValue = format(date ?? new Date(), 'yyyy-MM-dd')
+
     let picker = useRef(null)
 
     return (
@@ -50,30 +47,31 @@ function DatePicker({
                     picker.current.showPicker()
                 }}
             >
+                <img className="w-[18px] h-[18px]" src={Icon}/>
                 <label 
                     className={` 
                     grow
                     text-left 
-                    ${(!disabled && text) ? 'text-neutral-900': 'text-neutral-300'}
+                    ${(!disabled && textToDisplay) ? 'text-neutral-900': 'text-neutral-300'}
                     pointer-events-none
                     `}
                 >{textToDisplay ? textToDisplay : (placeholder || " ")}</label>
-                <img className="w-[18px] h-[18px]" src={Icon}/>
                 <input 
                     ref={picker}
-                    className={`top-[105%] left-0 absolute w-[0px] h-[0px]`} 
-                    type='date'
-                    value={inputValue}
+                    className={`top-[100%] left-0 absolute w-[0px] h-[0px]`} 
+                    type='file'
                     disabled={disabled}
-                    onKeyDown={e => {
-                        e.preventDefault()
-                        // return false
-                    }}
                     onChange={e => {
                         console.log(e.target.value)
-                        console.log(e.target.valueAsDate)
-                        onDateSelect && onDateSelect(e.target.valueAsDate, e.target.value)
-                        setFallbackText(e.target.value)
+                        console.log(e.target.files)
+
+                        let file = e.target.files[0]
+                        let filename = ""
+                        if (file) filename = file.name
+                        else { filename = "" }
+
+                        onFileSelect && onFileSelect(e.target.files[0], filename)
+                        setFallbackText(filename)
                     }}
                 />
             </button>
@@ -82,4 +80,4 @@ function DatePicker({
     )
 }
 
-export default DatePicker;
+export default FileField;

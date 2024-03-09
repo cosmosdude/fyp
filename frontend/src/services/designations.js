@@ -7,7 +7,7 @@ const designationService = {
      */
     async getAll({accessToken, signal}) {
         return fetch(
-            apiRoute(apiPaths.getAllDesignations), {
+            apiRoute(apiPaths.designation.getALl), {
                 method: 'GET',
                 signal,
                 headers: { 
@@ -23,7 +23,7 @@ const designationService = {
      */
     async get({accessToken, id, signal}) {
         return fetch(
-            apiRoute(apiPaths.getDesignation(id)), {
+            apiRoute(apiPaths.designation.get(id)), {
                 method: 'GET',
                 signal,
                 headers: { 
@@ -41,7 +41,7 @@ const designationService = {
         designationName, departmentId, accessToken, signal
     }) {
         return fetch(
-            apiRoute(apiPaths.createDesignation), {
+            apiRoute(apiPaths.designation.create), {
                 method: 'POST',
                 signal,
                 headers: { 
@@ -64,7 +64,7 @@ const designationService = {
     }) {
         console.log(id, designationName, departmentId, accessToken, signal)
         return fetch(
-            apiRoute(apiPaths.updateDesignation(id)), {
+            apiRoute(apiPaths.designation.update(id)), {
                 method: 'PUT',
                 signal,
                 headers: { 
