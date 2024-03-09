@@ -18,7 +18,8 @@ module.exports = (file) => {
         "originalFilename": "Beynon-Davies_et_al-2000-Information_Systems_Journal.pdf"
     }
     */
-    return moved(prepared(file))
+    if (file) return moved(prepared(file))
+    else return null
 }
 
 function prepared(file) {

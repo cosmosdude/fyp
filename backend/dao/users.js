@@ -2,6 +2,7 @@ const db = require('../mysql')
 
 const filteredObject = require('../utils/filteredObject')
 
+
 module.exports = {
     // Get table column informations
     async columns() {
@@ -10,7 +11,12 @@ module.exports = {
 
     // get all users
     async getAll() {
-        return await db.promise().query('select *, DATE_FORMAT(dob, "%Y-%m-%d") as dob from users')
+        return await db.promise().query(
+            '\
+select users.id as user_id, users.*, DATE_FORMAT(users.dob, "%Y-%m-%d") as dob, files.* \
+from users \
+left outer join files on files.id=users.avatar_id'
+        )
     },
 
     async getByInsertId(id) {

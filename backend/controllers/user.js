@@ -4,7 +4,10 @@ const {randomUUID: uuid} = require('crypto')
 const md5 = require('md5')
 const {validate: isEmail} = require('email-validator')
 
+const moveToUploads = require('../services/moveToUploads')
+
 const userdao = require('../dao/users')
+const filedao = require('../dao/files')
 
 exports.getAll = async (req, res) => {
     let [users] = await userdao.getAll()
@@ -30,6 +33,7 @@ exports.getMe = async (req, res) => {
 
 exports.store = async (req, res) => {
     let newUser = req.body
+    newUser.role_id = newUser.role_id || 4
 
     let requiredKeys = ['username', 'work_email', 'password', 'role_id']
 
@@ -76,11 +80,62 @@ exports.store = async (req, res) => {
             return res.status(400).send('Invalid dob')
     }
 
+    // # Files
+
+    // # Avatar
+    // extract avatar from the files list.
+    // only the first avatar is interested.
+
+    // Initially clear the avatar ID
+    // so that no junk value made it into the db.
+    newUser.avatar_id = null
+    // Final value will be inserted avatar file id.
+    // This value should not be null if uploaded file contains avatar
+    // and it is inserted into the table after the move.
+    //
+    // null if there was no avatar.
+
+    let avatar = null
+    if (req.files['avatar']) avatar = req.files['avatar'][0]
+    // Move avatar to uploads folder
+    if (avatar) {
+        let movedAvatar = moveToUploads(avatar) || {}
+        console.log("Avatar", movedAvatar)
+        // insert the file
+        let [fileResult] = await filedao.insert({
+            original_name: movedAvatar.originalName,
+            name: movedAvatar.uuidFilename,
+            extension: movedAvatar.extension,
+            path: movedAvatar.uploadedFilepath,
+            mime: movedAvatar.mimetype,
+            size: movedAvatar.size
+        })
+        console.log("Insert File result:", fileResult)
+        newUser.avatar_id = fileResult.insertId
+    }
+    
+    /*
+    {
+        size: 3,
+        filepath: '/var/folders/gm/ql3m_vqj4lz3b6wwyj8lr6jw0000gn/T/dd8abf5ea7e748ac8f4b32d00',
+        newFilename: 'dd8abf5ea7e748ac8f4b32d00',
+        mimetype: 'text/plain',
+        mtime: undefined,
+        originalFilename: 'hello.txt',
+        uuidFilename: '000d1bda-517d-47b6-9ceb-8268b6726fc5',
+        potentialFilename: '000d1bda-517d-47b6-9ceb-8268b6726fc5.txt',
+        extension: 'txt',
+        uploadedFilepath: '/Users/tha/Desktop/uni/uog/Project/GIT/Code/backend/public/uploads/000d1bda-517d-47b6-9ceb-8268b6726fc5.txt',
+        uploadedFilename: '000d1bda-517d-47b6-9ceb-8268b6726fc5.txt'
+    }
+    */
+
     let [result] = await userdao.insert(newUser)
 
     let [users] = await userdao.getByInsertId(result.insertId)
 
     res.status(202).json(users[0])
+    // res.sendStatus(202)
 }
 
 exports.update = async (req, res) => {

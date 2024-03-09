@@ -9,7 +9,7 @@ import { format }  from 'date-fns'
  * @param text Display text
  * @param error Error text
  * @param disabled Disable state
- * @param onDateSelect Date selection callback
+ * @param onFileSelect File selection callback
 */
 function FileField({
     title, placeholder, 

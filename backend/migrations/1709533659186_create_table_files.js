@@ -1,10 +1,10 @@
 module.exports = {
     "up": 'create table files(\
-        id int not null auto_increment primary key,\
-        originalName varchar(255) not null default "",\
-        name varchar(36) not null,\
+        id int auto_increment primary key,\
+        original_name varchar(255) not null default "",\
+        name varchar(36) not null default "",\
         extension varchar(16) not null default "",\
-        path varchar(512),\
+        path varchar(512) default "",\
         mime varchar(32) not null default "",\
         size int not null default 0\
     )',
