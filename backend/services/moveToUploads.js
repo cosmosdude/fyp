@@ -61,7 +61,8 @@ function moved(file) {
             toPath
         )
         // if successful, assign uploaded path
-        info.uploadedFilepath = toPath
+        info.uploadedFilepath = 'uploads/' + info.potentialFilename
+        info.uploadedFullFilepath = toPath
         info.uploadedFilename = info.potentialFilename
     } catch (error) {
         console.log("Unable to rename file")

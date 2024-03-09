@@ -13,21 +13,48 @@ module.exports = {
     async getAll() {
         return await db.promise().query(
             '\
-select users.id as user_id, users.*, DATE_FORMAT(users.dob, "%Y-%m-%d") as dob, files.* \
-from users \
-left outer join files on files.id=users.avatar_id'
+select u.id as user_id, u.*, DATE_FORMAT(u.dob, "%Y-%m-%d") as dob, \
+r.name as role_name, \
+f1.path as avatar_path, \
+f2.path as employment_agreement_id \
+from users as u \
+left outer join roles as r on r.id=u.role_id \
+left outer join files as f1 on f1.id=u.avatar_id \
+left outer join files as f2 on f2.id=u.employment_agreement_id \
+'
         )
     },
 
     async getByInsertId(id) {
         return await db.promise()
-            .query('select *, DATE_FORMAT(dob, "%Y-%m-%d") as dob from users where insertId=?', [id])
+            .query(
+                '\
+                select u.id as user_id, u.*, DATE_FORMAT(u.dob, "%Y-%m-%d") as dob, \
+                r.name as role_name, \
+                f1.path as avatar_path, \
+                f2.path as employment_agreement_id \
+                from users as u \
+                left outer join roles as r on r.id=u.role_id \
+                left outer join files as f1 on f1.id=u.avatar_id \
+                left outer join files as f2 on f2.id=u.employment_agreement_id \
+                where u.insertId=?\
+                ', 
+                [id])
     },
 
     // get users by id
     async getById(id) {
         let [users] = await db.promise().query(
-            'select *, DATE_FORMAT(dob, "%Y-%m-%d") as dob from users where id=? limit 1',
+            '\
+            select u.id as user_id, u.*, DATE_FORMAT(u.dob, "%Y-%m-%d") as dob, \
+            r.name as role_name, \
+            f1.path as avatar_path, \
+            f2.path as employment_agreement_id \
+            from users as u \
+            left outer join roles as r on r.id=u.role_id \
+            left outer join files as f1 on f1.id=u.avatar_id \
+            left outer join files as f2 on f2.id=u.employment_agreement_id \
+            where u.id=? limit 1', 
             [id]
         )
         return users[0]

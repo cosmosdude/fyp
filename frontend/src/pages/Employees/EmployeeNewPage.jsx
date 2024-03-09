@@ -10,6 +10,9 @@ import { format } from 'date-fns';
 import AvatarInput from "../../components/AvatarInput";
 import FileField from "../../components/FileField";
 
+import { apiPaths, apiRoute } from "../../configs/api.config";
+import { useAuthContext } from "../../hooks/AuthStateContext";
+
 function employeeReducer(state, action) {
     let {type, value} = action
     switch(type) {
@@ -46,7 +49,10 @@ function employeeReducer(state, action) {
     }
 }
 
+
+
 function EmployeeNewPage() {
+    let authToken = useAuthContext()
 
     let [employee, dispatchEmployee] = useReducer(employeeReducer, {
         avatarBlob: null /*File*/, avatarSrc: null /*string*/,
@@ -67,6 +73,41 @@ function EmployeeNewPage() {
         ecName2: "", ecRelation2: "",
         ecPhone2: ""
     })
+
+    function getFormData() {
+        let f = new FormData()
+        let obj = {
+            avatar: employee.avatarBlob,
+            username: employee.username,
+            password: employee.password,
+
+            first_name: employee.firstname,
+            last_name: employee.lastname,
+            phone: employee.phone,
+            email: employee.email,
+            work_email: employee.workEmail,
+            work_phone: employee.workPhone,
+            // role_id: 4, // temporarily 4
+            dob: null,
+        }
+        
+        return f
+    }
+
+    async function createEmployee() {
+        let form = getFormData()
+        try {
+
+            let res = await fetch(apiRoute(apiPaths.employee.create), {
+                headers: {
+                    'authorization': `Bearer ${authToken}`
+                },
+                body: form
+            })
+        } catch {
+
+        }
+    }
 
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
@@ -95,6 +136,7 @@ function EmployeeNewPage() {
                 className="pt-[20px] pb-[200px] grow flex flex-col gap-[40px] overflow-y-scroll" 
                 onSubmit={(e) => {
                     e.preventDefault()
+                    createEmployee()
                 }}
             >
                 {/* Section */}

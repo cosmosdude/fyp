@@ -140,5 +140,9 @@ export const apiPaths = {
          * @param id Designation id
          * */
         delete(id) { return this.getDesignation(id) },
-    }
+    },
+
+    employee: {
+        create: "api/users/user"
+    },
 }
