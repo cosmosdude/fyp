@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useRef } from "react";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
 import FilledButton from "../../components/Buttons/FilledButton";
@@ -12,47 +12,14 @@ import FileField from "../../components/FileField";
 
 import { apiPaths, apiRoute } from "../../configs/api.config";
 import { useAuthContext } from "../../hooks/AuthStateContext";
-
-function employeeReducer(state, action) {
-    let {type, value} = action
-    switch(type) {
-        case 'avatar':
-            return {
-                ...state,
-                avatarBlob: value,
-                avatarSrc: value ? URL.createObjectURL(value): null
-            }
-        case 'dob': 
-            return {
-                ...state, 
-                dobText: format(action.value, 'd MMM yyyy'),
-                dob: action.value
-            }
-        case 'gender':
-            return {
-                ...state,
-                gender: action.value
-            }
-        case 'employmentContract':
-            return {
-                ...state,
-                employmentContractFilename: value.name,
-                employmentContractFile: value.file
-            }
-        default: 
-            let newObject = {...state}
-            for (const [k, v] of Object.entries(value)) {
-                console.log(k, v)
-                newObject[k] = v
-            }
-            return newObject
-    }
-}
-
-
+import useEffectAllDepartments from "../../hooks/useEffectAllDepartments";
+import useEffectDesignations from "../../hooks/useEffectDesignations";
+import { useNavigate } from "react-router-dom";
 
 function EmployeeNewPage() {
+    let navigate = useNavigate()
     let authToken = useAuthContext()
+    let departments = useEffectAllDepartments()
 
     let [employee, dispatchEmployee] = useReducer(employeeReducer, {
         avatarBlob: null /*File*/, avatarSrc: null /*string*/,
@@ -65,14 +32,18 @@ function EmployeeNewPage() {
         address: "",
 
         workEmail: "", workPhone: "",
-        department: null, departmentName: "", 
-        designation: null, designationName: "",
+        department: { id: null, name: null },
+        designation: { id: "", name: null },
 
         ecName1: "", ecRelation1: "",
         ecPhone1: "",
         ecName2: "", ecRelation2: "",
-        ecPhone2: ""
+        ecPhone2: "",
+
+        employmentContractFile: null, employmentContractFilename: ""
     })
+
+    let designations = useEffectDesignations(employee?.department?.id)
 
     function getFormData() {
         let f = new FormData()
@@ -83,14 +54,32 @@ function EmployeeNewPage() {
 
             first_name: employee.firstname,
             last_name: employee.lastname,
+            dob: null,
+            gender: employee.gender,
             phone: employee.phone,
             email: employee.email,
             work_email: employee.workEmail,
             work_phone: employee.workPhone,
             // role_id: 4, // temporarily 4
-            dob: null,
+            department_id: employee.department?.id,
+            designation_id: employee.designation?.id,
+
+            emergency_name1: employee.ecName1,
+            emergency_name2: employee.ecName2,
+            emergency_number1: employee.ecPhone1,
+            emergency_number2: employee.ecPhone2,
+            emergency_relation1: employee.ecRelation1,
+            emergency_relation2: employee.ecRelation2,
+
+            employment_contract: employee.employmentContractFile,
         }
-        
+
+        // TODO: calculate DOB here
+        if (employee.dob) obj.dob = format(employee.dob, 'yyyy-MM-dd')
+        console.log("Payload")
+        console.log("Payload GG")
+        console.table(obj)
+        for (const [k, v] of Object.entries(obj)) f.append(k, v)
         return f
     }
 
@@ -99,13 +88,21 @@ function EmployeeNewPage() {
         try {
 
             let res = await fetch(apiRoute(apiPaths.employee.create), {
+                method: "POST",
                 headers: {
                     'authorization': `Bearer ${authToken}`
                 },
                 body: form
             })
-        } catch {
 
+            if (res.status >= 200 && res.status < 300) {
+                console.log(await res.json())
+                navigate(-1)
+            } else {
+                console.log(await res.text())
+            }
+        } catch (error) {
+            console.log(error)
         }
     }
 
@@ -357,12 +354,13 @@ function EmployeeNewPage() {
                             <SelectBox 
                                 title='Department' 
                                 placeholder="Select department"
-                                text={employee.departmentName}
-                                options={['Male', 'Female', 'Unspecified']}
+                                text={employee.department?.name ?? ""}
+                                options={departments.map(x => x.name)}
                                 onSelect={(item, index) => {
-                                    dispatchEmployee({value: {
-                                        departmentName: item
-                                    }})
+                                    dispatchEmployee({
+                                        type: 'department',
+                                        value: departments[index]
+                                    })
                                 }}
                             />
                         </div>
@@ -372,12 +370,13 @@ function EmployeeNewPage() {
                             <SelectBox 
                                 title='Designation' 
                                 placeholder="Select designation"
-                                text={employee.designationName}
-                                options={['Male', 'Female', 'Unspecified']}
+                                text={employee.designation?.name}
+                                options={designations.map(x => x.name)}
                                 onSelect={(item, index) => {
-                                    dispatchEmployee({value: {
-                                        designationName: item
-                                    }})
+                                    dispatchEmployee({
+                                        type: 'designation',
+                                        value: designations[index]
+                                    })
                                 }}
                             />
                         </div>
@@ -524,3 +523,50 @@ function EmployeeNewPage() {
 }
 
 export default EmployeeNewPage;
+
+function employeeReducer(state, action) {
+    let {type, value} = action
+    switch(type) {
+        case 'avatar':
+            return {
+                ...state,
+                avatarBlob: value,
+                avatarSrc: value ? URL.createObjectURL(value): null
+            }
+        case 'dob': 
+            return {
+                ...state, 
+                dobText: format(action.value, 'd MMM yyyy'),
+                dob: action.value
+            }
+        case 'gender':
+            return {
+                ...state,
+                gender: action.value
+            }
+        case 'employmentContract':
+            return {
+                ...state,
+                employmentContractFilename: value.name,
+                employmentContractFile: value.file
+            }
+
+        case 'department':
+            return {
+                ...state,
+                department: { id: value.id, name: value.name }
+            }
+        case 'designation':
+            return {
+                ...state,
+                designation: { id: value.id, name: value.name }
+            }
+        default: 
+            let newObject = {...state}
+            for (const [k, v] of Object.entries(value)) {
+                console.log(k, v)
+                newObject[k] = v
+            }
+            return newObject
+    }
+}

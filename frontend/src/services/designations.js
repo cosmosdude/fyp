@@ -5,9 +5,12 @@ const designationService = {
     /**
      * Get all designations. 
      */
-    async getAll({accessToken, signal}) {
+    async getAll({accessToken, departmentId = "", signal}) {
         return fetch(
-            apiRoute(apiPaths.designation.getALl), {
+            apiRoute(
+                apiPaths.designation.getAll + '?' + new URLSearchParams({departmentId})
+            ), 
+            {
                 method: 'GET',
                 signal,
                 headers: { 

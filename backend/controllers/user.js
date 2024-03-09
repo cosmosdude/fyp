@@ -71,7 +71,7 @@ exports.store = async (req, res) => {
     if (!isEmail(newUser.email))
     return res.status(400).send("email is not a valid email address.")
 
-    if (!isEmail(newUser.work_email))
+    if (newUser.work_email && !isEmail(newUser.work_email))
     return res.status(400).send("work_email is not a valid email address.")
 
     // validate dob
@@ -86,9 +86,9 @@ exports.store = async (req, res) => {
     }
 
     // # Department
-    newUser.department_id = null
+    // newUser.department_id = null
     // # Designation
-    newUser.designation_id = null
+    // newUser.designation_id = null
 
     // # Files
 

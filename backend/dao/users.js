@@ -16,11 +16,15 @@ module.exports = {
 select u.id as user_id, u.*, DATE_FORMAT(u.dob, "%Y-%m-%d") as dob, \
 r.name as role_name, \
 f1.path as avatar_path, \
-f2.path as employment_agreement_id \
+f2.path as employment_agreement_path, \
+dep.name as department_name, \
+des.name as designation_name \
 from users as u \
-left outer join roles as r on r.id=u.role_id \
-left outer join files as f1 on f1.id=u.avatar_id \
-left outer join files as f2 on f2.id=u.employment_agreement_id \
+left join roles as r on r.id=u.role_id \
+left join departments as dep on dep.id=u.department_id \
+left join designations as des on des.id=u.designation_id \
+left join files as f1 on f1.id=u.avatar_id \
+left join files as f2 on f2.id=u.employment_agreement_id \
 '
         )
     },
@@ -32,9 +36,13 @@ left outer join files as f2 on f2.id=u.employment_agreement_id \
                 select u.id as user_id, u.*, DATE_FORMAT(u.dob, "%Y-%m-%d") as dob, \
                 r.name as role_name, \
                 f1.path as avatar_path, \
-                f2.path as employment_agreement_id \
+                f2.path as employment_agreement_id, \
+                dep.name as department_name, \
+                des.name as designation_name \
                 from users as u \
                 left outer join roles as r on r.id=u.role_id \
+                left outer join departments as dep on dep.id=u.department_id \
+                left outer join designations as des on des.id=u.designation_id \
                 left outer join files as f1 on f1.id=u.avatar_id \
                 left outer join files as f2 on f2.id=u.employment_agreement_id \
                 where u.insertId=?\

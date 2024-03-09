@@ -89,7 +89,7 @@ function DesignationDetailPage() {
             console.log(res.status)
             if (res.status === 202)  navigate('/designations/' + id)
             
-        } catch { }
+        } catch(error) { console.log(error) }
     }
 
     async function create() {

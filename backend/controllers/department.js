@@ -26,7 +26,7 @@ exports.store = async (req, res) => {
     console.log("Results", result)
     let [inserted] = await con.promise().query(
         'select * from departments where insertId=?', [result.insertId]
-    )
+    ) 
     res.status(202).json(inserted)
 }
 

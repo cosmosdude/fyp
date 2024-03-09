@@ -67,14 +67,14 @@ export const apiPaths = {
          * 
          * @param id Department id
          * */
-        update(id) { return this.getDepartment(id) },
+        update(id) { return this.get(id) },
         /**
          * API path for deleting department.
          * Same api path with get department.
          * 
          * @param id Department id
          * */
-        delete(id) { return this.getDepartment(id) },
+        delete(id) { return this.get(id) },
     },
 
 
@@ -132,14 +132,14 @@ export const apiPaths = {
          * 
          * @param id Designation id
          * */
-        update(id) { return this.getDesignation(id) },
+        update(id) { return this.get(id) },
         /**
          * API path for deleting designation.
          * Same api path with get designation.
          * 
          * @param id Designation id
          * */
-        delete(id) { return this.getDesignation(id) },
+        delete(id) { return this.get(id) },
     },
 
     employee: {
