@@ -1,7 +1,7 @@
 // Server host
 export const host = 'http://127.0.0.1:3000'
 
-export function apiRoute(url) {
+export function apiRoute(url: string) {
     url = url.replace(/^\/+/, '')
     return `${host}/${url}`
 }
@@ -27,21 +27,21 @@ export const apiPaths = {
      * 
      * @param id Department id
      * */
-    getDepartment(id) { return `/api/departments/department/${id}` },
+    getDepartment(id: string) { return `/api/departments/department/${id}` },
     /**
      * API Path for updating department.
      * Same api path with get department
      * 
      * @param id Department id
      * */
-    updateDepartment(id) { return this.getDepartment(id) },
+    updateDepartment(id: string) { return this.getDepartment(id) },
     /**
      * API path for deleting department.
      * Same api path with get department.
      * 
      * @param id Department id
      * */
-    deleteDepartment(id) { return this.getDepartment(id) },
+    deleteDepartment(id: string) { return this.getDepartment(id) },
 
     /**
      * Department API Resources
@@ -60,21 +60,21 @@ export const apiPaths = {
          * 
          * @param id Department id
          * */
-        get(id) { return `/api/departments/department/${id}` },
+        get(id: string) { return `/api/departments/department/${id}` },
         /**
          * API Path for updating department.
          * Same api path with get department
          * 
          * @param id Department id
          * */
-        update(id) { return this.get(id) },
+        update(id: string) { return this.get(id) },
         /**
          * API path for deleting department.
          * Same api path with get department.
          * 
          * @param id Department id
          * */
-        delete(id) { return this.get(id) },
+        delete(id: string) { return this.get(id) },
     },
 
 
@@ -92,21 +92,21 @@ export const apiPaths = {
      * 
      * @param id Designation id
      * */
-    getDesignation(id) { return `/api/designations/designation/${id}` },
+    getDesignation(id: string) { return `/api/designations/designation/${id}` },
     /**
      * API Path for updating designation.
      * Same api path with get designation
      * 
      * @param id Designation id
      * */
-    updateDesignation(id) { return this.getDesignation(id) },
+    updateDesignation(id: string) { return this.getDesignation(id) },
     /**
      * API path for deleting designation.
      * Same api path with get designation.
      * 
      * @param id Designation id
      * */
-    deleteDesignation(id) { return this.getDesignation(id) },
+    deleteDesignation(id: string) { return this.getDesignation(id) },
 
     /**
      * Designation API Resource
@@ -125,24 +125,27 @@ export const apiPaths = {
          * 
          * @param id Designation id
          * */
-        get(id) { return `/api/designations/designation/${id}` },
+        get(id: string) { return `/api/designations/designation/${id}` },
         /**
          * API Path for updating designation.
          * Same api path with get designation
          * 
          * @param id Designation id
          * */
-        update(id) { return this.get(id) },
+        update(id: string) { return this.get(id) },
         /**
          * API path for deleting designation.
          * Same api path with get designation.
          * 
          * @param id Designation id
          * */
-        delete(id) { return this.get(id) },
+        delete(id: string) { return this.get(id) },
     },
 
     employee: {
+        /**
+         * API for creating employee
+         */
         create: "api/users/user"
     },
 }

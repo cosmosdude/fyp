@@ -34,7 +34,7 @@ function AvatarInput({className, src, onAvatarSelect}) {
             "
             onClick={e => {
                 e.preventDefault() // so that enclosing form doesn't submit automatically
-                imagePicker.current.showPicker() // show file picker
+                imagePicker.current?.showPicker() // show file picker
             }}
         >
             {!src && <img 
@@ -46,11 +46,11 @@ function AvatarInput({className, src, onAvatarSelect}) {
                 className="w-[0px] h-[0px]" type="file" accept="image/*" 
                 onChange={e => {
                     // get the first file
-                    let file = e.target.files[0]
+                    let file = e.target?.files?.[0]
                     // if the file exists
                     if (file) onAvatarSelect && onAvatarSelect(file)
                 }}
-                onInput={e => {
+                onInput={_ => {
                     console.log("Image inputted.")
                 }}
             />

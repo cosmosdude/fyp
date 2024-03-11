@@ -7,7 +7,7 @@ const departmentService = {
      */
     async getAllDepartments({accessToken, signal}) {
         return fetch(
-            apiRoute(apiPaths.getAllDepartments), {
+            apiRoute(apiPaths.department.getAll), {
                 method: 'GET',
                 signal,
                 headers: { 
@@ -20,7 +20,7 @@ const departmentService = {
 
     async getDepartment({accessToken, id, signal}) {
         return fetch(
-            apiRoute(apiPaths.getDepartment(id)), {
+            apiRoute(apiPaths.department.get(id)), {
                 method: 'GET',
                 signal,
                 headers: { 
@@ -35,7 +35,7 @@ const departmentService = {
         departmentName, accessToken, signal
     }) {
         return fetch(
-            apiRoute(apiPaths.createDepartment), {
+            apiRoute(apiPaths.department.create), {
                 method: 'POST',
                 signal,
                 headers: { 
@@ -51,7 +51,7 @@ const departmentService = {
         id, departmentName, accessToken, signal
     }) {
         return fetch(
-            apiRoute(apiPaths.updateDepartment(id)), {
+            apiRoute(apiPaths.department.update(id)), {
                 method: 'PUT',
                 signal,
                 headers: { 

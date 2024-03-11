@@ -1,6 +1,6 @@
 import EyeOnSVG from '../assets/Icons/eye.svg'
 import EyeOffSVG from '../assets/Icons/eye-off.svg'
-import { forwardRef, useRef, useState } from 'react'
+import { forwardRef, useState } from 'react'
 
 const TextField = forwardRef(function TextField({
     title, placeholder, error, 
@@ -60,8 +60,6 @@ const TextField = forwardRef(function TextField({
                     onInvalid={(e) => { 
                         console.log(e)
                         setIsInvalid(true) // set error
-                        console.log(e.validity)
-                        console.log(e.value)
                     }}
                     onInput={(e) => {
                         onChange && onChange(e)

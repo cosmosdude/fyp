@@ -1,8 +1,6 @@
 import { useRef, useState } from 'react'
 import Icon from '../assets/Icons/file.svg'
 
-import { format }  from 'date-fns'
-
 /**
  * @param title Title label
  * @param placeholder Placeholder text for absence of text
@@ -44,7 +42,7 @@ function FileField({
                 disabled={disabled}
                 onClick={(e) => {
                     e.preventDefault()
-                    picker.current.showPicker()
+                    picker.current?.showPicker()
                 }}
             >
                 <img className="w-[18px] h-[18px]" src={Icon}/>
@@ -65,12 +63,12 @@ function FileField({
                         console.log(e.target.value)
                         console.log(e.target.files)
 
-                        let file = e.target.files[0]
+                        let file = e.target?.files?.[0]
                         let filename = ""
                         if (file) filename = file.name
                         else { filename = "" }
 
-                        onFileSelect && onFileSelect(e.target.files[0], filename)
+                        onFileSelect && onFileSelect(e.target?.files?.[0], filename)
                         setFallbackText(filename)
                     }}
                 />

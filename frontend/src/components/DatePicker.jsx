@@ -47,7 +47,7 @@ function DatePicker({
                 disabled={disabled}
                 onClick={(e) => {
                     e.preventDefault()
-                    picker.current.showPicker()
+                    picker.current?.showPicker()
                 }}
             >
                 <label 

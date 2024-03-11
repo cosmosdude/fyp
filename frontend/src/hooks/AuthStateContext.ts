@@ -4,7 +4,7 @@ import { createContext, useContext, useState } from "react";
 const AuthStateContext = createContext([])
 export default AuthStateContext
 
-export const AuthContext = createContext(null)
+export const AuthContext = createContext<string|null>(null)
 
 /**
  * Returns current auth token.
@@ -28,10 +28,15 @@ export function useAuthStateContext() {
  * */
 export function useAuthState() {
     let key = 'accessToken'
-    let [auth, setAuth] = useState(JSON.parse(window.localStorage.getItem(key)))
+    
+    let [auth, setAuth] = useState(
+        JSON.parse(window.localStorage.getItem(key) ?? "")
+    )
 
-    return [auth, (value) => {
-        window.localStorage.setItem(key, JSON.stringify(value))
+    return [auth, (value: string|null) => {
+        // if value is invalid, remove the item
+        if (!value) window.localStorage.removeItem(key)
+        else window.localStorage.setItem(key, JSON.stringify(value))
         setAuth(value)
     }]
 }
