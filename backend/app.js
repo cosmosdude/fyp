@@ -1,6 +1,5 @@
 require('dotenv').config()
 
-
 const express = require('express')
 const cors = require('cors')
 
@@ -28,7 +27,7 @@ const upload = require('./services/moveToUploads')
 app.use('/test', require('./middlewares/formidable-multipart'), async (req, res) => {
     console.log("Fields", req.fields)
     console.log("Files", req.files)
-
+    
     let files = req.files['f']
 
     let uploadedFiles = await Promise.all(

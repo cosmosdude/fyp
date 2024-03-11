@@ -13,10 +13,11 @@
     "mysql": "^2.18.1",
     "mysql-migrations": "^1.0.7",
     "mysql2": "^3.9.2",
+    "ts-node": "^10.9.2",
     "uuid": "^9.0.1"
   },
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "nodemon index.ts -e js,ts",
     "prod": "node index.js",
     "route:list": "node list-routes",
     "migration:add": "node migration add migration",
