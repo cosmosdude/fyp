@@ -16,7 +16,7 @@ import useEffectAllDepartments from "../../hooks/useEffectAllDepartments";
 import useEffectDesignations from "../../hooks/useEffectDesignations";
 import { useNavigate } from "react-router-dom";
 
-import employeeService from "../../services/EmployeeService"
+import employeeService from "../../services/employeeService"
 
 function EmployeeNewPage() {
     let navigate = useNavigate()
@@ -45,49 +45,12 @@ function EmployeeNewPage() {
         employmentContractFile: null, employmentContractFilename: ""
     })
 
-    let designations = useEffectDesignations(employee?.department?.id)
+    let designations = useEffectDesignations(employee?.department?.id ?? "null")
 
-    function getFormData() {
-        let f = new FormData()
-        let obj = {
-            avatar: employee.avatarBlob,
-            username: employee.username,
-            password: employee.password,
-
-            first_name: employee.firstname,
-            last_name: employee.lastname,
-            dob: null,
-            gender: employee.gender,
-            phone: employee.phone,
-            email: employee.email,
-            work_email: employee.workEmail,
-            work_phone: employee.workPhone,
-            // role_id: 4, // temporarily 4
-            department_id: employee.department?.id,
-            designation_id: employee.designation?.id,
-
-            emergency_name1: employee.ecName1,
-            emergency_name2: employee.ecName2,
-            emergency_number1: employee.ecPhone1,
-            emergency_number2: employee.ecPhone2,
-            emergency_relation1: employee.ecRelation1,
-            emergency_relation2: employee.ecRelation2,
-
-            employment_contract: employee.employmentContractFile,
-        }
-
-        // TODO: calculate DOB here
-        if (employee.dob) obj.dob = format(employee.dob, 'yyyy-MM-dd')
-        console.log("Payload")
-        console.log("Payload GG")
-        console.table(obj)
-        for (const [k, v] of Object.entries(obj)) f.append(k, v)
-        return f
-    }
+    
 
     async function createEmployee() {
 
-        // let form = getFormData()
         let obj = {
             avatar: employee.avatarBlob,
             username: employee.username,
@@ -117,13 +80,6 @@ function EmployeeNewPage() {
         if (employee.dob) obj.dob = format(employee.dob, 'yyyy-MM-dd')
 
         try {
-            // let res = await fetch(apiRoute(apiPaths.employee.create), {
-            //     method: "POST",
-            //     headers: {
-            //         'authorization': `Bearer ${authToken}`
-            //     },
-            //     body: form
-            // })
             let res = await employeeService.create(obj, authToken)
 
             if (res.status >= 200 && res.status < 300) {
@@ -288,6 +244,7 @@ function EmployeeNewPage() {
                                 placeholder="Unspecified"
                                 text={employee.gender}
                                 options={['Male', 'Female', 'Unspecified']}
+                                selected={['Male', 'Female', 'Unspecified'].indexOf(employee.gender)}
                                 onSelect={(item) => {
                                     dispatchEmployee({value: {
                                         gender: item
@@ -387,6 +344,9 @@ function EmployeeNewPage() {
                                 placeholder="Select department"
                                 text={employee.department?.name ?? ""}
                                 options={departments.map(x => x.name)}
+                                selected={
+                                    departments.findIndex(x => x.id === employee?.department?.id)
+                                }
                                 onSelect={(item, index) => {
                                     dispatchEmployee({
                                         type: 'department',
@@ -403,6 +363,9 @@ function EmployeeNewPage() {
                                 placeholder="Select designation"
                                 text={employee.designation?.name}
                                 options={designations.map(x => x.name)}
+                                selected={
+                                    designations.findIndex(x => x.id === employee?.designation?.id)
+                                }
                                 onSelect={(item, index) => {
                                     dispatchEmployee({
                                         type: 'designation',
@@ -585,7 +548,9 @@ function employeeReducer(state, action) {
         case 'department':
             return {
                 ...state,
-                department: { id: value.id, name: value.name }
+                department: { id: value.id, name: value.name },
+                // reset designation
+                designation: { id: null, name: null }
             }
         case 'designation':
             return {

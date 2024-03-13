@@ -155,6 +155,9 @@ export const apiPaths = {
         * API for getting all employees
         */
         getAll: "api/users",
+        get(id: string|null|undefined = "") { 
+            `api/users/user/${id ?? "me"}`
+        },
         /**
          * API for creating employee
          */

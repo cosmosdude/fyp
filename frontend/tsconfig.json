@@ -26,7 +26,10 @@
       "noUnusedParameters": true,
       "noFallthroughCasesInSwitch": true
     },
-    "include": ["./src", "tsconfig.json", "svg.d.ts"],
+    "include": [
+      "./src", "tsconfig.json",  
+      "src/types/*.d.ts"
+    ],
     "exclude": ["./src/assets/"],
     "references": [{ "path": "./tsconfig.node.json" }]
   }

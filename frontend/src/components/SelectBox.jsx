@@ -22,16 +22,30 @@ function SelectBox({
         return selected === index
     }
 
+    // ${show ? 'visible opacity-100': 'invisible opacity-0'}
     return (
+    <>
         <div className="relative flex flex-col gap-[4px]">
+            <div 
+                className={`
+                fixed flex
+                bg-black/0
+                ${show ? 'visible opacity-100': 'invisible opacity-0'}
+                left-0 top-0
+                w-full h-full
+                z-100
+                `}
+                onClick={() => setShow(false)}
+            >
+            </div>
             { !!title && <p className="font-bs text-lm text-neutral-900">{title}</p> }
-
+            
             {/* Textfield like area */}
             <button 
                 className={`
                 flex items-center gap-[10px] 
                 px-[10px] h-[41px] 
-                rounded-[4px] 
+                rounded-[3px] 
                 ${ show ? 'border-[2px]' : 'border'}
                 ${ show ? 'border-primary' : error ? 'border-danger-300' : 'border-neutral-200'} 
                 ${ !disabled && 'hover:bg-primary-50'}
@@ -110,6 +124,7 @@ function SelectBox({
             </div>
             
         </div>
+    </>
     );
 }
 

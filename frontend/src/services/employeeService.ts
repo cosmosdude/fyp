@@ -2,7 +2,7 @@ import { format } from 'date-fns'
 import {apiRoute, apiPaths} from '../configs/api.config'
 
 interface CreateEmployeeProps {
-    avatar: Blob | undefined,
+    avatar: Blob | null | undefined,
     username: string,
     password: string,
 
@@ -25,7 +25,7 @@ interface CreateEmployeeProps {
     emergency_relation1: string|null,
     emergency_relation2: string|null,
 
-    employment_contract: string|null,
+    employment_contract: Blob| null | undefined,
 }
 
 const employeeService = {
