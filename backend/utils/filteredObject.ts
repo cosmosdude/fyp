@@ -27,8 +27,3 @@ module.exports = (obj, keys) => {
     )
     return purgedObject
 }
-
-exports.test = (key: string) => {
-    console.log("The Key Is", key)
-    console.log("Type of key is", typeof(key))
-}

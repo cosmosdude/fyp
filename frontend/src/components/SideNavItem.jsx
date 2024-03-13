@@ -15,10 +15,10 @@ export default function SideNavItem({to, title, unselected, selected}) {
 
     let bgColor = !isCurrent 
     ? 'hover:bg-primary-50'
-    : 'bg-primary-500'
+    : 'bg-primary'
 
     let tintColor = !isCurrent 
-    ? 'text-primary-500'
+    ? 'text-primary'
     : 'text-white'
 
     return (
@@ -27,7 +27,7 @@ export default function SideNavItem({to, title, unselected, selected}) {
                 src={isCurrent ? selected : unselected}
                 className="w-[30px] h-[30px]"
             />
-            <h1 className={`text-bs font-bs text-primary-500 ${tintColor} transition-all`}>{title}</h1>
+            <h1 className={`text-bs font-bs text-primary ${tintColor} transition-all`}>{title}</h1>
         </Link>
     )
 }

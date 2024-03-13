@@ -114,7 +114,7 @@ export default function LoginPage() {
                     {!isLoading && <button 
                         className="
                         font-bs text-bs 
-                        text-white bg-primary-500
+                        text-white bg-primary
                         hover:bg-primary-600
                         focus:bg-primary-700
                         rounded-[4px] 

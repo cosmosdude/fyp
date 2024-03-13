@@ -30,13 +30,13 @@ export function useAuthState() {
     let key = 'accessToken'
     
     let [auth, setAuth] = useState(
-        JSON.parse(window.localStorage.getItem(key) ?? "")
+        window.localStorage.getItem(key)
     )
 
     return [auth, (value: string|null) => {
         // if value is invalid, remove the item
         if (!value) window.localStorage.removeItem(key)
-        else window.localStorage.setItem(key, JSON.stringify(value))
+        else window.localStorage.setItem(key, value)
         setAuth(value)
     }]
 }

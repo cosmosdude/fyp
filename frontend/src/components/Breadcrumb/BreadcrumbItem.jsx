@@ -7,7 +7,7 @@ function BreadcrumbItem({title, current, onClick, to}) {
             className={`
                 p-[4px] 
                 text-bs font-bs 
-                ${current ? 'text-primary-500' : 'text-neutral-900'}
+                ${current ? 'text-primary' : 'text-neutral-900'}
                 ${hasAction && 'hover:opacity-25'}
                 transition-all
             `}

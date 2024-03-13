@@ -33,7 +33,7 @@ function SelectBox({
                 px-[10px] h-[41px] 
                 rounded-[4px] 
                 ${ show ? 'border-[2px]' : 'border'}
-                ${ show ? 'border-primary-500' : error ? 'border-danger-300' : 'border-neutral-200'} 
+                ${ show ? 'border-primary' : error ? 'border-danger-300' : 'border-neutral-200'} 
                 ${ !disabled && 'hover:bg-primary-50'}
                 ${ disabled ? 'bg-background-1' : ''}
                 transition-all
@@ -85,7 +85,7 @@ function SelectBox({
                             key={index}
                             className={`
                             rounded-[4px] px-[10px] py-[10px]
-                            ${isSelected ? 'bg-primary-500' : 'hover:bg-primary-50'} 
+                            ${isSelected ? 'bg-primary' : 'hover:bg-primary-50'} 
                             ${isSelected ? 'text-white' : 'text-neutral-900'}
                             transition-all
                             cursor-pointer

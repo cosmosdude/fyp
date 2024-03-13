@@ -20,38 +20,22 @@ export default {
     extend: {
       fontFamily: {
         sans: [
-          '"Poppins"',
+          '"Inter"',
           ...defaultTheme.fontFamily.sans
         ]
       },
       fontSize: {
-        hl: '48px',
-        hm: '40px',
-        hs: '33px',
-        tl: '28px',
-        tm: '25px',
-        ts: '23px',
-        bl: '19px',
-        bm: '16px',
-        bs: '14px',
-        ll: '14px',
-        lm: '12px',
-        ls: '12px',
+        hl: '48px', hm: '40px', hs: '33px',
+        tl: '28px', tm: '24px', ts: '20px',
+        bl: '18px', bm: '16px', bs: '14px',
+        ll: '14px', lm: '12px', ls: '12px',
       },
 
       fontWeight: {
-        hl: 200,
-        hm: 400,
-        hs: 300,
-        tl: 400,
-        tm: 500,
-        ts: 600,
-        bl: 300,
-        bm: 400,
-        bs: 600,
-        ll: 400,
-        lm: 600,
-        ls: 500,
+        hl: 200, hm: 400, hs: 300,
+        tl: 400, tm: 500, ts: 600,
+        bl: 300, bm: 400, bs: 600,
+        ll: 400, lm: 700, ls: 400,
       },
 
       colors: {
@@ -83,16 +67,17 @@ export default {
         'neutral-600': '#666666',
         'neutral-700': '#4d4d4d',
         'neutral-800': '#333333',
-        'neutral-900': '#1a1a1a',
+        'neutral-900': '#1a1a1a',  'black': '#1a1a1a',
+        
         
         'primary-50': '#e9edfc',
         'primary-100': '#d2dbf9',
         'primary-200': '#a6b8f2',
         'primary-300': '#7994ec',
         'primary-400': '#4d70e5',
-        'primary-500': '#204ddf',
-        'primary-600': '#1a3db3',
-        'primary-700': '#132e86',
+        'primary-500': '#204ddf', 'primary': '#1a3db3',
+        'primary-600': '#1a3db3', 
+        'primary-700': '#132e86', 
         'primary-800': '#0d1f59',
         'primary-900': '#060f2d',
         
@@ -102,7 +87,7 @@ export default {
         'secondary-300': '#8566ff',
         'secondary-400': '#5c33ff',
         'secondary-500': '#3300ff',
-        'secondary-600': '#2900cc',
+        'secondary-600': '#2900cc', 'secondary': '#2900cc',
         'secondary-700': '#1f0099',
         'secondary-800': '#140066',
         'secondary-900': '#0a0033',

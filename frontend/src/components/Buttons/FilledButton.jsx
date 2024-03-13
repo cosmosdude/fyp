@@ -8,7 +8,7 @@ function FilledButton({src, children, onClick, to}) {
                 flex items-center gap-[10px]
                 px-[16px] py-[10px]
                 text-white text-bs font-bs
-                bg-primary-500 
+                bg-primary 
                 rounded-[4px]
                 hover:bg-primary-600
                 transition-all

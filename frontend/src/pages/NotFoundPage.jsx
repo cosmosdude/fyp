@@ -11,7 +11,7 @@ export default function NotFoundPage() {
                 className="w-[300px] h-[300px]"
                 src={images[Math.floor(Math.random() * images.length)]}
             />
-            <p className="font-poppins text-hs font-hs text-primary-500">Not Found!</p>
+            <p className="font-poppins text-hs font-hs text-primary">Not Found!</p>
         </div>
     )
 }

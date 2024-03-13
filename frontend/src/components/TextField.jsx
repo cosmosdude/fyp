@@ -35,7 +35,7 @@ const TextField = forwardRef(function TextField({
                 border 
                 focus-within:border-[2px]
                 ${ (!isInvalid && !error) ? 'border-neutral-200' : 'border-danger-200'}
-                focus-within:border-primary-400
+                focus-within:border-primary
                 ${disabled ? 'bg-background-2' : 'bg-background-0'}
                 transition-all
                 `}

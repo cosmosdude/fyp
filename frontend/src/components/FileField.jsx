@@ -34,7 +34,7 @@ function FileField({
                 border focus-within:border-2
                 border-neutral-200
                 ${error ? 'border-danger-300' : 'border-neutral-200'}
-                focus-within:border-primary-500
+                focus-within:border-primary
                 ${ !disabled && 'hover:bg-primary-50'}
                 ${ disabled ? 'bg-background-1' : ''}
                 transition-all

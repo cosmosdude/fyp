@@ -16,6 +16,7 @@ import DesignationsSelectedIcon from '../assets/Icons/sidenav/designations.svg'
 
 import LogoutIcon from '../assets/Icons/sidenav/logout.svg'
 import SideNavItem from "../components/SideNavItem";
+import Avatar from "../components/Avatar";
 
 
 export default function HomePage() {
@@ -65,10 +66,11 @@ export default function HomePage() {
                 {/* Bottom profile card */}
                 <div className="flex items-center px-[20px] py-[16px] gap-[20px] bg-background-1 rounded-[14px] max-h-[76px] overflow-hidden">
                     {/* Avatar ring */}
-                    <div className="min-w-[40px] w-[40px] h-[40px] border-[2px] border-primary-400 rounded-full p-[2px]">
+                    {/* <div className="min-w-[40px] w-[40px] h-[40px] border-[2px] border-primary rounded-full p-[2px]"> */}
                         {/* Avatar */}
-                        <div className="bg-neutral-200 w-full h-full rounded-full"></div>
-                    </div>
+                        {/* <div className="bg-neutral-200 w-full h-full rounded-full"></div> */}
+                    {/* </div> */}
+                    <Avatar/>
                     {/* Labels */}
                     <div className="grow flex flex-col">
                         <p className="text-wrap text-bs font-bs">Admin</p>
