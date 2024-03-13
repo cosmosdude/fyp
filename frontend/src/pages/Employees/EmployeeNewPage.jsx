@@ -1,4 +1,4 @@
-import { useReducer, useRef } from "react";
+import { useEffect, useReducer, useRef } from "react";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
 import FilledButton from "../../components/Buttons/FilledButton";
@@ -10,15 +10,25 @@ import { format } from 'date-fns';
 import AvatarInput from "../../components/AvatarInput";
 import FileField from "../../components/FileField";
 
-import { apiPaths, apiRoute } from "../../configs/api.config";
+import { apiPaths, apiRoute, imageRoute } from "../../configs/api.config";
 import { useAuthContext } from "../../hooks/AuthStateContext";
 import useEffectAllDepartments from "../../hooks/useEffectAllDepartments";
 import useEffectDesignations from "../../hooks/useEffectDesignations";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import employeeService from "../../services/employeeService"
+import LabeledText from "../../components/LabeledText";
 
 function EmployeeNewPage() {
+
+    let { id: employeeId } = useParams()
+    let { pathname } = useLocation()
+    let type = "detail"
+    console.log("pathname", pathname)
+    if (pathname.includes('update')) type = "update"
+    else if (pathname.includes('new')) type = "new"
+    else type = "detail"
+
     let navigate = useNavigate()
     let authToken = useAuthContext()
     let departments = useEffectAllDepartments()
@@ -47,10 +57,33 @@ function EmployeeNewPage() {
 
     let designations = useEffectDesignations(employee?.department?.id ?? "null")
 
-    
+    function handleFormSubmit() {
+        if (type === 'new') createEmployee()
+        if (type === 'update') updateEmployee()
+    }
 
     async function createEmployee() {
+        try {
+            let res = await employeeService.create(
+                getEmployeeData(), authToken
+            )
 
+            if (res.status >= 200 && res.status < 300) {
+                console.log(await res.json())
+                navigate(-1)
+            } else {
+                console.log(await res.text())
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    function updateEmployee() {
+
+    }
+
+    function getEmployeeData() {
         let obj = {
             avatar: employee.avatarBlob,
             username: employee.username,
@@ -62,6 +95,8 @@ function EmployeeNewPage() {
             gender: employee.gender,
             phone: employee.phone,
             email: employee.email,
+            address: employee.address,
+
             work_email: employee.workEmail,
             work_phone: employee.workPhone,
             // role_id: 4, // temporarily 4
@@ -78,20 +113,39 @@ function EmployeeNewPage() {
             employment_contract: employee.employmentContractFile,
         }
         if (employee.dob) obj.dob = format(employee.dob, 'yyyy-MM-dd')
-
-        try {
-            let res = await employeeService.create(obj, authToken)
-
-            if (res.status >= 200 && res.status < 300) {
-                console.log(await res.json())
-                navigate(-1)
-            } else {
-                console.log(await res.text())
-            }
-        } catch (error) {
-            console.log(error)
-        }
+        return obj
     }
+
+    useEffect(() => {
+        if (type === 'new') return
+        // MARK: Fetching Employee
+        async function fetchEmployees() {
+            try {
+                let res = await employeeService.get(
+                    employeeId,
+                    authToken
+                )
+
+                if (res.status >= 200 && res.status < 300) {
+                    let json = await res.json()
+                    dispatchEmployee({
+                        type: 'fetch', 
+                        value: json
+                    })
+                } else {
+                    console.log("status", res.status, "response", await res.text())
+                }
+            } catch (error) {
+                console.log(error)
+            }
+
+        }
+
+        fetchEmployees()
+
+        return () => {}
+    }, [])
+    
 
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
@@ -102,17 +156,42 @@ function EmployeeNewPage() {
                     <BreadcrumbItem title="/"/>
                     <BreadcrumbItem title="Employees" to='/employees'/>
                     <BreadcrumbItem title="/"/>
-                    <BreadcrumbItem title="New" current/>
+                    {
+                        type === 'new' 
+                        ? <BreadcrumbItem title="New" current/>
+                        : type === 'update' 
+                        ? (
+                            <>
+                                <BreadcrumbItem to={-1} title="Detail"/>
+                                <BreadcrumbItem title="/"/>
+                                <BreadcrumbItem title="Update" current/>
+                            </>
+                        )
+                        : <BreadcrumbItem title="Detail" current/>
+                    }
+                    
                 </Breadcrumb>
                 <div className="grow"/>
                 {/* Show only when type is detail */}
-                {/* {type === 'detail' && <FilledButton to='update'>Update</FilledButton>} */}
+                {type === 'detail' && <FilledButton to='update'>Update</FilledButton>}
             </div>
             
             {/* Title */}
             <div className="flex flex-col">
-                <h1 className="text-neutral-900 text-tl font-tl">New Employee</h1>
-                <p className="text-neutral-900 text-bm font-bm">Create new employee record.</p>
+                <h1 className="text-neutral-900 text-tl font-tl">
+                    {type == 'new' 
+                    ? 'New Employee' 
+                    : type == 'update' 
+                    ? 'Update Employee'
+                    : 'Employee Detail'}
+                </h1>
+                <p className="text-neutral-900 text-bm font-bm">
+                    {type == 'new' 
+                    ? 'Create new employee record.' 
+                    : type == 'update' 
+                    ? 'Update information for employee.'
+                    : 'Detail information of employee are shown here.'}
+                </p>
             </div>
 
             {/* Content View */}
@@ -120,7 +199,7 @@ function EmployeeNewPage() {
                 className="pt-[20px] pb-[200px] grow flex flex-col gap-[40px] overflow-y-scroll" 
                 onSubmit={(e) => {
                     e.preventDefault()
-                    createEmployee()
+                    handleFormSubmit()
                 }}
             >
                 {/* Section */}
@@ -145,7 +224,7 @@ function EmployeeNewPage() {
                         </div>
                         {/* Row */}
                         <div className="grid grid-cols-1 gap-[20px]">
-                            <TextField 
+                            {type === 'new' && <TextField 
                                 title='Username (required)' 
                                 placeholder="eg. john-doe"
                                 text={employee.username}
@@ -155,9 +234,17 @@ function EmployeeNewPage() {
                                         username: e.target.value
                                     }})
                                 }}
-                            />
+                            />}
+                            {type !== 'new' && <LabeledText title="Employee Id" value={employee.userId}/>}
+                            {type !== 'new' && <LabeledText title="Username" value={employee.username}/>}
+                            {type !== 'new' && <LabeledText title="Join Date" 
+                            value={format(new Date(employee.joinDate ?? '2-2-2024'), 'dd MMM yyyy')}/>}
                         </div>
-                        <div className="grid grid-cols-2 gap-[20px]">
+                        <div 
+                            className={`
+                            ${type === "detail" ? "hidden": "grid"}
+                            grid-cols-2 gap-[20px]
+                            `}>
                             <TextField 
                                 title='Password (required)' 
                                 placeholder="eg. john1234"
@@ -498,8 +585,8 @@ function EmployeeNewPage() {
                     </div>
                 </section>
 
-                {/* Section */}
-                <section className="grid grid-cols-2 gap-[20px]">
+                {/* Button Section */}
+                {type !== 'detail' && <section className="grid grid-cols-2 gap-[20px]">
                     <div/>
                     {/* Right side */}
                     <div className="flex flex-col gap-[20px]">
@@ -507,10 +594,12 @@ function EmployeeNewPage() {
                         {/* Row */}
                         <div className="grid grid-cols-2 gap-[20px]">
                             <div/>
-                            <FilledButton>Testing 1 2 3</FilledButton>
+                            <FilledButton>
+                                {type === 'new' ? "Create" : 'Update'}
+                            </FilledButton>
                         </div>
                     </div>
-                </section>
+                </section>}
             </form>
         </div>
     );
@@ -519,6 +608,7 @@ function EmployeeNewPage() {
 export default EmployeeNewPage;
 
 function employeeReducer(state, action) {
+    console.log("Action", action)
     let {type, value} = action
     switch(type) {
         case 'avatar':
@@ -557,7 +647,40 @@ function employeeReducer(state, action) {
                 ...state,
                 designation: { id: value.id, name: value.name }
             }
+
+        case 'fetch': // upon fetch
+        console.log(action)
+            return {
+                ...state,
+
+                avatarBlob: null, avatarSrc: imageRoute(value.avatar_path),
+                userId: value.user_id,
+                username: value.username,
+                joinDate: value.created_at,
+                password: null, retypePassword: null,
+                
+                firstname: value.first_name, lastname: value.last_name,
+                dob: value.dob ? new Date(value.dob) : null,
+                dobText: value.dob ? format(new Date(value.dob), "dd MMM yyyy") : "",
+                gender: value.gender,
+                email: value.email, phone: value.phone,
+                address: value.address,
+
+                workEmail: value.work_email, workPhone: value.work_phone,
+                department: { id: value.department_id, name: value.department_name },
+                designation: { id: value.designation_id, name: value.designation_name},
+
+                ecName1: value.emergency_name1, ecPhone1: value.emergency_number1,
+                ecRelation1: value.emergency_relation1,
+
+                ecName2: value.emergency_name2, ecPhone2: value.emergency_number2,
+                ecRelation2: value.emergency_relation2,
+
+                employmentContractFile: null, 
+                employmentContractFilename: value.employment_agreement_filename
+            }   
         default: 
+        console.log(action)
             let newObject = {...state}
             for (const [k, v] of Object.entries(value)) {
                 console.log(k, v)

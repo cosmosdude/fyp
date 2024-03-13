@@ -8,7 +8,7 @@ function AvatarInput({className, src, onAvatarSelect}) {
     <div className={`
         group relative flex 
         overflow-hidden 
-        border border-neutral-200 hover:border-primary-500 hover:border-[2px]
+        border border-neutral-200 hover:border-primary hover:border-[2px]
         rounded-[4px] 
         transition-all
         ${className}

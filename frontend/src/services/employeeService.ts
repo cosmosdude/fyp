@@ -1,5 +1,6 @@
 import { format } from 'date-fns'
 import {apiRoute, apiPaths} from '../configs/api.config'
+import { optional } from '../types/nullish'
 
 interface CreateEmployeeProps {
     avatar: Blob | null | undefined,
@@ -12,6 +13,7 @@ interface CreateEmployeeProps {
     gender: string|null,
     phone: string|null,
     email: string|null,
+    address: string|null,
     work_email: string,
     work_phone: string,
     // role_id: 4, // temporarily 4
@@ -51,21 +53,25 @@ const employeeService = {
         )
     },
 
-    // /**
-    //  * Get designation detail. 
-    //  */
-    // async get({accessToken, id, signal}) {
-    //     return fetch(
-    //         apiRoute(apiPaths.designation.get(id)), {
-    //             method: 'GET',
-    //             signal,
-    //             headers: { 
-    //                 'content-type': "application/json",
-    //                 'authorization': `Bearer ${accessToken}`
-    //             }
-    //         }
-    //     )
-    // },
+    /**
+     * Get designation detail. 
+     */
+    async get(
+        id: string|null|undefined,
+        accessToken, 
+        signal?: optional<AbortSignal>
+    ) {
+        return fetch(
+            apiRoute(apiPaths.employee.get(id ?? "")), {
+                method: 'GET',
+                signal,
+                headers: { 
+                    'content-type': "application/json",
+                    'authorization': `Bearer ${accessToken}`
+                }
+            }
+        )
+    },
 
     /**
      * Create new employee.
@@ -75,6 +81,7 @@ const employeeService = {
         accessToken: string|null|undefined,
         signal: AbortSignal|null|undefined
     ) {
+        console.log("Out Payload", employee)
         let f = new FormData()
         for (const [k,v] of Object.entries(employee).filter(([_, v]) => !!v)) {
             console.log(k, v)

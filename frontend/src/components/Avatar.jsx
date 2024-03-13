@@ -4,7 +4,7 @@
 function Avatar({src = undefined, title = "", size = 40}) {
     let starts = title.split(' ').filter(x => x.length != 0)
         .map(x => x.charAt(0).toUpperCase())
-        .join()
+        .join("")
 
     size = parseInt(size)
     if (isNaN(size)) size = 40
@@ -19,7 +19,7 @@ function Avatar({src = undefined, title = "", size = 40}) {
             `}
         >
             {src && <img className="object-cover w-full h-full" src={src}/>}
-            <p className="absolute text-white">{starts}</p>
+            {!src && <p className="absolute text-white">{starts}</p>}
         </span>
     );
 }

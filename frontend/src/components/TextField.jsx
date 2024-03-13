@@ -20,6 +20,7 @@ const TextField = forwardRef(function TextField({
     // s, r => 'text'
     // !s, r => 'text'
     // !s, !r => 'text'
+    if (!text) { text = ""}
 
     return (
         <div className="flex flex-col gap-[4px]">
@@ -80,3 +81,6 @@ const TextField = forwardRef(function TextField({
 })
 
 export default TextField
+/*
+
+*/

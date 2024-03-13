@@ -2,7 +2,7 @@ import Avatar from "../../../components/Avatar";
 
 import { LucideCalendarDays } from "lucide-react";
 
-function EmployeeCard({avatarSrc, title, subtitle, joinDate}) {
+function EmployeeCard({avatarSrc, title, subtitle, joinDate, onClick}) {
     subtitle = subtitle.trim()
     console.log("Subtitle", subtitle.length)
     return (
@@ -17,6 +17,7 @@ function EmployeeCard({avatarSrc, title, subtitle, joinDate}) {
             onClick={e => {
                 e.preventDefault()
                 e.stopPropagation()
+                onClick?.()
             }}
         >
             <div className="">

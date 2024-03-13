@@ -98,7 +98,7 @@ exports.store = async (req, res) => {
         console.log("Avatar", moved)
         // insert the file
         let [fileResult] = await filedao.insert({
-            original_name: moved.originalName,
+            original_name: moved.originalFilename,
             name: moved.uuidFilename,
             extension: moved.extension,
             path: moved.uploadedFilepath,
