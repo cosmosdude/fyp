@@ -19,12 +19,12 @@
   "scripts": {
     "dev": "nodemon index.ts -e js,ts",
     "prod": "node index.js",
-    "route:list": "node list-routes",
-    "migration:add": "node migration add migration",
-    "migration:seed": "node migration add seed",
-    "migration": "node migration up",
-    "migration:down": "node migration down",
-    "migration:refresh": "node migration refresh"
+    "route:list": "ts-node list-routes",
+    "migration:add": "ts-node migration add migration",
+    "migration:seed": "ts-node migration add seed",
+    "migration": "ts-node migration up",
+    "migration:down": "ts-node migration down",
+    "migration:refresh": "ts-node migration refresh"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",

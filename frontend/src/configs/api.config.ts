@@ -6,6 +6,14 @@ export function apiRoute(url: string) {
     return `${host}/${url}`
 }
 
+/**
+ * Get image route
+*/
+export function imageRoute(url: string|null|undefined) {
+    if (!url) return null
+    return apiRoute(url)
+}
+
 export const apiPaths = {
 
     /**
@@ -143,6 +151,10 @@ export const apiPaths = {
     },
 
     employee: {
+        /**
+        * API for getting all employees
+        */
+        getAll: "api/users",
         /**
          * API for creating employee
          */

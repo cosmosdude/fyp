@@ -21,6 +21,7 @@ create table users (\
     dob date,\
     status varchar(16) default 'active',\
     role_id varchar(36) not null,\
+    created_at date default CURDATE(),\
     deleted_at date,\
     PRIMARY KEY (id)\
 );\

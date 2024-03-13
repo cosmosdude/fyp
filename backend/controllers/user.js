@@ -68,7 +68,7 @@ exports.store = async (req, res) => {
     // hash the password.
     newUser.password = md5(newUser.password)
 
-    if (!isEmail(newUser.email))
+    if (newUser.email && !isEmail(newUser.email))
     return res.status(400).send("email is not a valid email address.")
 
     if (newUser.work_email && !isEmail(newUser.work_email))

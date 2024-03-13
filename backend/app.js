@@ -1,5 +1,7 @@
 require('dotenv').config()
 
+const u = require('./utils/filteredObject.ts')
+
 const express = require('express')
 const cors = require('cors')
 
