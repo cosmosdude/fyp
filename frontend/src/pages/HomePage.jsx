@@ -17,6 +17,8 @@ import DesignationsSelectedIcon from '../assets/Icons/sidenav/designations.svg'
 import LogoutIcon from '../assets/Icons/sidenav/logout.svg'
 import SideNavItem from "../components/SideNavItem";
 import Avatar from "../components/Avatar";
+import useEffectUserDetail from "../hooks/useEffectUserDetail";
+import { imageRoute } from "../configs/api.config";
 
 
 export default function HomePage() {
@@ -28,6 +30,10 @@ export default function HomePage() {
         setAuth(null)
         console.log(auth)
     }
+
+    let me = useEffectUserDetail()
+
+    let fullname = [me?.first_name, me?.last_name].filter(x => !!x).join(' ')
 
     return (
         <div className="flex gap-[20px] p-[20px] w-screen h-screen">
@@ -70,11 +76,14 @@ export default function HomePage() {
                         {/* Avatar */}
                         {/* <div className="bg-neutral-200 w-full h-full rounded-full"></div> */}
                     {/* </div> */}
-                    <Avatar/>
+                    <Avatar
+                        src={imageRoute(me?.avatar_path)}
+                        title={fullname}
+                    />
                     {/* Labels */}
                     <div className="grow flex flex-col">
-                        <p className="text-wrap text-bs font-bs">Admin</p>
-                        <p className="text-wrap text-ll font-ll">admin@yopmail.com</p>
+                        <p className="text-wrap text-bs font-bs">{fullname}</p>
+                        <p className="text-wrap text-ll font-ll">{me?.work_email ?? ""}</p>
                     </div>
                     {/* Logout Button */}
                     <button className="hover:opacity-25 transition-all" onClick={logout}>

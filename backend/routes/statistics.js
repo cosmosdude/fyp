@@ -14,6 +14,7 @@ router.use(require('../middlewares/authenticated'))
 
 // Routes
 router.get('/departments', controller.departments)
+router.get('/designations', controller.designations)
 
 
 module.exports = router

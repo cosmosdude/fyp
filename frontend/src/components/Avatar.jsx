@@ -19,7 +19,7 @@ function Avatar({src = undefined, title = "", size = 40}) {
             `}
         >
             {src && <img className="object-cover w-full h-full" src={src}/>}
-            {!src && <p className="absolute text-white">{starts}</p>}
+            {!src && <p className="absolute text-white text-ls font-ls">{starts}</p>}
         </span>
     );
 }

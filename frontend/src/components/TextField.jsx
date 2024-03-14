@@ -10,7 +10,7 @@ const TextField = forwardRef(function TextField({
     leftImageSrc, rightImageSrc,
     onChange
 }, ref) {
-
+    
     let eye = { on: EyeOnSVG, off: EyeOffSVG }
 
     let [revealed, setRevealed] = useState(false)
@@ -20,7 +20,7 @@ const TextField = forwardRef(function TextField({
     // s, r => 'text'
     // !s, r => 'text'
     // !s, !r => 'text'
-    if (!text) { text = ""}
+    // if (!text) { text = ""}
 
     return (
         <div className="flex flex-col gap-[4px]">

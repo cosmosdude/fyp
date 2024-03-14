@@ -3,7 +3,7 @@ const con = require('../mysql')
 const {randomUUID: uuid} = require('crypto')
 
 exports.getAll = async (req, res) => {
-    let [results] = await con.promise().query('select * from departments')
+    let [results] = await con.promise().query('select * from departments order by name')
     res.json(results)
 }
 

@@ -26,6 +26,7 @@ left join departments as dep on dep.id=u.department_id \
 left join designations as des on des.id=u.designation_id \
 left join files as f1 on f1.id=u.avatar_id \
 left join files as f2 on f2.id=u.employment_agreement_id \
+order by u.first_name \
 '
         )
     },

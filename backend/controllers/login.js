@@ -11,7 +11,7 @@ exports.login = async function login(req, res) {
 
     if (!username) return sendError('Username is missing')
     if (!password) return sendError('Password is missing')
- 
+    console.log(username, password)
     try {
         let [results] = await con.promise().query(
             'select * from users where username=? and password=?', 

@@ -16,7 +16,8 @@ A.deleted_at \
 from designations as A \
 inner join departments as B \
 on A.department_id=B.id \
-${departmentId ? 'where B.id=?' : ''}\
+${departmentId ? 'where B.id=?' : ''}\ 
+group by A.name
         `, [departmentId])
     res.json(results)
 }

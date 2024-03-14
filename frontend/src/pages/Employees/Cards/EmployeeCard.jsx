@@ -4,7 +4,7 @@ import { LucideCalendarDays } from "lucide-react";
 
 function EmployeeCard({avatarSrc, title, subtitle, joinDate, onClick}) {
     subtitle = subtitle.trim()
-    console.log("Subtitle", subtitle.length)
+    // console.log("Subtitle", subtitle.length)
     return (
         <button 
             className="
