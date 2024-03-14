@@ -213,9 +213,7 @@ exports.delete = async(req, res) => {
     let [results] = await userdao.delete(id)
     console.log(results)
     if (results.affectedRows !== 1) 
-        return res.status(400).send("unable to delete user.")
-
-    
+        return res.status(400).send("unable to delete user.")    
     res.sendStatus(204)
 }
 
