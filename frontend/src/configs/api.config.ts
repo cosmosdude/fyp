@@ -161,6 +161,13 @@ export const apiPaths = {
         /**
          * API for creating employee
          */
-        create: "api/users/user"
+        create: "api/users/user",
+
+        /**
+         * API for updating user.
+         * @param id ID of the user.
+         * @returns api path for updating user.
+         */
+        update(id: string|null|undefined = "") { return this.get(id) },
     },
 }

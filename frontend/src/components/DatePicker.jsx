@@ -69,7 +69,7 @@ function DatePicker({
                         e.preventDefault()
                         // return false
                     }}
-                    onChange={e => {
+                    onInput={e => {
                         console.log(e.target.value)
                         console.log(e.target.valueAsDate)
                         onDateSelect && onDateSelect(e.target.valueAsDate, e.target.value)

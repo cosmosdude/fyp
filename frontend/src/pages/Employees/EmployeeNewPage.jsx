@@ -79,8 +79,21 @@ function EmployeeNewPage() {
         }
     }
 
-    function updateEmployee() {
+    async function updateEmployee() {
+        try {
+            let res = await employeeService.update(
+                employeeId, getEmployeeData(), authToken
+            )
 
+            if (res.status >= 200 && res.status < 300) {
+                console.log(await res.json())
+                navigate(-1)
+            } else {
+                console.log(await res.text())
+            }
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     function getEmployeeData() {
@@ -216,6 +229,7 @@ function EmployeeNewPage() {
                         <div className="grid grid-cols-2 gap-[20px]">
                             <AvatarInput 
                                 className="aspect-square"
+                                disabled={type === 'detail'}
                                 src={employee.avatarSrc}
                                 onAvatarSelect={avatar => {
                                     dispatchEmployee({type: 'avatar', value: avatar})
@@ -228,6 +242,7 @@ function EmployeeNewPage() {
                                 title='Username (required)' 
                                 placeholder="eg. john-doe"
                                 text={employee.username}
+                                disabled={type === 'detail'}
                                 required
                                 onChange={(e) => {
                                     dispatchEmployee({value: {
@@ -249,7 +264,8 @@ function EmployeeNewPage() {
                                 title='Password (required)' 
                                 placeholder="eg. john1234"
                                 text={employee.password}
-                                required
+                                required={type==='new'}
+                                disabled={type === 'detail'}
                                 secureTextEntry
                                 onChange={(e) => {
                                     dispatchEmployee({value: {
@@ -261,7 +277,8 @@ function EmployeeNewPage() {
                                 title='Retype Password (required)' 
                                 placeholder="eg. john1234"
                                 text={employee.retypePassword}
-                                required
+                                required={type==='new'}
+                                disabled={type === 'detail'}
                                 secureTextEntry
                                 onChange={(e) => {
                                     dispatchEmployee({value: {
@@ -293,6 +310,7 @@ function EmployeeNewPage() {
                                 title='First Name' 
                                 placeholder="eg. John"
                                 text={employee.firstname}
+                                disabled={type === 'detail'}
                                 onChange={(e) => {
                                     dispatchEmployee({value: {
                                         firstname: e.target.value
@@ -303,6 +321,7 @@ function EmployeeNewPage() {
                                 title='Last Name' 
                                 placeholder="eg. Doe"
                                 text={employee.lastname}
+                                disabled={type === 'detail'}
                                 onChange={(e) => {
                                     dispatchEmployee({value: {
                                         lastname: e.target.value
@@ -318,7 +337,7 @@ function EmployeeNewPage() {
                                 placeholder="Select date"
                                 text={employee.dobText || ""}
                                 date={employee.dob}
-                                // disabled
+                                disabled={type === 'detail'}
                                 onDateSelect={(date, text) => {
                                     dispatchEmployee({
                                         type: 'dob',
@@ -332,6 +351,7 @@ function EmployeeNewPage() {
                                 text={employee.gender}
                                 options={['Male', 'Female', 'Unspecified']}
                                 selected={['Male', 'Female', 'Unspecified'].indexOf(employee.gender)}
+                                disabled={type === 'detail'}
                                 onSelect={(item) => {
                                     dispatchEmployee({value: {
                                         gender: item
@@ -346,6 +366,7 @@ function EmployeeNewPage() {
                                 title='Email' 
                                 placeholder=""
                                 text={employee.email}
+                                disabled={type === 'detail'}
                                 onChange={(e) => {
                                     dispatchEmployee({value: {
                                         email: e.target.value
@@ -356,6 +377,7 @@ function EmployeeNewPage() {
                                 title='Phone' 
                                 placeholder=""
                                 text={employee.phone}
+                                disabled={type === 'detail'}
                                 onChange={(e) => {
                                     dispatchEmployee({value: {
                                         phone: e.target.value
@@ -370,6 +392,7 @@ function EmployeeNewPage() {
                                 title='Address' 
                                 placeholder=""
                                 text={employee.address}
+                                disabled={type === 'detail'}
                                 onChange={(e) => {
                                     dispatchEmployee({value: {
                                         address: e.target.value
@@ -401,7 +424,8 @@ function EmployeeNewPage() {
                                 title='Work Email (required)' 
                                 placeholder="eg. john.work@hrms.com"
                                 text={employee.workEmail}
-                                required
+                                required={type==='new'}
+                                disabled={type === 'detail'}
                                 onChange={(e) => {
                                     dispatchEmployee({value: {
                                         workEmail: e.target.value
@@ -416,6 +440,7 @@ function EmployeeNewPage() {
                                 title='Work Phone' 
                                 placeholder="eg. 0123456789"
                                 text={employee.workPhone}
+                                disabled={type === 'detail'}
                                 onChange={(e) => {
                                     dispatchEmployee({value: {
                                         workPhone: e.target.value
@@ -431,6 +456,7 @@ function EmployeeNewPage() {
                                 placeholder="Select department"
                                 text={employee.department?.name ?? ""}
                                 options={departments.map(x => x.name)}
+                                disabled={type === 'detail'}
                                 selected={
                                     departments.findIndex(x => x.id === employee?.department?.id)
                                 }
@@ -450,6 +476,7 @@ function EmployeeNewPage() {
                                 placeholder="Select designation"
                                 text={employee.designation?.name}
                                 options={designations.map(x => x.name)}
+                                disabled={type === 'detail'}
                                 selected={
                                     designations.findIndex(x => x.id === employee?.designation?.id)
                                 }
@@ -485,6 +512,7 @@ function EmployeeNewPage() {
                                 title='Name' 
                                 placeholder="eg. john1234"
                                 text={employee.ecName1}
+                                disabled={type === 'detail'}
                                 onChange={(e) => {
                                     dispatchEmployee({value: {
                                         ecName1: e.target.value
@@ -495,6 +523,7 @@ function EmployeeNewPage() {
                                 title='Relationship' 
                                 placeholder="eg. john1234"
                                 text={employee.ecRelation1}
+                                disabled={type === 'detail'}
                                 onChange={(e) => {
                                     dispatchEmployee({value: {
                                         ecRelation1: e.target.value
@@ -508,6 +537,7 @@ function EmployeeNewPage() {
                                 title='Phone' 
                                 placeholder="eg. john1234"
                                 text={employee.ecPhone1}
+                                disabled={type === 'detail'}
                                 onChange={(e) => {
                                     dispatchEmployee({value: {
                                         ecPhone1: e.target.value
@@ -522,6 +552,7 @@ function EmployeeNewPage() {
                                 title='Name' 
                                 placeholder="eg. john1234"
                                 text={employee.ecName2}
+                                disabled={type === 'detail'}
                                 onChange={(e) => {
                                     dispatchEmployee({value: {
                                         ecName2: e.target.value
@@ -532,6 +563,7 @@ function EmployeeNewPage() {
                                 title='Relationship' 
                                 placeholder="eg. john1234"
                                 text={employee.ecRelation2}
+                                disabled={type === 'detail'}
                                 onChange={(e) => {
                                     dispatchEmployee({value: {
                                         ecRelation2: e.target.value
@@ -545,6 +577,7 @@ function EmployeeNewPage() {
                                 title='Phone' 
                                 placeholder="eg. john1234"
                                 text={employee.ecPhone2}
+                                disabled={type === 'detail'}
                                 onChange={(e) => {
                                     dispatchEmployee({value: {
                                         ecPhone2: e.target.value
@@ -574,6 +607,7 @@ function EmployeeNewPage() {
                                 title='Employment Contract' 
                                 placeholder="No file selected"
                                 text={employee.employmentContractFilename}
+                                disabled={type === 'detail'}
                                 onFileSelect={(file, name) => {
                                     dispatchEmployee({
                                         type: 'employmentContract',

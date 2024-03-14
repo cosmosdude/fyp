@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import CameraIcon from "../assets/Icons/camera.svg"
 
-function AvatarInput({className, src, onAvatarSelect}) {
+function AvatarInput({className, src, disabled, onAvatarSelect}) {
     let imagePicker = useRef()
 
     return (
@@ -9,6 +9,7 @@ function AvatarInput({className, src, onAvatarSelect}) {
         group relative flex 
         overflow-hidden 
         border border-neutral-200 hover:border-primary hover:border-[2px]
+        ${disabled ? 'pointer-events-none' : 'pointer-events-auto'}
         rounded-[4px] 
         transition-all
         ${className}

@@ -99,30 +99,36 @@ const employeeService = {
                 body: f
             }
         )
-    }
+    },
 
     /**
-     * Update designation.
+     * Update employee data.
      */
-    // async update({
-    //     id, designationName, departmentId, accessToken, signal
-    // }) {
-    //     console.log(id, designationName, departmentId, accessToken, signal)
-    //     return fetch(
-    //         apiRoute(apiPaths.designation.update(id)), {
-    //             method: 'PUT',
-    //             signal,
-    //             headers: { 
-    //                 'content-type': "application/json",
-    //                 'authorization': `Bearer ${accessToken}`
-    //             },
-    //             body: JSON.stringify({
-    //                 name: designationName,
-    //                 departmentId
-    //             })
-    //         }
-    //     )
-    // }
+    async update(
+        id: string|null|undefined,
+        employee: CreateEmployeeProps, 
+        accessToken: string|null|undefined,
+        signal: AbortSignal|null|undefined
+    ) {
+        console.log("Out Payload", employee)
+        let f = new FormData()
+        for (const [k,v] of Object.entries(employee).filter(([_, v]) => !!v)) {
+            console.log(k, v)
+            f.set(k, v)
+        }
+        
+        return fetch(
+            apiRoute(apiPaths.employee.update(id)), {
+                method: 'PUT',
+                signal,
+                headers: { 
+                    // 'content-type': "application/json",
+                    'authorization': `Bearer ${accessToken}`
+                },
+                body: f
+            }
+        )
+    }
 
 }
 

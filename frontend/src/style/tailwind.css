@@ -730,6 +730,10 @@ video {
   pointer-events: none;
 }
 
+.pointer-events-auto {
+  pointer-events: auto;
+}
+
 .visible {
   visibility: visible;
 }
@@ -897,6 +901,14 @@ video {
   height: 220px;
 }
 
+.h-\[200px\] {
+  height: 200px;
+}
+
+.h-\[100px\] {
+  height: 100px;
+}
+
 .max-h-\[160px\] {
   max-height: 160px;
 }
@@ -955,6 +967,14 @@ video {
 
 .w-\[299px\] {
   width: 299px;
+}
+
+.w-\[200px\] {
+  width: 200px;
+}
+
+.w-\[100px\] {
+  width: 100px;
 }
 
 .min-w-\[200px\] {
@@ -1437,6 +1457,11 @@ video {
 
 .bg-black\/0 {
   background-color: rgb(26 26 26 / 0);
+}
+
+.bg-red-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
 }
 
 .bg-gradient-to-r {

@@ -2,10 +2,10 @@ import { useEffect, useState } from "react"
 import { useAuthContext } from "./AuthStateContext"
 import departmentService from "../services/department"
 
-export default function useEffectAllDepartments() {
+export default function useEffectAllDepartments(): any[] {
 
     let accessToken = useAuthContext()
-    let [departments, setDepartments] = useState([])
+    let [departments, setDepartments] = useState<any[]>([])
 
     useEffect(() => {
         let aborter = new AbortController()
