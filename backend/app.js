@@ -20,7 +20,7 @@ app.use('/api/auth', require('./routes/auth'))
 app.use('/api/departments', require('./routes/department'))
 app.use('/api/designations', require('./routes/designation'))
 app.use('/api/users', require('./routes/user'))
-
+app.use('/api/statistic', require('./routes/statistics'))
 
 
 // # Tests

@@ -152,6 +152,10 @@ exports.update = async (req, res) => {
     // validated fields
     // user info that is about be updated
     let updatingUser = zodResult.data
+
+    // if password exists, hash it
+    if (updatingUser.password) 
+    updatingUser.password = md5(updatingUser.password)
     // user id
     let { id } = req.params
 
