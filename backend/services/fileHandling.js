@@ -1,12 +1,30 @@
 const fs = require('fs')
 const { dirname } = require('path')
 
-const uploadsFolderPath = `${dirname(require.main.filename)}/public/uploads`
+/**
+ * Public folder path in string.
+*/
+const publicFolder = `${dirname(require.main.filename)}/public`
+/**
+ * Uploads folder path in string
+ */
+const uploadsFolderPath = `${publicFolder}/uploads`
+
+/**
+ * Remove given from `public` folder.
+*/
+exports.removeFile = (filename, callback) => {
+    console.log("Given Filename", filename)
+    if (!filename) return callback?.(null)
+    let removeFilepath = publicFolder + '/' + filename
+    console.log("Removing file at", removeFilepath)
+    fs.unlink(removeFilepath, callback)
+}
 
 /**
  * Move file with given info to public/uploads folder
 */
-module.exports = (file) => {
+exports.moveToUploads = (file) => {
     /*
     // expected format
     { 

@@ -34,7 +34,7 @@ export default function HomePage() {
             {/* Left Nav */}
             <div className="flex flex-col gap-[10px] min-w-[350px] max-w-[350px] overflow-hidden">
                 {/* Top Nav Items */}
-                <div className="grow flex flex-col bg-background-1 rounded-[14px] py-[20px] overflow-y-scroll">
+                <div className="grow flex flex-col bg-background-0 border border-neutral-100 rounded-[14px] py-[20px] overflow-y-scroll">
                     <h1 className="text-center text-hl font-hl">HRMS</h1>
 
                     {/* Nav Item */}
@@ -64,7 +64,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Bottom profile card */}
-                <div className="flex items-center px-[20px] py-[16px] gap-[20px] bg-background-1 rounded-[14px] max-h-[76px] overflow-hidden">
+                <div className="flex items-center px-[20px] py-[16px] gap-[20px] bg-background-0 border border-neutral-100 rounded-[14px] max-h-[76px] overflow-hidden">
                     {/* Avatar ring */}
                     {/* <div className="min-w-[40px] w-[40px] h-[40px] border-[2px] border-primary rounded-full p-[2px]"> */}
                         {/* Avatar */}

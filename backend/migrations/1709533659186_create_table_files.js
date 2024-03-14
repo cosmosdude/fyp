@@ -6,7 +6,8 @@ module.exports = {
         extension varchar(16) not null default "",\
         path varchar(512) default "",\
         mime varchar(255) not null default "",\
-        size int not null default 0\
+        size int not null default 0,\
+        deleted_at date\
     )',
     "down": "drop table files"
 }

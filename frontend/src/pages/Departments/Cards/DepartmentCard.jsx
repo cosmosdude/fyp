@@ -5,7 +5,8 @@ function DepartmentCard({title, onClick}) {
         <button className="
             flex items-center gap-[20px] p-[20px] 
             text-bm font-bm
-            bg-background-1 rounded-[14px] 
+            bg-background-0 rounded-[14px] 
+            border border-neutral-100
             hover:opacity-25 transition-all"
             onClick={onClick}
         >

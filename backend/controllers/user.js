@@ -4,7 +4,11 @@ const {randomUUID: uuid} = require('crypto')
 const md5 = require('md5')
 const {validate: isEmail} = require('email-validator')
 
-const moveToUploads = require('../services/moveToUploads')
+const fs = require('fs')
+
+const z = require('zod')
+
+const { moveToUploads, removeFile } = require('../services/fileHandling')
 
 const userdao = require('../dao/users')
 const filedao = require('../dao/files')
@@ -90,26 +94,6 @@ exports.store = async (req, res) => {
     // # Designation
     // newUser.designation_id = null
 
-    // # Files
-
-    async function saveFile(file) {
-        if (!file) return undefined
-        let moved = moveToUploads(file) || {}
-        console.log("Avatar", moved)
-        // insert the file
-        let [fileResult] = await filedao.insert({
-            original_name: moved.originalFilename,
-            name: moved.uuidFilename,
-            extension: moved.extension,
-            path: moved.uploadedFilepath,
-            mime: moved.mimetype,
-            size: moved.size
-        })
-        console.log("Insert File result:", fileResult)  
-
-        return fileResult
-    }
-
     // # Avatar
     // extract avatar from the files list.
     // only the first avatar is interested.
@@ -130,54 +114,98 @@ exports.store = async (req, res) => {
 }
 
 exports.update = async (req, res) => {
+    let rules = z.object({
+        password: z.string().min(8).optional(),
 
+        first_name: z.string().min(1).optional(),
+        last_name: z.string().optional(),
+        dob: z.coerce.date().optional(),
+        gender: z.enum(['Male', 'Female', 'Unspecified']).optional(),
+        email: z.string().email().optional(),
+        phone: z.string().optional(),
+        address: z.string().optional(),
+        
+        work_email: z.string().email().optional(),
+        work_phone: z.string().optional(),
+        department_id: z.string().optional(),
+        designation_id: z.string().optional(),
+
+        emergency_name1: z.string().optional(),
+        emergency_number1: z.string().optional(),
+        emergency_relation1: z.string().optional(),
+
+        emergency_name2: z.string().optional(),
+        emergency_number2: z.string().optional(),
+        emergency_relation2: z.string().optional(),
+        
+        status: z.enum(['active', 'deactive']).optional()
+    })
+
+    // Validate fields
+    let zodResult = rules.safeParse(req.body)
+    if (!zodResult.success) {
+        return res.status(400).json(zodResult.error.issues.map(i => {
+            return `${i.path.toString()}: ${i.message}`
+        }))
+    }
+
+    // validated fields
+    // user info that is about be updated
+    let updatingUser = zodResult.data
+    // user id
     let { id } = req.params
 
-    user = { ...req.body }
+    // Test user existence
+    console.log("id", id)
+    let user = await userdao.getById(id)
+    console.log("user", user)
+    if (!user) return res.status(400).send("No user available.")
 
-    // remove unwanted fields first
-    user.id = undefined // remove id
-    user.username = undefined // remove username override
+    // test department existence
+    // test designation existence
 
-    // # validate fields
+    // if avatar is given
+    if (req.files['avatar']?.[0]) {
+        // if current avatar_id exists
+        if (user.avatar_id) {
+            let [theFile] = await filedao.getById(user.avatar_id)
+            console.log("Current Avatar:", theFile?.[0])
+            // remove it from file system
+            removeFile(theFile?.[0]?.path, err => console.log("Remove Error", err))
+            // delete it from db.
+            filedao.deleteById(user.avatar_id)
+        }
 
-    // # vaidate email
-    if (user.email && !isEmail(user.email))
-    return res.status(400).send("email is not a valid email address.")
-
-    // # validate work_email
-    if (user.work_email && !isEmail(user.work_email))
-    return res.status(400).send("work_email is not a valid email address.")
-
-    // # validate password
-    if (user.password) {
-        // test password length
-        if (user.password.length < 8)
-        return res.status(400).send("Password must be at least 8 characters long")
-
-        // hash the password
-        user.password = md5(user.password)
+        // save given file to public/uploads
+        // and add to db
+        let moveResult = await saveFile(req.files['avatar']?.[0])
+        // get the saved file id as avatar_id
+        updatingUser.avatar_id = moveResult?.insertId
     }
+    // remov
+
+    // if contract is given
+    if (req.files['employment_contract']?.[0]) {
+        // if current employment_agreement_id exists
+        if (user.employment_agreement_id) {
+            let [theFile] = await filedao.getById(user.employment_agreement_id)
+            console.log("Current Employment Agreement:", theFile?.[0])
+            // remove it from file system
+            removeFile(theFile?.[0]?.path, err => console.log("Remove Error", err))
+            // delete it from db.
+            filedao.deleteById(user.employment_agreement_id)
+        }
+
+        // save given file to public/uploads
+        let moveResult = await saveFile(req.files['employment_contract']?.[0])
+        console.log("Move result", moveResult)
+        updatingUser.employment_agreement_id = moveResult?.insertId
+    }
+    console.log("User to be updated", updatingUser)
+    let [updateResult] = await userdao.update(id, updatingUser)
     
-    // # validate DOB
-    let dateRegex = /^\d{4}-\d{1,2}-\d{1,2}$/
-    if (user.dob) {
-        // if unwanted format
-        if (!dateRegex.test(user.dob))
-            return res.status(400).send('DOB must be in format yyyy-MM-dd')
-        // if invalid date range
-        if (isNaN(new Date(user.dob)))
-            return res.status(400).send('Invalid DOB range.')
-    }
-
-    console.log('updating user id', id)
-    // update user
-    let [result] = await userdao.update(id, user)
-    console.log(result)
-    if (result.affectedRows !== 1)
-    return res.status(400).send("No user found")
-
-    res.sendStatus(202)
+    res.status(201).json(updateResult)
+    // res.sendStatus(201)
 }
 
 exports.delete = async(req, res) => {
@@ -189,4 +217,27 @@ exports.delete = async(req, res) => {
 
     
     res.sendStatus(204)
+}
+
+/**
+     * Save file to public/uploads and insert into files table.
+     * 
+     * @returns Insertion info.
+    */
+async function saveFile(file) {
+    if (!file) return undefined
+    let moved = moveToUploads(file) || {}
+    console.log("Avatar", moved)
+    // insert the file
+    let [fileResult] = await filedao.insert({
+        original_name: moved.originalFilename,
+        name: moved.uuidFilename,
+        extension: moved.extension,
+        path: moved.uploadedFilepath,
+        mime: moved.mimetype,
+        size: moved.size
+    })
+    console.log("Insert File result:", fileResult)  
+
+    return fileResult
 }

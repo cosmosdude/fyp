@@ -14,7 +14,8 @@
     "mysql-migrations": "^1.0.7",
     "mysql2": "^3.9.2",
     "ts-node": "^10.9.2",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "zod": "^3.22.4"
   },
   "scripts": {
     "dev": "nodemon index.ts -e js,ts",

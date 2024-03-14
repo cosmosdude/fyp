@@ -24,7 +24,7 @@ app.use('/api/users', require('./routes/user'))
 
 
 // # Tests
-const upload = require('./services/moveToUploads')
+const upload = require('./services/fileHandling.js')
 
 app.use('/test', require('./middlewares/formidable-multipart'), async (req, res) => {
     console.log("Fields", req.fields)

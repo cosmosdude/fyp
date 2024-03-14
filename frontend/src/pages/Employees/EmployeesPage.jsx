@@ -27,10 +27,10 @@ function EmployeesPage() {
             </div>
             {/* Title */}
             <div className="flex flex-col">
-                <h1 className="text-neutral-900 text-tl font-tl">Employees (130)</h1>
+                <h1 className="text-neutral-900 text-tl font-tl">Employees ({employees.length})</h1>
                 <p className="text-neutral-900 text-bm font-bm">All employees are listed here.</p>
             </div>
-
+            <div className="mx-auto"></div>
             {/* Card list view */}
             <div className="grow overflow-y-scroll">
                 <div className="grid grid-cols-3 gap-[20px]">
