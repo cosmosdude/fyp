@@ -21,7 +21,6 @@ function DesignationDistributionChart() {
     return (
         <Chart
             type='bar'
-            title="Test"
             data={{
                 labels: data.map(x => x.name),
                 datasets: [
@@ -75,7 +74,6 @@ function DesignationDistributionChart() {
                     x: {
                         type: 'linear',
                         display: true,
-                        startAtZero: true
                     },
                 }
             }}
