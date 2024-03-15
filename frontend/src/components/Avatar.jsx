@@ -1,7 +1,7 @@
 /**
  * Avatar Icon
 */
-function Avatar({src = undefined, title = "", size = 40}) {
+function Avatar({className, src = undefined, title = "", size = 40}) {
     let starts = title.split(' ').filter(x => x.length != 0)
         .map(x => x.charAt(0).toUpperCase())
         .join("")
@@ -12,10 +12,11 @@ function Avatar({src = undefined, title = "", size = 40}) {
     return (
         <span 
             className={`
-            relative inline-flex w-[${size}px] h-[${size}px] 
+            relative inline-flex w-[${size}px] h-[${size}px] min-w-[${size}px] min-h-[${size}px]
             rounded-full overflow-hidden 
             items-center justify-center
             bg-neutral-900
+            ${className}
             `}
         >
             {src && <img className="object-cover w-full h-full" src={src}/>}

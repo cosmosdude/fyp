@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import LucideIcon from "../../lib/LucideIcon";
 
-function FilledButton({src, children, onClick, to}) {
+function FilledButton({icon, src, children, onClick, to}) {
     let navigate = useNavigate()
     return ( 
         <button 
@@ -22,6 +23,7 @@ function FilledButton({src, children, onClick, to}) {
             }}
         >
             {src && <img className="w-[18px] h-[18px]" src={src}/>}
+            {icon && <LucideIcon name={icon} size={18} strokeWidth={2}/>}
             <div className="grow text-center">{children}</div>
         </button>
     );

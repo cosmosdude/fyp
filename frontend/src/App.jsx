@@ -19,7 +19,6 @@ import AttendancesPage from './pages/Attendances/AttendancesPage'
 import HolidaysPage from './pages/Holidays/HolidaysPage'
 import LeavesPage from './pages/Leaves/LeavesPage'
 
-
 function App() {
 
   // App auth value.

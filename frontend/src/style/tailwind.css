@@ -762,6 +762,10 @@ video {
   position: relative;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .bottom-0 {
   bottom: 0px;
 }
@@ -790,6 +794,26 @@ video {
   top: 100%;
 }
 
+.-top-1 {
+  top: -0.25rem;
+}
+
+.-top-\[1px\] {
+  top: -1px;
+}
+
+.-top-\[0\.5px\] {
+  top: -0.5px;
+}
+
+.top-\[0\.5px\] {
+  top: 0.5px;
+}
+
+.top-\[0px\] {
+  top: 0px;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -808,6 +832,10 @@ video {
 
 .m-auto {
   margin: auto;
+}
+
+.m-0 {
+  margin: 0px;
 }
 
 .mx-2 {
@@ -837,6 +865,10 @@ video {
   display: inline-block;
 }
 
+.inline {
+  display: inline;
+}
+
 .flex {
   display: flex;
 }
@@ -847,6 +879,10 @@ video {
 
 .table {
   display: table;
+}
+
+.inline-table {
+  display: inline-table;
 }
 
 .grid {
@@ -913,8 +949,20 @@ video {
   max-height: 76px;
 }
 
+.max-h-full {
+  max-height: 100%;
+}
+
 .min-h-\[41px\] {
   min-height: 41px;
+}
+
+.min-h-full {
+  min-height: 100%;
+}
+
+.min-h-\[30px\] {
+  min-height: 30px;
 }
 
 .w-1 {
@@ -961,6 +1009,34 @@ video {
   width: 100vw;
 }
 
+.w-\[50px\] {
+  width: 50px;
+}
+
+.w-\[35px\] {
+  width: 35px;
+}
+
+.w-\[100px\] {
+  width: 100px;
+}
+
+.w-\[15px\] {
+  width: 15px;
+}
+
+.w-\[500px\] {
+  width: 500px;
+}
+
+.w-\[1000px\] {
+  width: 1000px;
+}
+
+.w-\[9999px\] {
+  width: 9999px;
+}
+
 .min-w-\[200px\] {
   min-width: 200px;
 }
@@ -977,12 +1053,64 @@ video {
   min-width: 40px;
 }
 
+.min-w-full {
+  min-width: 100%;
+}
+
+.min-w-\[9999px\] {
+  min-width: 9999px;
+}
+
+.min-w-\[100px\] {
+  min-width: 100px;
+}
+
+.min-w-\[250px\] {
+  min-width: 250px;
+}
+
+.min-w-\[50px\] {
+  min-width: 50px;
+}
+
+.min-w-\[30px\] {
+  min-width: 30px;
+}
+
+.min-w-\[35px\] {
+  min-width: 35px;
+}
+
+.min-w-\[10px\] {
+  min-width: 10px;
+}
+
+.min-w-\[500px\] {
+  min-width: 500px;
+}
+
 .max-w-\[300px\] {
   max-width: 300px;
 }
 
+.max-w-full {
+  max-width: 100%;
+}
+
+.max-w-\[15px\] {
+  max-width: 15px;
+}
+
+.max-w-\[500px\] {
+  max-width: 500px;
+}
+
 .flex-shrink {
   flex-shrink: 1;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
 }
 
 .shrink-0 {
@@ -1001,8 +1129,44 @@ video {
   flex-basis: 0px;
 }
 
+.table-auto {
+  table-layout: auto;
+}
+
+.table-fixed {
+  table-layout: fixed;
+}
+
 .border-collapse {
   border-collapse: collapse;
+}
+
+.border-separate {
+  border-collapse: separate;
+}
+
+.border-spacing-0 {
+  --tw-border-spacing-x: 0px;
+  --tw-border-spacing-y: 0px;
+  border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
+}
+
+.border-spacing-\[0px\] {
+  --tw-border-spacing-x: 0px;
+  --tw-border-spacing-y: 0px;
+  border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
+}
+
+.border-spacing-\[-1px\] {
+  --tw-border-spacing-x: -1px;
+  --tw-border-spacing-y: -1px;
+  border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
+}
+
+.border-spacing-\[-0\.5px\] {
+  --tw-border-spacing-x: -0.5px;
+  --tw-border-spacing-y: -0.5px;
+  border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
 }
 
 .transform {
@@ -1109,6 +1273,10 @@ video {
   gap: 4px;
 }
 
+.gap-\[5px\] {
+  gap: 5px;
+}
+
 .self-end {
   align-self: flex-end;
 }
@@ -1117,12 +1285,28 @@ video {
   align-self: center;
 }
 
+.overflow-auto {
+  overflow: auto;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
 
+.overflow-clip {
+  overflow: clip;
+}
+
 .overflow-scroll {
   overflow: scroll;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
 }
 
 .overflow-x-hidden {
@@ -1131,6 +1315,10 @@ video {
 
 .overflow-y-hidden {
   overflow-y: hidden;
+}
+
+.overflow-x-scroll {
+  overflow-x: scroll;
 }
 
 .overflow-y-scroll {
@@ -1163,6 +1351,10 @@ video {
 
 .rounded-full {
   border-radius: 9999px;
+}
+
+.rounded-\[0px\] {
+  border-radius: 0px;
 }
 
 .border {
@@ -1539,6 +1731,18 @@ video {
   --tw-gradient-to: #ffffff00 var(--tw-gradient-to-position);
 }
 
+.bg-clip-border {
+  background-clip: border-box;
+}
+
+.bg-clip-padding {
+  background-clip: padding-box;
+}
+
+.bg-clip-content {
+  background-clip: content-box;
+}
+
 .stroke-white {
   stroke: #fff;
 }
@@ -1585,6 +1789,10 @@ video {
 
 .p-\[6px\] {
   padding: 6px;
+}
+
+.p-0 {
+  padding: 0px;
 }
 
 .px-\[10px\] {
@@ -1988,6 +2196,11 @@ video {
   background-color: rgb(26 61 179 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-background-1:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 248 248 / var(--tw-bg-opacity));
+}
+
 .hover\:opacity-25:hover {
   opacity: 0.25;
 }
@@ -2007,4 +2220,98 @@ video {
 
 .group:hover .group-hover\:bg-primary-50\/25 {
   background-color: rgb(233 237 252 / 0.25);
+}
+
+.group:hover .group-hover\:bg-background-1 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 248 248 / var(--tw-bg-opacity));
+}
+
+.group:hover .group-hover\:bg-primary-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(233 237 252 / var(--tw-bg-opacity));
+}
+
+@media (min-width: 768px) {
+  .md\:w-full {
+    width: 100%;
+  }
+}
+
+.\[\&\>\*\]\:border>* {
+  border-width: 1px;
+}
+
+.\[\&\>\*\]\:border-\[0\.5px\]>* {
+  border-width: 0.5px;
+}
+
+.\[\&\>\*\]\:border-\[1px\]>* {
+  border-width: 1px;
+}
+
+.\[\&\>\*\]\:bg-white>* {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.\[\&\>\*\]\:bg-background-1>* {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 248 248 / var(--tw-bg-opacity));
+}
+
+.\[\&\>\*\]\:p-\[10px\]>* {
+  padding: 10px;
+}
+
+.\[\&\>\*\]\:py-\[10px\]>* {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.\[\&\>\*\]\:py-\[30px\]>* {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.\[\&\>\*\]\:px-\[24px\]>* {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.\[\&\>\*\]\:py-\[16px\]>* {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.\[\&\>\*\]\:px-\[16px\]>* {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.\[\&\>\*\]\:text-bm>* {
+  font-size: 16px;
+}
+
+.\[\&\>\*\]\:text-bs>* {
+  font-size: 14px;
+}
+
+.\[\&\>\*\]\:font-bm>* {
+  font-weight: 400;
+}
+
+.\[\&\>\*\]\:font-bs>* {
+  font-weight: 600;
+}
+
+.\[\&\>\*\]\:transition-all>* {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.group:hover .\[\&\>\*\]\:group-hover\:bg-background-1>* {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 248 248 / var(--tw-bg-opacity));
 }

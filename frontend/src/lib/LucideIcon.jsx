@@ -1,5 +1,5 @@
 
-import { icons } from "lucide-react";
+import { CameraIcon, icons } from "lucide-react";
 
 /**
  * LucideIcon renderer
@@ -8,7 +8,7 @@ import { icons } from "lucide-react";
  * @param color Icon color.
  * @param size Icon size.
 */
-export default function LucideIcon({name, color, size}) {
+export default function LucideIcon({name, color, size, strokeWidth}) {
     let Icon = icons[name]; // get dynamic icon
     console.log("Icon Name", name)
     if (!Icon) {
@@ -26,5 +26,5 @@ export default function LucideIcon({name, color, size}) {
     // if failed, fallback to dashed circle icon
     if (!Icon) Icon = icons["CircleDashed"]
     // return the icon as jsx
-    return <Icon color={color} size={size} />;
+    return <Icon color={color} size={size} strokeWidth={strokeWidth}/>;
 }
