@@ -22,10 +22,10 @@ export default function SideNavItem({to, title, unselected, selected}) {
     : 'text-white'
 
     return (
-        <Link to={to} className={`flex gap-[20px] px-[16px] py-[12px] items-center ${bgColor} transition-all duration-300`}>
+        <Link to={to} className={`flex gap-[20px] px-[16px] py-[12px] rounded-[6px] items-center ${bgColor} transition-all duration-300`}>
             <img 
                 src={isCurrent ? selected : unselected}
-                className="w-[30px] h-[30px]"
+                className="w-[20px] h-[20px] object-cover"
             />
             <h1 className={`text-bs font-bs text-primary ${tintColor} transition-all`}>{title}</h1>
         </Link>

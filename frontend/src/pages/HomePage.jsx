@@ -38,39 +38,39 @@ export default function HomePage() {
     return (
         <div className="flex gap-[20px] p-[20px] w-screen h-screen">
             {/* Left Nav */}
-            <div className="flex flex-col gap-[10px] min-w-[350px] max-w-[350px] overflow-hidden">
+            <div className="flex flex-col gap-[10px] min-w-[300px] max-w-[300px] overflow-hidden">
                 {/* Top Nav Items */}
-                <div className="grow flex flex-col bg-background-0 border border-neutral-100 rounded-[14px] py-[20px] overflow-y-scroll">
+                <div className="grow flex flex-col bg-background-0 border border-neutral-100 rounded-[6px] py-[20px] overflow-y-scroll">
                     <h1 className="text-center text-hl font-hl">HRMS</h1>
 
                     {/* Nav Item */}
-                    <ul className="flex flex-col gap-[10px] overflow-scroll">
-                    <SideNavItem 
-                        to='/' title='Dashboard'
-                        unselected={DashboardIcon}
-                        selected={DashboardSelectedIcon}
-                    />
-                    <SideNavItem 
-                        to='/employees' title='Employees'
-                        unselected={EmployeeIcon}
-                        selected={EmployeeSelectedIcon}
-                    />
-                    <SideNavItem 
-                        to='/departments' title='Departments'
-                        unselected={DepartmentIcon}
-                        selected={DepartmentSelectedIcon}
-                    />
-                    <SideNavItem 
-                        to='/designations' title='Designations'
-                        unselected={DesignationsIcon}
-                        selected={DesignationsSelectedIcon}
-                    />
+                    <ul className="flex flex-col gap-[4px] p-[6px] px-[16px] overflow-scroll">
+                        <SideNavItem 
+                            to='/' title='Dashboard'
+                            unselected={DashboardIcon}
+                            selected={DashboardSelectedIcon}
+                        />
+                        <SideNavItem 
+                            to='/employees' title='Employees'
+                            unselected={EmployeeIcon}
+                            selected={EmployeeSelectedIcon}
+                        />
+                        <SideNavItem 
+                            to='/departments' title='Departments'
+                            unselected={DepartmentIcon}
+                            selected={DepartmentSelectedIcon}
+                        />
+                        <SideNavItem 
+                            to='/designations' title='Designations'
+                            unselected={DesignationsIcon}
+                            selected={DesignationsSelectedIcon}
+                        />
                     </ul>
 
                 </div>
 
                 {/* Bottom profile card */}
-                <div className="flex items-center px-[20px] py-[16px] gap-[20px] bg-background-0 border border-neutral-100 rounded-[14px] max-h-[76px] overflow-hidden">
+                <div className="flex items-center px-[16px] py-[12px] gap-[10px] bg-background-0 border border-neutral-100 rounded-[6px] max-h-[76px] overflow-hidden">
                     {/* Avatar ring */}
                     {/* <div className="min-w-[40px] w-[40px] h-[40px] border-[2px] border-primary rounded-full p-[2px]"> */}
                         {/* Avatar */}
@@ -102,3 +102,7 @@ export default function HomePage() {
         </div>
     )
 }
+
+/*
+
+*/

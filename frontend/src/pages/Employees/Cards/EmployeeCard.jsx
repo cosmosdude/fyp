@@ -10,7 +10,7 @@ function EmployeeCard({avatarSrc, title, subtitle, joinDate, onClick}) {
             className="
             flex p-[20px] gap-[12px] 
              bg-background-0
-            border rounded-[14px] 
+            border rounded-[6px] 
             hover:opacity-50 transition-all
             // overflow-scroll
             "
