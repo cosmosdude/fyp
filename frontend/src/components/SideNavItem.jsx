@@ -1,8 +1,9 @@
+
 import { Link, useLocation } from "react-router-dom"
+import LucideIcon from "../lib/LucideIcon"
 
-export default function SideNavItem({to, title, unselected, selected}) {
 
-
+export default function SideNavItem({to, title, icon}) {
     let {pathname} = useLocation()
     console.log('location', location)
     console.log('to', to)
@@ -22,12 +23,19 @@ export default function SideNavItem({to, title, unselected, selected}) {
     : 'text-white'
 
     return (
-        <Link to={to} className={`flex gap-[20px] px-[16px] py-[12px] rounded-[6px] items-center ${bgColor} transition-all duration-300`}>
-            <img 
-                src={isCurrent ? selected : unselected}
-                className="w-[20px] h-[20px] object-cover"
-            />
-            <h1 className={`text-bs font-bs text-primary ${tintColor} transition-all`}>{title}</h1>
+        <Link 
+            to={to} 
+            className={`
+            flex items-center gap-[20px] 
+            px-[16px] py-[12px] 
+            rounded-[6px]  
+            ${bgColor} 
+            text-primary ${tintColor} 
+            transition-all duration-300
+            `}
+        >
+            <LucideIcon name={icon}/>
+            <h1 className={`text-bs font-bs  transition-all`}>{title}</h1>
         </Link>
     )
 }

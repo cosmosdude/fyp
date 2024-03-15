@@ -13,8 +13,11 @@ import DepartmentsPage from './pages/Departments/DepartmentsPage'
 import DesignationsPage from './pages/Designations/DesignationsPage'
 import DepartmentDetailPage from './pages/Departments/DepartmentDetailPage'
 import DesignationDetailPage from './pages/Designations/DesignationDetailPage'
-import EmployeeDetailPage from './pages/Employees/EmployeeDetailPage'
 import EmployeeNewPage from './pages/Employees/EmployeeNewPage'
+import SchedulesPage from './pages/Schedules/SchedulesPage'
+import AttendancesPage from './pages/Attendances/AttendancesPage'
+import HolidaysPage from './pages/Holidays/HolidaysPage'
+import LeavesPage from './pages/Leaves/LeavesPage'
 
 
 function App() {
@@ -48,6 +51,18 @@ function App() {
             <Route path="/designations/:id" element={<DesignationDetailPage/>}/>
             {/* Department Update */}
             <Route path="/designations/:id/update" element={<DesignationDetailPage/>}/>
+
+            {/* Schedules */}
+            <Route path="/schedules" element={<SchedulesPage/>}/>
+
+            {/* Schedules */}
+            <Route path="/attendances" element={<AttendancesPage/>}/>
+
+            {/* Schedules */}
+            <Route path="/holidays" element={<HolidaysPage/>}/>
+
+            {/* Schedules */}
+            <Route path="/leaves" element={<LeavesPage/>}/>
         </Route>
           {/* <Route path='/' element={<IndexPage/>}>
             <Route path="" element={<HomeNavigationPage/>}>

@@ -1743,6 +1743,10 @@ video {
   font-weight: 600;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(26 26 26 / var(--tw-text-opacity));
