@@ -26,7 +26,7 @@ function SchedulesPage() {
                 <p className="text-neutral-900 text-bm font-bm">Weekly shifts of all employees are shown here.</p>
             </div>
             <div className="block overflow-scroll w-full border rounded-[6px]">
-                <table className="table-auto mx-auto border-separate border-spacing-0">
+                <table className="table-auto min-w-full mx-auto border-separate border-spacing-0">
                     <thead className="sticky top-[0px] left-0 z-10">
                         <tr className="
                         [&>*]:px-[24px] [&>*]:py-[16px]
@@ -60,7 +60,7 @@ function ScheduleRow({no}) {
     return (
         <tr className="
         group
-        [&>*]:px-[16px] [&>*]:py-[16px] 
+        [&>*]:px-[16px] [&>*]:py-[12px] 
         bg-background-0
         hover:bg-primary-50
         cursor-pointer
@@ -70,11 +70,11 @@ function ScheduleRow({no}) {
             <td className="sticky left-0 text-center font-bs text-bs min-w-[35px]">
                 {no ?? ''}
             </td>
-            <td className="sticky left-0 flex gap-[10px] items-center bg-white group-hover:bg-primary-50 text-left min-w-[300px]">
+            <td className="sticky left-0 flex gap-[10px] items-center bg-white group-hover:bg-primary-50 text-left min-w-[250px]">
                 <Avatar className="" src={null} size={30} title="John Doe"/>
                 <div className="flex flex-col">
                     <p className="font-ll text-ll">Admin</p>
-                    <p className="font-ls text-ls">admin@yopmail.com</p>
+                    {/* <p className="font-ls text-ls">admin@yopmail.com</p> */}
                 </div>
                 
             </td>
