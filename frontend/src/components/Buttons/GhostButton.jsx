@@ -1,19 +1,27 @@
 import { useNavigate } from "react-router-dom";
 import LucideIcon from "../../lib/LucideIcon";
 
-export default function GhostButton({icon, rightIcon, src, children, onClick, to}) {
+export default function GhostButton({
+    className, style,
+    icon, rightIcon, src, children, onClick, to
+}) {
     let navigate = useNavigate()
+
+    let textColor = 'text-primary'
+    if (style == 'danger') textColor = 'text-danger-500'
+
     return ( 
         <button 
-            className="
+            className={`
                 flex items-center gap-[10px]
                 px-[16px] py-[10px]
                 text-bs font-bs
-                text-primary 
+                ${textColor} 
                 rounded-[4px]
-                hover:text-primary/25
+                hover:${textColor}/25
                 transition-all
-            "
+                ${className}
+            `}
             onClick={(e) => {
                 onClick && onClick(e)
                 if (to) {

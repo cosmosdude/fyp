@@ -4,7 +4,7 @@ import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
 import FilledButton from "../../components/Buttons/FilledButton";
 import GhostButton from "../../components/Buttons/GhostButton";
 
-function AttendancesPage() {
+export default function AttendanceRequestsPage() {
 
     let schedules = []
     for (let i = 0; i < 10; i++) schedules.push({id: i})
@@ -16,15 +16,16 @@ function AttendancesPage() {
                 <Breadcrumb>
                     <BreadcrumbItem title="Home" to='/'/>
                     <BreadcrumbItem title="/"/>
-                    <BreadcrumbItem title="Attendance" current/>
+                    <BreadcrumbItem title="Attendance" to='/attendances'/>
+                    <BreadcrumbItem title="/"/>
+                    <BreadcrumbItem title="Requests" current/>
                 </Breadcrumb>
                 <div className="grow"/>
-                <FilledButton to="requests" rightIcon='arrow-right'>Attendance Requests</FilledButton>
             </div>
             {/* Title */}
             <div className="flex flex-col">
-                <h1 className="text-neutral-900 text-tl font-tl">Attendance</h1>
-                <p className="text-neutral-900 text-bm font-bm">All attendance records are shown here.</p>
+                <h1 className="text-neutral-900 text-tl font-tl">Attendance Requests</h1>
+                <p className="text-neutral-900 text-bm font-bm">Attendance request made by employees are shown here.</p>
             </div>
             <div className="block overflow-scroll w-full border rounded-[6px]">
                 <table className="table-auto min-w-full mx-auto border-separate border-spacing-0">
@@ -37,16 +38,14 @@ function AttendancesPage() {
                         ">
                             <th className="sticky left-0items-center">No.</th>
                             <th className="sticky left-0 text-left font-bm text-bm">Employee</th>
-                            <th>Shift</th>
-                            <th>Break</th>
-                            <th>Check In</th>
-                            <th>Check Out</th>
-                            <th>Total</th>
+                            <th>Type</th>
+                            <th>Time</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody className="">
                         {/* <AttendanceRow /> */}
-                        {schedules.map(x => <AttendanceRow key={x.id} no={x.id}/>)}
+                        {schedules.map(x => <RequestRow key={x.id} no={x.id}/>)}
                     </tbody>
                 </table>
             </div>
@@ -55,7 +54,7 @@ function AttendancesPage() {
     );
 }
 
-function AttendanceRow({no}) {
+function RequestRow({no}) {
     return (
         <tr className="
         group
@@ -78,25 +77,18 @@ function AttendanceRow({no}) {
                 </div>
             </td>
             <td className="text-center font-ll text-ll min-w-[150px]">
-                9:00 AM to 6:00 PM
+                Check In
             </td>
             <td className="text-center font-ll text-ll min-w-[50px]">
-                1 hr
+                9:03 AM
             </td>
             <td className="items-center gap-[4px] text-center font-ll text-ll min-w-[100px]">
-                <div className="flex items-center gap-[10px]">
-                    <p>10:10 AM</p> 
-                    <p className="bg-warning-500 px-[6px] py-[4px] rounded-[4px]">Late</p>
+                <div className="flex items-center justify-center gap-[10px]">
+                    <GhostButton clas>Approve</GhostButton> 
+                    <GhostButton style='danger'>Reject</GhostButton>
                 </div>
             </td>
-            <td className="text-center font-ll text-ll min-w-[100px]">
-                6:00 PM
-            </td>
-            <td className="text-center font-ll text-ll min-w-[100px]">
-                6hr 50min
-            </td>
         </tr>
+        
     )
 }
-
-export default AttendancesPage;
