@@ -52,6 +52,7 @@ export default function HomePage() {
 
                         <SideNavItem to='/schedules' title='Schedules' icon='clipboard-list'/>
                         <SideNavItem to='/attendances' title='Attendances' icon='calendar-clock'/>
+                        <SideNavItem to='/overtimes' title='Overtimes' icon='timer-reset'/>
                         <SideNavItem to='/holidays' title='Holidays' icon='calendar-days'/>
                         <SideNavItem to='/leaves' title='Leaves' icon='calendar-range'/>
                     </ul>
