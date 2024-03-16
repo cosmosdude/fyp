@@ -67,7 +67,7 @@ function ScheduleRow({no}) {
         transition-all
         [&>*]:transition-all
         ">
-            <td className="sticky left-0 text-center font-bs text-bs min-w-[35px]">
+            <td className="sticky left-0 text-center font-bs text-bs">
                 {no ?? ''}
             </td>
             <td className="sticky left-0 flex gap-[10px] items-center bg-white group-hover:bg-primary-50 text-left min-w-[250px]">

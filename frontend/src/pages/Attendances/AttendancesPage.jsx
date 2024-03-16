@@ -34,7 +34,7 @@ function AttendancesPage() {
                         [&>*]:font-bm [&>*]:text-bm
                         [&>*]:bg-background-1
                         ">
-                            <th className="sticky left-0 max-w-[50px]">No.</th>
+                            <th className="sticky left-0items-center">No.</th>
                             <th className="sticky left-0 text-left font-bm text-bm">Employee</th>
                             <th>Shift</th>
                             <th>Break</th>
@@ -44,8 +44,8 @@ function AttendancesPage() {
                         </tr>
                     </thead>
                     <tbody className="">
-                        {/* <ScheduleRow /> */}
-                        {schedules.map(x => <ScheduleRow key={x.id} no={x.id}/>)}
+                        {/* <AttendanceRow /> */}
+                        {schedules.map(x => <AttendanceRow key={x.id} no={x.id}/>)}
                     </tbody>
                 </table>
             </div>
@@ -54,7 +54,7 @@ function AttendancesPage() {
     );
 }
 
-function ScheduleRow({no}) {
+function AttendanceRow({no}) {
     return (
         <tr className="
         group
@@ -65,7 +65,7 @@ function ScheduleRow({no}) {
         transition-all
         [&>*]:transition-all
         ">
-            <td className="sticky left-0 text-center font-bs text-bs min-w-[35px] max-w-[50px]">
+            <td className="sticky left-0 text-center font-bs text-bs">
                 {no ?? ''}
             </td>
             <td className="sticky left-0 bg-white group-hover:bg-primary-50 text-left min-w-[200px]">
