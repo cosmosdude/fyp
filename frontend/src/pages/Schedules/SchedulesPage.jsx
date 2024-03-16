@@ -6,7 +6,7 @@ import FilledButton from "../../components/Buttons/FilledButton";
 function SchedulesPage() {
 
     let schedules = []
-    for (let i = 0; i < 1000; i++) schedules.push({id: i})
+    for (let i = 0; i < 100; i++) schedules.push({id: i})
 
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
@@ -22,7 +22,7 @@ function SchedulesPage() {
             </div>
             {/* Title */}
             <div className="flex flex-col">
-                <h1 className="text-neutral-900 text-tl font-tl">Shifts</h1>
+                <h1 className="text-neutral-900 text-tl font-tl">Shift Schedules</h1>
                 <p className="text-neutral-900 text-bm font-bm">Weekly shifts of all employees are shown here.</p>
             </div>
             <div className="block overflow-scroll w-full border rounded-[6px]">

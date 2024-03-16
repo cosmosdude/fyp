@@ -2,6 +2,7 @@ import Avatar from "../../components/Avatar";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
 import FilledButton from "../../components/Buttons/FilledButton";
+import GhostButton from "../../components/Buttons/GhostButton";
 
 function AttendancesPage() {
 
@@ -18,7 +19,7 @@ function AttendancesPage() {
                     <BreadcrumbItem title="Attendance" current/>
                 </Breadcrumb>
                 <div className="grow"/>
-                {/* <FilledButton icon='plus' to='new'>New Employee</FilledButton> */}
+                <FilledButton to="new" rightIcon='arrow-right'>Attendance Requests</FilledButton>
             </div>
             {/* Title */}
             <div className="flex flex-col">

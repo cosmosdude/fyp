@@ -12,6 +12,7 @@ export default function HolidaysPage() {
         {name: `Union Day`, date:`Feb 12`, day: `Mon`,},
         {name: `Peasant's Day`, date:`Mar 2`, day: `Sat`,},
     ].map((x, i) => {return {id: i, ...x}})
+    //past = [...past, ...past, ...past, ...past, ...past]
     /*
     
     */
@@ -28,15 +29,15 @@ export default function HolidaysPage() {
                 <Breadcrumb>
                     <BreadcrumbItem title="Home" to='/'/>
                     <BreadcrumbItem title="/"/>
-                    <BreadcrumbItem title="Attendance" current/>
+                    <BreadcrumbItem title="Holidays" current/>
                 </Breadcrumb>
                 <div className="grow"/>
-                {/* <FilledButton icon='plus' to='new'>New Employee</FilledButton> */}
+                <FilledButton icon='plus' to='new'>Add Holiday</FilledButton>
             </div>
             {/* Title */}
             <div className="flex flex-col">
-                <h1 className="text-neutral-900 text-tl font-tl">Attendance</h1>
-                <p className="text-neutral-900 text-bm font-bm">All attendance records are shown here.</p>
+                <h1 className="text-neutral-900 text-tl font-tl">Holidays</h1>
+                <p className="text-neutral-900 text-bm font-bm">Planned holidays are shown here.</p>
             </div>
             <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-[20px] overflow-hidden">
                 <div className="flex flex-col gap-[10px] overflow-hidden ">
