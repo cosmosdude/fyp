@@ -13,11 +13,11 @@ function DashboardPage() {
                 <p className="text-neutral-900 text-bm font-bm">Statistical analysis of day to day operations.</p>
             </div>
             <div className="flex flex-col">
-                <div className="grid grid-cols-3 gap-[20px]">
-                    <div>
+                <div className="grid grid-cols-3 gap-[20px] [&>*]:h-[350px]">
+                    <div className="flex">
                         <DepartmentPersonnelChart/>
                     </div>
-                    <div className="col-span-2">
+                    <div className="flex col-span-2">
                         <DesignationDistributionChart/>
                     </div>
                 </div>

@@ -1,7 +1,6 @@
-import { Chart as ChartJS } from "chart.js/auto";
-import { Chart } from "react-chartjs-2";
 import { useAuthContext } from "../../../hooks/AuthStateContext";
 import useEffectAllDepartmentData from "../../../hooks/statistics/useEffectAllDepartmentData";
+import AnyChart from "../../../lib/Chart/AnyChart";
 
 let bgColors = [
     "#FFE066", // yellow
@@ -18,37 +17,52 @@ let borderColors = bgColors.map(x => x + (255*0.25).toString(16))
 function DepartmentPersonnelChart() {
     let departmentData = useEffectAllDepartmentData()
     return (
-        <Chart
-            type='doughnut'
-            data={{
-                labels: departmentData.map(x => x.name),
-                datasets: [
-                    {
-                        label: 'Personnel',
-                        data: departmentData.map(x => x.value),
-                        fill: true,
-                        borderColor: borderColors,
-                        backgroundColor: bgColors,
-                    },
-                ]
-            }}
-            options={{
-                plugins: {
-                    title: {
-                        display: true,
-                        text: "Department Allocations",
-                        position: 'bottom',
-                        align: 'center',
+        <div className="grow w-full flex flex-col border rounded-[6px]">
+            <div className="p-[10px] text-bs font-bs">
+                <h1>Department Distributions</h1>
+            </div>
+            <div className="grow p-[10px]">
+                <AnyChart
+                    type='doughnut'
+                    data={{
+                        labels: departmentData.map(x => x.name),
+                        datasets: [
+                            {
+                                label: 'Personnel',
+                                data: departmentData.map(x => x.value),
+                                fill: true,
+                                borderColor: borderColors,
+                                backgroundColor: bgColors,
+                            },
+                        ]
+                    }}
+                    options={{
                         responsive: true,
-                        font: {
-                            family: 'Inter',
-                            size: 14,
-                            weight: 'normal'
-                        }
-                    },
-                },
-            }}
-        />
+                        maintainAspectRatio: false,
+                        
+                        plugins: {
+                            legend: {
+                                // display: false,
+                                position: 'bottom'
+                            },
+                            // title: {
+                            //     display: true,
+                            //     text: "Department Allocations",
+                            //     position: 'bottom',
+                            //     align: 'center',
+                            //     responsive: true,
+                            //     font: {
+                            //         family: 'Inter',
+                            //         size: 14,
+                            //         weight: 'normal'
+                            //     }
+                            // },
+                        },
+                    }}
+                />
+            </div>
+        </div>
+
     );
 }
 
