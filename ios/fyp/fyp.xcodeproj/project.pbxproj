@@ -18,10 +18,26 @@
 		F33AA11D2BA4C2B100119193 /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33AA11B2BA4C2B100119193 /* LoginController.xib */; };
 		F33AA1212BA4C2F400119193 /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AA11F2BA4C2F400119193 /* SplashController.swift */; };
 		F33AA1222BA4C2F400119193 /* SplashController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33AA1202BA4C2F400119193 /* SplashController.xib */; };
+		F3956A712BA98CFD000DBD1A /* UIApplication+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956A702BA98CFD000DBD1A /* UIApplication+Ext.swift */; };
+		F3956A942BA9901E000DBD1A /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3956A8A2BA9901E000DBD1A /* Inter-Medium.ttf */; };
+		F3956A952BA9901E000DBD1A /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3956A8B2BA9901E000DBD1A /* Inter-Light.ttf */; };
+		F3956A962BA9901E000DBD1A /* Inter-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3956A8C2BA9901E000DBD1A /* Inter-Thin.ttf */; };
+		F3956A972BA9901E000DBD1A /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3956A8D2BA9901E000DBD1A /* Inter-Bold.ttf */; };
+		F3956A982BA9901E000DBD1A /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3956A8E2BA9901E000DBD1A /* Inter-Regular.ttf */; };
+		F3956A992BA9901E000DBD1A /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3956A8F2BA9901E000DBD1A /* Inter-ExtraBold.ttf */; };
+		F3956A9A2BA9901E000DBD1A /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3956A902BA9901E000DBD1A /* OFL.txt */; };
+		F3956A9B2BA9901E000DBD1A /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3956A912BA9901E000DBD1A /* Inter-ExtraLight.ttf */; };
+		F3956A9C2BA9901E000DBD1A /* Inter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3956A922BA9901E000DBD1A /* Inter-Black.ttf */; };
+		F3956A9D2BA9901E000DBD1A /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3956A932BA9901E000DBD1A /* Inter-SemiBold.ttf */; };
+		F3956AA02BA99229000DBD1A /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956A9F2BA99229000DBD1A /* UIView+Ext.swift */; };
+		F3956AA22BA99309000DBD1A /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AA12BA99309000DBD1A /* NibLoadable.swift */; };
+		F3956AA72BA99540000DBD1A /* THATextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AA52BA99540000DBD1A /* THATextField.swift */; };
+		F3956AA82BA99540000DBD1A /* THATextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3956AA62BA99540000DBD1A /* THATextField.xib */; };
+		F3956AAC2BA9A027000DBD1A /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AAA2BA9A027000DBD1A /* CheckBox.swift */; };
+		F3956AAD2BA9A027000DBD1A /* CheckBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3956AAB2BA9A027000DBD1A /* CheckBox.xib */; };
+		F3956AB02BA9A2EE000DBD1A /* FilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AAF2BA9A2EE000DBD1A /* FilledButton.swift */; };
 		F3A74D612BA4BC6A00E91DFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A74D602BA4BC6A00E91DFE /* AppDelegate.swift */; };
 		F3A74D632BA4BC6A00E91DFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A74D622BA4BC6A00E91DFE /* SceneDelegate.swift */; };
-		F3A74D652BA4BC6A00E91DFE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A74D642BA4BC6A00E91DFE /* ViewController.swift */; };
-		F3A74D682BA4BC6A00E91DFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A74D662BA4BC6A00E91DFE /* Main.storyboard */; };
 		F3A74D6A2BA4BC6C00E91DFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A74D692BA4BC6C00E91DFE /* Assets.xcassets */; };
 		F3A74D6D2BA4BC6C00E91DFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A74D6B2BA4BC6C00E91DFE /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -65,11 +81,27 @@
 		F33AA11B2BA4C2B100119193 /* LoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginController.xib; sourceTree = "<group>"; };
 		F33AA11F2BA4C2F400119193 /* SplashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
 		F33AA1202BA4C2F400119193 /* SplashController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashController.xib; sourceTree = "<group>"; };
+		F3956A702BA98CFD000DBD1A /* UIApplication+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Ext.swift"; sourceTree = "<group>"; };
+		F3956A8A2BA9901E000DBD1A /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
+		F3956A8B2BA9901E000DBD1A /* Inter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.ttf"; sourceTree = "<group>"; };
+		F3956A8C2BA9901E000DBD1A /* Inter-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Thin.ttf"; sourceTree = "<group>"; };
+		F3956A8D2BA9901E000DBD1A /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
+		F3956A8E2BA9901E000DBD1A /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
+		F3956A8F2BA9901E000DBD1A /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
+		F3956A902BA9901E000DBD1A /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		F3956A912BA9901E000DBD1A /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
+		F3956A922BA9901E000DBD1A /* Inter-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Black.ttf"; sourceTree = "<group>"; };
+		F3956A932BA9901E000DBD1A /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
+		F3956A9F2BA99229000DBD1A /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		F3956AA12BA99309000DBD1A /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
+		F3956AA52BA99540000DBD1A /* THATextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THATextField.swift; sourceTree = "<group>"; };
+		F3956AA62BA99540000DBD1A /* THATextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = THATextField.xib; sourceTree = "<group>"; };
+		F3956AAA2BA9A027000DBD1A /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		F3956AAB2BA9A027000DBD1A /* CheckBox.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckBox.xib; sourceTree = "<group>"; };
+		F3956AAF2BA9A2EE000DBD1A /* FilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledButton.swift; sourceTree = "<group>"; };
 		F3A74D5D2BA4BC6A00E91DFE /* fyp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fyp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A74D602BA4BC6A00E91DFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3A74D622BA4BC6A00E91DFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F3A74D642BA4BC6A00E91DFE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F3A74D672BA4BC6A00E91DFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F3A74D692BA4BC6C00E91DFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3A74D6C2BA4BC6C00E91DFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3A74D6E2BA4BC6C00E91DFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -138,6 +170,7 @@
 			children = (
 				F3A74D622BA4BC6A00E91DFE /* SceneDelegate.swift */,
 				F3A74D602BA4BC6A00E91DFE /* AppDelegate.swift */,
+				F3956A702BA98CFD000DBD1A /* UIApplication+Ext.swift */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -162,6 +195,9 @@
 		F33AA1172BA4C27400119193 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F3956AAE2BA9A2AD000DBD1A /* FilledButton */,
+				F3956AA92BA9A014000DBD1A /* CheckBox */,
+				F3956AA42BA994F8000DBD1A /* THATextField */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -193,6 +229,74 @@
 			path = SplashController;
 			sourceTree = "<group>";
 		};
+		F3956A722BA98FB0000DBD1A /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				F3956A732BA98FC6000DBD1A /* fonts */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
+		F3956A732BA98FC6000DBD1A /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F3956A892BA9901E000DBD1A /* Inter */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		F3956A892BA9901E000DBD1A /* Inter */ = {
+			isa = PBXGroup;
+			children = (
+				F3956A8A2BA9901E000DBD1A /* Inter-Medium.ttf */,
+				F3956A8B2BA9901E000DBD1A /* Inter-Light.ttf */,
+				F3956A8C2BA9901E000DBD1A /* Inter-Thin.ttf */,
+				F3956A8D2BA9901E000DBD1A /* Inter-Bold.ttf */,
+				F3956A8E2BA9901E000DBD1A /* Inter-Regular.ttf */,
+				F3956A8F2BA9901E000DBD1A /* Inter-ExtraBold.ttf */,
+				F3956A902BA9901E000DBD1A /* OFL.txt */,
+				F3956A912BA9901E000DBD1A /* Inter-ExtraLight.ttf */,
+				F3956A922BA9901E000DBD1A /* Inter-Black.ttf */,
+				F3956A932BA9901E000DBD1A /* Inter-SemiBold.ttf */,
+			);
+			path = Inter;
+			sourceTree = "<group>";
+		};
+		F3956A9E2BA99219000DBD1A /* ext */ = {
+			isa = PBXGroup;
+			children = (
+				F3956A9F2BA99229000DBD1A /* UIView+Ext.swift */,
+				F3956AA12BA99309000DBD1A /* NibLoadable.swift */,
+			);
+			path = ext;
+			sourceTree = "<group>";
+		};
+		F3956AA42BA994F8000DBD1A /* THATextField */ = {
+			isa = PBXGroup;
+			children = (
+				F3956AA52BA99540000DBD1A /* THATextField.swift */,
+				F3956AA62BA99540000DBD1A /* THATextField.xib */,
+			);
+			path = THATextField;
+			sourceTree = "<group>";
+		};
+		F3956AA92BA9A014000DBD1A /* CheckBox */ = {
+			isa = PBXGroup;
+			children = (
+				F3956AAA2BA9A027000DBD1A /* CheckBox.swift */,
+				F3956AAB2BA9A027000DBD1A /* CheckBox.xib */,
+			);
+			path = CheckBox;
+			sourceTree = "<group>";
+		};
+		F3956AAE2BA9A2AD000DBD1A /* FilledButton */ = {
+			isa = PBXGroup;
+			children = (
+				F3956AAF2BA9A2EE000DBD1A /* FilledButton.swift */,
+			);
+			path = FilledButton;
+			sourceTree = "<group>";
+		};
 		F3A74D542BA4BC6A00E91DFE = {
 			isa = PBXGroup;
 			children = (
@@ -216,10 +320,10 @@
 		F3A74D5F2BA4BC6A00E91DFE /* fyp */ = {
 			isa = PBXGroup;
 			children = (
+				F3956A9E2BA99219000DBD1A /* ext */,
+				F3956A722BA98FB0000DBD1A /* resource */,
 				F33AA1152BA4C16C00119193 /* src */,
 				F33AA1142BA4C16800119193 /* app */,
-				F3A74D642BA4BC6A00E91DFE /* ViewController.swift */,
-				F3A74D662BA4BC6A00E91DFE /* Main.storyboard */,
 				F3A74D692BA4BC6C00E91DFE /* Assets.xcassets */,
 				F3A74D6B2BA4BC6C00E91DFE /* LaunchScreen.storyboard */,
 				F3A74D6E2BA4BC6C00E91DFE /* Info.plist */,
@@ -333,10 +437,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				F33AA1222BA4C2F400119193 /* SplashController.xib in Resources */,
+				F3956A992BA9901E000DBD1A /* Inter-ExtraBold.ttf in Resources */,
 				F3A74D6D2BA4BC6C00E91DFE /* LaunchScreen.storyboard in Resources */,
+				F3956A9D2BA9901E000DBD1A /* Inter-SemiBold.ttf in Resources */,
+				F3956A942BA9901E000DBD1A /* Inter-Medium.ttf in Resources */,
+				F3956A9B2BA9901E000DBD1A /* Inter-ExtraLight.ttf in Resources */,
+				F3956A972BA9901E000DBD1A /* Inter-Bold.ttf in Resources */,
+				F3956AA82BA99540000DBD1A /* THATextField.xib in Resources */,
 				F33AA11D2BA4C2B100119193 /* LoginController.xib in Resources */,
+				F3956A9A2BA9901E000DBD1A /* OFL.txt in Resources */,
+				F3956A962BA9901E000DBD1A /* Inter-Thin.ttf in Resources */,
+				F3956A982BA9901E000DBD1A /* Inter-Regular.ttf in Resources */,
 				F3A74D6A2BA4BC6C00E91DFE /* Assets.xcassets in Resources */,
-				F3A74D682BA4BC6A00E91DFE /* Main.storyboard in Resources */,
+				F3956A952BA9901E000DBD1A /* Inter-Light.ttf in Resources */,
+				F3956A9C2BA9901E000DBD1A /* Inter-Black.ttf in Resources */,
+				F3956AAD2BA9A027000DBD1A /* CheckBox.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,11 +534,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3A74D652BA4BC6A00E91DFE /* ViewController.swift in Sources */,
 				F3A74D612BA4BC6A00E91DFE /* AppDelegate.swift in Sources */,
 				F33AA1212BA4C2F400119193 /* SplashController.swift in Sources */,
+				F3956AAC2BA9A027000DBD1A /* CheckBox.swift in Sources */,
+				F3956AA22BA99309000DBD1A /* NibLoadable.swift in Sources */,
+				F3956AB02BA9A2EE000DBD1A /* FilledButton.swift in Sources */,
+				F3956A712BA98CFD000DBD1A /* UIApplication+Ext.swift in Sources */,
+				F3956AA72BA99540000DBD1A /* THATextField.swift in Sources */,
 				F33AA1132BA4C16000119193 /* main.swift in Sources */,
 				F3A74D632BA4BC6A00E91DFE /* SceneDelegate.swift in Sources */,
+				F3956AA02BA99229000DBD1A /* UIView+Ext.swift in Sources */,
 				F33AA11C2BA4C2B100119193 /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,14 +559,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F3A74D662BA4BC6A00E91DFE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F3A74D672BA4BC6A00E91DFE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F3A74D6B2BA4BC6C00E91DFE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -664,7 +776,6 @@
 				INFOPLIST_FILE = fyp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -694,7 +805,6 @@
 				INFOPLIST_FILE = fyp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

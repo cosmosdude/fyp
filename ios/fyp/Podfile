@@ -6,6 +6,7 @@ target 'fyp' do
   use_frameworks!
   # Pods for fyp
   pod 'Alamofire'
+  pod 'IQKeyboardManager'
 
   target 'TANetworking' do
     pod 'Alamofire'
