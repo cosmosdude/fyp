@@ -13,7 +13,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="THATextField" customModule="fyp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TextField" customModule="fyp" customModuleProvider="target">
             <connections>
                 <outlet property="eyeIconBtn" destination="SfO-qA-56n" id="5th-kP-5LD"/>
                 <outlet property="infoLabel" destination="OgN-af-Cij" id="CpY-YR-WNt"/>

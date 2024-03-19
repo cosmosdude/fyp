@@ -16,6 +16,8 @@ const TextField = forwardRef(function TextField({
     let [revealed, setRevealed] = useState(false)
     let [isInvalid, setIsInvalid] = useState(false)
 
+    // if given text is null, reset to empty.
+    if (text === null) text = ''
     // s, !r => 'password'
     // s, r => 'text'
     // !s, r => 'text'

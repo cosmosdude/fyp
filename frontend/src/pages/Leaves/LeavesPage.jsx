@@ -19,7 +19,7 @@ export default function LeavesPage() {
                     <BreadcrumbItem title="Leaves" current/>
                 </Breadcrumb>
                 <div className="grow"/>
-                <GhostButton to="settings" rightIcon='settings'>Leave Settings</GhostButton>
+                <GhostButton to="settings" rightIcon='settings'>Leave Types</GhostButton>
                 <FilledButton to="requests" rightIcon='arrow-right'>Requests</FilledButton>
             </div>
             {/* Title */}

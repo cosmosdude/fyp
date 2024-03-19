@@ -12,12 +12,17 @@ function Avatar({className, src = undefined, title = "", size = 40}) {
     return (
         <span 
             className={`
-            relative inline-flex w-[${size}px] h-[${size}px] min-w-[${size}px] min-h-[${size}px]
+            relative inline-flex
             rounded-full overflow-hidden 
             items-center justify-center
             bg-neutral-900
-            ${className}
+            ${className ?? ' '}
             `}
+            
+            style={{
+                minWidth: size, minHeight: size,
+                width: size, height: size
+            }}
         >
             {src && <img className="object-cover w-full h-full" src={src}/>}
             {!src && <p className="absolute text-white text-ls font-ls">{starts}</p>}

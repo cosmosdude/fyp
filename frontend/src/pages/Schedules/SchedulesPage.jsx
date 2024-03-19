@@ -70,8 +70,8 @@ function ScheduleRow({no}) {
             <td className="sticky left-0 text-center font-bs text-bs">
                 {no ?? ''}
             </td>
-            <td className="sticky left-0 flex gap-[10px] items-center bg-white group-hover:bg-primary-50 text-left min-w-[250px]">
-                <Avatar className="" src={null} size={30} title="John Doe"/>
+            <td className="sticky left-0 flex gap-[10px] items-center bg-white group-hover:bg-primary-50 text-left min-w-[300px]">
+                <Avatar src={undefined} size={30} title="John Doe"/>
                 <div className="flex flex-col">
                     <p className="font-ll text-ll">Admin</p>
                     {/* <p className="font-ls text-ls">admin@yopmail.com</p> */}

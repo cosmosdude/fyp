@@ -31,8 +31,8 @@
 		F3956A9D2BA9901E000DBD1A /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3956A932BA9901E000DBD1A /* Inter-SemiBold.ttf */; };
 		F3956AA02BA99229000DBD1A /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956A9F2BA99229000DBD1A /* UIView+Ext.swift */; };
 		F3956AA22BA99309000DBD1A /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AA12BA99309000DBD1A /* NibLoadable.swift */; };
-		F3956AA72BA99540000DBD1A /* THATextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AA52BA99540000DBD1A /* THATextField.swift */; };
-		F3956AA82BA99540000DBD1A /* THATextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3956AA62BA99540000DBD1A /* THATextField.xib */; };
+		F3956AA72BA99540000DBD1A /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AA52BA99540000DBD1A /* TextField.swift */; };
+		F3956AA82BA99540000DBD1A /* TextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3956AA62BA99540000DBD1A /* TextField.xib */; };
 		F3956AAC2BA9A027000DBD1A /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AAA2BA9A027000DBD1A /* CheckBox.swift */; };
 		F3956AAD2BA9A027000DBD1A /* CheckBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3956AAB2BA9A027000DBD1A /* CheckBox.xib */; };
 		F3956AB02BA9A2EE000DBD1A /* FilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AAF2BA9A2EE000DBD1A /* FilledButton.swift */; };
@@ -94,8 +94,8 @@
 		F3956A932BA9901E000DBD1A /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
 		F3956A9F2BA99229000DBD1A /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		F3956AA12BA99309000DBD1A /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
-		F3956AA52BA99540000DBD1A /* THATextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THATextField.swift; sourceTree = "<group>"; };
-		F3956AA62BA99540000DBD1A /* THATextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = THATextField.xib; sourceTree = "<group>"; };
+		F3956AA52BA99540000DBD1A /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		F3956AA62BA99540000DBD1A /* TextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextField.xib; sourceTree = "<group>"; };
 		F3956AAA2BA9A027000DBD1A /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		F3956AAB2BA9A027000DBD1A /* CheckBox.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckBox.xib; sourceTree = "<group>"; };
 		F3956AAF2BA9A2EE000DBD1A /* FilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledButton.swift; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 			children = (
 				F3956AAE2BA9A2AD000DBD1A /* FilledButton */,
 				F3956AA92BA9A014000DBD1A /* CheckBox */,
-				F3956AA42BA994F8000DBD1A /* THATextField */,
+				F3956AA42BA994F8000DBD1A /* TextField */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -271,13 +271,13 @@
 			path = ext;
 			sourceTree = "<group>";
 		};
-		F3956AA42BA994F8000DBD1A /* THATextField */ = {
+		F3956AA42BA994F8000DBD1A /* TextField */ = {
 			isa = PBXGroup;
 			children = (
-				F3956AA52BA99540000DBD1A /* THATextField.swift */,
-				F3956AA62BA99540000DBD1A /* THATextField.xib */,
+				F3956AA52BA99540000DBD1A /* TextField.swift */,
+				F3956AA62BA99540000DBD1A /* TextField.xib */,
 			);
-			path = THATextField;
+			path = TextField;
 			sourceTree = "<group>";
 		};
 		F3956AA92BA9A014000DBD1A /* CheckBox */ = {
@@ -443,7 +443,7 @@
 				F3956A942BA9901E000DBD1A /* Inter-Medium.ttf in Resources */,
 				F3956A9B2BA9901E000DBD1A /* Inter-ExtraLight.ttf in Resources */,
 				F3956A972BA9901E000DBD1A /* Inter-Bold.ttf in Resources */,
-				F3956AA82BA99540000DBD1A /* THATextField.xib in Resources */,
+				F3956AA82BA99540000DBD1A /* TextField.xib in Resources */,
 				F33AA11D2BA4C2B100119193 /* LoginController.xib in Resources */,
 				F3956A9A2BA9901E000DBD1A /* OFL.txt in Resources */,
 				F3956A962BA9901E000DBD1A /* Inter-Thin.ttf in Resources */,
@@ -540,7 +540,7 @@
 				F3956AA22BA99309000DBD1A /* NibLoadable.swift in Sources */,
 				F3956AB02BA9A2EE000DBD1A /* FilledButton.swift in Sources */,
 				F3956A712BA98CFD000DBD1A /* UIApplication+Ext.swift in Sources */,
-				F3956AA72BA99540000DBD1A /* THATextField.swift in Sources */,
+				F3956AA72BA99540000DBD1A /* TextField.swift in Sources */,
 				F33AA1132BA4C16000119193 /* main.swift in Sources */,
 				F3A74D632BA4BC6A00E91DFE /* SceneDelegate.swift in Sources */,
 				F3956AA02BA99229000DBD1A /* UIView+Ext.swift in Sources */,

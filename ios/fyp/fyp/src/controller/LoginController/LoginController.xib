@@ -21,6 +21,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginController" customModule="fyp" customModuleProvider="target">
             <connections>
+                <outlet property="passwordField" destination="OwC-lT-Ile" id="kDo-Mh-OSK"/>
+                <outlet property="rememberMe" destination="lvh-Qr-GTi" id="ABK-tE-LbE"/>
+                <outlet property="usernameField" destination="htz-Ta-AXz" id="2KW-TX-gwc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -43,7 +46,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </label>
-                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="htz-Ta-AXz" customClass="THATextField" customModule="fyp" customModuleProvider="target">
+                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="htz-Ta-AXz" customClass="TextField" customModule="fyp" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="78.333333333333343" width="343" height="65"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <userDefinedRuntimeAttributes>
@@ -52,7 +55,7 @@
                                 <userDefinedRuntimeAttribute type="image" keyPath="leftIcon" value="icon.user"/>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="OwC-lT-Ile" customClass="THATextField" customModule="fyp" customModuleProvider="target">
+                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="OwC-lT-Ile" customClass="TextField" customModule="fyp" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="163.33333333333334" width="343" height="65"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <userDefinedRuntimeAttributes>

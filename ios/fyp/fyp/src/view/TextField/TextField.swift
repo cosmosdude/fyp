@@ -7,7 +7,7 @@
 
 import UIKit
 
-class THATextField: UIControl, NibLoadable {
+class TextField: UIControl, NibLoadable {
     
     @IBInspectable var title: String? {
         get { titleLabel.text }
