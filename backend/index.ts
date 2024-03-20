@@ -1,5 +1,7 @@
 const port = 3000
 
+
+
 require('./app').listen(port, '0.0.0.0', () => {
     console.log(`Server running on`)
     console.log(`http://localhost:${port}`)
@@ -10,5 +12,7 @@ require('./app').listen(port, '0.0.0.0', () => {
     if (ipv4) {
         console.log(`http://${ipv4.address}:${port}`)
     }
+
+    console.log("%c ")
 
 })

@@ -1,6 +1,7 @@
 import EyeOnSVG from '../assets/Icons/eye.svg'
 import EyeOffSVG from '../assets/Icons/eye-off.svg'
 import { forwardRef, useState } from 'react'
+import LucideIcon from '../lib/LucideIcon'
 
 const TextField = forwardRef(function TextField({
     title, placeholder, error, 
@@ -8,6 +9,7 @@ const TextField = forwardRef(function TextField({
     name, required,
     disabled,
     leftImageSrc, rightImageSrc,
+    leftIcon, rightIcon,
     onChange
 }, ref) {
     
@@ -45,6 +47,7 @@ const TextField = forwardRef(function TextField({
             >
                 {/* Left Image */}
                 {!!leftImageSrc && <img className="w-[18px] h-[18px]" src={leftImageSrc}/>}
+                { leftIcon && <LucideIcon name={leftIcon} size={18}/>}
                 {/* Input Field - text|password */}
                 <input 
                     ref={ref}
@@ -70,6 +73,7 @@ const TextField = forwardRef(function TextField({
                     }}
                 />
                 {!!rightImageSrc && <img className="w-[18px] h-[18px]" src={rightImageSrc}/>}
+                { rightIcon && <LucideIcon name={rightIcon} size={18}/>}
                 {!!secureTextEntry && <a onClick={() => setRevealed(x => !x)}>
                     <img 
                         className="block w-[18px] h-[18px]" 

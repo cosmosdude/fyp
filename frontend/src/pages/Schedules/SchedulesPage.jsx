@@ -1,9 +1,12 @@
+import { Navigate, useNavigate } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
 import FilledButton from "../../components/Buttons/FilledButton";
 
 function SchedulesPage() {
+
+    let navigate = useNavigate()
 
     let schedules = []
     for (let i = 0; i < 100; i++) schedules.push({id: i})
@@ -47,7 +50,11 @@ function SchedulesPage() {
                     </thead>
                     <tbody className="">
                         {/* <ScheduleRow /> */}
-                        {schedules.map(x => <ScheduleRow key={x.id} no={x.id}/>)}
+                        {schedules.map(x => <ScheduleRow 
+                        key={x.id} 
+                        no={x.id}
+                        onClick={() => navigate('id-something')}
+                        />)}
                     </tbody>
                 </table>
             </div>
@@ -56,7 +63,7 @@ function SchedulesPage() {
     );
 }
 
-function ScheduleRow({no}) {
+function ScheduleRow({no, onClick}) {
     return (
         <tr className="
         group
@@ -66,7 +73,9 @@ function ScheduleRow({no}) {
         cursor-pointer
         transition-all
         [&>*]:transition-all
-        ">
+        "
+        onClick={onClick}
+        >
             <td className="sticky left-0 text-center font-bs text-bs">
                 {no ?? ''}
             </td>
