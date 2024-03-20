@@ -58,6 +58,17 @@ exports.get = async (req, res) => {
     res.json(results[0])
 }
 
+exports.delete = async (req, res) => {
+    let { id } = req.params
+
+    let [results] = await db.promise().query(/*sql*/`update holidays set deleted_at=CURDATE() where id = ?`, id)
+
+    res.sendStatus(201)
+    // if (!results?.[0]) return res.sendStatus(404)
+
+    // res.json(results[0])
+}
+
 exports.getAll = async (req, res) => {
     
     // let { type, date } = req.query
@@ -77,7 +88,10 @@ exports.getAll = async (req, res) => {
     let results = [];
     if (type === 'past') {
         results = (await db.promise().query(
-            /*sql*/`select * from holidays where date<=? order by date desc`, date
+            /*sql*/`
+            select * from holidays 
+            where date<=? 
+            order by date desc`, date
         ))[0]
     } else {
         results = (await db.promise().query(

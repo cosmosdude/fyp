@@ -21,6 +21,7 @@ router.get('/', controller.getAll)
 router.post('/holiday/', controller.create)
 router.get('/holiday/:id', controller.get)
 router.put('/holiday/:id', controller.update)
+router.delete('/holiday/:id', controller.delete)
 
 // router.get('/department/:id', controller.get)
 // router.post('/department', controller.store)
