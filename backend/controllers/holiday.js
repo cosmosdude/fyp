@@ -7,12 +7,21 @@ exports.create = async (req, res) => {
     let zResult = z.object({
         name: z.string().min(1),
         date: z.coerce.date()
-    }).safeParse(req.query)
+    }).safeParse(req.body)
 
     if (!zResult.success) { 
         return res.zod.sendError(zResult.error)
     }
 
+    let [insertion] = await db.promise().query(/*sql*/`insert into holidays set ?`, zResult.data)
+    
+    let [results] = await db.promise().query(
+        /*sql*/`
+        select * from holidays where iid = ?
+        `, insertion.insertId
+    )
+    
+    res.json(results?.[0])
 }
 
 exports.update = async (req, res) => {
