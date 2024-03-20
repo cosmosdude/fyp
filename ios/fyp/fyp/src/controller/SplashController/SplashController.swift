@@ -15,10 +15,13 @@ class SplashController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        UIApplication.shared.windowScene?.keyWindow?.setRootViewController(
-            LoginController()
-        )
+        if LoginModel.isAuthorized && UserModel.user != nil {
+            view.window?.setRootViewController(BaseNavigationController())
+        } else {
+            view.window?.setRootViewController(
+                LoginController()
+            )
+        }
     }
 
 }

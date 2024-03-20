@@ -40,6 +40,7 @@ class TextField: UIControl, NibLoadable {
     @IBInspectable var secureTextEntry: Bool = false {
         didSet {
             eyeIconBtn?.isHidden = !secureTextEntry
+            textField.isSecureTextEntry = secureTextEntry
         }
     }
     
@@ -56,12 +57,33 @@ class TextField: UIControl, NibLoadable {
         }
     }
     
+    @IBInspectable var borderHidden: Bool {
+        get { containerView.layer.borderWidth == 0 }
+        set { containerView.layer.borderWidth = newValue ? 0 : 1}
+    }
+    
+    @IBInspectable private var isReadonly: Bool {
+        // if not enabled, it is read only
+        get { !textField.isUserInteractionEnabled }
+        set {
+            // if read only, remove paddings
+            paddings.forEach { $0.constant = newValue ? 0 : 10 }
+            // if not read only, enable text field
+            textField.isUserInteractionEnabled = !newValue
+        }
+    }
+    
     // MARK: Private
     @IBOutlet private var titleLabel: UILabel!
+    
+    @IBOutlet private var containerView: UIView!
+    @IBOutlet private var paddings: [NSLayoutConstraint] = []
+    
     @IBOutlet private var leftIconBtn: UIButton!
     @IBOutlet private var textField: UITextField!
     @IBOutlet private var eyeIconBtn: UIButton!
     @IBOutlet private var rightIconBtn: UIButton!
+    
     @IBOutlet private var infoLabel: UILabel!
     
     override init(frame: CGRect) {

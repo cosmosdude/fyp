@@ -36,6 +36,26 @@
 		F3956AAC2BA9A027000DBD1A /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AAA2BA9A027000DBD1A /* CheckBox.swift */; };
 		F3956AAD2BA9A027000DBD1A /* CheckBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3956AAB2BA9A027000DBD1A /* CheckBox.xib */; };
 		F3956AB02BA9A2EE000DBD1A /* FilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AAF2BA9A2EE000DBD1A /* FilledButton.swift */; };
+		F3956AB22BA9E3D3000DBD1A /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AB12BA9E3D3000DBD1A /* LoginService.swift */; };
+		F3956AB42BA9E474000DBD1A /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AB32BA9E474000DBD1A /* LoginModel.swift */; };
+		F3956AB82BA9E54D000DBD1A /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AB72BA9E54D000DBD1A /* UIViewController+Alert.swift */; };
+		F3956ABB2BA9E9A6000DBD1A /* AnyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956ABA2BA9E9A6000DBD1A /* AnyJSON.swift */; };
+		F3956ABD2BA9EDE6000DBD1A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956ABC2BA9EDE6000DBD1A /* UserModel.swift */; };
+		F3956AC32BA9EF82000DBD1A /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AC22BA9EF82000DBD1A /* LoginData.swift */; };
+		F3956ACA2BA9EFEB000DBD1A /* String+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AB52BA9E50C000DBD1A /* String+Error.swift */; };
+		F3956ACC2BA9F038000DBD1A /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956ACB2BA9F038000DBD1A /* UserService.swift */; };
+		F3956ACE2BA9F1EC000DBD1A /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956ACD2BA9F1EC000DBD1A /* UserData.swift */; };
+		F3956AD32BA9F5B8000DBD1A /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AD12BA9F5B8000DBD1A /* BaseController.swift */; };
+		F3956AD82BA9F770000DBD1A /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AD62BA9F770000DBD1A /* ProfileController.swift */; };
+		F3956AD92BA9F770000DBD1A /* ProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3956AD72BA9F770000DBD1A /* ProfileController.xib */; };
+		F3956ADD2BA9F791000DBD1A /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956ADB2BA9F791000DBD1A /* DashboardController.swift */; };
+		F3956ADE2BA9F791000DBD1A /* DashboardController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3956ADC2BA9F791000DBD1A /* DashboardController.xib */; };
+		F3956AE22BA9F7AD000DBD1A /* InboxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AE02BA9F7AD000DBD1A /* InboxController.swift */; };
+		F3956AE32BA9F7AD000DBD1A /* InboxController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3956AE12BA9F7AD000DBD1A /* InboxController.xib */; };
+		F3956AE72BA9F7CD000DBD1A /* LeaveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956AE52BA9F7CD000DBD1A /* LeaveController.swift */; };
+		F3956AE82BA9F7CD000DBD1A /* LeaveController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3956AE62BA9F7CD000DBD1A /* LeaveController.xib */; };
+		F39ACF842BAA75DF0078A017 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39ACF822BAA75DF0078A017 /* TitleView.swift */; };
+		F39ACF852BAA75DF0078A017 /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F39ACF832BAA75DF0078A017 /* TitleView.xib */; };
 		F3A74D612BA4BC6A00E91DFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A74D602BA4BC6A00E91DFE /* AppDelegate.swift */; };
 		F3A74D632BA4BC6A00E91DFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A74D622BA4BC6A00E91DFE /* SceneDelegate.swift */; };
 		F3A74D6A2BA4BC6C00E91DFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A74D692BA4BC6C00E91DFE /* Assets.xcassets */; };
@@ -99,6 +119,26 @@
 		F3956AAA2BA9A027000DBD1A /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		F3956AAB2BA9A027000DBD1A /* CheckBox.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckBox.xib; sourceTree = "<group>"; };
 		F3956AAF2BA9A2EE000DBD1A /* FilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledButton.swift; sourceTree = "<group>"; };
+		F3956AB12BA9E3D3000DBD1A /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		F3956AB32BA9E474000DBD1A /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		F3956AB52BA9E50C000DBD1A /* String+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Error.swift"; sourceTree = "<group>"; };
+		F3956AB72BA9E54D000DBD1A /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		F3956ABA2BA9E9A6000DBD1A /* AnyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyJSON.swift; sourceTree = "<group>"; };
+		F3956ABC2BA9EDE6000DBD1A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		F3956AC22BA9EF82000DBD1A /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
+		F3956ACB2BA9F038000DBD1A /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		F3956ACD2BA9F1EC000DBD1A /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		F3956AD12BA9F5B8000DBD1A /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
+		F3956AD62BA9F770000DBD1A /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		F3956AD72BA9F770000DBD1A /* ProfileController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileController.xib; sourceTree = "<group>"; };
+		F3956ADB2BA9F791000DBD1A /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
+		F3956ADC2BA9F791000DBD1A /* DashboardController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardController.xib; sourceTree = "<group>"; };
+		F3956AE02BA9F7AD000DBD1A /* InboxController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxController.swift; sourceTree = "<group>"; };
+		F3956AE12BA9F7AD000DBD1A /* InboxController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InboxController.xib; sourceTree = "<group>"; };
+		F3956AE52BA9F7CD000DBD1A /* LeaveController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveController.swift; sourceTree = "<group>"; };
+		F3956AE62BA9F7CD000DBD1A /* LeaveController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaveController.xib; sourceTree = "<group>"; };
+		F39ACF822BAA75DF0078A017 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		F39ACF832BAA75DF0078A017 /* TitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
 		F3A74D5D2BA4BC6A00E91DFE /* fyp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fyp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A74D602BA4BC6A00E91DFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3A74D622BA4BC6A00E91DFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +191,7 @@
 		F33AA1042BA4BFE000119193 /* TANetworking */ = {
 			isa = PBXGroup;
 			children = (
+				F3956AC42BA9EFB8000DBD1A /* ext */,
 				F33AA10F2BA4C01100119193 /* src */,
 				F33AA1052BA4BFE000119193 /* TANetworking.h */,
 			);
@@ -160,7 +201,10 @@
 		F33AA10F2BA4C01100119193 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				F3956AC12BA9EF7A000DBD1A /* data */,
 				F33AA1102BA4C03200119193 /* Config.swift */,
+				F3956AB12BA9E3D3000DBD1A /* LoginService.swift */,
+				F3956ACB2BA9F038000DBD1A /* UserService.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -170,7 +214,6 @@
 			children = (
 				F3A74D622BA4BC6A00E91DFE /* SceneDelegate.swift */,
 				F3A74D602BA4BC6A00E91DFE /* AppDelegate.swift */,
-				F3956A702BA98CFD000DBD1A /* UIApplication+Ext.swift */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -188,6 +231,8 @@
 		F33AA1162BA4C26B00119193 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				F3956AB32BA9E474000DBD1A /* LoginModel.swift */,
+				F3956ABC2BA9EDE6000DBD1A /* UserModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -195,6 +240,7 @@
 		F33AA1172BA4C27400119193 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F39ACF812BAA75D10078A017 /* TitleView */,
 				F3956AAE2BA9A2AD000DBD1A /* FilledButton */,
 				F3956AA92BA9A014000DBD1A /* CheckBox */,
 				F3956AA42BA994F8000DBD1A /* TextField */,
@@ -205,6 +251,11 @@
 		F33AA1182BA4C27800119193 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				F3956AE42BA9F7BE000DBD1A /* Leave */,
+				F3956ADF2BA9F7A1000DBD1A /* Inbox */,
+				F3956ADA2BA9F786000DBD1A /* Dashboard */,
+				F3956AD52BA9F6D9000DBD1A /* ProfileController */,
+				F3956AD02BA9F5A0000DBD1A /* BaseController */,
 				F33AA11E2BA4C2E400119193 /* SplashController */,
 				F33AA1192BA4C28500119193 /* LoginController */,
 			);
@@ -262,13 +313,15 @@
 			path = Inter;
 			sourceTree = "<group>";
 		};
-		F3956A9E2BA99219000DBD1A /* ext */ = {
+		F3956A9E2BA99219000DBD1A /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F3956A702BA98CFD000DBD1A /* UIApplication+Ext.swift */,
 				F3956A9F2BA99229000DBD1A /* UIView+Ext.swift */,
 				F3956AA12BA99309000DBD1A /* NibLoadable.swift */,
+				F3956AB72BA9E54D000DBD1A /* UIViewController+Alert.swift */,
 			);
-			path = ext;
+			path = extensions;
 			sourceTree = "<group>";
 		};
 		F3956AA42BA994F8000DBD1A /* TextField */ = {
@@ -297,6 +350,84 @@
 			path = FilledButton;
 			sourceTree = "<group>";
 		};
+		F3956AB92BA9E979000DBD1A /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				F3956ABA2BA9E9A6000DBD1A /* AnyJSON.swift */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		F3956AC12BA9EF7A000DBD1A /* data */ = {
+			isa = PBXGroup;
+			children = (
+				F3956AC22BA9EF82000DBD1A /* LoginData.swift */,
+				F3956ACD2BA9F1EC000DBD1A /* UserData.swift */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		F3956AC42BA9EFB8000DBD1A /* ext */ = {
+			isa = PBXGroup;
+			children = (
+				F3956AB52BA9E50C000DBD1A /* String+Error.swift */,
+			);
+			path = ext;
+			sourceTree = "<group>";
+		};
+		F3956AD02BA9F5A0000DBD1A /* BaseController */ = {
+			isa = PBXGroup;
+			children = (
+				F3956AD12BA9F5B8000DBD1A /* BaseController.swift */,
+			);
+			path = BaseController;
+			sourceTree = "<group>";
+		};
+		F3956AD52BA9F6D9000DBD1A /* ProfileController */ = {
+			isa = PBXGroup;
+			children = (
+				F3956AD62BA9F770000DBD1A /* ProfileController.swift */,
+				F3956AD72BA9F770000DBD1A /* ProfileController.xib */,
+			);
+			path = ProfileController;
+			sourceTree = "<group>";
+		};
+		F3956ADA2BA9F786000DBD1A /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				F3956ADB2BA9F791000DBD1A /* DashboardController.swift */,
+				F3956ADC2BA9F791000DBD1A /* DashboardController.xib */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		F3956ADF2BA9F7A1000DBD1A /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				F3956AE02BA9F7AD000DBD1A /* InboxController.swift */,
+				F3956AE12BA9F7AD000DBD1A /* InboxController.xib */,
+			);
+			path = Inbox;
+			sourceTree = "<group>";
+		};
+		F3956AE42BA9F7BE000DBD1A /* Leave */ = {
+			isa = PBXGroup;
+			children = (
+				F3956AE52BA9F7CD000DBD1A /* LeaveController.swift */,
+				F3956AE62BA9F7CD000DBD1A /* LeaveController.xib */,
+			);
+			path = Leave;
+			sourceTree = "<group>";
+		};
+		F39ACF812BAA75D10078A017 /* TitleView */ = {
+			isa = PBXGroup;
+			children = (
+				F39ACF822BAA75DF0078A017 /* TitleView.swift */,
+				F39ACF832BAA75DF0078A017 /* TitleView.xib */,
+			);
+			path = TitleView;
+			sourceTree = "<group>";
+		};
 		F3A74D542BA4BC6A00E91DFE = {
 			isa = PBXGroup;
 			children = (
@@ -320,7 +451,8 @@
 		F3A74D5F2BA4BC6A00E91DFE /* fyp */ = {
 			isa = PBXGroup;
 			children = (
-				F3956A9E2BA99219000DBD1A /* ext */,
+				F3956A9E2BA99219000DBD1A /* extensions */,
+				F3956AB92BA9E979000DBD1A /* lib */,
 				F3956A722BA98FB0000DBD1A /* resource */,
 				F33AA1152BA4C16C00119193 /* src */,
 				F33AA1142BA4C16800119193 /* app */,
@@ -438,18 +570,23 @@
 			files = (
 				F33AA1222BA4C2F400119193 /* SplashController.xib in Resources */,
 				F3956A992BA9901E000DBD1A /* Inter-ExtraBold.ttf in Resources */,
+				F3956ADE2BA9F791000DBD1A /* DashboardController.xib in Resources */,
 				F3A74D6D2BA4BC6C00E91DFE /* LaunchScreen.storyboard in Resources */,
 				F3956A9D2BA9901E000DBD1A /* Inter-SemiBold.ttf in Resources */,
 				F3956A942BA9901E000DBD1A /* Inter-Medium.ttf in Resources */,
 				F3956A9B2BA9901E000DBD1A /* Inter-ExtraLight.ttf in Resources */,
 				F3956A972BA9901E000DBD1A /* Inter-Bold.ttf in Resources */,
+				F39ACF852BAA75DF0078A017 /* TitleView.xib in Resources */,
 				F3956AA82BA99540000DBD1A /* TextField.xib in Resources */,
+				F3956AE82BA9F7CD000DBD1A /* LeaveController.xib in Resources */,
 				F33AA11D2BA4C2B100119193 /* LoginController.xib in Resources */,
 				F3956A9A2BA9901E000DBD1A /* OFL.txt in Resources */,
+				F3956AD92BA9F770000DBD1A /* ProfileController.xib in Resources */,
 				F3956A962BA9901E000DBD1A /* Inter-Thin.ttf in Resources */,
 				F3956A982BA9901E000DBD1A /* Inter-Regular.ttf in Resources */,
 				F3A74D6A2BA4BC6C00E91DFE /* Assets.xcassets in Resources */,
 				F3956A952BA9901E000DBD1A /* Inter-Light.ttf in Resources */,
+				F3956AE32BA9F7AD000DBD1A /* InboxController.xib in Resources */,
 				F3956A9C2BA9901E000DBD1A /* Inter-Black.ttf in Resources */,
 				F3956AAD2BA9A027000DBD1A /* CheckBox.xib in Resources */,
 			);
@@ -526,7 +663,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3956ACE2BA9F1EC000DBD1A /* UserData.swift in Sources */,
 				F33AA1112BA4C03200119193 /* Config.swift in Sources */,
+				F3956ACC2BA9F038000DBD1A /* UserService.swift in Sources */,
+				F3956ACA2BA9EFEB000DBD1A /* String+Error.swift in Sources */,
+				F3956AB22BA9E3D3000DBD1A /* LoginService.swift in Sources */,
+				F3956AC32BA9EF82000DBD1A /* LoginData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,17 +676,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3956AD32BA9F5B8000DBD1A /* BaseController.swift in Sources */,
+				F3956ABB2BA9E9A6000DBD1A /* AnyJSON.swift in Sources */,
 				F3A74D612BA4BC6A00E91DFE /* AppDelegate.swift in Sources */,
+				F3956AB42BA9E474000DBD1A /* LoginModel.swift in Sources */,
+				F3956ADD2BA9F791000DBD1A /* DashboardController.swift in Sources */,
 				F33AA1212BA4C2F400119193 /* SplashController.swift in Sources */,
 				F3956AAC2BA9A027000DBD1A /* CheckBox.swift in Sources */,
 				F3956AA22BA99309000DBD1A /* NibLoadable.swift in Sources */,
 				F3956AB02BA9A2EE000DBD1A /* FilledButton.swift in Sources */,
+				F3956AE72BA9F7CD000DBD1A /* LeaveController.swift in Sources */,
 				F3956A712BA98CFD000DBD1A /* UIApplication+Ext.swift in Sources */,
 				F3956AA72BA99540000DBD1A /* TextField.swift in Sources */,
 				F33AA1132BA4C16000119193 /* main.swift in Sources */,
 				F3A74D632BA4BC6A00E91DFE /* SceneDelegate.swift in Sources */,
+				F3956AE22BA9F7AD000DBD1A /* InboxController.swift in Sources */,
 				F3956AA02BA99229000DBD1A /* UIView+Ext.swift in Sources */,
+				F3956ABD2BA9EDE6000DBD1A /* UserModel.swift in Sources */,
+				F39ACF842BAA75DF0078A017 /* TitleView.swift in Sources */,
 				F33AA11C2BA4C2B100119193 /* LoginController.swift in Sources */,
+				F3956AB82BA9E54D000DBD1A /* UIViewController+Alert.swift in Sources */,
+				F3956AD82BA9F770000DBD1A /* ProfileController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,7 @@ import UIKit
 
 extension UIApplication {
     
+    @MainActor
     var windowScene: UIWindowScene? {
         connectedScenes.compactMap { $0 as? UIWindowScene }.first
     }
@@ -18,6 +19,7 @@ extension UIApplication {
 
 extension UIWindow {
     
+    @MainActor
     func setRootViewController(
         _ controller: UIViewController?, animated: Bool = true
     ) {

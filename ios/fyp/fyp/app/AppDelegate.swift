@@ -30,6 +30,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             name: "Default Configuration",
             sessionRole: connectingSceneSession.role
         )
+//        UITabBarItem.appearance().setTitleTextAttributes(<#T##attributes: [NSAttributedString.Key : Any]?##[NSAttributedString.Key : Any]?#>, for: <#T##UIControl.State#>)
+        
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [
+                .font: UIFont(name: "Inter", size: 12) as Any,
+                .foregroundColor: UIColor(named: "neutral-900") as Any
+            ],
+            for: .normal
+        )
+        
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [
+                .font: UIFont(name: "Inter-Bold", size: 12) as Any,
+                .foregroundColor: UIColor(named: "primary") as Any
+            ],
+            for: .selected
+        )
         return config
     }
 

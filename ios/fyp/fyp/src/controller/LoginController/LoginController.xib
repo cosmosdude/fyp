@@ -21,8 +21,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginController" customModule="fyp" customModuleProvider="target">
             <connections>
+                <outlet property="btn" destination="A3I-eJ-gI2" id="FoM-ct-IaK"/>
                 <outlet property="passwordField" destination="OwC-lT-Ile" id="kDo-Mh-OSK"/>
                 <outlet property="rememberMe" destination="lvh-Qr-GTi" id="ABK-tE-LbE"/>
+                <outlet property="spinner" destination="t9X-s5-ZcJ" id="rLH-S1-dqc"/>
                 <outlet property="usernameField" destination="htz-Ta-AXz" id="2KW-TX-gwc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -33,7 +35,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HYD-Jo-HF5">
-                    <rect key="frame" x="25" y="209.33333333333334" width="343" height="433.33333333333326"/>
+                    <rect key="frame" x="25" y="229.33333333333334" width="343" height="393.33333333333326"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HRMS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8n-YK-9rz">
                             <rect key="frame" x="0.0" y="0.0" width="343" height="58.333333333333336"/>
@@ -84,12 +86,15 @@
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" title="Sign In"/>
+                            <connections>
+                                <action selector="login" destination="-1" eventType="touchUpInside" id="gkZ-LA-baA"/>
+                            </connections>
                         </button>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="t9X-s5-ZcJ">
-                            <rect key="frame" x="0.0" y="376.33333333333326" width="343" height="20"/>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="t9X-s5-ZcJ">
+                            <rect key="frame" x="0.0" y="366.33333333333326" width="343" height="0.0"/>
                         </activityIndicatorView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By signing in, you agree to terms and conditions." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lg-h8-w3B">
-                            <rect key="frame" x="0.0" y="416.33333333333326" width="343" height="17"/>
+                            <rect key="frame" x="0.0" y="376.33333333333326" width="343" height="17"/>
                             <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>

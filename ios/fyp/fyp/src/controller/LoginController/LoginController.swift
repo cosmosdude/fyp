@@ -14,7 +14,13 @@ class LoginController: UIViewController {
     
     @IBOutlet private var rememberMe: CheckBox!
     
+    @IBOutlet private var btn: UIButton!
+    @IBOutlet private var spinner: UIActivityIndicatorView!
+    
     private let defaults = UserDefaults.standard
+    
+    let loginModel = LoginModel()
+    let userModel = UserModel()
     
     deinit {
         defaults.set(rememberMe.isChecked, forKey: "remember")
@@ -27,6 +33,28 @@ class LoginController: UIViewController {
         
         if (rememberMe.isChecked) {
             usernameField.text = defaults.string(forKey: "remember.username")
+        }
+    }
+    
+    @IBAction
+    private func login() {
+        loginModel.set(username: usernameField.text ?? "")
+        loginModel.set(password: passwordField.text ?? "")
+        btn.isHidden = true
+        spinner.isHidden = false
+        
+        Task {
+            do {
+                try await loginModel.login()
+                try await userModel.fetchUser()
+            } catch {
+                presentAlert(
+                    title: "Error", message: error.localizedDescription
+                )
+            }
+            view?.window?.setRootViewController(SplashController())
+            btn.isHidden = false
+            spinner.isHidden = true
         }
     }
     
