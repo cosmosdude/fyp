@@ -26,16 +26,30 @@ exports.create = async (req, res) => {
 
 exports.update = async (req, res) => {
     
+    let zResult = z.object({
+        name: z.string().min(1).optional(),
+        date: z.coerce.date().optional()
+    }).safeParse(req.body)
+
+    if (!zResult.success) { 
+        return res.zod.sendError(zResult.error)
+    }
+
+    let { id } = req.params
+    // update the item
+    await db.promise().query(/*sql*/`
+        update holidays set ? where id=?
+    `, [zResult.data, id])
+
+    // get the updated result back
+    let [updated] = await db.promise().query(/*sql*/`select * from holidays where id=?`, [id])
+
+    if (!updated?.[0]) return res.sendStatus(404)
+    res.json(updated[0])
 }
 
 exports.get = async (req, res) => {
-    let zResult = z.object({ 
-        id: z.string().min(1)
-    }).safeParse(req.params)
-
-    if (!zResult) return res.zod.sendError(zResult.error)
-
-    let { id } = zResult.data
+    let { id } = req.params
 
     let [results] = await db.promise().query(/*sql*/`select * from holidays where id = ?`, id)
 
@@ -63,7 +77,7 @@ exports.getAll = async (req, res) => {
     let results = [];
     if (type === 'past') {
         results = (await db.promise().query(
-            /*sql*/`select * from holidays where date < ? order by date desc`, date
+            /*sql*/`select * from holidays where date<=? order by date desc`, date
         ))[0]
     } else {
         results = (await db.promise().query(

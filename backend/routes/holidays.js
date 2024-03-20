@@ -18,8 +18,10 @@ router.use(express.urlencoded({extended: true}))
 
 // Routes
 router.get('/', controller.getAll)
-router.get('/holiday/:id', controller.get)
 router.post('/holiday/', controller.create)
+router.get('/holiday/:id', controller.get)
+router.put('/holiday/:id', controller.update)
+
 // router.get('/department/:id', controller.get)
 // router.post('/department', controller.store)
 // router.put('/department/:id', controller.update)
