@@ -21,6 +21,8 @@ import LeavesPage from './pages/Leaves/LeavesPage'
 import OvertimesPage from './pages/Overtimes/OvertimesPage'
 import AttendanceRequestsPage from './pages/Attendances/AttendanceRequestsPage'
 import LeaveRequestsPage from './pages/Leaves/LeaveRequestsPage'
+import LeaveTypesPage from './pages/LeaveTypes/LeaveTypesPage'
+import LeaveTypeDetailPage from './pages/LeaveTypes/LeaveTypeDetailPage'
 
 function App() {
 
@@ -71,6 +73,8 @@ function App() {
             {/* Schedules */}
             <Route path="/leaves" element={<LeavesPage/>}/>
             <Route path="/leaves/requests" element={<LeaveRequestsPage/>}/>
+            <Route path="/leaves/types" element={<LeaveTypesPage/>}/>
+            <Route path="/leaves/types/:id" element={<LeaveTypeDetailPage/>}/>
         </Route>
           {/* <Route path='/' element={<IndexPage/>}>
             <Route path="" element={<HomeNavigationPage/>}>

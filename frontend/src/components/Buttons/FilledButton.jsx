@@ -11,7 +11,7 @@ function FilledButton({icon, rightIcon, src, children, onClick, to}) {
                 text-white text-bs font-bs
                 bg-primary 
                 rounded-[4px]
-                hover:bg-primary-600
+                hover:bg-primary-400
                 transition-all
             "
             onClick={(e) => {
