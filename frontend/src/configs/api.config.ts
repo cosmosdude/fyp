@@ -170,4 +170,14 @@ export const apiPaths = {
          */
         update(id: string|null|undefined = "") { return this.get(id) },
     },
+
+    holiday: {
+        getAll(type: 'past' | 'upcoming') { return `api/holidays?type=${type}` },
+        get(id: string|null|undefined = "") {
+            return `api/holidays/holiday/${id}`
+        },
+        create: "api/holidays/holiday",
+        update(id: string|null|undefined = "") { return this.get(id) },
+        delete(id: string|null|undefined = "") { return this.get(id) },
+    }
 }

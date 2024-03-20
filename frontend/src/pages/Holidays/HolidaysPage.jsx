@@ -1,26 +1,14 @@
+import { format } from "date-fns";
 import Avatar from "../../components/Avatar";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
 import FilledButton from "../../components/Buttons/FilledButton";
+import useEffectGetHolidays from "../../hooks/useEffectGetHolidays";
 
 export default function HolidaysPage() {
 
-    let past = [
-        {name: `New Year's Day`, date:`Jan 1`, day: `Mon`,},
-        {name: `Independence Day`, date:`Jan 4`, day: `Thu`,},
-        {name: `Kayin New Year`, date:`Jan 11`, day: `Thu`,},
-        {name: `Union Day`, date:`Feb 12`, day: `Mon`,},
-        {name: `Peasant's Day`, date:`Mar 2`, day: `Sat`,},
-    ].map((x, i) => {return {id: i, ...x}})
-    //past = [...past, ...past, ...past, ...past, ...past]
-    /*
-    
-    */
-    let upcoming = []
-    // for (let i = 0; i < 15; i++) {
-    //     if (i < 6) past.push({id: i})
-    //     upcoming.push({id: i})
-    // }
+    let past = useEffectGetHolidays('past')
+    let upcoming = useEffectGetHolidays('upcoming')
 
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
@@ -46,8 +34,14 @@ export default function HolidaysPage() {
                         <HolidayTableHeader/>
                         <tbody className="">
                             {/* <AttendanceRow /> */}
-                            {past.map(x => (
-                                <HolidayRow key={x.id} no={x.id} name={x.name} date={x.date} day={x.day}/>
+                            {past.map((x, i) => (
+                                <HolidayRow 
+                                    key={x.id} 
+                                    no={i} 
+                                    name={x.name}
+                                    date={format(new Date(x.date), 'd MMM')} 
+                                    day={format(new Date(x.date), 'EEE')}
+                                />
                             )
                             )}
                         </tbody>
@@ -60,8 +54,14 @@ export default function HolidaysPage() {
                         <HolidayTableHeader/>
                         <tbody className="">
                             {/* <AttendanceRow /> */}
-                            {upcoming.map(x => (
-                                <HolidayRow key={x.id} no={x.id} name={x.name} date={x.date} day={x.day}/>
+                            {upcoming.map((x, i) => (
+                                <HolidayRow 
+                                    key={x.id} 
+                                    no={i} 
+                                    name={x.name}
+                                    date={format(new Date(x.date), 'd MMM')} 
+                                    day={format(new Date(x.date), 'EEE')}
+                                />
                             )
                             )}
                         </tbody>
