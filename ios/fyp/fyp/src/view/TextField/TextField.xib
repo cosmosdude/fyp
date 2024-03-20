@@ -11,6 +11,9 @@
         <array key="Inter-Regular.ttf">
             <string>Inter-Regular</string>
         </array>
+        <array key="Inter-SemiBold.ttf">
+            <string>Inter-SemiBold</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TextField" customModule="fyp" customModuleProvider="target">
@@ -35,7 +38,7 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdm-sc-uCU">
                     <rect key="frame" x="0.0" y="0.0" width="400" height="20"/>
-                    <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="12"/>
                     <color key="textColor" name="neutral-900"/>
                     <nil key="highlightedColor"/>
                 </label>
