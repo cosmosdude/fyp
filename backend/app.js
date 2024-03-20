@@ -9,17 +9,23 @@ const app = express()
 
 // MW: Logging
 app.use(require('./middlewares/log'))
+app.use(require('./middlewares/zod.js'))
+
 // MW: Cross-Origin Resource Sharing
 app.use(cors())
 
 // MW: Static file server
 app.use(express.static('public'))
 
+
+
+
 // Configure Routers middlewares
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/departments', require('./routes/department'))
 app.use('/api/designations', require('./routes/designation'))
 app.use('/api/users', require('./routes/user'))
+app.use('/api/holidays', require('./routes/holidays'))
 app.use('/api/statistic', require('./routes/statistics'))
 
 
