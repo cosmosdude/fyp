@@ -23,6 +23,7 @@ import AttendanceRequestsPage from './pages/Attendances/AttendanceRequestsPage'
 import LeaveRequestsPage from './pages/Leaves/LeaveRequestsPage'
 import LeaveTypesPage from './pages/LeaveTypes/LeaveTypesPage'
 import LeaveTypeDetailPage from './pages/LeaveTypes/LeaveTypeDetailPage'
+import HolidayDetailPage from './pages/Holidays/HolidayDetailPage'
 
 function App() {
 
@@ -69,6 +70,7 @@ function App() {
 
             {/* Schedules */}
             <Route path="/holidays" element={<HolidaysPage/>}/>
+            <Route path="/holidays/:id" element={<HolidayDetailPage/>}/>
 
             {/* Schedules */}
             <Route path="/leaves" element={<LeavesPage/>}/>
