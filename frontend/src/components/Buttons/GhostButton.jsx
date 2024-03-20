@@ -15,7 +15,7 @@ export default function GhostButton({
             className={`
                 flex items-center gap-[10px]
                 px-[16px] py-[10px]
-                text-bs font-bs
+                text-lm font-lm
                 ${textColor} 
                 rounded-[4px]
                 hover:${textColor}/25

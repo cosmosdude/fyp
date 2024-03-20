@@ -1189,6 +1189,10 @@ video {
   flex-basis: 0px;
 }
 
+.basis-1 {
+  flex-basis: 0.25rem;
+}
+
 .table-auto {
   table-layout: auto;
 }
@@ -1337,6 +1341,10 @@ video {
 
 .gap-\[4px\] {
   gap: 4px;
+}
+
+.gap-\[2px\] {
+  gap: 2px;
 }
 
 .self-end {
@@ -1891,6 +1899,10 @@ video {
   padding: 50px;
 }
 
+.\!p-0 {
+  padding: 0px !important;
+}
+
 .px-0 {
   padding-left: 0px;
   padding-right: 0px;
@@ -1939,6 +1951,26 @@ video {
 .py-\[4px\] {
   padding-top: 4px;
   padding-bottom: 4px;
+}
+
+.\!py-0 {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.py-\[0px\] {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.px-\[24px\] {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.py-\[16px\] {
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 .pb-\[200px\] {
@@ -2065,6 +2097,10 @@ video {
 
 .font-ts {
   font-weight: 600;
+}
+
+.font-bl {
+  font-weight: 300;
 }
 
 .capitalize {
