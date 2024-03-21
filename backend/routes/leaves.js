@@ -20,7 +20,7 @@ router.use(require('../middlewares/authenticated'))
 router.get('/', controller.getAll)
 router.post('/leave/', multipart, controller.create)
 router.get('/leave/:id', controller.get)
-// router.put('/holiday/:id', multipart, controller.update)
+router.put('/leave/:id', multipart, controller.update)
 // router.delete('/holiday/:id', controller.delete)
 
 module.exports = router
