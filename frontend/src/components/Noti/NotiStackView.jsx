@@ -4,10 +4,7 @@ function NotiStackView({notiState}) {
     let [notis, setNotis] = notiState
     console.log("pn", "Noti State is", notis)
     return (
-        <div className="fixed z-[1] top-0 right-0 flex flex-col gap-[0px]">
-            {/* <NotiCard title="Title" message="Message" style="default"/>
-            <NotiCard title="Title" message="Message" style="danger"/>
-            <NotiCard title="Title" message="Message" style="success"/> */}
+        <div className="fixed z-[1] top-0 right-0 pb-[10px] flex flex-col gap-[0px] overflow-scroll max-h-screen">
             {notis.map((x, i) => {
                 return <NotiCard 
                     key={x.id}

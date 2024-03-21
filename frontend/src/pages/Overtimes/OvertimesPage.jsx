@@ -100,8 +100,8 @@ function RequestRow({no}) {
             </td>
             <td className="items-center gap-[4px] text-center">
                 <div className="flex flex-col items-center justify-center gap-[2px]">
-                    <GhostButton className="py-[0px]">Approve</GhostButton> 
-                    <GhostButton className="py-[0px]" style='danger'>Reject</GhostButton>
+                    <GhostButton className="!py-[0px]">Approve</GhostButton> 
+                    <GhostButton className="!py-[0px]" style='danger'>Reject</GhostButton>
                 </div>
             </td>
         </tr>

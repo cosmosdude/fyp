@@ -17,7 +17,7 @@ export default function NotiSystem({children}) {
         setNotis(notis => [noti, ...notis])
     }
     /*
-    pushNoti({title, message, style})
+    pushNoti({id, title, message, style})
     */
     return (
     <NotiPushContext.Provider value={pushNotiFn}>

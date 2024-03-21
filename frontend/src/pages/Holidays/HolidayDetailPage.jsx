@@ -17,6 +17,7 @@ import { usePushNoti } from "../../components/Noti/NotiSystem";
 export default function HolidayDetailPage() {
 
     let navigate = useNavigate()
+    let pushNoti = usePushNoti()
 
     let { id } = useParams()
     let type = id === 'new' ? 'new' : 'update'
@@ -34,8 +35,23 @@ export default function HolidayDetailPage() {
                 if (res.status >= 200 && res.status < 300) {
                     let json = await res.json()
                     setHoliday(json)
+                } else {
+                    if (type !== 'new')
+                        pushNoti({
+                            title: "Error", 
+                            message: "Unable to get holiday data.",
+                            style: 'danger'
+                        })
                 }
-            } catch { }
+            } catch (error) { 
+                if (error.name !== 'AbortError') {
+                    pushNoti({
+                        title: "Error", 
+                        message: "Unable to get holiday data.",
+                        style: 'danger'
+                    })
+                }
+            }
             
         }
         fetchData()
@@ -59,23 +75,27 @@ export default function HolidayDetailPage() {
             console.log(res)
         } catch(error) {
             console.log(error)
-        } 
+        }
     }
 
-    let pushNoti = usePushNoti()
-
     async function update() {
-        pushNoti({title: "Hello", message: "Hello World"})
-        // console.log("Updating holiday")
-        // try {
-        //     let res = await holidayService.update(auth, id, holiday.name, holiday.date)
-        //     if (res.status >= 200 & res.status < 300) {
-        //         console.log(await res.json())
-        //     }
-        //     console.log(res)
-        // } catch(error) {
-        //     console.log(error)
-        // } 
+        
+        console.log("Updating holiday")
+        try {
+            let res = await holidayService.update(auth, id, holiday.name, holiday.date)
+            if (res.status >= 200 & res.status < 300) {
+                console.log(await res.json())
+                pushNoti({
+                    title: "Success", 
+                    message: "Data updated successfully",
+                    style: "success"
+                })
+            }
+            console.log(res)
+        } catch(error) {
+            console.log(error)
+        } 
+        
     }
 
     return (

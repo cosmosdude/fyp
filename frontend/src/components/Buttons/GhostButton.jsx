@@ -18,7 +18,7 @@ export default function GhostButton({
                 text-lm font-lm
                 ${textColor} 
                 rounded-[4px]
-                hover:${textColor}/25
+                hover:opacity-25
                 transition-all
                 ${className}
             `}

@@ -37,9 +37,10 @@ function NotiCard({title, message, style = 'default', onDismiss}) {
             w-[375px]
             ${bg}
             border ${border} rounded-[6px]
-            mt-[20px] mr-[20px]
+            mt-[20px] mx-[20px]
             ${fg}
             shadow-md
+            animate-slidein-rl
             `}
         >
             <LucideIcon name="info" size={18}/>

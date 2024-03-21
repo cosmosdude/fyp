@@ -115,6 +115,22 @@ export default {
         'warning-900': '#332d00',
 
         'transparent': '#ffffff00',
+      },
+
+      animation: {
+        'slidein-rl': 'slidein-rl 0.25s ease-in',
+      },
+      keyframes: {
+        'slidein-rl': {
+          '0%': { 
+            transform: 'scale(0.9, 0.9)',
+            opacity: 0
+          },
+          '100%': { 
+            transform: 'scale(1, 1)' ,
+            opacity: 100
+          },
+        }
       }
     },
   },
