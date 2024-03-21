@@ -1,8 +1,8 @@
 module.exports = {
-    "up": `--sql
+    "up": /*sql*/`
     do null;
     `,
-    "down": `--sql 
+    "down": /*sql*/`
     do null;
     `
 }
