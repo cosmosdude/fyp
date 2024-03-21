@@ -219,7 +219,15 @@ export const apiPaths = {
          * User related api paths
         */
         user: {
-
+            /**
+             * URL for getting all leave requests.
+            */
+            getAllLeaveRequests() { return `api/leaves/requests`},
+        
+            /**
+             * URL for responding to a leave request.
+            */
+            respondToLeaveRequest(id) { return `api/leaves/requests/request/${id}/response`},
         }
     }
 }
