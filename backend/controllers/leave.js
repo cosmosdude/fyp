@@ -1,6 +1,25 @@
 const z = require('zod')
 const db = require('../mysql')
 
+exports.getAll = async (req, res) => {
+    let [results] = await db.promise().query(/*sql*/`
+        select * from leaves
+    `)
+    res.json(results)
+}
+
+exports.get = async (req, res) => {
+    let { id } = req.params
+    
+    let [result] = await db.promise().query(/*sql*/`
+        select * from leaves where id=?
+    `, [id])
+
+    if (result.length === 0) return res.status(404).send("No such leave")
+
+    res.json(result[0])
+}
+
 exports.create = async (req, res) => {
 
     let zResult = z.object({

@@ -17,9 +17,9 @@ router.use(require('../middlewares/authenticated'))
 // application/json
 
 // Routes
-// router.get('/', controller.getAll)
+router.get('/', controller.getAll)
 router.post('/leave/', multipart, controller.create)
-// router.get('/holiday/:id', controller.get)
+router.get('/leave/:id', controller.get)
 // router.put('/holiday/:id', multipart, controller.update)
 // router.delete('/holiday/:id', controller.delete)
 
