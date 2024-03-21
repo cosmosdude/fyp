@@ -55,7 +55,7 @@ app.use('/test', require('./middlewares/formidable-multipart'), async (req, res)
 // MW: 404
 app.use(require('./middlewares/404')) // catch unhandled routes as 404
 // MW: 500
-app.use(require('./middlewares/500')) // catch unhandled errors as 500
+app.use(require('./middlewares/500.js')) // catch unhandled errors as 500
 
 module.exports = app
 

@@ -8,13 +8,14 @@ module.exports = {
         requester_id varchar(36),
         recipient_id varchar(36),
         responder_id varchar(36),
-        request text,
-        response text,
-        status enum('pending', 'approved', 'rejected'),
-        requested_at timestamp default (CURRENT_TIMESTAMP()),
-        responded_at timestamp,
+        request_msg text,
+        response_msg text,
+        status enum('pending', 'approved', 'rejected') default 'pending',
+        requested_at datetime default (CURRENT_TIMESTAMP()),
+        responded_at datetime,
         outstanding_balance float,
         leave_id varchar(36),
+        halfday enum('am', 'pm') default null,
         -- foreign keys
         constraint fk_users_leaves_requests_requester_id
         foreign key (requester_id)
@@ -30,7 +31,7 @@ module.exports = {
 
         constraint fk_users_leaves_requests_leave_id
         foreign key (leave_id)
-        references users(id)
+        references leaves(id)
     )
     `,
     "down": /*sql*/`

@@ -1,5 +1,6 @@
 const z = require('zod')
 const db = require('../mysql')
+const datefns = require('date-fns')
 
 /**
  * Get all leave types.
@@ -141,17 +142,20 @@ exports.delete = async (req, res) => {
 // }
 
 /**
- * Balance related methods
+ * Leave api related to each user.
 */
-exports.balance = {
+exports.user = {
 
-    async getAll(req, res) {
+    /**
+     * Get balances of current user.
+    */
+    async getBalances(req, res) {
 
+        // auth user info.
         let auth = req.authentication.data
-        // res.json(user)
         
         let [balances] = await db.promise().query(/*sql*/`
-            select l.name, ul.balance,
+            select l.id, l.name, ul.balance,
             l.initial, l.max, l.gender, 
             l.halfday, l.carried, l.earnable
             from users_leaves as ul
@@ -160,6 +164,134 @@ exports.balance = {
         `, [auth.id])
 
         res.json(balances)
+    },
+
+    /**
+     * Request leave
+    */
+    async request(req, res) {
+
+        // auth user info.
+        let auth = req.authentication.data
+
+        let data;
+        try {
+            data = z.object({
+                leave_id: z.string().min(1),
+                from_date: z.coerce.date(),
+                to_date: z.coerce.date().optional(),
+                recipient_id: z.string().min(1),
+                request_msg: z.string().optional(),
+                halfday: z.enum(['am', 'pm', '']).optional()
+            }).parse(req.body)
+        } catch (error) { return res.zod.sendError(error) }
+
+        // == set up ==
+        // clear halfday if not available
+        if (!data.halfday) data.halfday = null
+        // if to date is not given, make it the same day as from_date
+        if (!data.to_date) data.to_date = data.from_date
+
+        // == leave == 
+
+        // get leave setting
+        let leaveSetting = (await db.promise().query(/*sql*/`
+            select * from leaves where id=?
+        `, data.leave_id))[0]?.[0]
+        // if missing, end with error
+        if (!leaveSetting) return res.status(400).send("No such leave")
+
+        // == leave balance ==
+
+        // get leave balance for user for specific leave
+        let balanceData = (await db.promise().query(/*sql*/`
+            select * from users_leaves where user_id=? and leave_id=?
+        `, [auth.id, data.leave_id]))[0]?.[0]
+        // if missing, end with error
+        if (!balanceData) 
+        return res.status(400).send("Missing leave data")
+
+        // == Date ==
+
+        // if start date is past the end date,
+        // invalid date range
+        if (data.from_date > data.to_date)
+        res.status(400).send("Invalid date range")
+
+        let requiredBalance = 0
+        // calculate require balance
+
+        let isSameDate = data.from_date <= data.to_date && data.from_date >= data.to_date
+        // if both date are the same and halfday is specified
+        // balance becomes only 0.5
+        if (isSameDate && data.halfday) requiredBalance = 0.5
+        else {
+            // increase to_date by 1 day so that if the dates are the same
+            // from_date becomes 'start of day'
+            // while to_date becomes 'end of day'
+            let endOfToDate = datefns.addDays(data.to_date, 1)
+            // return res.send("Hello")
+            let dateDiff = endOfToDate - data.from_date
+            // update required balance
+            requiredBalance = dateDiff / 86_400_000
+        }
+
+        // if not enough balance, end with error
+        if (balanceData.balance < requiredBalance) 
+        return res.status(400).send("Not enough leave")
+
+        // == User ==
+        let recipient = (await db.promise().query(/*sql*/`
+            select * from users where id=?
+        `, [data.recipient_id]))[0]?.[0]
+
+        // if recipient is missing or 
+        // the role is neither [admin, hr, manager]
+        if (!recipient || recipient.role_id > 3) 
+        return res.status(400).send("Invalid recipient")
+
+        // == requester_id ==
+        // prepare the requester_id
+        // which should be the api caller's id
+        data.requester_id = auth.id
+
+        // data.from_date = datefns.format(data.from_date, 'yyyy-MM-dd')
+        // data.to_date = datefns.format(data.to_date, 'yyyy-MM-dd')
+        // res.json(data)
+
+        // == create request ==
+        await db.promise().query(/*sql*/`
+            insert into users_leaves_requests
+            set ?
+        `, [data])
+
+        res.sendStatus(201)
+    },
+
+    /**
+     * Get all leave requests
+    */
+    async getAllLeaveRequests() {
+        // auth user info.
+        let auth = req.authentication.data
+    },
+
+    /**
+     * Get my submitted leave requests
+     */
+    async getMyLeaveRequests() {
+        // auth user info.
+        let auth = req.authentication.data
+    },
+
+    async requestDetail(req, res) {
+        let { id } = req.params
+        res.send("Leave request detail")
+    },
+
+    async response(req, res) {
+        let { id } = req.params
+        res.send("Response Leave Request")
     }
 
 }
