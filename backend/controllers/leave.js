@@ -271,27 +271,77 @@ exports.user = {
     /**
      * Get all leave requests
     */
-    async getAllLeaveRequests() {
+    async getAllLeaveRequests(req, res) {
         // auth user info.
         let auth = req.authentication.data
+
+        let [requests] = await db.promise().query(/*sql*/`
+            select * from users_leaves_requests
+            where status='pending'
+        `)
+
+        res.json(requests)
     },
 
     /**
      * Get my submitted leave requests
      */
-    async getMyLeaveRequests() {
+    async getMyLeaveRequests(req, res) {
         // auth user info.
         let auth = req.authentication.data
+
+        let [requests] = await db.promise().query(/*sql*/`
+            select * from users_leaves_requests
+            where requester_id=?
+        `, auth.id)
+
+        res.json(requests)
     },
 
     async requestDetail(req, res) {
         let { id } = req.params
-        res.send("Leave request detail")
+
+        let [requests] = await db.promise().query(/*sql*/`
+            select * from users_leaves_requests
+            where id=?
+        `, id)
+        if (!requests[0]) res.status(404).send("Not request found")
+        else res.json(requests[0])
     },
 
     async response(req, res) {
+        // auth user info.
+        let auth = req.authentication.data
+        
         let { id } = req.params
-        res.send("Response Leave Request")
+
+        let data = {}
+        // return res.json(req.body)
+        try {
+            data = z.object({
+                status: z.enum(['approved', 'rejected']),
+                response_msg: z.string().optional()
+            }).parse(req.body)
+        } catch(error) { return res.zod.sendError(error) }
+
+        // get leave request detail
+        let leaveRequest = (await db.promise().query(/*sql*/`
+            select * from users_leaves_requests
+            where id=?
+        `, id))[0]?.[0]
+
+        // if no such leave request exists, end with error
+        if (!leaveRequest) return res.status(404).send("Not such leave request")
+        
+        // fill up responder_id
+        data.responder_id = auth.id
+        data.responded_at = new Date()
+
+        await db.promise().query(/*sql*/`
+            update users_leaves_requests set ? where id=?
+        `, [data, id])
+
+        res.sendStatus(201)
     }
 
 }

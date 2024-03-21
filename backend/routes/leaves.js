@@ -27,8 +27,13 @@ router.delete('/leave/:id', asyncHandler(controller.delete))
 
 // User actions
 router.get('/balance', asyncHandler(controller.user.getBalances))
-router.post('/request', multipart, asyncHandler(controller.user.request))
-router.get('/request/:id', asyncHandler(controller.user.requestDetail))
-router.put('/request/:id/response', multipart, asyncHandler(controller.user.response))
+
+router.get('/requests', asyncHandler(controller.user.getAllLeaveRequests))
+router.post('/requests', multipart, asyncHandler(controller.user.request))
+
+router.get('/requests/me', asyncHandler(controller.user.getMyLeaveRequests))
+
+router.get('/requests/request/:id', asyncHandler(controller.user.requestDetail))
+router.put('/requests/request/:id/response', multipart, asyncHandler(controller.user.response))
 
 module.exports = router
