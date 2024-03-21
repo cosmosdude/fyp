@@ -26,6 +26,7 @@ app.use('/api/departments', require('./routes/department'))
 app.use('/api/designations', require('./routes/designation'))
 app.use('/api/users', require('./routes/user'))
 app.use('/api/holidays', require('./routes/holidays'))
+app.use('/api/leaves', require('./routes/leaves'))
 app.use('/api/statistic', require('./routes/statistics'))
 
 
