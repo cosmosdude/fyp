@@ -1,6 +1,7 @@
 // department routes
 const express = require('express') 
 const router = express.Router();
+const asyncHandler = require('express-async-handler')
 
 const controller = require('../controllers/user')
 
@@ -21,32 +22,32 @@ router.use(express.json())
 router.get(
     '/', 
     limitExactly(['admin', 'hr']), 
-    controller.getAll
+    asyncHandler(controller.getAll)
 )
 
 router.post(
     '/user', 
     limitExactly(['admin', 'hr']), 
-    controller.store
+    asyncHandler(controller.store)
 )
 
 router.get(
-    '/user/me', controller.getMe
+    '/user/me', asyncHandler(controller.getMe)
 )
 
 router.get(
-    '/user/:id', controller.get
+    '/user/:id', asyncHandler(controller.get)
 )
 
 router.put(
     '/user/:id', 
     limitExactly(['admin', 'hr']), 
-    controller.update
+    asyncHandler(controller.update)
 )
 router.delete(
     '/user/:id', 
     limitExactly(['admin', 'hr']), 
-    controller.delete
+    asyncHandler(controller.delete)
 )
 
 router.use('/test', (req, res) => {

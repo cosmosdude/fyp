@@ -60,7 +60,28 @@ exports.create = async (req, res) => {
         select * from leaves where iid=?
     `, [insertion.insertId])
 
-    res.send(results[0])
+    let newLeave = results[0]
+    // # create record for each user
+
+    // get all users
+    let [users] = await db.promise().query(/*sql*/`
+        select * from users
+    `)
+
+    // for each user, create new leave balance
+    for (const user of users) {
+        await db.promise().query(/*sql*/`
+            insert into users_leaves
+            set ?
+        `, {
+            user_id: user.id,
+            leave_id: newLeave.id,
+            balance: data.initial
+        })
+    }
+
+    // send the newly created leave
+    res.send(newLeave)
 }
 
 /**
@@ -117,4 +138,31 @@ exports.delete = async (req, res) => {
     `, [id])
 
     res.send(results[0])
+}
+
+// User Specific
+// exports.getAllBalances = async (req, res) => {
+//     let user = req.authentication.data
+//     res.json(user)
+// }
+
+/**
+ * Balance related methods
+*/
+exports.balance = {
+
+    async getAll(req, res) {
+
+        let auth = req.authentication.data
+        // res.json(user)
+        
+        let [balances] = await db.promise().query(/*sql*/`
+            select balances 
+            from users_leaves as ul
+            where ul.user_id=?
+        `, [auth.id])
+
+        res.json(balances)
+    }
+
 }

@@ -1,6 +1,7 @@
 // department routes
 const express = require('express') 
 const router = express.Router();
+const asyncHandler = require('express-async-handler')
 
 let multipart = require('../middlewares/formidable-multipart')
 let json = express.json()
@@ -17,11 +18,11 @@ router.use(require('../middlewares/authenticated'))
 // application/json
 
 // Routes
-router.get('/', controller.getAll)
-router.post('/holiday/', multipart, controller.create)
-router.get('/holiday/:id', controller.get)
-router.put('/holiday/:id', multipart, controller.update)
-router.delete('/holiday/:id', controller.delete)
+router.get('/', asyncHandler(controller.getAll))
+router.post('/holiday/', multipart, asyncHandler(controller.create))
+router.get('/holiday/:id', asyncHandler(controller.get))
+router.put('/holiday/:id', multipart, asyncHandler(controller.update))
+router.delete('/holiday/:id', asyncHandler(controller.delete))
 
 // router.get('/department/:id', controller.get)
 // router.post('/department', controller.store)

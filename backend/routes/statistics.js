@@ -1,5 +1,6 @@
 const express = require('express') 
 const router = express.Router();
+const asyncHandler = require('express-async-handler')
 
 const controller = require('../controllers/statistic')
 
@@ -13,8 +14,8 @@ router.use(require('../middlewares/authenticated'))
 // router.use(express.json())
 
 // Routes
-router.get('/departments', controller.departments)
-router.get('/designations', controller.designations)
+router.get('/departments', asyncHandler(controller.departments))
+router.get('/designations', asyncHandler(controller.designations))
 
 
 module.exports = router
