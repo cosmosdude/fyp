@@ -1,14 +1,17 @@
+import { useEffect, useState } from "react";
 import Avatar from "../../components/Avatar";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
 import FilledButton from "../../components/Buttons/FilledButton";
 import GhostButton from "../../components/Buttons/GhostButton";
+import { useAuthContext } from "../../hooks/AuthStateContext";
+import useAllLeaveTypes from "../../hooks/useAllLeaveTypes";
 
 export default function LeaveTypesPage() {
 
-    let schedules = []
-    for (let i = 0; i < 12; i++) schedules.push({id: i})
-
+    // let schedules = []
+    // for (let i = 0; i < 12; i++) schedules.push({id: i})
+    let leaves = useAllLeaveTypes()
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
             {/* Top nav */}
@@ -66,7 +69,17 @@ export default function LeaveTypesPage() {
                             [&>*:last-child>*:first-child]:rounded-bl-[6px]
                             [&>*:last-child>*:last-child]:rounded-br-[6px]
                             ">
-                                {schedules.map(x => <LeaveTypeRow key={x.id} no={x.id}/>)}
+                                {leaves.map((x, i) => <LeaveTypeRow 
+                                    key={x.id} 
+                                    no={i + 1}
+                                    name={x.name}
+                                    initial={x.initial}
+                                    gender={x.gender}
+                                    max={x.max}
+                                    halfday={x.halfday}
+                                    carried={x.carried}
+                                    earnable={x.earnable}
+                                />)}
                             </tbody>
                         </table>
                     </div>
@@ -77,7 +90,7 @@ export default function LeaveTypesPage() {
     );
 }
 
-function LeaveTypeRow({no}) {
+function LeaveTypeRow({no, name, initial, gender, max, halfday, carried, earnable}) {
     return (
         <tr className="
         group
@@ -94,25 +107,25 @@ function LeaveTypeRow({no}) {
                 {no ?? ''}
             </td>
             <td className="sticky left-0 bg-white group-hover:bg-primary-50 text-left">
-                    <p className="font-bs text-bs">Casual Leave</p>
+                    <p className="font-bs text-bs">{name}</p>
             </td>
             <td className="text-center font-ll text-ll min-w-[150px]">
-                60 days
+                {initial} day(s)
             </td>
             <td className="text-center font-ll text-ll min-w-[50px]">
-                Male
+                {gender}
             </td>
             <td className="items-center gap-[4px] text-center font-ll text-ll min-w-[100px]">
-                3 days
+                {max} day(s)
             </td>
             <td className="text-center font-ll text-ll min-w-[150px]">
-                Allowed
+                {!!halfday ? 'Allowed' : 'Not Allowed'}
             </td>
             <td className="text-center font-ll text-ll min-w-[50px]">
-                Yes
+                {!!carried ? 'Yes' : 'No'}
             </td>
             <td className="items-center gap-[4px] text-center font-ll text-ll min-w-[100px]">
-                Yes
+                {!!earnable ? 'Yes' : 'No'}
             </td>
             {/* <td className="text-center font-ll text-ll">
 

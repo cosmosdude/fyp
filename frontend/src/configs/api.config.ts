@@ -1,6 +1,9 @@
 // Server host
 export const host = 'http://127.0.0.1:3000'
 
+/**
+ * Get api route relative to specified api host.
+*/
 export function apiRoute(url: string) {
     url = url.replace(/^\/+/, '')
     return `${host}/${url}`
@@ -179,5 +182,9 @@ export const apiPaths = {
         create: "api/holidays/holiday",
         update(id: string|null|undefined = "") { return this.get(id) },
         delete(id: string|null|undefined = "") { return this.get(id) },
+    },
+
+    leaves: {
+        getAll() { return `api/leaves` }
     }
 }
