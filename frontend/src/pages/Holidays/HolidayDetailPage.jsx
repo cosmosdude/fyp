@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import Avatar from "../../components/Avatar";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
@@ -8,8 +8,75 @@ import SelectBox from "../../components/SelectBox";
 import TextField from "../../components/TextField";
 import CheckBox from "../../components/CheckBox";
 import DatePicker from "../../components/DatePicker";
+import { useNavigate, useParams } from "react-router-dom";
+import holidayService from "../../services/holiday";
+import { useAuthContext } from "../../hooks/AuthStateContext";
+import { format } from "date-fns";
+import { usePushNoti } from "../../components/Noti/NotiSystem";
 
 export default function HolidayDetailPage() {
+
+    let navigate = useNavigate()
+
+    let { id } = useParams()
+    let type = id === 'new' ? 'new' : 'update'
+
+    let auth = useAuthContext()
+    let [holiday, setHoliday] = useState({name: '', date: null})
+
+    useEffect(() => {
+        let aborter = new AbortController()
+
+        async function fetchData() {
+            try {
+                let res = await holidayService.get(auth, aborter.signal, id)
+
+                if (res.status >= 200 && res.status < 300) {
+                    let json = await res.json()
+                    setHoliday(json)
+                }
+            } catch { }
+            
+        }
+        fetchData()
+        return () => aborter.abort()
+    }, [])
+
+    function submit() {
+        if (type === 'new') create()
+        else update()
+    }
+
+    async function create() {
+        console.log("Creating holiday")
+        try {
+            let res = await holidayService.create(auth, holiday.name, holiday.date)
+            if (res.status >= 200 & res.status < 300) {
+                console.log(await res.json())
+                navigate("/holidays")
+            }
+
+            console.log(res)
+        } catch(error) {
+            console.log(error)
+        } 
+    }
+
+    let pushNoti = usePushNoti()
+
+    async function update() {
+        pushNoti({title: "Hello", message: "Hello World"})
+        // console.log("Updating holiday")
+        // try {
+        //     let res = await holidayService.update(auth, id, holiday.name, holiday.date)
+        //     if (res.status >= 200 & res.status < 300) {
+        //         console.log(await res.json())
+        //     }
+        //     console.log(res)
+        // } catch(error) {
+        //     console.log(error)
+        // } 
+    }
 
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
@@ -20,11 +87,9 @@ export default function HolidayDetailPage() {
                     <BreadcrumbItem title="/"/>
                     <BreadcrumbItem title="Holidays" to='/holidays'/>
                     <BreadcrumbItem title="/"/>
-                    <BreadcrumbItem title="New" current/>
+                    <BreadcrumbItem title={type === 'new' ? "New" : "Update"} current/>
                 </Breadcrumb>
                 <div className="grow"/>
-                {/* <GhostButton to="settings" rightIcon='settings'>Leave Types</GhostButton> */}
-                {/* <FilledButton to="requests" rightIcon='arrow-right'>New Type</FilledButton> */}
             </div>
             {/* Title */}
             <div className="flex flex-col">
@@ -38,33 +103,27 @@ export default function HolidayDetailPage() {
                         <TextField 
                             title='Name (required)' 
                             placeholder="eg. Casual Leave"
-                            // text={employee.username}
+                            text={holiday.name}
                             // disabled={type === 'detail'}
                             required
-                            // onChange={(e) => {
-                            //     dispatchEmployee({value: {
-                            //         username: e.target.value
-                            //     }})
-                            // }}
+                            onChange={(e) => {
+                                setHoliday({...holiday, name: e.target.value})
+                            }}
                         />
-                        {/* <TextField 
-                            title='Initial (days)' 
-                            placeholder="eg. Casual Leave"
-                            // text={employee.username}
-                            // disabled={type === 'detail'}
+                        <DatePicker 
+                            title="Date" 
+                            text={holiday.date ? format(holiday.date, 'd MMM yyyy') : ''}
+                            date={holiday.date ? new Date(holiday.date) : null}
+                            onDateSelect={(date, dateText) => {
+                                setHoliday({...holiday, date: dateText})
+                            }}
                             required
-                            // onChange={(e) => {
-                            //     dispatchEmployee({value: {
-                            //         username: e.target.value
-                            //     }})
-                            // }}
-                        /> */}
-                        <DatePicker title="Date"/>
+                        />
                     </section>
                     
                     <section className="grid grid-cols-2 gap-[20px]">
-                        <FilledButton>
-                            Create
+                        <FilledButton onClick={submit}>
+                            {type === 'new' ?  "Create" : "Update"}
                         </FilledButton>
                     </section>
                 </div>

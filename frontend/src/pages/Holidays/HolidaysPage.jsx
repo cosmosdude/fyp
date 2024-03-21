@@ -4,8 +4,11 @@ import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
 import FilledButton from "../../components/Buttons/FilledButton";
 import useEffectGetHolidays from "../../hooks/useEffectGetHolidays";
+import { useNavigate } from "react-router-dom";
 
 export default function HolidaysPage() {
+
+    let navigate = useNavigate()
 
     let past = useEffectGetHolidays('past')
     let upcoming = useEffectGetHolidays('upcoming')
@@ -41,6 +44,7 @@ export default function HolidaysPage() {
                                     name={x.name}
                                     date={format(new Date(x.date), 'd MMM')} 
                                     day={format(new Date(x.date), 'EEE')}
+                                    onClick={() => navigate(x.id)}
                                 />
                             )
                             )}
@@ -61,6 +65,7 @@ export default function HolidaysPage() {
                                     name={x.name}
                                     date={format(new Date(x.date), 'd MMM')} 
                                     day={format(new Date(x.date), 'EEE')}
+                                    onClick={() => navigate(x.id)}
                                 />
                             )
                             )}
@@ -102,7 +107,7 @@ function HolidayTableHeader() {
     )
 }
 
-function HolidayRow({no, name, date, day}) {
+function HolidayRow({no, name, date, day, onClick}) {
     return (
         <tr className="
         group
@@ -112,7 +117,9 @@ function HolidayRow({no, name, date, day}) {
         cursor-pointer
         transition-all
         [&>*]:transition-all
-        ">
+        "
+        onClick={onClick}
+        >
             <td className="text-center font-ls text-ls">
                 {no ?? ''}
             </td>

@@ -19,6 +19,7 @@ function DatePicker({
     date, // to control input
     error, disabled, 
     type = "date",
+    required,
     onDateSelect,
 }) {
     let [fallbackText, setFallbackText] = useState("")
@@ -70,6 +71,7 @@ function DatePicker({
                     type={_type}
                     value={inputValue}
                     disabled={disabled}
+                    required={required}
                     onKeyDown={e => {
                         e.preventDefault()
                         // return false

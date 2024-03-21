@@ -19,6 +19,9 @@ import SideNavItem from "../components/SideNavItem";
 import Avatar from "../components/Avatar";
 import useEffectUserDetail from "../hooks/useEffectUserDetail";
 import { imageRoute } from "../configs/api.config";
+import LucideIcon from "../lib/LucideIcon";
+import NotiStackView from "../components/Noti/NotiStackView";
+import NotiSystem from "../components/Noti/NotiSystem";
 
 
 export default function HomePage() {
@@ -36,7 +39,8 @@ export default function HomePage() {
     let fullname = [me?.first_name, me?.last_name].filter(x => !!x).join(' ')
 
     return (
-        <div className="flex gap-[20px] p-[20px] w-screen h-screen">
+        <NotiSystem>
+        <div className="relative flex gap-[20px] p-[20px] w-screen h-screen">
             {/* Left Nav */}
             <div className="flex flex-col gap-[10px] min-w-[300px] max-w-[300px] overflow-hidden">
                 {/* Top Nav Items */}
@@ -56,7 +60,6 @@ export default function HomePage() {
                         <SideNavItem to='/holidays' title='Holidays' icon='calendar-days'/>
                         <SideNavItem to='/leaves' title='Leaves' icon='calendar-range'/>
                     </ul>
-
                 </div>
 
                 {/* Bottom profile card */}
@@ -89,7 +92,10 @@ export default function HomePage() {
             <div className="flex grow overflow-hidden overflow-y-scroll">
                 <Outlet/>
             </div>
+
+            {/* <NotiStackView/> */}
         </div>
+        </NotiSystem>
     )
 }
 
