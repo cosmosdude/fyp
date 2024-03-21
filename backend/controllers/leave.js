@@ -35,20 +35,15 @@ exports.create = async (req, res) => {
         name: z.string().min(1),
         initial: z.coerce.number(), 
         max: z.coerce.number(), 
-        gender: z.enum(['Male', 'Female', 'Unspecified', '']),
-        halfday: z.coerce.boolean(), 
-        carried: z.coerce.boolean(), 
-        earnable: z.coerce.boolean()
+        gender: z.enum(['Male', 'Female', 'Unspecified', 'All']),
+        halfday: z.coerce.number(), 
+        carried: z.coerce.number(), 
+        earnable: z.coerce.number()
     }).safeParse(req.body)
 
     if (!zResult.success) return res.zod.sendError(zResult.error)
 
     let data = zResult.data
-
-    // Gender was accepted empty string for all genders
-    // but db only allows for null
-    // so convert it
-    if (!data.gender) data.gender = null
 
     // insert it
     let [insertion] = await db.promise().query(/*sql*/`
@@ -97,18 +92,17 @@ exports.update = async (req, res) => {
         name: z.string().min(1).optional(),
         initial: z.coerce.number().optional(), 
         max: z.coerce.number().optional(), 
-        gender: z.enum(['Male', 'Female', 'Unspecified', '']).optional(),
-        halfday: z.coerce.boolean().optional(), 
-        carried: z.coerce.boolean().optional(), 
-        earnable: z.coerce.boolean().optional()
+        gender: z.enum(['Male', 'Female', 'Unspecified', 'All']).optional(),
+        halfday: z.coerce.number().optional(), 
+        carried: z.coerce.number().optional(), 
+        earnable: z.coerce.number().optional(),
+        enabled: z.coerce.number().optional()
     }).safeParse(req.body)
 
-    let data = zResult.data
+    if (!zResult.success) res.zod.sendError(zResult.error)
 
-    // Gender was accepted empty string for all genders
-    // but db only allows for null
-    // so convert it
-    if (!data.gender) data.gender = null
+    let data = zResult.data
+    // return res.json(data)
 
     await db.promise().query(/*sql*/`
         update leaves set ? where id=?
@@ -157,9 +151,12 @@ exports.balance = {
         // res.json(user)
         
         let [balances] = await db.promise().query(/*sql*/`
-            select balances 
+            select l.name, ul.balance,
+            l.initial, l.max, l.gender, 
+            l.halfday, l.carried, l.earnable
             from users_leaves as ul
-            where ul.user_id=?
+            left join leaves as l on l.id=ul.leave_id
+            where ul.user_id=? and l.deleted_at is NULL and l.enabled is true
         `, [auth.id])
 
         res.json(balances)

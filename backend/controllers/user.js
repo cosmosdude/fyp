@@ -42,21 +42,30 @@ exports.store = async (req, res) => {
     })()
 
     let newUser = req.body || {}
-    newUser.role_id = newUser.role_id || 4
 
-    let requiredKeys = ['username', 'work_email', 'password', 'role_id']
+    try {
+        newUser = z.object({
+            username: z.string().min(8),
+            password: z.string().min(8),
+            first_name: z.string().min(1),
+            dob: z.coerce.date().optional(),
+            gender: z.enum(['Male', 'Female', 'Unspecified']).default('Unspecified'),
+            email: z.string().email().optional(),
+            work_email: z.string().email().optional(),
+            role_id: z.coerce.number().default(4)
+        })
+        .passthrough()
+        .parse(req.body)
+    } catch(error) { return res.zod.sendError(error) }
 
-    // get missing keys i.e key with false value
-    let missingKeys = requiredKeys.filter((k) => !newUser[k])
-    // if any mandatory key is missing, fail with error
-    for (const each of missingKeys) {
-        return res.status(400).send(`'${each}' is missing`)
-    }
     // if required check is done
     // undefine some fields so that they don't make into the db
     newUser.id = undefined
     // remove deleted_at so that user is not automatically deleted
     newUser.deleted_at = undefined
+    newUser.status = 'active'
+
+    // return res.json(newUser)
 
     // # validate username
     // try to get user with given username
@@ -78,21 +87,45 @@ exports.store = async (req, res) => {
     if (newUser.work_email && !isEmail(newUser.work_email))
     return res.status(400).send("work_email is not a valid email address.")
 
-    // validate dob
-    let dateRegex = /^\d{4}-\d{1,2}-\d{1,2}$/
-    if (newUser.dob) {
-        // if unwanted format
-        if (!dateRegex.test(newUser.dob))
-            return res.status(400).send('Invalid dob')
-        // if invalid date range
-        if (isNaN(new Date(newUser.dob)))
-            return res.status(400).send('Invalid dob')
+
+    // if invalid date range
+    if (isNaN(new Date(newUser.dob))) return res.status(400).send('Invalid dob')
+
+    // # Report To
+    if (newUser.report_to) {
+        let [users] = await db.promise().query(/*sql*/`
+            select * from users where id=?
+        `, newUser.report_to)
+
+        if (users.length < 1) return res.status(400).send('No such user')
     }
 
     // # Department
-    // newUser.department_id = null
+    if (newUser.department_id) {
+        let [departments] = await db.promise().query(/*sql*/`
+            select * from departments where id=?
+        `, newUser.department_id)
+
+        if (departments.length < 1) return res.status(400).send('No such department')
+    }
     // # Designation
+    if (newUser.designation_id) {
+        let [designations] = await db.promise().query(/*sql*/`
+            select * from designations where id=?
+        `, newUser.designation_id)
+
+        if (designations.length < 1) return res.status(400).send('No such designation')
+    }
     // newUser.designation_id = null
+
+    // # role
+    if (newUser.role_id) {
+        let [roles] = await db.promise().query(/*sql*/`
+            select * from roles where id=?
+        `, newUser.role_id)
+
+        if (roles.length < 1) return res.status(400).send('No such role')
+    }
 
     // # Avatar
     // extract avatar from the files list.
@@ -165,8 +198,42 @@ exports.update = async (req, res) => {
     console.log("user", user)
     if (!user) return res.status(400).send("No user available.")
 
-    // test department existence
-    // test designation existence
+    // # Report To
+    if (updatingUser.report_to) {
+        let [users] = await db.promise().query(/*sql*/`
+            select * from users where id=?
+        `, updatingUser.report_to)
+
+        if (users.length < 1) return res.status(400).send('No such user')
+    }
+
+    // # Department
+    if (updatingUser.department_id) {
+        let [departments] = await db.promise().query(/*sql*/`
+            select * from departments where id=?
+        `, updatingUser.department_id)
+
+        if (departments.length < 1) return res.status(400).send('No such department')
+    }
+
+    // # Designation
+    if (updatingUser.designation_id) {
+        let [designations] = await db.promise().query(/*sql*/`
+            select * from designations where id=?
+        `, updatingUser.designation_id)
+
+        if (designations.length < 1) return res.status(400).send('No such designation')
+    }
+    // newUser.designation_id = null
+
+    // # role
+    if (updatingUser.role_id) {
+        let [roles] = await db.promise().query(/*sql*/`
+            select * from roles where id=?
+        `, updatingUser.role_id)
+
+        if (roles.length < 1) return res.status(400).send('No such role')
+    }
 
     // if avatar is given
     if (req.files['avatar']?.[0]) {
@@ -202,13 +269,18 @@ exports.update = async (req, res) => {
 
         // save given file to public/uploads
         let moveResult = await saveFile(req.files['employment_contract']?.[0])
-        console.log("Move result", moveResult)
         updatingUser.employment_agreement_id = moveResult?.insertId
     }
-    console.log("User to be updated", updatingUser)
+
     let [updateResult] = await userdao.update(id, updatingUser)
     
-    res.status(201).json(updateResult)
+    if (updateResult.affectedRows > 0) {
+        res.json((await db.promise().query(/*sql*/`
+            select * from users where id=?
+        `, id))?.[0]?.[0])
+    } else return res.sendStatus(500)
+
+    // res.status(201).json(updateResult)
     // res.sendStatus(201)
 }
 

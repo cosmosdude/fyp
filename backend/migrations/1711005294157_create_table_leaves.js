@@ -6,7 +6,7 @@ module.exports = {
         name varchar(64) not null,
         initial float default 0,
         max int default 0,
-        gender ENUM('Male', 'Female', 'Unspecified') default NULL,
+        gender ENUM('Male', 'Female', 'Unspecified', 'All') not null default 'All',
         halfday boolean not null default false,
         carried boolean not null default false,
         earnable boolean not null default false,
