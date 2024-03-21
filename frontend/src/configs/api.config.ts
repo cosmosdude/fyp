@@ -184,7 +184,42 @@ export const apiPaths = {
         delete(id: string|null|undefined = "") { return this.get(id) },
     },
 
-    leaves: {
-        getAll() { return `api/leaves` }
+    /**
+     * Leave related api paths.
+    */
+    leave: {
+        /**
+         * System related api paths.
+         * Such as leave types.
+        */
+        system: {
+            /**
+             * relative URL for getting all leaves
+            */
+            getAll() { return `api/leaves` },
+            /**
+             * relative URL for getting leave detail
+            */
+            get(id: string) { return `api/leaves/leave/${id}`},
+            /**
+             * Relative URL for creating leave
+            */
+            create() { return `api/leaves/leave` },
+            /**
+             * relative URL for updating leave
+            */
+            update(id: string) { return this.get(id)},
+            /**
+             * relative URL for deleting leave
+            */
+            delete(id: string) { return this.get(id)}
+        },
+        
+        /**
+         * User related api paths
+        */
+        user: {
+
+        }
     }
 }

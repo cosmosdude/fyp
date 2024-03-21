@@ -108,7 +108,7 @@ function SelectBox({
                             onClick={() => {
                                 console.log("SelectBox.onClick")
                                 setShow(false)
-                                onSelect && onSelect(o, index)
+                                onSelect?.(o, index)
                             }}
                         >{
                             typeof(o) === 'string' ? o: o.name

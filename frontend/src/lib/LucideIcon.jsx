@@ -10,9 +10,9 @@ import { CameraIcon, icons } from "lucide-react";
 */
 export default function LucideIcon({className, name, color, size, strokeWidth}) {
     let Icon = icons[name]; // get dynamic icon
-    console.log("Icon Name", name)
+    // console.log("Icon Name", name)
     if (!Icon) {
-        console.log("Icon not found:", name)
+        // console.log("Icon not found:", name)
         // 
         let combined = name.split('-') // "circle-dashed" => ["circle", "dashed"]
             .filter(x => x) // remove empty parts
@@ -20,7 +20,7 @@ export default function LucideIcon({className, name, color, size, strokeWidth}) 
                 return x.substring(0, 0) + x.charAt(0).toUpperCase() + x.substring(1)
             })
             .join('') // rejoin
-        console.log("Icon Name", combined)
+        // console.log("Icon Name", combined)
         Icon = icons[combined]
     }
     // if failed, fallback to dashed circle icon

@@ -10,7 +10,7 @@ export default function useAllLeaveTypes() {
         async function fetchData() {
             try {
                 apiRoute
-                let res = await fetch(apiRoute(apiPaths.leaves.getAll()), {
+                let res = await fetch(apiRoute(apiPaths.leave.system.getAll()), {
                     method: "GET",
                     signal: aborter.signal,
                     headers: {

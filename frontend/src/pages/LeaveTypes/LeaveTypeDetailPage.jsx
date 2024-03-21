@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import Avatar from "../../components/Avatar";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
@@ -7,8 +7,54 @@ import GhostButton from "../../components/Buttons/GhostButton";
 import SelectBox from "../../components/SelectBox";
 import TextField from "../../components/TextField";
 import CheckBox from "../../components/CheckBox";
+import { useParams } from "react-router-dom";
+import { apiPaths, apiRoute } from "../../configs/api.config";
+import runAsyncWithAborter from "../../utils/runAsyncWithAborter";
+import { useAuthContext } from "../../hooks/AuthStateContext";
+import { usePushNoti } from "../../components/Noti/NotiSystem";
 
 export default function LeaveTypeDetailPage() {
+
+    let { id } = useParams()
+    let type = 'update'
+    if (id === 'new') type = 'new'
+
+    let pushNoti = usePushNoti()
+
+    let auth = useAuthContext()
+    let [leave, setLeave] = useState({
+        name: "", initial: 0,
+        max: 0, gender: "",
+        halfday: 0, carried: 0, earnable: 0
+    })
+
+    useEffect(() => {
+        let aborter = runAsyncWithAborter(async aborter => {
+            if (type === 'new') return
+            
+            let res = await fetch(apiRoute(apiPaths.leave.system.get(id)), {
+                method: "GET",
+                signal: aborter.signal,
+                headers: {
+                    'authorization': `Bearer ${auth}`
+                }
+            })
+
+            if (res.status >= 200 && res.status < 300) {
+                setLeave(await res.json())
+                // pushNoti({title: "Success", message: "Data fetched."})
+            }
+        }, e => {
+            if (e.name === "AbortError") return
+
+            pushNoti({
+                title: "Error", 
+                message: "Failed to fetch leave data.", 
+                style: "danger"
+            })
+        })
+        return () => aborter.abort()
+    }, [])
 
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
@@ -21,77 +67,118 @@ export default function LeaveTypeDetailPage() {
                     <BreadcrumbItem title="/"/>
                     <BreadcrumbItem title="Leave Types" to='/leaves/types'/>
                     <BreadcrumbItem title="/"/>
-                    <BreadcrumbItem title="New" current/>
+                    <BreadcrumbItem title={type === 'new' ? 'New' : 'Update'} current/>
                 </Breadcrumb>
                 <div className="grow"/>
-                {/* <GhostButton to="settings" rightIcon='settings'>Leave Types</GhostButton> */}
-                {/* <FilledButton to="requests" rightIcon='arrow-right'>New Type</FilledButton> */}
             </div>
             {/* Title */}
             <div className="flex flex-col">
-                <h1 className="text-neutral-900 text-tl font-tl">New Type</h1>
-                <p className="text-neutral-900 text-bm font-bm">Create a new leave type.</p>
+                <h1 className="text-neutral-900 text-tl font-tl">{type === 'new' ? 'New Leave': 'Update Leave'}</h1>
+                <p className="text-neutral-900 text-bm font-bm">
+                {type === 'new' 
+                ? 'Create a new leave type.'
+                : 'Update leave settings.'}
+                </p>
             </div>
             <div className="grid grid-cols-2">
                 <div className="flex flex-col gap-[20px]">
                     <TextField 
                         title='Name (required)' 
                         placeholder="eg. Casual Leave"
-                        // text={employee.username}
+                        text={leave.name}
                         // disabled={type === 'detail'}
                         required
-                        // onChange={(e) => {
-                        //     dispatchEmployee({value: {
-                        //         username: e.target.value
-                        //     }})
-                        // }}
+                        onChange={(e) => {
+                            setLeave(x => ({...x, name: e.target.value}))
+                        }}
                     />
                     <section className="grid grid-cols-2 gap-[20px]">
                         <TextField 
                             title='Initial (days)' 
                             placeholder="eg. Casual Leave"
-                            // text={employee.username}
-                            // disabled={type === 'detail'}
+                            text={leave.initial}
                             required
-                            // onChange={(e) => {
-                            //     dispatchEmployee({value: {
-                            //         username: e.target.value
-                            //     }})
-                            // }}
+                            onChange={(e) => {
+                                let value = e.target.value
+                                if (!value) value = '0'
+                                let int = parseInt(value)
+                                if (isNaN(int) || int < 0) return
+                                setLeave({...leave, initial: int})
+                            }}
                         />
                         <TextField 
                             title='Max (days)' 
                             placeholder="eg. Casual Leave"
-                            // text={employee.username}
-                            // disabled={type === 'detail'}
+                            text={leave.max}
                             required
-                            // onChange={(e) => {
-                            //     dispatchEmployee({value: {
-                            //         username: e.target.value
-                            //     }})
-                            // }}
+                            onChange={(e) => {
+                                let value = e.target.value
+                                if (!value) value = '0'
+                                let int = parseInt(value)
+                                if (isNaN(int) || int < 0) return
+                                setLeave({...leave, max: int})
+                            }}
                         />
                     </section>
                     <section className="grid grid-cols-1 gap-[20px]">
                         <SelectBox 
                             title='Gender' 
                             placeholder="eg. Casual Leave"
-                            // text={employee.username}
+                            text={leave.gender}
                             // disabled={type === 'detail'}
+                            selected={['All', 'Male', 'Female', 'Unspecified'].indexOf(leave.gender)}
                             required
-                            options={'Male,Female,Unspecified'.split(',')}
-                            // onChange={(e) => {
-                            //     dispatchEmployee({value: {
-                            //         username: e.target.value
-                            //     }})
-                            // }}
+                            options={['All', 'Male', 'Female', 'Unspecified']}
+                            onSelect={(item) => {
+                                setLeave({
+                                    ...leave, 
+                                    gender: item
+                                })
+                            }}
                         />
                     </section>
 
-                    <section className="grid grid-cols-3 gap-[20px]">
-                        <CheckBox label="Halfday allowed"/>
-                        <CheckBox label="Carried"/>
-                        <CheckBox label="Earnable"/>
+                    <section className="grid grid-cols-2 gap-[20px]">
+                        <CheckBox 
+                            label="Halfday allowed"
+                            checked={!!leave.halfday}
+                            onChange={e => {
+                                setLeave({
+                                    ...leave, 
+                                    halfday: Number(e.target.checked)
+                                })
+                            }}
+                        />
+                        <CheckBox 
+                            label="Carry Next Year"
+                            checked={!!leave.carried}
+                            onChange={e => {
+                                setLeave({
+                                    ...leave, 
+                                    carried: Number(e.target.checked)
+                                })
+                            }}
+                        />
+                        <CheckBox
+                            label="Earnable"
+                            checked={!!leave.earnable}
+                            onChange={e => {
+                                setLeave({
+                                    ...leave, 
+                                    earnable: Number(e.target.checked)
+                                })
+                            }}
+                        />
+                        <CheckBox
+                            label="Enabled"
+                            checked={!!leave.enabled}
+                            onChange={e => {
+                                setLeave({
+                                    ...leave, 
+                                    enabled: Number(e.target.checked)
+                                })
+                            }}
+                        />
                         {/* <div className="flex items-center gap-[10px]">
                         </div> */}
                     </section>

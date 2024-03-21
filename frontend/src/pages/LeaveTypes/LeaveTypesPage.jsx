@@ -6,8 +6,11 @@ import FilledButton from "../../components/Buttons/FilledButton";
 import GhostButton from "../../components/Buttons/GhostButton";
 import { useAuthContext } from "../../hooks/AuthStateContext";
 import useAllLeaveTypes from "../../hooks/useAllLeaveTypes";
+import { useNavigate } from "react-router-dom";
 
 export default function LeaveTypesPage() {
+
+    let navigate = useNavigate()
 
     // let schedules = []
     // for (let i = 0; i < 12; i++) schedules.push({id: i})
@@ -79,6 +82,9 @@ export default function LeaveTypesPage() {
                                     halfday={x.halfday}
                                     carried={x.carried}
                                     earnable={x.earnable}
+                                    onClick={() => {
+                                        navigate(x.id)
+                                    }}
                                 />)}
                             </tbody>
                         </table>
@@ -90,7 +96,7 @@ export default function LeaveTypesPage() {
     );
 }
 
-function LeaveTypeRow({no, name, initial, gender, max, halfday, carried, earnable}) {
+function LeaveTypeRow({no, name, initial, gender, max, halfday, carried, earnable, onClick}) {
     return (
         <tr className="
         group
@@ -102,7 +108,9 @@ function LeaveTypeRow({no, name, initial, gender, max, halfday, carried, earnabl
         cursor-pointer
         transition-all
         [&>*]:transition-all
-        ">
+        "
+        onClick={onClick}
+        >
             <td className="sticky left-0 text-center font-bs text-bs">
                 {no ?? ''}
             </td>
