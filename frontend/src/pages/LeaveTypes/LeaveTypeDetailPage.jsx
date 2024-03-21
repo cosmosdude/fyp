@@ -7,14 +7,14 @@ import GhostButton from "../../components/Buttons/GhostButton";
 import SelectBox from "../../components/SelectBox";
 import TextField from "../../components/TextField";
 import CheckBox from "../../components/CheckBox";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { apiPaths, apiRoute } from "../../configs/api.config";
 import runAsyncWithAborter from "../../utils/runAsyncWithAborter";
 import { useAuthContext } from "../../hooks/AuthStateContext";
 import { usePushNoti } from "../../components/Noti/NotiSystem";
 
 export default function LeaveTypeDetailPage() {
-
+    let navigate = useNavigate()
     let { id } = useParams()
     let type = 'update'
     if (id === 'new') type = 'new'
@@ -24,8 +24,9 @@ export default function LeaveTypeDetailPage() {
     let auth = useAuthContext()
     let [leave, setLeave] = useState({
         name: "", initial: 0,
-        max: 0, gender: "",
-        halfday: 0, carried: 0, earnable: 0
+        max: 0, gender: "All",
+        halfday: 0, carried: 0, 
+        earnable: 0, enabled: 1
     })
 
     useEffect(() => {
@@ -56,6 +57,68 @@ export default function LeaveTypeDetailPage() {
         return () => aborter.abort()
     }, [])
 
+    function submit() {
+        if (type === 'new') create()
+        else update()
+    }
+
+    async function create() {
+        let f = new FormData()
+        for(const [k,v] of Object.entries(leave)) {
+            // console.log(k, v)
+            f.set(k, v)
+        }
+        try {
+            let res = await fetch(apiRoute(apiPaths.leave.system.create()), {
+                method: 'POST',
+                headers: {
+                    'authorization': `Bearer ${auth}`
+                },
+                body: f
+            })
+
+            if (res.status >= 200 && res.status < 300) {
+                pushNoti({title: "Success", message: "Leave successfully created", style: "success"})
+                navigate(-1)
+            }
+        } catch (error) {
+            pushNoti({
+                title: "Error", 
+                message: error.toString(),
+                style: "danger"
+            })
+        }
+    }
+
+    async function update() {
+        let f = new FormData()
+        for(const [k,v] of Object.entries(leave)) {
+            // console.log(k, v)
+            f.set(k, v)
+        }
+        try {
+            let res = await fetch(apiRoute(apiPaths.leave.system.update(id)), {
+                method: 'PUT',
+                headers: {
+                    'authorization': `Bearer ${auth}`
+                },
+                body: f
+            })
+
+            if (res.status >= 200 && res.status < 300) {
+                pushNoti({title: "Success", message: "Leave successfully updated", style: "success"})
+            } else {
+                pushNoti({title: "Error", message: await res.text(), style: "danger"})
+            }
+        } catch (error) {
+            pushNoti({
+                title: "Error", 
+                message: error.toString(),
+                style: "danger"
+            })
+        }
+    }
+
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
             {/* Top nav */}
@@ -81,7 +144,13 @@ export default function LeaveTypeDetailPage() {
                 </p>
             </div>
             <div className="grid grid-cols-2">
-                <div className="flex flex-col gap-[20px]">
+                <form 
+                    className="flex flex-col gap-[20px]"
+                    onSubmit={(e) => {
+                        e.preventDefault()
+                        submit()
+                    }}
+                    >
                     <TextField 
                         title='Name (required)' 
                         placeholder="eg. Casual Leave"
@@ -123,7 +192,6 @@ export default function LeaveTypeDetailPage() {
                     <section className="grid grid-cols-1 gap-[20px]">
                         <SelectBox 
                             title='Gender' 
-                            placeholder="eg. Casual Leave"
                             text={leave.gender}
                             // disabled={type === 'detail'}
                             selected={['All', 'Male', 'Female', 'Unspecified'].indexOf(leave.gender)}
@@ -169,7 +237,7 @@ export default function LeaveTypeDetailPage() {
                                 })
                             }}
                         />
-                        <CheckBox
+                        {type !== 'new' && <CheckBox
                             label="Enabled"
                             checked={!!leave.enabled}
                             onChange={e => {
@@ -178,16 +246,16 @@ export default function LeaveTypeDetailPage() {
                                     enabled: Number(e.target.checked)
                                 })
                             }}
-                        />
+                        />}
                         {/* <div className="flex items-center gap-[10px]">
                         </div> */}
                     </section>
                     <section className="grid grid-cols-2 gap-[20px]">
                         <FilledButton>
-                            Create
+                            {type === 'new' ? "Create" : "Update"}
                         </FilledButton>
                     </section>
-                </div>
+                </form>
                 
             </div>
         </div>
