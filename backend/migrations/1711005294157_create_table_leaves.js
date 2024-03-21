@@ -11,7 +11,7 @@ module.exports = {
         carried boolean not null default false,
         earnable boolean not null default false,
         enabled boolean not null default true,
-        deleted_at timestamp
+        deleted_at datetime null default null
     )
     `,
     "down": /*sql*/`

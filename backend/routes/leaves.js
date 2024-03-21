@@ -21,6 +21,6 @@ router.get('/', controller.getAll)
 router.post('/leave/', multipart, controller.create)
 router.get('/leave/:id', controller.get)
 router.put('/leave/:id', multipart, controller.update)
-// router.delete('/holiday/:id', controller.delete)
+router.delete('/leave/:id', controller.delete)
 
 module.exports = router

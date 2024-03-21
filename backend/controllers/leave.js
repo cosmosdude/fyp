@@ -70,6 +70,8 @@ exports.update = async (req, res) => {
 
     let { id } = req.params
 
+    if (!id) return res.sendStatus(404)
+
     let zResult = z.object({
         name: z.string().min(1).optional(),
         initial: z.coerce.number().optional(), 
@@ -90,6 +92,25 @@ exports.update = async (req, res) => {
     await db.promise().query(/*sql*/`
         update leaves set ? where id=?
     `,[zResult.data, id])
+
+    let [results] = await db.promise().query(/*sql*/`
+        select * from leaves where id=?
+    `, [id])
+
+    res.send(results[0])
+}
+
+/**
+ * Flag a leave type as deleted
+*/
+exports.delete = async (req, res) => {
+    let { id } = req.params
+    
+    if (!id) return res.sendStatus(404)
+
+    await db.promise().query(/*sql*/`
+        update leaves set deleted_at=CURRENT_TIMESTAMP() where id=?
+    `, id)
 
     let [results] = await db.promise().query(/*sql*/`
         select * from leaves where id=?
