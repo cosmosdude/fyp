@@ -3,13 +3,24 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Medium.ttf">
+            <string>Inter-Medium</string>
+        </array>
+        <array key="Inter-SemiBold.ttf">
+            <string>Inter-SemiBold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeaveController" customModule="fyp" customModuleProvider="target">
             <connections>
+                <outlet property="leaveRequestListView" destination="59m-W7-rUR" id="JCZ-tq-7es"/>
+                <outlet property="leaveTypeListView" destination="QNT-uL-JpB" id="NZo-aw-EjI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,23 +29,71 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leave" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1Z-3c-e4O">
-                    <rect key="frame" x="174.33333333333334" y="415.66666666666669" width="44.666666666666657" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="393" placeholderIntrinsicHeight="109" translatesAutoresizingMaskIntoConstraints="NO" id="EFO-1a-Gmn" customClass="NavBarView" customModule="fyp" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="109"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWv-xh-ols">
+                            <rect key="frame" x="317" y="40" width="56" height="29"/>
+                            <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Request">
+                                <color key="titleColor" name="primary-500"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="1Xf-iS-BuP"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="RWv-xh-ols" firstAttribute="centerY" secondItem="EFO-1a-Gmn" secondAttribute="centerY" id="fG1-cl-jBs"/>
+                        <constraint firstItem="1Xf-iS-BuP" firstAttribute="trailing" secondItem="RWv-xh-ols" secondAttribute="trailing" constant="20" id="iFY-l6-mpg"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Leave"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBackArrowArrow" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QNT-uL-JpB" customClass="LeaveTypeListView" customModule="fyp" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="119" width="393" height="56"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="B2a-f8-pGe"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leave History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWF-hu-WzI">
+                    <rect key="frame" x="20" y="195" width="353" height="22"/>
+                    <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="59m-W7-rUR" customClass="MyLeaveRequestListView" customModule="fyp" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="217" width="393" height="635"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="e1Z-3c-e4O" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="OXC-Oc-pZZ"/>
-                <constraint firstItem="e1Z-3c-e4O" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Vyx-mB-qgK"/>
+                <constraint firstItem="EFO-1a-Gmn" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="2Qn-TJ-kpp"/>
+                <constraint firstItem="HWF-hu-WzI" firstAttribute="top" secondItem="QNT-uL-JpB" secondAttribute="bottom" constant="20" id="Gta-gE-Yhr"/>
+                <constraint firstItem="HWF-hu-WzI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="UkF-do-bgD"/>
+                <constraint firstAttribute="bottom" secondItem="59m-W7-rUR" secondAttribute="bottom" id="Z32-8i-G5F"/>
+                <constraint firstItem="59m-W7-rUR" firstAttribute="top" secondItem="HWF-hu-WzI" secondAttribute="bottom" id="cXB-bf-HGi"/>
+                <constraint firstItem="QNT-uL-JpB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hPS-OB-Pcf"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="HWF-hu-WzI" secondAttribute="trailing" constant="20" id="jad-IJ-ukp"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="59m-W7-rUR" secondAttribute="trailing" id="kXc-rH-VWJ"/>
+                <constraint firstItem="EFO-1a-Gmn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="usr-FZ-rnc"/>
+                <constraint firstItem="59m-W7-rUR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="w0p-ef-3Ki"/>
+                <constraint firstItem="QNT-uL-JpB" firstAttribute="top" secondItem="EFO-1a-Gmn" secondAttribute="bottom" constant="10" id="xCa-zo-OjQ"/>
+                <constraint firstItem="EFO-1a-Gmn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ylC-gP-0bS"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QNT-uL-JpB" secondAttribute="trailing" id="zXU-ao-ALg"/>
             </constraints>
-            <point key="canvasLocation" x="56" y="20"/>
+            <point key="canvasLocation" x="58.778625954198468" y="13.380281690140846"/>
         </view>
     </objects>
     <resources>
+        <namedColor name="primary-500">
+            <color red="0.12549019607843137" green="0.29411764705882354" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

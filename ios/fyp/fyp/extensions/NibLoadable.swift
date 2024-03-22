@@ -59,3 +59,19 @@ extension NibLoadable {
     }
     
 }
+
+
+
+final class SampleNibLoadableCell: UIView, NibLoadable {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        loadNibFile()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        loadNibFile()
+    }
+    
+}

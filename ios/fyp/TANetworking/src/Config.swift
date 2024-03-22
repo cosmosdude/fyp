@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import OSLog
 import Alamofire
 
 enum Config {
@@ -27,8 +28,21 @@ public enum Api {
     
 }
 
-public enum ApiPath: String {
-    case login = "api/auth/login"
+public struct ApiPath: RawRepresentable, ExpressibleByStringLiteral {
+
+//    case
     
-    case me = "api/users/user/me"
+    public let rawValue: String
+    public init(rawValue: String) { self.rawValue = rawValue }
+    
+    public init(stringLiteral value: StringLiteralType) { rawValue = value }
+    
+    static let login: Self = "api/auth/login"
+    static let me: Self = "api/users/user/me"
+    static let leaveBalance: Self = "api/leaves/balance"
+    static let myLeaveRequests: Self = "api/leaves/requests/me"
 }
+
+
+
+let console = Logger(subsystem: "TANetworking", category: "networking")

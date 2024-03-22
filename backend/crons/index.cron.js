@@ -1,8 +1,18 @@
 const cron = require('node-cron')
 
 exports.schedule = () => {
-    cron.schedule("*/1 1 * * * *", function () {
-        console.log("---------------------");
-        console.log("running a task every 1 seconds");
+    cron.schedule("*/5 * * * * *", function () {
+        console.log("--");
+        console.log('--')
+        console.log("+-------------------------+");
+        let addresses = require('os').networkInterfaces()
+        let en0 = addresses?.en0
+        let ipv4 = en0?.filter(x => x.family === 'IPv4')?.[0]
+        if (ipv4) {
+            console.log(`| http://${ipv4.address}:${3000} |`)
+        } else {
+            console.log(`Not Connected to a network.`)
+        }
+        console.log("+-------------------------+");
     });
 }

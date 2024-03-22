@@ -321,7 +321,7 @@ exports.user = {
             ulr.*,
 
             l.name as leave_name,
-            
+
             u1.first_name as requester_first_name, 
             u1.last_name as requester_last_name,
             f1.path as requester_avatar_path,
@@ -342,8 +342,8 @@ exports.user = {
             left join files as f2 on u2.avatar_id=f2.id
             left join users as u3 on u3.id=ulr.responder_id
             left join files as f3 on u3.avatar_id=f3.id
-            order by ulr.responded_at desc, ulr.requested_at desc
             where ulr.requester_id=?
+            order by ulr.responded_at desc, ulr.requested_at desc
         `, auth.id)
 
         res.json(requests)

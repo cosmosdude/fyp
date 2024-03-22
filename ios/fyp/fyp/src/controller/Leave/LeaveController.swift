@@ -6,9 +6,16 @@
 //
 
 import UIKit
+import Combine
 
 class LeaveController: UIViewController {
 
+    @IBOutlet private(set) var leaveTypeListView: LeaveTypeListView!
+    @IBOutlet private(set) var leaveRequestListView: MyLeaveRequestListView!
+    
+    let leaveTypesViewModel = LeaveTypeVM()
+    var bag = Set<AnyCancellable>()
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         tabBarItem?.title = "Leave"
@@ -20,17 +27,23 @@ class LeaveController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        leaveTypesViewModel.$leaveTypes.receive(on: DispatchQueue.main)
+            .sink { [weak self] in self?.leaveTypeListView.leaveTypes = $0 }
+            .store(in: &bag)
+        
+        leaveTypesViewModel.$leaveRequests.receive(on: DispatchQueue.main)
+            .sink { [weak self] in self?.leaveRequestListView.requests = $0 }
+            .store(in: &bag)
+        
+        leaveTypesViewModel.fetchLeaveTypes()
+        leaveTypesViewModel.fetchLeaveRequests()
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        leaveTypesViewModel.fetchLeaveTypes()
+        leaveTypesViewModel.fetchLeaveRequests()
     }
-    */
 
 }

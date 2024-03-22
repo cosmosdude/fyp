@@ -8,9 +8,13 @@
 import UIKit
 import Kingfisher
 import TANetworking
+import Combine
 
 class ProfileController: UIViewController {
 
+    let userViewModel = UserVM()
+    var bag = Set<AnyCancellable>()
+    
     @IBOutlet private var profileImageView: UIImageView!
     
     @IBOutlet private var firstNameTF: TextField!
@@ -49,8 +53,16 @@ class ProfileController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let user = UserModel.user
+        userViewModel.$user.receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.render(user: $0)
+            }.store(in: &bag)
         
+        super.viewDidLoad()
+    }
+    
+    private func render(user: UserData?) {
+
         profileImageView.kf.setImage(
             with: URL(string: Api.route(user?.avatarPath ?? ""))
         )

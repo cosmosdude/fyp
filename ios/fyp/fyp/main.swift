@@ -13,3 +13,8 @@ _ = UIApplicationMain(
     nil,
     NSStringFromClass(AppDelegate.self)
 )
+
+
+let aa: Any = ["Hello": "World"]
+
+(*aa)?["Hello"]

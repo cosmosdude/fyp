@@ -33,9 +33,9 @@ class BaseTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewControllers = [
-//            DashboardController(),
-//            LeaveController(),
-//            InboxController(),
+            DashboardController(),
+            LeaveController(),
+            InboxController(),
             ProfileController()
         ]
         tabBar.tintColor = UIColor(named: "primary")
@@ -59,7 +59,9 @@ class BaseTabBarController: UITabBarController {
         tabBar.backgroundColor = .white
         
         setTabItems([
-//            .init(title: "Dashboard", image: UIImage(named: "icon.tab.layout-grid")),
+            .init(title: "Dashboard", image: UIImage(named: "icon.tab.layout-grid")),
+            .init(title: "Leave", image: UIImage(named: "icon.tab.calendar-days")),
+            .init(title: "Inbox", image: UIImage(named: "icon.tab.bell")),
             .init(title: "Profile", image: UIImage(named: "icon.tab.user"))
         ])
 //        setTabItem(0, title: "Dashboard")
