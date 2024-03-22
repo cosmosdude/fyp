@@ -58,7 +58,7 @@ class LeaveRequestController: UIViewController {
                     self?.render(spinner: false)
                     self?.presentAlert(
                         title: "Error",
-                        message: "Unable to request leave"
+                        message: error
                     )
                 case nil: ()
                 }

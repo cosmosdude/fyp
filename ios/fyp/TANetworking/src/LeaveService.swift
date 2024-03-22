@@ -105,9 +105,15 @@ public struct LeaveService {
         
         let res = await req.serializingString().response
         
+        let statusCode = res.response?.statusCode ?? 0
+        
+        if statusCode >= 400  {
+            throw try res.result.get()
+        }
+        
         guard (200..<300) ~= res.response?.statusCode ?? 0 else {
             print(res)
-            throw "Unable to get leave requests"
+            throw "Unknown Error (status: \(statusCode))"
         }
         
     }

@@ -58,7 +58,9 @@ final class RequestLeaveVM {
             )
             status = .success
         } catch {
-            status = .failure(error: "Unable to request leave")
+            status = .failure(
+                error: "Unable to request leave.\nReason: \(error.localizedDescription)"
+            )
         }
         
     }
