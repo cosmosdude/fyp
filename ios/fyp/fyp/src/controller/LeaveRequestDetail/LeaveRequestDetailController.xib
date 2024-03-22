@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeaveRequestDetailController" customModule="fyp" customModuleProvider="target">
             <connections>
+                <outlet property="buttonStack" destination="x7Z-1S-9gh" id="8wf-b0-Rx4"/>
                 <outlet property="fromBox" destination="xjm-l0-X2z" id="7xd-4i-qlT"/>
                 <outlet property="leaveTypeBox" destination="mTv-W2-is3" id="wc1-mU-1mv"/>
                 <outlet property="navBar" destination="cyv-RB-Piz" id="f5e-R2-gFD"/>
@@ -20,6 +21,7 @@
                 <outlet property="responseBox" destination="YQM-Jp-479" id="gCr-Hi-RPW"/>
                 <outlet property="responseContainer" destination="lsb-EJ-2KS" id="sJA-zD-nwW"/>
                 <outlet property="responseTextBox" destination="69v-Gv-jCq" id="gkN-AM-Pgi"/>
+                <outlet property="spinner" destination="S7E-UO-3lG" id="VFH-Ym-TRu"/>
                 <outlet property="statusBox" destination="3Or-C9-CTl" id="QGf-ei-Eq0"/>
                 <outlet property="toBox" destination="kf3-73-brM" id="WK7-xj-DKB"/>
                 <outlet property="typeBox" destination="aKy-1z-oU0" id="yjn-qa-QCx"/>
@@ -187,6 +189,12 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="title" value="Reason"/>
                                             </userDefinedRuntimeAttributes>
                                         </view>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="S7E-UO-3lG">
+                                            <rect key="frame" x="0.0" y="10" width="353" height="38"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="38" id="imZ-Iy-vhZ"/>
+                                            </constraints>
+                                        </activityIndicatorView>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="x7Z-1S-9gh">
                                             <rect key="frame" x="0.0" y="20" width="353" height="38"/>
                                             <subviews>
@@ -200,6 +208,9 @@
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="__style" value="danger"/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="didTapReject" destination="-1" eventType="touchUpInside" id="MKN-Mo-Vfh"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZe-6q-doy" customClass="FilledButton" customModule="fyp" customModuleProvider="target">
                                                     <rect key="frame" x="186.66666666666663" y="0.0" width="166.33333333333337" height="38"/>
@@ -211,6 +222,9 @@
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="__style" value="success"/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="didTapApprove" destination="-1" eventType="touchUpInside" id="IzR-EF-Lsz"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>

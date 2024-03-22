@@ -49,6 +49,10 @@ public struct ApiPath: RawRepresentable, ExpressibleByStringLiteral {
         .init("api/leaves/requests/request/\(id)")
     }
     
+    static func respondLeaveRequest(id: String) -> Self {
+        .init("api/leaves/requests/request/\(id)/response")
+    }
+    
     static let hrManagers: Self = "api/users/hrs"
     static let myManagers: Self = "api/users/user/managers"
     

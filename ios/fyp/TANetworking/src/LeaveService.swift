@@ -143,6 +143,48 @@ public struct LeaveService {
         }
         
     }
+    
+    public enum ResponseStatus: String {
+        case approve = "approved"
+        case reject = "rejected"
+    }
+    
+    public func respondLeaveRequest(
+        id: String, // approved | rejected
+        reason: String,
+        status: ResponseStatus
+    ) async throws {
+        
+        let req = AF.request(
+            Api.route(.respondLeaveRequest(id: id)), 
+            method: .put,
+            parameters: [
+                "response_msg": reason,
+                "status": status.rawValue
+            ],
+            encoder: URLEncodedFormParameterEncoder(destination: .httpBody),
+            headers: [
+                .authorization(bearerToken: accessToken)
+            ]
+        )
+        
+        req.responseString { res in print("response", res.value ?? "") }
+        
+        let res = await req.serializingString().response
+        
+        let statusCode = res.response?.statusCode ?? 0
+        
+        if statusCode >= 400  {
+            throw try res.result.get()
+        }
+        
+        guard (200..<300) ~= res.response?.statusCode ?? 0 else {
+            print(res)
+            throw "Unknown Error (status: \(statusCode))"
+        }
+        
+    }
+    
 }
 
 

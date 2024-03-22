@@ -33,8 +33,17 @@ class LeaveRequestDetailController: UIViewController {
     
     @IBOutlet private var responseContainer: UIView!
     @IBOutlet private var responseTextBox: TextBox!
+    
+    @IBOutlet private var spinner: UIActivityIndicatorView!
+    @IBOutlet private var buttonStack: UIStackView!
 
     let detailVM = LeaveRequestDetailVM()
+    let responseVM = RespondLeaveVM()
+    
+    func render(spinner flag: Bool) {
+        buttonStack.isHidden = flag
+        spinner.isHidden = !flag
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,11 +51,32 @@ class LeaveRequestDetailController: UIViewController {
             self, action: #selector(self.pop), for: .touchUpInside
         )
         
-        detailVM.fetch(id: leaveRequestID)
-        render(nil)
+        // prepare viewmodels
+        responseVM.leaveRequestId = leaveRequestID
+        responseVM.$status.receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                switch $0 {
+                case .processing:
+                    self?.render(spinner: true)
+                case .success:
+                    self?.render(spinner: false)
+                    self?.pop()
+                case .failure(error: let error):
+                    self?.render(spinner: false)
+                    self?.presentAlert(
+                        title: "Error",
+                        message: error
+                    )
+                case nil: ()
+                }
+            }.store(in: &bag)
         
         detailVM.$leaveRequestDetail.receive(on: DispatchQueue.main)
             .sink { [weak self] in self?.render($0) }.store(in: &bag)
+        detailVM.fetch(id: leaveRequestID)
+        
+        // setup UI
+        render(nil)
     }
     
     private func render(_ request: LeaveRequest?) {
@@ -77,19 +107,26 @@ class LeaveRequestDetailController: UIViewController {
         responseBox.text = request.responseMsg
         responseBox.isHidden = request.responseMsg?.isEmpty ?? true
         
-        if (request.status == "pending") {
+        let roleId = Int(user?.roleID ?? "4") ?? 4
+        
+        // status is pending and role is not employee i.e (admin, hr, line manager)
+        if (request.status == "pending" && roleId < 4) {
             responseContainer.isHidden = false
         }
     }
     
     @IBAction
     private func didTapReject() {
-        
+        responseVM.respond(.init(
+            message: responseTextBox.text ?? "", status: .reject
+        ))
     }
     
     @IBAction
     private func didTapApprove() {
-        
+        responseVM.respond(.init(
+            message: responseTextBox.text ?? "", status: .approve
+        ))
     }
 
 }
