@@ -29,17 +29,17 @@
                     <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qhp-6w-st2">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="503"/>
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="344"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <connections>
                                 <action selector="dismiss" destination="-1" eventType="touchUpInside" id="YaH-57-pN0"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djb-u2-n6Z">
-                            <rect key="frame" x="0.0" y="503" width="390" height="341"/>
+                            <rect key="frame" x="0.0" y="344" width="390" height="500"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XGJ-lJ-xCV">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="307"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="466"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QG7-Z2-g4l">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
@@ -55,6 +55,9 @@
                                                             <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="14"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                             <state key="normal" title="Today"/>
+                                                            <connections>
+                                                                <action selector="didTapToday" destination="-1" eventType="touchUpInside" id="F34-xl-z1f"/>
+                                                            </connections>
                                                         </button>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SuW-Xo-t0V">
                                                             <rect key="frame" x="75" y="0.0" width="240" height="50"/>
@@ -68,6 +71,9 @@
                                                             <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="14"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                             <state key="normal" title="Done"/>
+                                                            <connections>
+                                                                <action selector="didTapDone" destination="-1" eventType="touchUpInside" id="5dG-2U-MSx"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -82,7 +88,7 @@
                                             </constraints>
                                         </view>
                                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="Ul8-VV-tDK">
-                                            <rect key="frame" x="0.0" y="50" width="390" height="257"/>
+                                            <rect key="frame" x="0.0" y="50" width="390" height="416"/>
                                         </datePicker>
                                     </subviews>
                                 </stackView>

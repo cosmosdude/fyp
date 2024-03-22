@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectionController" customModule="fyp" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="mT0-KI-qoj" id="cSq-pY-qd4"/>
                 <outlet property="view" destination="6LR-8W-zc3" id="sRk-r2-cF2"/>
             </connections>
         </placeholder>

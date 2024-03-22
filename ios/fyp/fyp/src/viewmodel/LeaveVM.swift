@@ -12,6 +12,15 @@ import TANetworking
 final class LeaveVM: @unchecked Sendable {
     
     @Published
+    private(set) var selectedLeaveType: LeaveType?
+    var selectedLeaveTypeIndex: Int? {
+        didSet {
+            guard let selectedLeaveTypeIndex else { return selectedLeaveType = nil }
+            selectedLeaveType = leaveTypes[selectedLeaveTypeIndex]
+        }
+    }
+    
+    @Published
     private(set) var leaveTypes: [LeaveType] = []
     
     @Published

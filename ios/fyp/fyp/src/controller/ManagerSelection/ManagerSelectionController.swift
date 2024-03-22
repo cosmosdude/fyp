@@ -23,7 +23,7 @@ class ManagerSelectionController: UIViewController {
     init(managers: [ItemGroup<String, [Manager]>], selected: IndexPath? = nil) {
         self.managers = managers
         self.selected = selected
-        super.init(nibName: "ManagerSelectionController", bundle: nil)
+        super.init(nibName: nil, bundle: nil)
     }
 
     @available(*, unavailable)

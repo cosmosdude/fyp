@@ -18,6 +18,9 @@ class LeaveRequestController: UIViewController {
     
     private var bag = Set<AnyCancellable>()
     
+    let fromDateVM = DateVM()
+    let toDateVM = DateVM()
+    let leaveVM = LeaveVM()
     let managerVM = ManagerVM()
     
     override func viewDidLoad() {
@@ -25,6 +28,23 @@ class LeaveRequestController: UIViewController {
         navBar.backArrowBtn.addTarget(
             self, action: #selector(self.pop), for: .touchUpInside
         )
+        
+        fromDateVM.$dateText.receive(on: DispatchQueue.main)
+            .sink { [weak box = fromDateSelectBox] in
+                box?.text = $0 ?? "Select date"
+            }.store(in: &bag)
+        
+        toDateVM.$dateText.receive(on: DispatchQueue.main)
+            .sink { [weak box = toDateSelectBox] in
+                box?.text = $0 ?? "Select date"
+            }.store(in: &bag)
+        
+        leaveVM.$selectedLeaveType.receive(on: DispatchQueue.main)
+            .sink { [weak leaveBox = leaveSelectBox] in
+                guard let leave = $0 else { return }
+                leaveBox?.text = "\(leave.name) - \(leave.balance) day(s)"
+                
+            }.store(in: &bag)
         
         managerVM.$selectedManager.receive(on: DispatchQueue.main)
             .sink { [weak self] in
@@ -34,24 +54,38 @@ class LeaveRequestController: UIViewController {
                 
             }.store(in: &bag)
         
+        leaveVM.fetchLeaveTypes()
         managerVM.fetchManagers()
     }
     
     @IBAction
     private func didTapFromDate() {
         let picker = DateSelectionController()
+        picker.didSelectDate = { [weak fromDateVM] in
+            fromDateVM?.date = $0
+        }
         present(picker, animated: true)
     }
     
     @IBAction
     private func didTapToDate() {
         let picker = DateSelectionController()
+        picker.didSelectDate = { [weak toDateVM] in
+            toDateVM?.date = $0
+        }
         present(picker, animated: true)
     }
     
     @IBAction
     private func didTapLeave() {
-        let picker = SelectionController()
+        let picker = SelectionController(
+            items: leaveVM.leaveTypes.map { "\($0.name) - \($0.balance) day(s)" },
+            selected: nil
+        )
+        picker.didSelectItemAt = {
+            [weak self] index in
+            self?.leaveVM.selectedLeaveTypeIndex = index.row
+        }
         present(picker, animated: true)
     }
     
