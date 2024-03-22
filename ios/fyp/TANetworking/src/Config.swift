@@ -33,6 +33,7 @@ public struct ApiPath: RawRepresentable, ExpressibleByStringLiteral {
 //    case
     
     public let rawValue: String
+    public init(_ rawValue: String) { self.rawValue = rawValue }
     public init(rawValue: String) { self.rawValue = rawValue }
     
     public init(stringLiteral value: StringLiteralType) { rawValue = value }
@@ -43,6 +44,10 @@ public struct ApiPath: RawRepresentable, ExpressibleByStringLiteral {
     static let leaveBalance: Self = "api/leaves/balance"
     
     static let myLeaveRequests: Self = "api/leaves/requests/me"
+    
+    static func leaveRequestDetail(id: String) -> Self {
+        .init("api/leaves/requests/request/\(id)")
+    }
     
     static let hrManagers: Self = "api/users/hrs"
     static let myManagers: Self = "api/users/user/managers"

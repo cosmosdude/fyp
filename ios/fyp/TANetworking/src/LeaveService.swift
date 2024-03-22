@@ -38,6 +38,32 @@ public struct LeaveService {
         return data
     }
     
+    public func leaveRequestDetail(id: String) async throws -> LeaveRequestData {
+        let req = AF.request(
+            Api.route(.leaveRequestDetail(id: id)), method: .get,
+            headers: [
+                .authorization(bearerToken: accessToken)
+            ]
+        )
+        req.responseString { res in print("response", res.value ?? "") }
+        
+        let res = await req.serializingDecodable(LeaveRequestData.self).response
+        
+        guard (200..<300) ~= res.response?.statusCode ?? 0 else {
+            print(res)
+            throw "Unable to get leave request detail"
+        }
+        
+        let data: LeaveRequestData
+        do {
+            data = try res.result.get()
+        } catch {
+            console.error("Error \(error)")
+            throw error
+        }
+        return data
+    }
+    
     public func fetchMyLeaveRequests() async throws -> [LeaveRequestData] {
         
         let req = AF.request(

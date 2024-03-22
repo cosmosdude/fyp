@@ -118,7 +118,7 @@ class LeaveRequestController: UIViewController {
     private func didTapLeave() {
         let picker = SelectionController(
             items: leaveVM.leaveTypes.map { "\($0.name) - \($0.balance) day(s)" },
-            selected: nil
+            selected: leaveVM.selectedLeaveTypeIndex.map{IndexPath(row: $0, section: 0)}
         )
         picker.didSelectItemAt = {
             [weak self] index in

@@ -13,7 +13,8 @@ class SelectionCell: NibTableViewCell {
     @IBOutlet private(set) var checkmark: UIImageView!
     
     func renderSelected(_ flag: Bool) {
-        checkmark.isHidden = !flag
+        checkmark.alpha = flag ? 1 : 0
+        label.textColor = UIColor(named: flag ? "primary": "text")
     }
     
     func render(label: String) {

@@ -34,4 +34,32 @@ struct LeaveRequest: NetworkTypeProxy {
         return Self.f.date(from: self.toDate)
     }
     
+    var requesterAvatarURL: URL? {
+        self.requesterAvatarPath.map(Api.route).flatMap(URL.init(string:))
+    }
+    
+    var requesterFullName: String {
+        [self.requesterFirstName, self.requesterLastName]
+            .compactMap{$0}
+            .joined(separator: " ")
+    }
+    
+    var recipientAvatarURL: URL? {
+        self.recipientAvatarPath.map(Api.route).flatMap(URL.init(string:))
+    }
+    var recipientFullName: String {
+        [self.recipientFirstName, self.recipientLastName]
+            .compactMap{$0}
+            .joined(separator: " ")
+    }
+    
+    var responderAvatarURL: URL? {
+        self.responderAvatarPath.map(Api.route).flatMap(URL.init(string:))
+    }
+    var responderFullName: String {
+        [self.responderFirstName, self.responderLastName]
+            .compactMap{$0}
+            .joined(separator: " ")
+    }
+    
 }

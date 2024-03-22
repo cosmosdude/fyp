@@ -355,6 +355,9 @@ exports.user = {
         let [requests] = await db.promise().query(/*sql*/`
             select 
             ulr.*,
+            
+            l.name as leave_name,
+
             u1.first_name as requester_first_name, 
             u1.last_name as requester_last_name,
             f1.path as requester_avatar_path,
@@ -368,6 +371,7 @@ exports.user = {
             f3.path as responder_avatar_path
 
             from users_leaves_requests as ulr
+            left join leaves as l on l.id=ulr.leave_id
             left join users as u1 on u1.id=ulr.requester_id
             left join files as f1 on u1.avatar_id=f1.id
             left join users as u2 on u2.id=ulr.recipient_id

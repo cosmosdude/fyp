@@ -40,8 +40,15 @@ class LeaveController: UIViewController {
         leaveViewModel.fetchLeaveRequests()
         
         leaveRequestListView.didSelectItemAt = {
-            [weak nav = navigationController] _ in
-            nav?.pushViewController(LeaveRequestDetailController(), animated: true)
+            [weak self, weak nav = navigationController] index in
+            guard let leaveRequest = self?.leaveViewModel.leaveRequests[index.row]
+            else { return }
+            
+            let detail = LeaveRequestDetailController()
+            detail.leaveRequestID = leaveRequest.id
+            nav?.pushViewController(
+                detail, animated: true
+            )
         }
     }
     

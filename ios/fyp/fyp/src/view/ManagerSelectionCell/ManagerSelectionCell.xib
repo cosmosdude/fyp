@@ -30,11 +30,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fMM-Is-bNm">
-                    <rect key="frame" x="20" y="10" width="335" height="55"/>
+                    <rect key="frame" x="20" y="5" width="335" height="65"/>
                     <subviews>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vpg-aR-2SW" customClass="Avatar" customModule="fyp" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="7.6666666666666679" width="40" height="40"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <rect key="frame" x="0.0" y="12.666666666666671" width="40" height="40"/>
+                            <color key="backgroundColor" name="bg-1"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="LvY-Ck-Rjg"/>
                                 <constraint firstAttribute="width" secondItem="Vpg-aR-2SW" secondAttribute="height" multiplier="1:1" id="hfF-b8-bFB"/>
@@ -44,7 +44,7 @@
                                     <real key="value" value="20"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                    <real key="value" value="2"/>
+                                    <real key="value" value="0.0"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                     <color key="value" name="border"/>
@@ -52,7 +52,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6az-5S-yFH">
-                            <rect key="frame" x="50" y="11.666666666666666" width="251" height="31.666666666666671"/>
+                            <rect key="frame" x="50" y="16.666666666666664" width="251" height="31.666666666666664"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mr. Manager" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PP4-GT-KRa">
                                     <rect key="frame" x="0.0" y="0.0" width="251" height="17"/>
@@ -69,7 +69,7 @@
                             </subviews>
                         </stackView>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon.check" translatesAutoresizingMaskIntoConstraints="NO" id="a8I-qc-TRH">
-                            <rect key="frame" x="311" y="15.666666666666668" width="24" height="24.000000000000004"/>
+                            <rect key="frame" x="311" y="20.666666666666671" width="24" height="24"/>
                             <color key="tintColor" name="primary-500"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="a8I-qc-TRH" secondAttribute="height" multiplier="1:1" id="MSU-ti-NTR"/>
@@ -81,9 +81,9 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="fMM-Is-bNm" secondAttribute="bottom" constant="10" id="6wm-1n-oEm"/>
+                <constraint firstAttribute="bottom" secondItem="fMM-Is-bNm" secondAttribute="bottom" constant="5" id="6wm-1n-oEm"/>
                 <constraint firstItem="fMM-Is-bNm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="KNs-4b-zfI"/>
-                <constraint firstItem="fMM-Is-bNm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="ZtN-UR-uiG"/>
+                <constraint firstItem="fMM-Is-bNm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="5" id="ZtN-UR-uiG"/>
                 <constraint firstAttribute="trailing" secondItem="fMM-Is-bNm" secondAttribute="trailing" constant="20" id="pW1-tl-93w"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -92,6 +92,9 @@
     </objects>
     <resources>
         <image name="icon.check" width="24" height="24"/>
+        <namedColor name="bg-1">
+            <color red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="border">
             <color red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
