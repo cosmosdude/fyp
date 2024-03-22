@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SelectBox: UIControl, NibLoadable {
     
@@ -41,6 +42,20 @@ class SelectBox: UIControl, NibLoadable {
         }
     }
     
+    func setImageURL(_ url: URL?) {
+        leftImage.kf.setImage(with: url)
+        leftImage.isHidden = false
+    }
+    
+//    @IBInspectable
+//    var imageURL: URL? {
+//        get { leftImage.image }
+//        set {
+//            leftImage.image = newValue
+//            leftImage.isHidden = newValue == nil
+//        }
+//    }
+    
     @IBInspectable
     var title: String? {
         get { titleLabel.text }
@@ -70,6 +85,11 @@ class SelectBox: UIControl, NibLoadable {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         loadNibFile()
+    }
+    
+    @IBAction
+    private func didTap() {
+        sendActions(for: .touchUpInside)
     }
     
 }

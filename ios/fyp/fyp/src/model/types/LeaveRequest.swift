@@ -9,17 +9,15 @@ import Foundation
 import TANetworking
 
 @dynamicMemberLookup
-struct LeaveRequest {
+struct LeaveRequest: NetworkTypeProxy {
     
-    private var data: LeaveRequestData
+    let value: LeaveRequestData
     
-    init(_ data: LeaveRequestData) {
-        self.data = data
-    }
+    init(_ value: LeaveRequestData) { self.value = value }
     
-    subscript<T>(dynamicMember keyPath: KeyPath<LeaveRequestData, T>) -> T {
-        get { data[keyPath: keyPath] }
-    }
+//    subscript<T>(dynamicMember keyPath: KeyPath<LeaveRequestData, T>) -> T {
+//        get { value[keyPath: keyPath] }
+//    }
     
     static let f = {
         let f = DateFormatter()

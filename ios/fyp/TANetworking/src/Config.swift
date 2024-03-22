@@ -39,8 +39,13 @@ public struct ApiPath: RawRepresentable, ExpressibleByStringLiteral {
     
     static let login: Self = "api/auth/login"
     static let me: Self = "api/users/user/me"
+    
     static let leaveBalance: Self = "api/leaves/balance"
+    
     static let myLeaveRequests: Self = "api/leaves/requests/me"
+    
+    static let hrManagers: Self = "api/users/hrs"
+    static let myManagers: Self = "api/users/user/managers"
 }
 
 

@@ -16,7 +16,7 @@ extension NibProvider {
     
     var nib: UINib? {
         return UINib(
-            nibName: NSStringFromClass(Self.self)
+            nibName: NSStringFromClass(type(of: self))
                 .split(separator: ".")
                 .map(String.init)
                 .last ?? "",
@@ -64,7 +64,7 @@ extension NibLoadable {
 
 
 
-final class NibView: UIView, NibLoadable {
+class NibView: UIView, NibLoadable {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -78,7 +78,7 @@ final class NibView: UIView, NibLoadable {
     
 }
 
-final class NibControl: UIControl, NibLoadable {
+class NibControl: UIControl, NibLoadable {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -92,7 +92,7 @@ final class NibControl: UIControl, NibLoadable {
     
 }
 
-final class NibTableViewCell: UITableViewCell, NibLoadable {
+class NibTableViewCell: UITableViewCell, NibLoadable {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -106,7 +106,7 @@ final class NibTableViewCell: UITableViewCell, NibLoadable {
     
 }
 
-final class NibCollectionViewCell: UITableViewCell, NibLoadable {
+class NibCollectionViewCell: UITableViewCell, NibLoadable {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

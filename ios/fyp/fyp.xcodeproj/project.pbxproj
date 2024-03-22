@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C3995F0771EF0F71A4891CF2 /* Pods_fyp_TANetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30EB8DB9F009CDC13F8FEC0F /* Pods_fyp_TANetworking.framework */; };
 		F015DA87659FB74C22588EE0 /* Pods_fyp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0C488B1DF34BC7F9D71777A /* Pods_fyp.framework */; };
+		F31733E62BADB4D80018AA05 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31733E42BADB4D80018AA05 /* Avatar.swift */; };
+		F31733E72BADB4D80018AA05 /* Avatar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31733E52BADB4D80018AA05 /* Avatar.xib */; };
 		F317843F2BAD328600AD8110 /* UserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F317843E2BAD328600AD8110 /* UserVM.swift */; };
 		F31784432BAD36DF00AD8110 /* NavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31784412BAD36DF00AD8110 /* NavBarView.swift */; };
 		F31784442BAD36DF00AD8110 /* NavBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31784422BAD36DF00AD8110 /* NavBarView.xib */; };
@@ -36,6 +38,13 @@
 		F31784752BAD52EB00AD8110 /* LeaveRequestController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31784732BAD52EB00AD8110 /* LeaveRequestController.xib */; };
 		F31784792BAD55EF00AD8110 /* SelectBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31784772BAD55EF00AD8110 /* SelectBox.swift */; };
 		F317847A2BAD55EF00AD8110 /* SelectBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31784782BAD55EF00AD8110 /* SelectBox.xib */; };
+		F330314D2BADC1090053005D /* DateSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F330314B2BADC1090053005D /* DateSelectionController.swift */; };
+		F330314E2BADC1090053005D /* DateSelectionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F330314C2BADC1090053005D /* DateSelectionController.xib */; };
+		F33031522BADC1180053005D /* SelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33031502BADC1180053005D /* SelectionController.swift */; };
+		F33031532BADC1180053005D /* SelectionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33031512BADC1180053005D /* SelectionController.xib */; };
+		F33031552BADC78A0053005D /* ManagerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33031542BADC78A0053005D /* ManagerVM.swift */; };
+		F33031572BADC8D20053005D /* ManagerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33031562BADC8D20053005D /* ManagerData.swift */; };
+		F33031592BADCB0D0053005D /* NetworkTypeProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33031582BADCB0D0053005D /* NetworkTypeProxy.swift */; };
 		F33AA1062BA4BFE000119193 /* TANetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = F33AA1052BA4BFE000119193 /* TANetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F33AA1092BA4BFE000119193 /* TANetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33AA1032BA4BFE000119193 /* TANetworking.framework */; };
 		F33AA10A2BA4BFE000119193 /* TANetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F33AA1032BA4BFE000119193 /* TANetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -49,6 +58,12 @@
 		F38A71DF2BAD58FF00A0E12F /* TextBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = F38A71DD2BAD58FF00A0E12F /* TextBox.xib */; };
 		F38A71E32BAD9C0B00A0E12F /* LeaveRequestDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A71E12BAD9C0B00A0E12F /* LeaveRequestDetailController.swift */; };
 		F38A71E42BAD9C0B00A0E12F /* LeaveRequestDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F38A71E22BAD9C0B00A0E12F /* LeaveRequestDetailController.xib */; };
+		F38A71E82BADB0EE00A0E12F /* ManagerSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A71E62BADB0EE00A0E12F /* ManagerSelectionController.swift */; };
+		F38A71E92BADB0EE00A0E12F /* ManagerSelectionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F38A71E72BADB0EE00A0E12F /* ManagerSelectionController.xib */; };
+		F38A71ED2BADB10800A0E12F /* ManagerSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A71EB2BADB10800A0E12F /* ManagerSelectionCell.swift */; };
+		F38A71EE2BADB10800A0E12F /* ManagerSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F38A71EC2BADB10800A0E12F /* ManagerSelectionCell.xib */; };
+		F38A71F02BADB13300A0E12F /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A71EF2BADB13300A0E12F /* Manager.swift */; };
+		F38A71F42BADB17B00A0E12F /* ItemGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A71F32BADB17B00A0E12F /* ItemGroup.swift */; };
 		F3956A712BA98CFD000DBD1A /* UIApplication+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3956A702BA98CFD000DBD1A /* UIApplication+Ext.swift */; };
 		F3956A942BA9901E000DBD1A /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3956A8A2BA9901E000DBD1A /* Inter-Medium.ttf */; };
 		F3956A952BA9901E000DBD1A /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3956A8B2BA9901E000DBD1A /* Inter-Light.ttf */; };
@@ -124,6 +139,8 @@
 		CCDA16917C5736AABA612CBB /* Pods-fyp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fyp.release.xcconfig"; path = "Target Support Files/Pods-fyp/Pods-fyp.release.xcconfig"; sourceTree = "<group>"; };
 		DD34DFB863D2FF26F321C19F /* Pods-fyp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fyp.debug.xcconfig"; path = "Target Support Files/Pods-fyp/Pods-fyp.debug.xcconfig"; sourceTree = "<group>"; };
 		E0C488B1DF34BC7F9D71777A /* Pods_fyp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fyp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F31733E42BADB4D80018AA05 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
+		F31733E52BADB4D80018AA05 /* Avatar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Avatar.xib; sourceTree = "<group>"; };
 		F317843E2BAD328600AD8110 /* UserVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVM.swift; sourceTree = "<group>"; };
 		F31784412BAD36DF00AD8110 /* NavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarView.swift; sourceTree = "<group>"; };
 		F31784422BAD36DF00AD8110 /* NavBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavBarView.xib; sourceTree = "<group>"; };
@@ -151,6 +168,13 @@
 		F31784732BAD52EB00AD8110 /* LeaveRequestController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaveRequestController.xib; sourceTree = "<group>"; };
 		F31784772BAD55EF00AD8110 /* SelectBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBox.swift; sourceTree = "<group>"; };
 		F31784782BAD55EF00AD8110 /* SelectBox.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectBox.xib; sourceTree = "<group>"; };
+		F330314B2BADC1090053005D /* DateSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionController.swift; sourceTree = "<group>"; };
+		F330314C2BADC1090053005D /* DateSelectionController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateSelectionController.xib; sourceTree = "<group>"; };
+		F33031502BADC1180053005D /* SelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionController.swift; sourceTree = "<group>"; };
+		F33031512BADC1180053005D /* SelectionController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionController.xib; sourceTree = "<group>"; };
+		F33031542BADC78A0053005D /* ManagerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerVM.swift; sourceTree = "<group>"; };
+		F33031562BADC8D20053005D /* ManagerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerData.swift; sourceTree = "<group>"; };
+		F33031582BADCB0D0053005D /* NetworkTypeProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTypeProxy.swift; sourceTree = "<group>"; };
 		F33AA1032BA4BFE000119193 /* TANetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TANetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F33AA1052BA4BFE000119193 /* TANetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TANetworking.h; sourceTree = "<group>"; };
 		F33AA1102BA4C03200119193 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -163,6 +187,12 @@
 		F38A71DD2BAD58FF00A0E12F /* TextBox.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextBox.xib; sourceTree = "<group>"; };
 		F38A71E12BAD9C0B00A0E12F /* LeaveRequestDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveRequestDetailController.swift; sourceTree = "<group>"; };
 		F38A71E22BAD9C0B00A0E12F /* LeaveRequestDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaveRequestDetailController.xib; sourceTree = "<group>"; };
+		F38A71E62BADB0EE00A0E12F /* ManagerSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerSelectionController.swift; sourceTree = "<group>"; };
+		F38A71E72BADB0EE00A0E12F /* ManagerSelectionController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManagerSelectionController.xib; sourceTree = "<group>"; };
+		F38A71EB2BADB10800A0E12F /* ManagerSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerSelectionCell.swift; sourceTree = "<group>"; };
+		F38A71EC2BADB10800A0E12F /* ManagerSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManagerSelectionCell.xib; sourceTree = "<group>"; };
+		F38A71EF2BADB13300A0E12F /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		F38A71F32BADB17B00A0E12F /* ItemGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemGroup.swift; sourceTree = "<group>"; };
 		F3956A702BA98CFD000DBD1A /* UIApplication+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Ext.swift"; sourceTree = "<group>"; };
 		F3956A8A2BA9901E000DBD1A /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
 		F3956A8B2BA9901E000DBD1A /* Inter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.ttf"; sourceTree = "<group>"; };
@@ -250,11 +280,21 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F31733E32BADB4C70018AA05 /* Avatar */ = {
+			isa = PBXGroup;
+			children = (
+				F31733E42BADB4D80018AA05 /* Avatar.swift */,
+				F31733E52BADB4D80018AA05 /* Avatar.xib */,
+			);
+			path = Avatar;
+			sourceTree = "<group>";
+		};
 		F317843D2BAD325F00AD8110 /* viewmodel */ = {
 			isa = PBXGroup;
 			children = (
 				F317843E2BAD328600AD8110 /* UserVM.swift */,
 				F31784502BAD3E7500AD8110 /* LeaveVM.swift */,
+				F33031542BADC78A0053005D /* ManagerVM.swift */,
 			);
 			path = viewmodel;
 			sourceTree = "<group>";
@@ -284,6 +324,9 @@
 			children = (
 				F31784532BAD3E8600AD8110 /* LeaveType.swift */,
 				F317845D2BAD479A00AD8110 /* LeaveRequest.swift */,
+				F38A71EF2BADB13300A0E12F /* Manager.swift */,
+				F38A71F32BADB17B00A0E12F /* ItemGroup.swift */,
+				F33031582BADCB0D0053005D /* NetworkTypeProxy.swift */,
 			);
 			path = types;
 			sourceTree = "<group>";
@@ -324,6 +367,24 @@
 				F31784782BAD55EF00AD8110 /* SelectBox.xib */,
 			);
 			path = SelectBox;
+			sourceTree = "<group>";
+		};
+		F330314A2BADC0FB0053005D /* DateSelection */ = {
+			isa = PBXGroup;
+			children = (
+				F330314B2BADC1090053005D /* DateSelectionController.swift */,
+				F330314C2BADC1090053005D /* DateSelectionController.xib */,
+			);
+			path = DateSelection;
+			sourceTree = "<group>";
+		};
+		F330314F2BADC10C0053005D /* Selection */ = {
+			isa = PBXGroup;
+			children = (
+				F33031502BADC1180053005D /* SelectionController.swift */,
+				F33031512BADC1180053005D /* SelectionController.xib */,
+			);
+			path = Selection;
 			sourceTree = "<group>";
 		};
 		F33AA1042BA4BFE000119193 /* TANetworking */ = {
@@ -381,6 +442,8 @@
 		F33AA1172BA4C27400119193 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F31733E32BADB4C70018AA05 /* Avatar */,
+				F38A71EA2BADB0F200A0E12F /* ManagerSelectionCell */,
 				F38A71DB2BAD58F400A0E12F /* TextBox */,
 				F31784762BAD55DE00AD8110 /* SelectBox */,
 				F317846A2BAD4EC100AD8110 /* DayView */,
@@ -398,6 +461,9 @@
 		F33AA1182BA4C27800119193 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				F330314F2BADC10C0053005D /* Selection */,
+				F330314A2BADC0FB0053005D /* DateSelection */,
+				F38A71E52BADB0BC00A0E12F /* ManagerSelection */,
 				F38A71E02BAD9BF900A0E12F /* LeaveRequestDetail */,
 				F31784712BAD52DD00AD8110 /* LeaveRequest */,
 				F3956AE42BA9F7BE000DBD1A /* Leave */,
@@ -445,6 +511,24 @@
 				F38A71E22BAD9C0B00A0E12F /* LeaveRequestDetailController.xib */,
 			);
 			path = LeaveRequestDetail;
+			sourceTree = "<group>";
+		};
+		F38A71E52BADB0BC00A0E12F /* ManagerSelection */ = {
+			isa = PBXGroup;
+			children = (
+				F38A71E62BADB0EE00A0E12F /* ManagerSelectionController.swift */,
+				F38A71E72BADB0EE00A0E12F /* ManagerSelectionController.xib */,
+			);
+			path = ManagerSelection;
+			sourceTree = "<group>";
+		};
+		F38A71EA2BADB0F200A0E12F /* ManagerSelectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				F38A71EB2BADB10800A0E12F /* ManagerSelectionCell.swift */,
+				F38A71EC2BADB10800A0E12F /* ManagerSelectionCell.xib */,
+			);
+			path = ManagerSelectionCell;
 			sourceTree = "<group>";
 		};
 		F3956A722BA98FB0000DBD1A /* resource */ = {
@@ -536,6 +620,7 @@
 				F3956ACD2BA9F1EC000DBD1A /* UserData.swift */,
 				F31784572BAD3F6A00AD8110 /* LeaveBalanceData.swift */,
 				F317845B2BAD46FA00AD8110 /* LeaveRequestData.swift */,
+				F33031562BADC8D20053005D /* ManagerData.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -747,6 +832,7 @@
 				F317847A2BAD55EF00AD8110 /* SelectBox.xib in Resources */,
 				F3A74D6D2BA4BC6C00E91DFE /* LaunchScreen.storyboard in Resources */,
 				F317846E2BAD4ECE00AD8110 /* DayView.xib in Resources */,
+				F38A71EE2BADB10800A0E12F /* ManagerSelectionCell.xib in Resources */,
 				F3956A9D2BA9901E000DBD1A /* Inter-SemiBold.ttf in Resources */,
 				F31784632BAD486D00AD8110 /* MyLeaveRequestListView.xib in Resources */,
 				F3956A942BA9901E000DBD1A /* Inter-Medium.ttf in Resources */,
@@ -756,13 +842,16 @@
 				F39ACF852BAA75DF0078A017 /* TitleView.xib in Resources */,
 				F3956AA82BA99540000DBD1A /* TextField.xib in Resources */,
 				F31784672BAD487900AD8110 /* MyLeaveRequestListCell.xib in Resources */,
+				F31733E72BADB4D80018AA05 /* Avatar.xib in Resources */,
 				F31784442BAD36DF00AD8110 /* NavBarView.xib in Resources */,
 				F38A71DF2BAD58FF00A0E12F /* TextBox.xib in Resources */,
 				F3956AE82BA9F7CD000DBD1A /* LeaveController.xib in Resources */,
 				F317844D2BAD390B00AD8110 /* LeaveTypeListItemCell.xib in Resources */,
 				F33AA11D2BA4C2B100119193 /* LoginController.xib in Resources */,
+				F38A71E92BADB0EE00A0E12F /* ManagerSelectionController.xib in Resources */,
 				F3956A9A2BA9901E000DBD1A /* OFL.txt in Resources */,
 				F3956AD92BA9F770000DBD1A /* ProfileController.xib in Resources */,
+				F330314E2BADC1090053005D /* DateSelectionController.xib in Resources */,
 				F3956A962BA9901E000DBD1A /* Inter-Thin.ttf in Resources */,
 				F3956A982BA9901E000DBD1A /* Inter-Regular.ttf in Resources */,
 				F3A74D6A2BA4BC6C00E91DFE /* Assets.xcassets in Resources */,
@@ -771,6 +860,7 @@
 				F3956A9C2BA9901E000DBD1A /* Inter-Black.ttf in Resources */,
 				F38A71E42BAD9C0B00A0E12F /* LeaveRequestDetailController.xib in Resources */,
 				F31784492BAD390100AD8110 /* LeaveTypeListView.xib in Resources */,
+				F33031532BADC1180053005D /* SelectionController.xib in Resources */,
 				F3956AAD2BA9A027000DBD1A /* CheckBox.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -851,6 +941,7 @@
 				F33AA1112BA4C03200119193 /* Config.swift in Sources */,
 				F3956ACC2BA9F038000DBD1A /* UserService.swift in Sources */,
 				F3956ACA2BA9EFEB000DBD1A /* String+Error.swift in Sources */,
+				F33031572BADC8D20053005D /* ManagerData.swift in Sources */,
 				F3956AB22BA9E3D3000DBD1A /* LoginService.swift in Sources */,
 				F317845C2BAD46FA00AD8110 /* LeaveRequestData.swift in Sources */,
 				F31784582BAD3F6A00AD8110 /* LeaveBalanceData.swift in Sources */,
@@ -862,9 +953,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F33031552BADC78A0053005D /* ManagerVM.swift in Sources */,
 				F31784692BAD492400AD8110 /* UITableView+Ext.swift in Sources */,
 				F38A71E32BAD9C0B00A0E12F /* LeaveRequestDetailController.swift in Sources */,
 				F3956AD32BA9F5B8000DBD1A /* BaseController.swift in Sources */,
+				F330314D2BADC1090053005D /* DateSelectionController.swift in Sources */,
 				F31784702BAD526D00AD8110 /* UIViewController+Ext.swift in Sources */,
 				F3956ABB2BA9E9A6000DBD1A /* AnyJSON.swift in Sources */,
 				F31784512BAD3E7500AD8110 /* LeaveVM.swift in Sources */,
@@ -874,8 +967,10 @@
 				F3956ADD2BA9F791000DBD1A /* DashboardController.swift in Sources */,
 				F317843F2BAD328600AD8110 /* UserVM.swift in Sources */,
 				F33AA1212BA4C2F400119193 /* SplashController.swift in Sources */,
+				F38A71ED2BADB10800A0E12F /* ManagerSelectionCell.swift in Sources */,
 				F31784432BAD36DF00AD8110 /* NavBarView.swift in Sources */,
 				F31784482BAD390100AD8110 /* LeaveTypeListView.swift in Sources */,
+				F38A71F42BADB17B00A0E12F /* ItemGroup.swift in Sources */,
 				F31784792BAD55EF00AD8110 /* SelectBox.swift in Sources */,
 				F38A71DE2BAD58FF00A0E12F /* TextBox.swift in Sources */,
 				F3956AAC2BA9A027000DBD1A /* CheckBox.swift in Sources */,
@@ -886,8 +981,13 @@
 				F31784662BAD487900AD8110 /* MyLeaveRequestListCell.swift in Sources */,
 				F317845E2BAD479A00AD8110 /* LeaveRequest.swift in Sources */,
 				F3956A712BA98CFD000DBD1A /* UIApplication+Ext.swift in Sources */,
+				F38A71F02BADB13300A0E12F /* Manager.swift in Sources */,
+				F38A71E82BADB0EE00A0E12F /* ManagerSelectionController.swift in Sources */,
 				F3956AA72BA99540000DBD1A /* TextField.swift in Sources */,
+				F33031592BADCB0D0053005D /* NetworkTypeProxy.swift in Sources */,
 				F33AA1132BA4C16000119193 /* main.swift in Sources */,
+				F31733E62BADB4D80018AA05 /* Avatar.swift in Sources */,
+				F33031522BADC1180053005D /* SelectionController.swift in Sources */,
 				F3A74D632BA4BC6A00E91DFE /* SceneDelegate.swift in Sources */,
 				F3956AE22BA9F7AD000DBD1A /* InboxController.swift in Sources */,
 				F3956AA02BA99229000DBD1A /* UIView+Ext.swift in Sources */,

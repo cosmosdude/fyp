@@ -55,16 +55,24 @@
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="smoothCorners" value="YES"/>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="didTap" destination="-1" eventType="touchUpInside" id="8o7-0f-evd"/>
+                            </connections>
                         </button>
                         <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ogB-GX-WF4">
                             <rect key="frame" x="10" y="6" width="380" height="29"/>
                             <subviews>
-                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NvV-wH-Y4J">
+                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NvV-wH-Y4J">
                                     <rect key="frame" x="-24" y="3.6666666666666625" width="24" height="22.666666666666664"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="24" id="QgK-nf-uCk"/>
                                         <constraint firstAttribute="width" secondItem="NvV-wH-Y4J" secondAttribute="height" multiplier="1:1" id="fn9-Bv-qPB"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="12"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JU2-w2-z6d">
                                     <rect key="frame" x="0.0" y="6" width="352" height="17"/>

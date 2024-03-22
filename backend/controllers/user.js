@@ -304,20 +304,19 @@ exports.getManagers = async (req, res) => {
     let theUser = users[0]
     if (!theUser) return res.status(401).send("User not found")
 
-    // let ids = [
-    //     // theUser.report_to
-    //     // "504be3e6-e1cc-11ee-a617-52db3199040b",
-    //     // "8ca6bd7a-e370-11ee-99b0-52db3199040c"
-    // ]
     let ids = theUser.report_to
 
     let [managers] = await db.promise().query(/*sql*/`
         select 
             u.id,
             u.first_name, u.last_name, 
-            f.path as avatar_path 
+            f.path as avatar_path ,
+            dep.name as department,
+            des.name as designation
         from users as u
         left join files as f on u.avatar_id=f.id
+        left join departments as dep on dep.id=u.department_id
+        left join designations as des on des.id=u.designation_id
         where u.id in (?)
     `, [ids])
 
@@ -330,13 +329,17 @@ exports.getAllHRs = async (req, res) => {
             u.id,
             u.first_name, u.last_name, 
             f.path as avatar_path,
-            r.name
+            r.name,
+            dep.name as department,
+            des.name as designation
         from users as u
         join (
             select * from roles 
             where name in ('admin', 'hr') 
         ) as r on r.id=u.role_id
         left join files as f on u.avatar_id=f.id
+        left join departments as dep on dep.id=u.department_id
+        left join designations as des on des.id=u.designation_id
     `)
 
     res.json(hrs)
