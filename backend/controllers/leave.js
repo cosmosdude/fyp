@@ -236,6 +236,8 @@ exports.user = {
             requiredBalance = dateDiff / 86_400_000
         }
 
+        data.outstanding_balance = requiredBalance
+
         // if not enough balance, end with error
         if (balanceData.balance < requiredBalance) 
         return res.status(400).send("Not enough leave")
@@ -408,13 +410,52 @@ exports.user = {
         // if no such leave request exists, end with error
         if (!leaveRequest) return res.status(404).send("Not such leave request")
         
+        if (leaveRequest.status !== 'pending') 
+        return res.status(404).send("Already responded to leave.")
+
         // fill up responder_id
         data.responder_id = auth.id
         data.responded_at = new Date()
 
+        // if status update is approve, subtract balance
+        if (data.status === 'approved') {
+            // # Update user's leave balance
+            
+            // get user's leave
+            let [userLeaves] = await db.promise().query(/*sql*/`
+                select * from users_leaves
+                where user_id=? AND leave_id=?
+            `, [auth.id, leaveRequest.leave_id])
+            let userLeave = userLeaves[0]
+
+            // Calculate new balance
+            let newBalance = Math.max(0, userLeave.balance - leaveRequest.outstanding_balance)
+
+            // Update balance without waiting
+            db.promise().query(/*sql*/`
+                update users_leaves set balance=?
+                where user_id=? AND leave_id=?
+            `, [newBalance, auth.id, leaveRequest.leave_id])
+            // return res.json({
+            //     balance: userLeave.balance, 
+            //     outstanding: leaveRequest.outstanding_balance,
+            //     newBalance
+            // })
+        }
+
+        // return res.send("Blocked")
+        
+
+        // update leave request status
         await db.promise().query(/*sql*/`
             update users_leaves_requests set ? where id=?
         `, [data, id])
+
+        // update leave balance
+        // await db.promise().query(/*sql*/`
+        //     update users_leaves
+        // `)
+        
 
         res.sendStatus(201)
     }

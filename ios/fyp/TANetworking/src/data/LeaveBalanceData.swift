@@ -10,7 +10,7 @@ import Foundation
 public struct LeaveBalanceData: Codable {
     public let id: String
     public let name: String
-    public let balance: Int
+    public let balance: Double
     public let initial: Int
     public let max: Int
     public let gender: String

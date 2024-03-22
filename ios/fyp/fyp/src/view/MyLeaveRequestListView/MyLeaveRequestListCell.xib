@@ -18,6 +18,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyLeaveRequestListCell" customModule="fyp" customModuleProvider="target">
             <connections>
+                <outlet property="arrow" destination="qrB-qI-PIy" id="MIS-uA-51A"/>
                 <outlet property="endView" destination="FeW-6W-y1w" id="GMb-oo-Pvh"/>
                 <outlet property="startView" destination="8cu-ef-2XB" id="NsJ-mn-ZtU"/>
                 <outlet property="subtitleLabel" destination="wpc-LV-MoH" id="P9T-WC-pCz"/>

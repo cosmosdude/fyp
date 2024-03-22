@@ -79,6 +79,9 @@ extension MyLeaveRequestListView: UITableViewDataSource {
         cell.endView.titleLabel.text = request.to.map(dayF.string(from:))
         cell.endView.subtitleLabel.text = request.to.map(monthF.string(from:))
         
+        cell.startView.isHidden = (request.fromDate == request.toDate)
+        cell.arrow.isHidden = (request.fromDate == request.toDate)
+        
         return cell
     }
     

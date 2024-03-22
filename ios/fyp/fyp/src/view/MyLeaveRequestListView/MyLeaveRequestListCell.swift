@@ -13,6 +13,7 @@ class MyLeaveRequestListCell: UITableViewCell, NibLoadable {
     @IBOutlet private(set) var subtitleLabel: UILabel!
     
     @IBOutlet private(set) var startView: DayView!
+    @IBOutlet private(set) var arrow: UIView!
     @IBOutlet private(set) var endView: DayView!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

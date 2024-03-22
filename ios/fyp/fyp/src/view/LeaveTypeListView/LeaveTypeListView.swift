@@ -77,7 +77,11 @@ extension LeaveTypeListView: UICollectionViewDataSource {
             LeaveTypeListItemCell.self, for: indexPath
         )
         let item = leaveTypes[indexPath.row]
-        cell.titleLabel.text = item.balance.description
+        
+        let balance = String(format: "%.1f day(s)", item.balance)
+//        balance
+        
+        cell.titleLabel.text = balance.replacingOccurrences(of: ".0", with: "")
         cell.subtitleLabel.text = item.name
         return cell
     }

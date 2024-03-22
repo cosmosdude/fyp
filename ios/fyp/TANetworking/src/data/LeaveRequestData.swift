@@ -20,7 +20,7 @@ public struct LeaveRequestData: Codable {
     public let status: String
     public let requestedAt: String
     public let respondedAt: String?
-    public let outstandingBalance: String?
+    public let outstandingBalance: Double?
     public let leaveId: String
     public let halfday: String?
     public let leaveName: String
