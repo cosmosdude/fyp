@@ -21,7 +21,8 @@ class FilledButton: UIButton {
     
     enum Style: String {
         case normal
-        case destructive
+        case destructive, danger
+        case success
     }
     
     override init(frame: CGRect) {
@@ -43,9 +44,14 @@ class FilledButton: UIButton {
     }
     
     private func setupColor() {
-        backgroundColor = UIColor(
-            named: style == .normal ? "primary" : "danger-500"
-        )
+        switch style {
+        case .normal:
+            backgroundColor = UIColor(named: "primary")
+        case .destructive, .danger:
+            backgroundColor = UIColor(named: "danger-500")
+        case .success:
+            backgroundColor = UIColor(named: "success-600")
+        }
         setTitleColor(UIColor(named: "text-white"), for: .normal)
     }
     

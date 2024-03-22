@@ -11,6 +11,8 @@ class MyLeaveRequestListView: UIView, NibLoadable {
     
     @IBOutlet private var tableView: UITableView!
     
+    var didSelectItemAt: ((IndexPath) -> Void)?
+    
     let dayF = DateFormatter()
     let monthF = DateFormatter()
     
@@ -44,6 +46,11 @@ class MyLeaveRequestListView: UIView, NibLoadable {
 
 extension MyLeaveRequestListView: UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        didSelectItemAt?(indexPath)
+    }
+    
 }
 
 extension MyLeaveRequestListView: UITableViewDataSource {

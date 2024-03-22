@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeaveRequestDetailController" customModule="fyp" customModuleProvider="target">
+            <connections>
+                <outlet property="navBar" destination="cyv-RB-Piz" id="f5e-R2-gFD"/>
+                <outlet property="view" destination="KMP-Zg-0Cj" id="ztx-NW-V28"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="KMP-Zg-0Cj">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="393" placeholderIntrinsicHeight="109" translatesAutoresizingMaskIntoConstraints="NO" id="cyv-RB-Piz" customClass="NavBarView" customModule="fyp" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="109"/>
+                    <viewLayoutGuide key="safeArea" id="COg-4M-X6x"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Leave Request Detail"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrd-o2-9zS">
+                    <rect key="frame" x="0.0" y="109" width="393" height="461"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jza-od-e3j">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="445"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="P8m-mA-gO1">
+                                    <rect key="frame" x="20" y="20" width="353" height="405"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="mTv-W2-is3" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="353" height="65"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Leave"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="text" value="Select Leave ..."/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isChevronHidden" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="X0U-Ee-sGR">
+                                            <rect key="frame" x="0.0" y="85" width="353" height="65"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="xjm-l0-X2z" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="166.66666666666666" height="65"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="From"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="text" value="Select Date"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isChevronHidden" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="kf3-73-brM" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
+                                                    <rect key="frame" x="186.66666666666663" y="0.0" width="166.33333333333337" height="65"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="To"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="text" value="Select Date"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isChevronHidden" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                        </stackView>
+                                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="zRe-TQ-ze0" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="170" width="353" height="65"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="image" value="person.circle.fill" catalog="system"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Request To"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="text" value="Select Manager"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isChevronHidden" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="7Ib-l8-dfl" customClass="TextBox" customModule="fyp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="255" width="353" height="150"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Reason"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="P8m-mA-gO1" secondAttribute="bottom" constant="20" id="6US-AG-KoB"/>
+                                <constraint firstItem="P8m-mA-gO1" firstAttribute="leading" secondItem="jza-od-e3j" secondAttribute="leading" constant="20" id="Yc8-cT-tJu"/>
+                                <constraint firstItem="P8m-mA-gO1" firstAttribute="top" secondItem="jza-od-e3j" secondAttribute="top" constant="20" id="Yt3-7y-lL0"/>
+                                <constraint firstAttribute="trailing" secondItem="P8m-mA-gO1" secondAttribute="trailing" constant="20" id="hdq-fy-rog"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="jza-od-e3j" firstAttribute="top" secondItem="ou1-la-glo" secondAttribute="top" id="4NR-y8-9JQ"/>
+                        <constraint firstItem="jza-od-e3j" firstAttribute="leading" secondItem="ou1-la-glo" secondAttribute="leading" id="4wf-Nj-sn5"/>
+                        <constraint firstItem="jza-od-e3j" firstAttribute="bottom" secondItem="ou1-la-glo" secondAttribute="bottom" id="8LU-kR-i98"/>
+                        <constraint firstItem="jza-od-e3j" firstAttribute="width" secondItem="pFX-we-rC4" secondAttribute="width" id="IOx-nH-BcG"/>
+                        <constraint firstItem="jza-od-e3j" firstAttribute="trailing" secondItem="ou1-la-glo" secondAttribute="trailing" id="RJp-6r-vTH"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="ou1-la-glo"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="pFX-we-rC4"/>
+                </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lsb-EJ-2KS">
+                    <rect key="frame" x="0.0" y="570" width="393" height="248"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y16-6c-zCy" userLabel="separator">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="1"/>
+                            <color key="backgroundColor" name="neutral-0"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="8np-xK-40g"/>
+                            </constraints>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Hbo-fe-Nzm">
+                            <rect key="frame" x="20" y="20" width="353" height="208"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="69v-Gv-jCq" customClass="TextBox" customModule="fyp" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="353" height="150"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="NO"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="x7Z-1S-9gh">
+                                    <rect key="frame" x="0.0" y="170" width="353" height="38"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QX5-gc-OFS" customClass="FilledButton" customModule="fyp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="166.66666666666666" height="38"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="38" id="N0K-sZ-DuU"/>
+                                            </constraints>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="Reject"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="__style" value="danger"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZe-6q-doy" customClass="FilledButton" customModule="fyp" customModuleProvider="target">
+                                            <rect key="frame" x="186.66666666666663" y="0.0" width="166.33333333333337" height="38"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="38" id="4Nw-xh-dsC"/>
+                                            </constraints>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="Approve"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="__style" value="success"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="Y16-6c-zCy" firstAttribute="top" secondItem="lsb-EJ-2KS" secondAttribute="top" id="KRp-Zf-bxU"/>
+                        <constraint firstItem="Y16-6c-zCy" firstAttribute="leading" secondItem="lsb-EJ-2KS" secondAttribute="leading" id="Sx2-DP-V8w"/>
+                        <constraint firstAttribute="trailing" secondItem="Hbo-fe-Nzm" secondAttribute="trailing" constant="20" id="bde-ha-lXm"/>
+                        <constraint firstAttribute="bottom" secondItem="Hbo-fe-Nzm" secondAttribute="bottom" constant="20" id="ejI-hG-5W6"/>
+                        <constraint firstItem="Hbo-fe-Nzm" firstAttribute="leading" secondItem="lsb-EJ-2KS" secondAttribute="leading" constant="20" id="r5k-Bw-VBC"/>
+                        <constraint firstItem="Hbo-fe-Nzm" firstAttribute="top" secondItem="lsb-EJ-2KS" secondAttribute="top" constant="20" id="tyo-UN-z0F"/>
+                        <constraint firstAttribute="trailing" secondItem="Y16-6c-zCy" secondAttribute="trailing" id="xGz-jk-Uza"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="HMp-wL-JmU"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="cyv-RB-Piz" firstAttribute="leading" secondItem="HMp-wL-JmU" secondAttribute="leading" id="2tG-yu-tGD"/>
+                <constraint firstItem="cyv-RB-Piz" firstAttribute="top" secondItem="KMP-Zg-0Cj" secondAttribute="top" id="8j7-FT-vMa"/>
+                <constraint firstItem="HMp-wL-JmU" firstAttribute="bottom" secondItem="lsb-EJ-2KS" secondAttribute="bottom" id="ANA-4l-uYv"/>
+                <constraint firstItem="HMp-wL-JmU" firstAttribute="trailing" secondItem="lsb-EJ-2KS" secondAttribute="trailing" id="DMg-ar-5tI"/>
+                <constraint firstItem="rrd-o2-9zS" firstAttribute="trailing" secondItem="HMp-wL-JmU" secondAttribute="trailing" id="H0p-DH-RRc"/>
+                <constraint firstItem="lsb-EJ-2KS" firstAttribute="top" secondItem="rrd-o2-9zS" secondAttribute="bottom" id="NRv-6j-l3z"/>
+                <constraint firstItem="lsb-EJ-2KS" firstAttribute="leading" secondItem="HMp-wL-JmU" secondAttribute="leading" id="Ulq-e7-Ydf"/>
+                <constraint firstItem="cyv-RB-Piz" firstAttribute="trailing" secondItem="HMp-wL-JmU" secondAttribute="trailing" id="V0o-48-cTr"/>
+                <constraint firstItem="rrd-o2-9zS" firstAttribute="top" secondItem="cyv-RB-Piz" secondAttribute="bottom" id="l0k-je-usn"/>
+                <constraint firstItem="rrd-o2-9zS" firstAttribute="leading" secondItem="HMp-wL-JmU" secondAttribute="leading" id="rLG-Zf-zMx"/>
+            </constraints>
+            <point key="canvasLocation" x="3.8167938931297707" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="person.circle.fill" catalog="system" width="128" height="123"/>
+        <namedColor name="neutral-0">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

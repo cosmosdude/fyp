@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Regular.ttf">
+            <string>Inter-Regular</string>
+        </array>
+        <array key="Inter-SemiBold.ttf">
+            <string>Inter-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TextBox" customModule="fyp" customModuleProvider="target">
+            <connections>
+                <outlet property="container" destination="v8j-M1-fGi" id="DxK-fg-8hK"/>
+                <outlet property="textBoxHeight" destination="cSN-Fq-usK" id="shu-tN-jgE"/>
+                <outlet property="textView" destination="ygU-vA-moG" id="KC2-xG-kyI"/>
+                <outlet property="titleLabel" destination="E7N-Tc-WOL" id="57v-hp-idt"/>
+                <outletCollection property="hMargins" destination="SJp-IN-5qF" collectionClass="NSMutableArray" id="4bW-L7-USD"/>
+                <outletCollection property="hMargins" destination="Ccg-yg-4pw" collectionClass="NSMutableArray" id="6OL-68-HBp"/>
+                <outletCollection property="vMargins" destination="Dpg-XJ-DYN" collectionClass="NSMutableArray" id="q0A-JP-JVE"/>
+                <outletCollection property="vMargins" destination="IMa-D2-j8i" collectionClass="NSMutableArray" id="gfX-Go-0yQ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" id="qKO-pW-0e2">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7N-Tc-WOL">
+                    <rect key="frame" x="0.0" y="0.0" width="400" height="16"/>
+                    <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="12"/>
+                    <color key="textColor" name="neutral-900"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v8j-M1-fGi" userLabel="container">
+                    <rect key="frame" x="0.0" y="20" width="400" height="100"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Lorem ipsum dolar armat aklsdjf klasjdklf jklasdfkl klasdfkl jaklsjdf kljaklsdjf kjalskjdf kljasdklfj klajsdklf jaklsjdfkljasdf" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ygU-vA-moG">
+                            <rect key="frame" x="10" y="5" width="380" height="90"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="textColor" name="neutral-900"/>
+                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="ygU-vA-moG" firstAttribute="leading" secondItem="v8j-M1-fGi" secondAttribute="leading" constant="10" id="Ccg-yg-4pw"/>
+                        <constraint firstAttribute="bottom" secondItem="ygU-vA-moG" secondAttribute="bottom" constant="5" id="Dpg-XJ-DYN"/>
+                        <constraint firstItem="ygU-vA-moG" firstAttribute="top" secondItem="v8j-M1-fGi" secondAttribute="top" constant="5" id="IMa-D2-j8i"/>
+                        <constraint firstAttribute="trailing" secondItem="ygU-vA-moG" secondAttribute="trailing" constant="10" id="SJp-IN-5qF"/>
+                        <constraint firstAttribute="height" constant="100" id="cSN-Fq-usK"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" name="neutral-200"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="6"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="smoothCorners" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uaq-5M-290">
+                    <rect key="frame" x="0.0" y="120" width="400" height="0.0"/>
+                    <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                    <color key="textColor" name="neutral-900"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <point key="canvasLocation" x="-56.488549618320612" y="34.154929577464792"/>
+        </stackView>
+    </objects>
+    <resources>
+        <namedColor name="neutral-200">
+            <color red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="neutral-900">
+            <color red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

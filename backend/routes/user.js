@@ -19,36 +19,18 @@ router.use(require('../middlewares/formidable-multipart'))
 router.use(express.json())
 
 // Routes
-router.get(
-    '/', 
-    limitExactly(['admin', 'hr']), 
-    asyncHandler(controller.getAll)
-)
+router.get('/', limitExactly(['admin', 'hr']), asyncHandler(controller.getAll))
+router.get('/hrs', asyncHandler(controller.getAllHRs))
+router.get('/managers', asyncHandler(controller.getAllManagers))
 
-router.post(
-    '/user', 
-    limitExactly(['admin', 'hr']), 
-    asyncHandler(controller.store)
-)
+router.post('/user', limitExactly(['admin', 'hr']), asyncHandler(controller.store))
+router.get('/user/me', asyncHandler(controller.getMe))
+router.get('/user/managers', asyncHandler(controller.getManagers))
+router.get('/user/:id', asyncHandler(controller.get))
+router.put('/user/:id', limitExactly(['admin', 'hr']), asyncHandler(controller.update))
+router.delete('/user/:id', limitExactly(['admin', 'hr']), asyncHandler(controller.delete))
 
-router.get(
-    '/user/me', asyncHandler(controller.getMe)
-)
 
-router.get(
-    '/user/:id', asyncHandler(controller.get)
-)
-
-router.put(
-    '/user/:id', 
-    limitExactly(['admin', 'hr']), 
-    asyncHandler(controller.update)
-)
-router.delete(
-    '/user/:id', 
-    limitExactly(['admin', 'hr']), 
-    asyncHandler(controller.delete)
-)
 
 router.use('/test', (req, res) => {
     // res.send(dirname(require.main.filename))

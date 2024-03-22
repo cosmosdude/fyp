@@ -11,7 +11,10 @@ class TextField: UIControl, NibLoadable {
     
     @IBInspectable var title: String? {
         get { titleLabel.text }
-        set { titleLabel.text = newValue }
+        set {
+            titleLabel.text = newValue
+            titleLabel.isHidden = newValue?.isEmpty ?? true
+        }
     }
     
     @IBInspectable var leftIcon: UIImage? {

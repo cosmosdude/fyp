@@ -29,35 +29,47 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8eF-N1-GhQ">
                     <rect key="frame" x="0.0" y="59" width="393" height="50"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9ml-kA-C67">
-                            <rect key="frame" x="20.000000000000007" y="5" width="92.666666666666686" height="40"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9ml-kA-C67">
+                            <rect key="frame" x="10" y="5" width="280" height="40"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9O-1G-AfL">
-                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="30" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="4MD-gK-Wgr"/>
-                                        <constraint firstAttribute="width" constant="40" id="wVo-Mw-PGI"/>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="M2o-EW-gF3"/>
                                     </constraints>
                                     <color key="tintColor" name="neutral-900"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal">
-                                        <imageReference key="image" image="arrow.left" catalog="system" symbolScale="large"/>
+                                        <imageReference key="image" image="arrow.left" catalog="system" symbolScale="medium"/>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
                                     </state>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hd2-G6-AsQ">
-                                    <rect key="frame" x="45" y="0.0" width="47.666666666666657" height="40"/>
-                                    <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="22"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D6e-es-ewC">
+                                    <rect key="frame" x="40" y="0.0" width="240" height="40"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hd2-G6-AsQ">
+                                            <rect key="frame" x="10" y="0.0" width="230" height="40"/>
+                                            <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" name="clear"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="hd2-G6-AsQ" secondAttribute="trailing" id="MGw-zx-2II"/>
+                                        <constraint firstItem="hd2-G6-AsQ" firstAttribute="top" secondItem="D6e-es-ewC" secondAttribute="top" id="NkO-jS-veQ"/>
+                                        <constraint firstItem="hd2-G6-AsQ" firstAttribute="leading" secondItem="D6e-es-ewC" secondAttribute="leading" constant="10" id="d8K-u5-UYw"/>
+                                        <constraint firstAttribute="bottom" secondItem="hd2-G6-AsQ" secondAttribute="bottom" id="h4x-Hg-Rfk"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="3Vy-Lt-kgJ"/>
-                        <constraint firstItem="9ml-kA-C67" firstAttribute="leading" secondItem="8eF-N1-GhQ" secondAttribute="leading" constant="20" id="FbG-OE-r7T"/>
+                        <constraint firstItem="9ml-kA-C67" firstAttribute="leading" secondItem="8eF-N1-GhQ" secondAttribute="leading" constant="10" id="FbG-OE-r7T"/>
                         <constraint firstItem="9ml-kA-C67" firstAttribute="centerY" secondItem="8eF-N1-GhQ" secondAttribute="centerY" id="Gmh-Dd-uFz"/>
                         <constraint firstItem="9ml-kA-C67" firstAttribute="top" relation="greaterThanOrEqual" secondItem="8eF-N1-GhQ" secondAttribute="top" id="VmX-yB-pWs"/>
                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="9ml-kA-C67" secondAttribute="bottom" id="jur-0k-77Q"/>
@@ -78,6 +90,9 @@
     </objects>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="95"/>
+        <namedColor name="clear">
+            <color red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="neutral-900">
             <color red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

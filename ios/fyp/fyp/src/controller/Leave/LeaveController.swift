@@ -13,7 +13,7 @@ class LeaveController: UIViewController {
     @IBOutlet private(set) var leaveTypeListView: LeaveTypeListView!
     @IBOutlet private(set) var leaveRequestListView: MyLeaveRequestListView!
     
-    let leaveTypesViewModel = LeaveTypeVM()
+    let leaveViewModel = LeaveVM()
     var bag = Set<AnyCancellable>()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -28,22 +28,34 @@ class LeaveController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        leaveTypesViewModel.$leaveTypes.receive(on: DispatchQueue.main)
+        leaveViewModel.$leaveTypes.receive(on: DispatchQueue.main)
             .sink { [weak self] in self?.leaveTypeListView.leaveTypes = $0 }
             .store(in: &bag)
         
-        leaveTypesViewModel.$leaveRequests.receive(on: DispatchQueue.main)
+        leaveViewModel.$leaveRequests.receive(on: DispatchQueue.main)
             .sink { [weak self] in self?.leaveRequestListView.requests = $0 }
             .store(in: &bag)
         
-        leaveTypesViewModel.fetchLeaveTypes()
-        leaveTypesViewModel.fetchLeaveRequests()
+        leaveViewModel.fetchLeaveTypes()
+        leaveViewModel.fetchLeaveRequests()
+        
+        leaveRequestListView.didSelectItemAt = {
+            [weak nav = navigationController] _ in
+            nav?.pushViewController(LeaveRequestDetailController(), animated: true)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        leaveTypesViewModel.fetchLeaveTypes()
-        leaveTypesViewModel.fetchLeaveRequests()
+        leaveViewModel.fetchLeaveTypes()
+        leaveViewModel.fetchLeaveRequests()
+    }
+    
+    @IBAction
+    private func didTapRequest() {
+        navigationController?.pushViewController(
+            LeaveRequestController(), animated: true
+        )
     }
 
 }

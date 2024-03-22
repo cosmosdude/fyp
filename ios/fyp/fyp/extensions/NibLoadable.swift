@@ -43,6 +43,7 @@ extension NibLoadable {
         
         nib.instantiate(withOwner: self)
             .compactMap { $0 as? UIView }
+            .reversed()
             .forEach(stickToMargins(view:))
     }
     
@@ -50,6 +51,7 @@ extension NibLoadable {
         view.translatesAutoresizingMaskIntoConstraints = false
         guard let nibContainerView else { return }
         nibContainerView.addSubview(view)
+        nibContainerView.sendSubviewToBack(view)
         NSLayoutConstraint.activate([
             view.topAnchor.constraint(equalTo: nibContainerView.topAnchor),
             view.bottomAnchor.constraint(equalTo: nibContainerView.bottomAnchor),
@@ -62,10 +64,52 @@ extension NibLoadable {
 
 
 
-final class SampleNibLoadableCell: UIView, NibLoadable {
+final class NibView: UIView, NibLoadable {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        loadNibFile()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        loadNibFile()
+    }
+    
+}
+
+final class NibControl: UIControl, NibLoadable {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        loadNibFile()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        loadNibFile()
+    }
+    
+}
+
+final class NibTableViewCell: UITableViewCell, NibLoadable {
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        loadNibFile()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        loadNibFile()
+    }
+    
+}
+
+final class NibCollectionViewCell: UITableViewCell, NibLoadable {
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         loadNibFile()
     }
     

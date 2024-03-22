@@ -1,5 +1,5 @@
 //
-//  LeaveTypesVM.swift
+//  LeaveVM.swift
 //  fyp
 //
 //  Created by Thwin Htoo Aung on 22/3/24.
@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import TANetworking
 
-final class LeaveTypeVM: @unchecked Sendable {
+final class LeaveVM: @unchecked Sendable {
     
     @Published
     private(set) var leaveTypes: [LeaveType] = []

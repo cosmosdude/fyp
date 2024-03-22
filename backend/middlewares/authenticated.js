@@ -22,6 +22,8 @@ module.exports = async (req, res, next) => {
         accessToken: token,
         data: value
     }
+    req.authToken = token
+    req.authUser = value
 
     next()
 }

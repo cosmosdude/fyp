@@ -10,7 +10,7 @@ import UIKit
 class NavBarView: UIView, NibLoadable {
 
     @IBOutlet private var titleLabel: UILabel!
-    @IBOutlet private var backArrowBtn: UIButton!
+    @IBOutlet private(set) var backArrowBtn: UIButton!
     
     @IBInspectable var title: String? {
         get { titleLabel.text }
