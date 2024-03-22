@@ -6,7 +6,7 @@ import FilledButton from "../../components/Buttons/FilledButton";
 import GhostButton from "../../components/Buttons/GhostButton";
 import useAllLeaveRequests from "../../hooks/useAllLeaveRequests";
 import { format } from "date-fns";
-import { apiPaths, apiRoute } from "../../configs/api.config";
+import { apiPaths, apiRoute, imageRoute } from "../../configs/api.config";
 import { usePushNoti } from "../../components/Noti/NotiSystem";
 import { useAuthContext } from "../../hooks/AuthStateContext";
 
@@ -99,6 +99,7 @@ export default function LeaveRequestsPage() {
                         {/* <AttendanceRow /> */}
                         {requests.map((x, i) => <RequestRow 
                             key={x.id} no={i+1}
+                            requesterImgSrc={imageRoute(x.requester_avatar_path)}
                             requesterName={[
                                 x.requester_first_name, 
                                 x.requester_last_name ?? ""
@@ -118,7 +119,7 @@ export default function LeaveRequestsPage() {
     );
 }
 
-function RequestRow({no, requesterName, type, from, to, status, onApprove, onReject}) {
+function RequestRow({no, requesterImgSrc, requesterName, type, from, to, status, onApprove, onReject}) {
     return (
         <tr className="
         group
@@ -134,7 +135,7 @@ function RequestRow({no, requesterName, type, from, to, status, onApprove, onRej
             </td>
             <td className="sticky left-0 bg-white group-hover:bg-primary-50 text-left min-w-[200px]">
                 <div className="flex items-center gap-[10px]">
-                    <Avatar className="" src={null} size={30} title={requesterName}/>
+                    <Avatar className="" src={requesterImgSrc} size={30} title={requesterName}/>
                     <div className="flex flex-col">
                         <p className="font-ll text-ll">{requesterName}</p>
                     </div>
