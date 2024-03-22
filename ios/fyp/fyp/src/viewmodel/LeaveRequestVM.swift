@@ -10,6 +10,13 @@ import Foundation
 /// View Model that handles requesting of leave request.
 class LeaveRequestVM {
     
+    @Published
+    var isRequesting: Bool = false
     
+    func request(
+        
+    ) {
+        
+    }
     
 }

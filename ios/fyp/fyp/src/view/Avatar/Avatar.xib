@@ -23,15 +23,15 @@
             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UfX-so-jXL">
-                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ql5-gU-5Xd">
                     <rect key="frame" x="45.666666666666664" y="43" width="9" height="14"/>
                     <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="12"/>
                     <color key="textColor" name="neutral-600"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UfX-so-jXL">
+                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" name="bg"/>
             <constraints>

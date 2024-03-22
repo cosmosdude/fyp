@@ -49,6 +49,7 @@
 		F330315E2BADCF6F0053005D /* SelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F330315C2BADCF6F0053005D /* SelectionCell.xib */; };
 		F33031602BADD3960053005D /* DateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F330315F2BADD3960053005D /* DateVM.swift */; };
 		F33031622BADD5010053005D /* LeaveRequestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33031612BADD5010053005D /* LeaveRequestVM.swift */; };
+		F33031662BADD9860053005D /* OptionsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33031652BADD9860053005D /* OptionsVM.swift */; };
 		F33AA1062BA4BFE000119193 /* TANetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = F33AA1052BA4BFE000119193 /* TANetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F33AA1092BA4BFE000119193 /* TANetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33AA1032BA4BFE000119193 /* TANetworking.framework */; };
 		F33AA10A2BA4BFE000119193 /* TANetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F33AA1032BA4BFE000119193 /* TANetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -183,6 +184,7 @@
 		F330315C2BADCF6F0053005D /* SelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionCell.xib; sourceTree = "<group>"; };
 		F330315F2BADD3960053005D /* DateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateVM.swift; sourceTree = "<group>"; };
 		F33031612BADD5010053005D /* LeaveRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveRequestVM.swift; sourceTree = "<group>"; };
+		F33031652BADD9860053005D /* OptionsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsVM.swift; sourceTree = "<group>"; };
 		F33AA1032BA4BFE000119193 /* TANetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TANetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F33AA1052BA4BFE000119193 /* TANetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TANetworking.h; sourceTree = "<group>"; };
 		F33AA1102BA4C03200119193 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				F33031542BADC78A0053005D /* ManagerVM.swift */,
 				F330315F2BADD3960053005D /* DateVM.swift */,
 				F33031612BADD5010053005D /* LeaveRequestVM.swift */,
+				F33031652BADD9860053005D /* OptionsVM.swift */,
 			);
 			path = viewmodel;
 			sourceTree = "<group>";
@@ -975,6 +978,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F33031552BADC78A0053005D /* ManagerVM.swift in Sources */,
+				F33031662BADD9860053005D /* OptionsVM.swift in Sources */,
 				F31784692BAD492400AD8110 /* UITableView+Ext.swift in Sources */,
 				F38A71E32BAD9C0B00A0E12F /* LeaveRequestDetailController.swift in Sources */,
 				F3956AD32BA9F5B8000DBD1A /* BaseController.swift in Sources */,

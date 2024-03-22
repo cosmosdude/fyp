@@ -16,7 +16,7 @@ enum Config {
 /// API Config
 public enum Api {
     /// API Host.
-    public static let host = "http://192.168.1.2:3000/"
+    public static let host = "http://192.168.1.3:3000/"
     
     public static func route(_ value: String) -> String {
         host + value

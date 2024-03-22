@@ -14,6 +14,7 @@ class LeaveRequestController: UIViewController {
     @IBOutlet private var leaveSelectBox: SelectBox!
     @IBOutlet private var fromDateSelectBox: SelectBox!
     @IBOutlet private var toDateSelectBox: SelectBox!
+    @IBOutlet private var typeSelectBox: SelectBox!
     @IBOutlet private var managerSelectBox: SelectBox!
     
     private var bag = Set<AnyCancellable>()
@@ -21,6 +22,11 @@ class LeaveRequestController: UIViewController {
     let fromDateVM = DateVM()
     let toDateVM = DateVM()
     let leaveVM = LeaveVM()
+    let typeVM = OptionsVM(options: [
+        .init("Entire Day", ""),
+        .init("Morning (AM)", "am"),
+        .init("Evening (PM)", "pm")
+    ])
     let managerVM = ManagerVM()
     
     override func viewDidLoad() {
@@ -29,21 +35,25 @@ class LeaveRequestController: UIViewController {
             self, action: #selector(self.pop), for: .touchUpInside
         )
         
-        fromDateVM.$dateText.receive(on: DispatchQueue.main)
-            .sink { [weak box = fromDateSelectBox] in
-                box?.text = $0 ?? "Select date"
-            }.store(in: &bag)
-        
-        toDateVM.$dateText.receive(on: DispatchQueue.main)
-            .sink { [weak box = toDateSelectBox] in
-                box?.text = $0 ?? "Select date"
-            }.store(in: &bag)
-        
         leaveVM.$selectedLeaveType.receive(on: DispatchQueue.main)
             .sink { [weak leaveBox = leaveSelectBox] in
                 guard let leave = $0 else { return }
                 leaveBox?.text = "\(leave.name) - \(leave.balance) day(s)"
-                
+            }.store(in: &bag)
+        
+        fromDateVM.$displayText.receive(on: DispatchQueue.main)
+            .sink { [weak box = fromDateSelectBox] in
+                box?.text = $0 ?? "Select date"
+            }.store(in: &bag)
+        
+        toDateVM.$displayText.receive(on: DispatchQueue.main)
+            .sink { [weak box = toDateSelectBox] in
+                box?.text = $0 ?? "Select date"
+            }.store(in: &bag)
+        
+        typeVM.$option.receive(on: DispatchQueue.main)
+            .sink { [weak box = typeSelectBox] in
+                box?.text = $0?.displayText ?? "Entire Day"
             }.store(in: &bag)
         
         managerVM.$selectedManager.receive(on: DispatchQueue.main)
@@ -51,7 +61,6 @@ class LeaveRequestController: UIViewController {
                 guard let manager = $0 else { return }
                 self?.managerSelectBox.setImageURL(manager.avatarURL)
                 self?.managerSelectBox.text = manager.fullName
-                
             }.store(in: &bag)
         
         leaveVM.fetchLeaveTypes()
@@ -85,6 +94,19 @@ class LeaveRequestController: UIViewController {
         picker.didSelectItemAt = {
             [weak self] index in
             self?.leaveVM.selectedLeaveTypeIndex = index.row
+        }
+        present(picker, animated: true)
+    }
+    
+    @IBAction
+    private func didTapType() {
+        let picker = SelectionController(
+            items: typeVM.options.map { $0.displayText },
+            selected: typeVM.index.map { IndexPath(row: $0, section: 0) }
+        )
+        picker.didSelectItemAt = {
+            [weak self] index in
+            self?.typeVM.index = index.row
         }
         present(picker, animated: true)
     }

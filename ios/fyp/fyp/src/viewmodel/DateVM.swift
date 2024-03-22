@@ -9,25 +9,38 @@ import Foundation
 
 class DateVM {
     
-    @Published
-    var dateText: String?
-    
     var date: Date? {
         didSet {
-            guard let date else { return dateText = nil }
-            dateText = formatter.string(from: date)
+            guard let date else { return displayText = nil }
+            displayText = displayFormatter.string(from: date)
         }
     }
     
-    var format: String? {
-        get { formatter.dateFormat ?? "" }
-        set { formatter.dateFormat = newValue }
+    // MARK: Display
+    @Published
+    var displayText: String?
+    
+    var displayFormat: String? {
+        get { displayFormatter.dateFormat ?? "" }
+        set { displayFormatter.dateFormat = newValue }
     }
     
-    let formatter = DateFormatter()
+    let displayFormatter = DateFormatter()
+    
+    // MARK: Output
+    var outputText: String? {
+        date.map(outputFormatter.string(from:))
+    }
+    
+    var outputFormat: String? {
+        get { outputFormatter.dateFormat ?? "" }
+        set { outputFormatter.dateFormat = newValue }
+    }
+    
+    let outputFormatter = DateFormatter()
     
     init() {
-        format = "d MMM, yyyy"
+        displayFormat = "d MMM, yyyy"
     }
     
 }
