@@ -6,8 +6,13 @@
 //
 
 import Foundation
+import TANetworking
 
-struct LeaveType {
-    var balance: Int = 0
-    var name: String = "Test"
+struct LeaveType: NetworkTypeProxy {
+    
+    init(_ value: TANetworking.LeaveBalanceData) {
+        self.value = value
+    }
+    
+    let value: LeaveBalanceData
 }

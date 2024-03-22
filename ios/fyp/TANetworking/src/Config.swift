@@ -46,6 +46,8 @@ public struct ApiPath: RawRepresentable, ExpressibleByStringLiteral {
     
     static let hrManagers: Self = "api/users/hrs"
     static let myManagers: Self = "api/users/user/managers"
+    
+    static let requestLeave: Self = "api/leaves/requests"
 }
 
 

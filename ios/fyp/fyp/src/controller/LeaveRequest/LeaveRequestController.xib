@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,10 +11,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeaveRequestController" customModule="fyp" customModuleProvider="target">
             <connections>
+                <outlet property="btn" destination="Lnd-N2-2cm" id="t4m-PX-0Ib"/>
                 <outlet property="fromDateSelectBox" destination="Uby-bQ-51g" id="vpn-3T-8HT"/>
                 <outlet property="leaveSelectBox" destination="BO0-Pw-yiH" id="zo4-nX-qqq"/>
                 <outlet property="managerSelectBox" destination="9X4-rt-4Fc" id="hIb-4f-Qr6"/>
                 <outlet property="navBar" destination="mpo-rJ-fHM" id="rHm-Wo-kEW"/>
+                <outlet property="reasonTextBox" destination="bPr-rc-KoJ" id="WLh-WZ-Kl7"/>
+                <outlet property="spinner" destination="1rS-Pa-hPR" id="Tdj-BP-ZZe"/>
                 <outlet property="toDateSelectBox" destination="Pg3-se-fVc" id="Lab-cU-Xqk"/>
                 <outlet property="typeSelectBox" destination="4n4-ej-6Rc" id="g2q-6a-fK5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -102,7 +106,7 @@
                                                 <action selector="didTapManagers" destination="-1" eventType="touchUpInside" id="Z3d-H6-Skf"/>
                                             </connections>
                                         </view>
-                                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="bPr-rc-KoJ" customClass="TextBox" customModule="fyp" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="bPr-rc-KoJ" userLabel="reason" customClass="TextBox" customModule="fyp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="340" width="353" height="150"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <userDefinedRuntimeAttributes>
@@ -116,7 +120,22 @@
                                             </constraints>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="Request"/>
+                                            <connections>
+                                                <action selector="didTapRequest" destination="-1" eventType="touchUpInside" id="kWq-NI-l2a"/>
+                                            </connections>
                                         </button>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1rS-Pa-hPR">
+                                            <rect key="frame" x="0.0" y="548" width="353" height="38"/>
+                                            <color key="backgroundColor" name="primary-0"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="38" id="bG2-3n-sAm"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </activityIndicatorView>
                                     </subviews>
                                 </stackView>
                             </subviews>
@@ -156,6 +175,9 @@
     </objects>
     <resources>
         <image name="person.circle.fill" catalog="system" width="128" height="123"/>
+        <namedColor name="primary-0">
+            <color red="0.9137254901960784" green="0.92941176470588238" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

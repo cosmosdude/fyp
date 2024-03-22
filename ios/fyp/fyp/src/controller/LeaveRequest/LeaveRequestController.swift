@@ -16,6 +16,10 @@ class LeaveRequestController: UIViewController {
     @IBOutlet private var toDateSelectBox: SelectBox!
     @IBOutlet private var typeSelectBox: SelectBox!
     @IBOutlet private var managerSelectBox: SelectBox!
+    @IBOutlet private var reasonTextBox: TextBox!
+    
+    @IBOutlet private var spinner: UIActivityIndicatorView!
+    @IBOutlet private var btn: UIButton!
     
     private var bag = Set<AnyCancellable>()
     
@@ -29,11 +33,36 @@ class LeaveRequestController: UIViewController {
     ])
     let managerVM = ManagerVM()
     
+    let requestVM = RequestLeaveVM()
+    
+    func render(spinner flag: Bool) {
+        btn.isHidden = flag
+        spinner.isHidden = !flag
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navBar.backArrowBtn.addTarget(
             self, action: #selector(self.pop), for: .touchUpInside
         )
+        
+        requestVM.$status.receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                switch $0 {
+                case .processing:
+                    self?.render(spinner: true)
+                case .success:
+                    self?.render(spinner: false)
+                    self?.pop()
+                case .failure(error: let error):
+                    self?.render(spinner: false)
+                    self?.presentAlert(
+                        title: "Error",
+                        message: "Unable to request leave"
+                    )
+                case nil: ()
+                }
+            }.store(in: &bag)
         
         leaveVM.$selectedLeaveType.receive(on: DispatchQueue.main)
             .sink { [weak leaveBox = leaveSelectBox] in
@@ -122,6 +151,18 @@ class LeaveRequestController: UIViewController {
             self?.managerVM.selectedIndex = index
         }
         present(selector, animated: true)
+    }
+    
+    @IBAction
+    private func didTapRequest() {
+        requestVM.request(request: .init(
+            leaveId: leaveVM.selectedLeaveType?.id ?? "",
+            from: fromDateVM.date ?? Date(),
+            to: toDateVM.date ?? Date(),
+            recipientId: managerVM.selectedManager?.id ?? "",
+            type: typeVM.option?.value ?? "",
+            reason: reasonTextBox.text ?? ""
+        ))
     }
     
 }
