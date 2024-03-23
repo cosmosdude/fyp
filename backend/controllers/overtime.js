@@ -47,6 +47,7 @@ exports.requestOT = async (req, res) => {
         set ?
     `, [{
         date: data.date,
+        requester_id: auth.id,
         recipient_id: data.recipient_id,
         request_msg: data.request_msg,
         duration_sec: data.duration * 60,
@@ -73,5 +74,41 @@ exports.requestOT = async (req, res) => {
 }
 
 exports.respondOT = async (req, res) => {
-    res.send("respondOT")
+    let {id} = req.params
+    let auth = req.authUser
+
+    let data = {}
+    try {
+        data = z.object({
+            status: z.enum(['approved','rejected']),
+            response_msg: z.string().optional()
+        }).parse(req.body)
+    } catch(error) { res.zod.sendError(error) }
+
+    // Get Responder (Auth User)
+    let responder = (await db.promise().query(/*sql*/`
+        select * from users where id=?
+    `, auth.id))[0]?.[0]
+
+    await db.promise().query(/*sql*/`
+        update users_overtimes_requests set ? where id=?
+    `, [data, id])
+
+    let otReq = (await db.promise().query(/*sql*/`
+        select * from users_overtimes_requests where id=?
+    `, id))[0]?.[0]
+
+    // create noti
+    await db.promise().query(/*sql*/`
+        insert into users_notifications
+        set ?
+    `, [{
+        user_id: otReq.requester_id, // <- target user is original requester
+        title: "Overtime",
+        body: `Overtime request has been ${data.status} by ${responder.first_name}.`,
+        overtime_request_id: otReq.id,
+        type: 'overtime_request'
+    }])
+
+    res.sendStatus(202)
 }
