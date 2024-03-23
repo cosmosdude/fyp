@@ -31,5 +31,7 @@ module.exports = {
         references users(id)
     )
     `,
-    "down": ""
+    "down": /*sql*/`
+        drop table users_attendances_requests
+    `
 }

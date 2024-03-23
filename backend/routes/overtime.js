@@ -7,6 +7,9 @@ const mw = {
     multipart: require('../middlewares/formidable-multipart'),
 }
 
+router.use(require('../middlewares/authenticated'))
+router.use(mw.multipart)
+
 router.get('/requests', [], asyncHandler(controller.getAllRequests))
 router.get('/requests/me', [], asyncHandler(controller.getMyRequests))
 router.post('/requests/request', [], asyncHandler(controller.requestOT))

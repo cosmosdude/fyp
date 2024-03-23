@@ -18,6 +18,6 @@ module.exports = {
     )
     `,
     "down": /*sql*/`
-    drop table users_attendances
+        drop table users_attendances
     `
 }

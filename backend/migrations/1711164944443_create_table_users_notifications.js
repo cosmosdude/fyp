@@ -9,7 +9,7 @@ module.exports = {
         user_id varchar(36),
         read_at datetime,
 
-        type enum('leave_request'),
+        type varchar(64),
         leave_request_id varchar(36),
 
         constraint fk_users_notifications_user_id
