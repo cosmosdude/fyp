@@ -17,9 +17,6 @@ app.use(cors())
 // MW: Static file server
 app.use(express.static('public'))
 
-
-
-
 // Configure Routers middlewares
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/departments', require('./routes/department'))
@@ -27,6 +24,8 @@ app.use('/api/designations', require('./routes/designation'))
 app.use('/api/users', require('./routes/user'))
 app.use('/api/holidays', require('./routes/holidays'))
 app.use('/api/leaves', require('./routes/leaves'))
+app.use('/api/attendances', require('./routes/attendance'))
+app.use('/api/overtimes', require('./routes/overtime'))
 app.use('/api/notifications', require('./routes/notifications'))
 app.use('/api/statistic', require('./routes/statistics'))
 

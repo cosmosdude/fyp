@@ -1,10 +1,9 @@
-
 const db = require('../mysql')
 
 exports.departments = async (req, res) => {
 
     let [results] = await db.promise().query(
-        `
+        /*sql*/`
         (select departments.name as "name", COUNT(users.department_id) as "value"
         from departments
         left join users on departments.id=users.department_id
@@ -22,7 +21,7 @@ exports.departments = async (req, res) => {
 
 exports.designations = async(req, res) => {
     let [results] = await db.promise().query(
-        `
+        /*sql*/`
         (select designations.name as "name", COUNT(users.designation_id) as "value"
         from designations
         left join users on designations.id=users.designation_id
