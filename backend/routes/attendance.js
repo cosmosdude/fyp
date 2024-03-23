@@ -9,4 +9,9 @@ const mw = {
 
 router.get('/', [], asyncHandler(controller.getAll))
 
+router.get('/requests', [], asyncHandler(controller.getAllAttendanceRequests))
+router.get('/requests/me', [], asyncHandler(controller.getMyAttendanceRequests))
+router.post('/requests/request', [], asyncHandler(controller.requestAttendance))
+router.put('/requests/request/:id', [], asyncHandler(controller.respondAttendanceRequest))
+
 module.exports = router

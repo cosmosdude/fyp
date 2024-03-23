@@ -7,6 +7,9 @@ const mw = {
     multipart: require('../middlewares/formidable-multipart'),
 }
 
-router.get('/', [], asyncHandler(controller.getAllRequests))
+router.get('/requests', [], asyncHandler(controller.getAllRequests))
+router.get('/requests/me', [], asyncHandler(controller.getMyRequests))
+router.post('/requests/request', [], asyncHandler(controller.requestOT))
+router.put('/requests/request/:id', [], asyncHandler(controller.respondOT))
 
 module.exports = router
