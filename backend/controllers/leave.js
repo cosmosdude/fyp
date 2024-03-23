@@ -192,6 +192,11 @@ exports.user = {
         // if to date is not given, make it the same day as from_date
         if (!data.to_date) data.to_date = data.from_date
 
+        // == auth user ==
+        let requester = (await db.promise().query(/*sql*/`
+            select * from users where id=?
+        `, auth.id))[0]?.[0]
+
         // == leave == 
 
         // get leave setting
@@ -242,7 +247,7 @@ exports.user = {
         if (balanceData.balance < requiredBalance) 
         return res.status(400).send("Not enough leave")
 
-        // == User ==
+        // == Recipient User ==
         let recipient = (await db.promise().query(/*sql*/`
             select * from users where id=?
         `, [data.recipient_id]))[0]?.[0]
@@ -262,10 +267,27 @@ exports.user = {
         // res.json(data)
 
         // == create request ==
-        await db.promise().query(/*sql*/`
-            insert into users_leaves_requests
-            set ?
+        let [leaveRequestInsertion] = await db.promise().query(/*sql*/`
+            insert into users_leaves_requests set ?
         `, [data])
+
+        let insertedLeaveRequest = (await db.promise().query(/*sql*/`
+            select * from users_leaves_requests
+            where iid=?
+        `, [leaveRequestInsertion.insertId]))[0]?.[0]
+
+        // return res.json(insertedLeaveRequest)
+
+        // == create notification for recipient ==
+        db.promise().query(/*sql*/`
+            insert into users_notifications
+            set ?
+        `, [{
+            user_id: recipient.id, // <- target user is recipient
+            title: "Leave Request",
+            body: `${requester.first_name} has requested ${leaveSetting.name}.`,
+            leave_request_id: insertedLeaveRequest.id
+        }])
 
         res.sendStatus(201)
     },

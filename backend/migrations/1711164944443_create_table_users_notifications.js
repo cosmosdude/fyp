@@ -6,8 +6,14 @@ module.exports = {
         title text,
         body text,
         created_at datetime not null default(CURRENT_TIMESTAMP()),
+        user_id varchar(36),
+
         type enum('leave_request'),
         leave_request_id varchar(36),
+
+        constraint fk_users_notifications_user_id
+        foreign key (user_id)
+        references users(id),
 
         constraint fk_users_notifications_leave_request_id
         foreign key (leave_request_id)
