@@ -284,8 +284,8 @@ exports.user = {
             set ?
         `, [{
             user_id: recipient.id, // <- target user is recipient
-            title: "Leave Request",
-            body: `${requester.first_name} has requested ${leaveSetting.name}.`,
+            title: "Leave",
+            body: `${requester.first_name} has requested ${requiredBalance} day(s) of ${leaveSetting.name}.`,
             leave_request_id: insertedLeaveRequest.id
         }])
 
@@ -415,7 +415,7 @@ exports.user = {
         let { id } = req.params
 
         let data = {}
-        // return res.json(req.body)
+
         try {
             data = z.object({
                 status: z.enum(['approved', 'rejected']),
@@ -423,7 +423,12 @@ exports.user = {
             }).parse(req.body)
         } catch(error) { return res.zod.sendError(error) }
 
-        // get leave request detail
+        // == responder detail ==
+        let responder = (await db.promise().query(/*sql*/`
+            select * from users where id=?
+        `, auth.id))[0]?.[0]
+
+        // == get leave request detail ==
         let leaveRequest = (await db.promise().query(/*sql*/`
             select * from users_leaves_requests
             where id=?
@@ -432,8 +437,16 @@ exports.user = {
         // if no such leave request exists, end with error
         if (!leaveRequest) return res.status(404).send("Not such leave request")
         
+        // if leave is already responded, exit with error
         if (leaveRequest.status !== 'pending') 
         return res.status(404).send("Already responded to leave.")
+
+        // get leave setting
+        let leaveSetting = (await db.promise().query(/*sql*/`
+            select * from leaves where id=?
+        `, leaveRequest.leave_id))[0]?.[0]
+        // if missing, end with error
+        if (!leaveSetting) return res.status(400).send("No such leave")
 
         // fill up responder_id
         data.responder_id = auth.id
@@ -458,25 +471,22 @@ exports.user = {
                 update users_leaves set balance=?
                 where user_id=? AND leave_id=?
             `, [newBalance, auth.id, leaveRequest.leave_id])
-            // return res.json({
-            //     balance: userLeave.balance, 
-            //     outstanding: leaveRequest.outstanding_balance,
-            //     newBalance
-            // })
         }
 
-        // return res.send("Blocked")
-        
-
         // update leave request status
-        await db.promise().query(/*sql*/`
+        db.promise().query(/*sql*/`
             update users_leaves_requests set ? where id=?
         `, [data, id])
 
-        // update leave balance
-        // await db.promise().query(/*sql*/`
-        //     update users_leaves
-        // `)
+        // create notification
+        db.promise().query(/*sql*/`
+            insert into users_notifications set ?
+        `, [{
+            user_id: leaveRequest.requester_id, // <- target user is recipient
+            title: "Leave",
+            body: `${responder.first_name} has ${data.status} the request for ${leaveRequest.outstanding_balance} day(s) of ${leaveSetting.name}.`,
+            leave_request_id: leaveRequest.id
+        }])
         
 
         res.sendStatus(201)

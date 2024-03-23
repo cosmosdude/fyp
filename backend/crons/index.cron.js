@@ -2,8 +2,6 @@ const cron = require('node-cron')
 
 exports.schedule = () => {
     cron.schedule("*/5 * * * * *", function () {
-        console.log("--");
-        console.log('--')
         console.log("+-------------------------+");
         let addresses = require('os').networkInterfaces()
         let en0 = addresses?.en0
