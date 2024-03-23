@@ -16,7 +16,7 @@ enum Config {
 /// API Config
 public enum Api {
     /// API Host.
-    public static let host = "http://192.168.1.4:3000/"
+    public static let host = "http://172.20.10.2:3000/"
     
     public static func route(_ value: String) -> String {
         host + value
@@ -60,6 +60,9 @@ public struct ApiPath: RawRepresentable, ExpressibleByStringLiteral {
     
     /// notifications api.
     static let notifications: Self = "api/notifications"
+    static func readNotification(id: String) -> Self {
+        .init("api/notifications/\(id)/read")
+    }
 }
 
 

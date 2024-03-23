@@ -34,6 +34,7 @@ class ManagerSelectionController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(ManagerSelectionCell.self)
+        tableView.registerHeaderFooter(TableTitleHeader.self)
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -64,6 +65,18 @@ extension ManagerSelectionController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         managers[section].count
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        viewForHeaderInSection section: Int
+    ) -> UIView? {
+//        let label = UILabel()
+//        label.text = managers[section].info
+//        return label
+        let header = tableView.dequeueHeaderFooter(TableTitleHeader.self)
+        header.titleLabel.text = managers[section].info
+        return header
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

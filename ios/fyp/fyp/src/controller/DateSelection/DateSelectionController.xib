@@ -38,6 +38,13 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djb-u2-n6Z">
                             <rect key="frame" x="0.0" y="344" width="390" height="500"/>
                             <subviews>
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Yi-Nf-XhI" userLabel="separator">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="1"/>
+                                    <color key="backgroundColor" name="border"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="aLJ-Si-alR"/>
+                                    </constraints>
+                                </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XGJ-lJ-xCV">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="466"/>
                                     <subviews>
@@ -96,11 +103,28 @@
                             <viewLayoutGuide key="safeArea" id="5Jw-6X-QoG"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
+                                <constraint firstItem="3Yi-Nf-XhI" firstAttribute="top" secondItem="5Jw-6X-QoG" secondAttribute="top" id="8OP-fD-vSs"/>
                                 <constraint firstItem="XGJ-lJ-xCV" firstAttribute="top" secondItem="djb-u2-n6Z" secondAttribute="top" id="8TG-c5-CIC"/>
                                 <constraint firstItem="5Jw-6X-QoG" firstAttribute="bottom" secondItem="XGJ-lJ-xCV" secondAttribute="bottom" id="Lzu-oc-LHl"/>
+                                <constraint firstAttribute="trailing" secondItem="3Yi-Nf-XhI" secondAttribute="trailing" id="VXJ-MR-5hy"/>
                                 <constraint firstAttribute="trailing" secondItem="XGJ-lJ-xCV" secondAttribute="trailing" id="raO-G7-0X2"/>
+                                <constraint firstItem="3Yi-Nf-XhI" firstAttribute="leading" secondItem="djb-u2-n6Z" secondAttribute="leading" id="xlV-Uj-Rpa"/>
                                 <constraint firstItem="XGJ-lJ-xCV" firstAttribute="leading" secondItem="djb-u2-n6Z" secondAttribute="leading" id="z9F-WK-kUl"/>
                             </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                    <size key="value" width="0.0" height="2"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                    <real key="value" value="0.20000000000000001"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                    <color key="value" name="neutral-900"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
                 </stackView>
@@ -117,8 +141,14 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="border">
+            <color red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="clear">
             <color red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="neutral-900">
+            <color red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

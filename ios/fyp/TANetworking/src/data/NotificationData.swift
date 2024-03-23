@@ -12,8 +12,9 @@ public struct NotificationData: Codable {
     public let id: String
     public let title: String?
     public let body: String?
-    public let createdAt: String
-    public let userId: String
+    public let createdAt: String?
+    public let readAt: String?
+    public let userId: String?
     public let type: String?
     public let leaveRequestId: String?
     
@@ -23,6 +24,7 @@ public struct NotificationData: Codable {
         case title
         case body
         case createdAt = "created_at"
+        case readAt = "read_at"
         case userId = "user_id"
         case type
         case leaveRequestId = "leave_request_id"

@@ -1389,6 +1389,15 @@ video {
   gap: 5px;
 }
 
+.gap-x-\[40px\] {
+  -moz-column-gap: 40px;
+       column-gap: 40px;
+}
+
+.gap-y-\[40px\] {
+  row-gap: 40px;
+}
+
 .self-end {
   align-self: flex-end;
 }
@@ -1599,6 +1608,10 @@ video {
 .border-t-neutral-300 {
   --tw-border-opacity: 1;
   border-top-color: rgb(179 179 179 / var(--tw-border-opacity));
+}
+
+.border-t-transparent {
+  border-top-color: #ffffff00;
 }
 
 .bg-background-0 {

@@ -34,24 +34,24 @@ app.use('/api/statistic', require('./routes/statistics'))
 // # Tests
 const upload = require('./services/fileHandling.js')
 
-app.use('/test', require('./middlewares/formidable-multipart'), async (req, res) => {
-    console.log("Fields", req.fields)
-    console.log("Files", req.files)
+// app.use('/test', require('./middlewares/formidable-multipart'), async (req, res) => {
+//     console.log("Fields", req.fields)
+//     console.log("Files", req.files)
     
-    let files = req.files['f']
+//     let files = req.files['f']
 
-    let uploadedFiles = await Promise.all(
-        files.map(async (f) => {
-            let uploaded = await upload(f)
+//     let uploadedFiles = await Promise.all(
+//         files.map(async (f) => {
+//             let uploaded = await upload(f)
 
-            return uploaded
-        })
-    )
-    res.status(200).json({ 
-        fields: req.fields, files: req.files,
-        uploadedFiles
-    })
-})
+//             return uploaded
+//         })
+//     )
+//     res.status(200).json({ 
+//         fields: req.fields, files: req.files,
+//         uploadedFiles
+//     })
+// })
 
 // MW: 404
 app.use(require('./middlewares/404')) // catch unhandled routes as 404

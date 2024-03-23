@@ -14,6 +14,10 @@ final class NotificationVM {
     @Published
     private(set) var notifications = [Noti]()
     
+    let notiService = NotificationService(
+        accessToken: LoginModel.accessToken ?? ""
+    )
+    
     init() {
         
     }
@@ -24,11 +28,18 @@ final class NotificationVM {
     
     @Sendable
     private func _fetchNotifications() async {
-        guard let accessToken = LoginModel.accessToken else { return }
-        
-        let service = NotificationService(accessToken: accessToken)
+        let service = notiService
         
         notifications = (try? await service.fetchNotifications())?.map(Noti.init) ?? []
+    }
+    
+    func read(at index: Int) {
+        Task { await _read(at: index) }
+    }
+    
+    @Sendable
+    private func _read(at index: Int) async {
+        try? await notiService.markAsRead(id: notifications[index].id)
     }
     
 }

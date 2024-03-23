@@ -32,9 +32,12 @@ router.delete('/user/:id', limitExactly(['admin', 'hr']), asyncHandler(controlle
 
 
 
-router.use('/test', (req, res) => {
-    // res.send(dirname(require.main.filename))
-    res.send("")
+router.use('/test', async (req, res) => {
+    res.send(dirname(require.main.filename))
+    // let db = require('../mysql')
+    // let [results] = await db.promise().query(/*sql*/`
+    // `)
+    // res.json(results)
 })
 
 module.exports = router

@@ -7,6 +7,9 @@ interface CreateEmployeeProps {
     username: string,
     password: string,
 
+    role_id: 1 | 2 | 3 | 4,
+    status: "active" | "deactive",
+
     first_name: string,
     last_name: string,
     dob: string|null,
@@ -85,7 +88,7 @@ const employeeService = {
         let f = new FormData()
         for (const [k,v] of Object.entries(employee).filter(([_, v]) => !!v)) {
             console.log(k, v)
-            f.set(k, v)
+            f.set(k, String(v))
         }
         
         return fetch(
@@ -114,7 +117,7 @@ const employeeService = {
         let f = new FormData()
         for (const [k,v] of Object.entries(employee).filter(([_, v]) => !!v)) {
             console.log(k, v)
-            f.set(k, v)
+            f.set(k, String(v))
         }
         
         return fetch(

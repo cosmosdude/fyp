@@ -34,4 +34,28 @@ public extension UIView {
         set { layer.cornerCurve = newValue ? .continuous : .circular }
     }
     
+    @IBInspectable
+    var shadowOffset: CGSize {
+        get { layer.shadowOffset }
+        set { layer.shadowOffset = newValue }
+    }
+    
+    @IBInspectable
+    var shadowOpacity: Float {
+        get { layer.shadowOpacity }
+        set { layer.shadowOpacity = newValue }
+    }
+    
+    @IBInspectable
+    var shadowRadius: CGFloat {
+        get { layer.shadowRadius }
+        set { layer.shadowRadius = newValue }
+    }
+    
+    @IBInspectable
+    var shadowColor: UIColor? {
+        get { layer.shadowColor.map(UIColor.init(cgColor:)) }
+        set { layer.shadowColor = newValue?.cgColor }
+    }
+    
 }

@@ -97,6 +97,7 @@
                                         <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="9X4-rt-4Fc" userLabel="manager" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="255" width="353" height="65"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <color key="tintColor" name="neutral-700"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="image" keyPath="image" value="person.circle.fill" catalog="system"/>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="title" value="Request To"/>
@@ -175,6 +176,9 @@
     </objects>
     <resources>
         <image name="person.circle.fill" catalog="system" width="128" height="123"/>
+        <namedColor name="neutral-700">
+            <color red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="primary-0">
             <color red="0.9137254901960784" green="0.92941176470588238" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

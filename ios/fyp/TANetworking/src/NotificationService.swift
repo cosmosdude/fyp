@@ -42,4 +42,30 @@ public struct NotificationService {
         
     }
     
+    public func markAsRead(id: String) async throws {
+        
+        let req = AF.request(
+            Api.route(.readNotification(id: id)), method: .get,
+            headers: [
+                .authorization(bearerToken: accessToken)
+            ]
+        )
+        req.responseString { res in print("response", res.value ?? "") }
+        
+        let res = await req.serializingString().response
+        
+        guard (200..<300) ~= res.response?.statusCode ?? 0 else {
+            print(res)
+            throw "Unable to get user data"
+        }
+        
+//        do {
+//            return _ = try res.result.get()
+//        } catch {
+//            console.error("Error \(error.localizedDescription)")
+//            throw error
+//        }
+        
+    }
+    
 }

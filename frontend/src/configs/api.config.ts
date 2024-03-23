@@ -158,6 +158,7 @@ export const apiPaths = {
         * API for getting all employees
         */
         getAll: "api/users",
+        getAllManagers: "api/users/managers",
         get(id: string|null|undefined = "") { 
             return `api/users/user/${id}`
         },

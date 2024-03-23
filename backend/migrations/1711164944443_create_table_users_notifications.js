@@ -7,6 +7,7 @@ module.exports = {
         body text,
         created_at datetime not null default(CURRENT_TIMESTAMP()),
         user_id varchar(36),
+        read_at datetime,
 
         type enum('leave_request'),
         leave_request_id varchar(36),

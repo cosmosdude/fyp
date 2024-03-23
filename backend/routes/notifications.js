@@ -11,5 +11,6 @@ router.use(express.json())
 router.use(require('../middlewares/authenticated'))
 
 router.get('/', asyncHandler(controller.getAll))
+router.get('/:id/read', asyncHandler(controller.read))
 
 module.exports = router

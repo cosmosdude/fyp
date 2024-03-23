@@ -49,6 +49,7 @@ extension InboxController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let noti = notiViewModel.notifications[indexPath.row]
+        notiViewModel.read(at: indexPath.row)
         
         var controller: UIViewController?
         

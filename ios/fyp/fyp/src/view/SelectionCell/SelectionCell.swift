@@ -24,8 +24,13 @@ class SelectionCell: NibTableViewCell {
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
         UIView.animate(withDuration: 0.25) {
-            self.alpha = highlighted ? 0.25 : 1
+//            self.alpha = highlighted ? 0.25 : 1
+            self.contentView.backgroundColor = UIColor(
+                named: highlighted ? "primary-0" : "bg-0"
+            )
         }
+        
+        
     }
     
 }

@@ -31,12 +31,15 @@ protocol NibLoadable: UIView, NibProvider {
     var nibContainerView: UIView! { get }
     
     func loadNibFile()
+    func didLoadNibFile()
     
 }
 
 extension NibLoadable {
     
     var nibContainerView: UIView! { self }
+    
+    func didLoadNibFile() { }
     
     func loadNibFile() {
         guard let nib else { return }
@@ -45,6 +48,8 @@ extension NibLoadable {
             .compactMap { $0 as? UIView }
             .reversed()
             .forEach(stickToMargins(view:))
+        
+        didLoadNibFile()
     }
     
     private func stickToMargins(view: UIView) {
@@ -94,6 +99,8 @@ class NibControl: UIControl, NibLoadable {
 
 class NibTableViewCell: UITableViewCell, NibLoadable {
     
+    var nibContainerView: UIView! { contentView }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         loadNibFile()
@@ -106,7 +113,25 @@ class NibTableViewCell: UITableViewCell, NibLoadable {
     
 }
 
+class NibTableViewHeaderFooterView: UITableViewHeaderFooterView, NibLoadable {
+    
+    var nibContainerView: UIView! { contentView }
+    
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        loadNibFile()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        loadNibFile()
+    }
+    
+}
+
 class NibCollectionViewCell: UITableViewCell, NibLoadable {
+    
+    var nibContainerView: UIView! { contentView }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

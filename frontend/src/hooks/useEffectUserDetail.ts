@@ -3,7 +3,7 @@ import { useAuthContext } from "./AuthStateContext";
 import employeeService from "../services/employeeService";
 
 function useEffectUserDetail() {
-    let [user, setUser] = useState(null)
+    let [user, setUser] = useState({})
     let auth = useAuthContext()
     useEffect(() => {
         let aborter = new AbortController()

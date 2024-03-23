@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -21,6 +20,7 @@
                 <outlet property="bodyLabel" destination="iwF-ix-ULf" id="Xje-jy-cDD"/>
                 <outlet property="dateLabel" destination="aEx-Dp-8kh" id="3v6-cH-qIt"/>
                 <outlet property="iconView" destination="1xQ-gZ-oKa" id="EpM-Th-QXL"/>
+                <outlet property="statusView" destination="lAy-qQ-FEN" id="49p-e5-ReI"/>
                 <outlet property="titleLabel" destination="Nua-8p-XUa" id="ygK-e1-dyh"/>
             </connections>
         </placeholder>
@@ -67,23 +67,36 @@
                                     <rect key="frame" x="0.0" y="0.0" width="315" height="16"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nua-8p-XUa">
-                                            <rect key="frame" x="0.0" y="0.0" width="259" height="16"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="244" height="16"/>
                                             <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="14"/>
                                             <color key="textColor" name="neutral-900"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="12:01 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEx-Dp-8kh">
-                                            <rect key="frame" x="264" y="0.66666666666666607" width="51" height="14.666666666666666"/>
+                                            <rect key="frame" x="249" y="0.66666666666666607" width="51" height="14.666666666666666"/>
                                             <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                             <color key="textColor" name="neutral-500"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lAy-qQ-FEN">
+                                            <rect key="frame" x="305" y="3" width="10" height="10"/>
+                                            <color key="backgroundColor" name="primary"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="10" id="bYh-UC-TvB"/>
+                                                <constraint firstAttribute="width" secondItem="lAy-qQ-FEN" secondAttribute="height" multiplier="1:1" id="gNK-Bo-BSs"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
                                 </stackView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Body" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwF-ix-ULf">
                                     <rect key="frame" x="0.0" y="21" width="315" height="17"/>
                                     <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
-                                    <color key="textColor" name="neutral-700"/>
+                                    <color key="textColor" name="neutral-900"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -91,7 +104,7 @@
                     </subviews>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="WiB-xc-ZW3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="Fmk-H1-1y9"/>
                 <constraint firstItem="WiB-xc-ZW3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="NhX-Ym-8Rg"/>
@@ -110,14 +123,11 @@
         <namedColor name="neutral-500">
             <color red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="neutral-700">
-            <color red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="neutral-900">
             <color red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="primary">
+            <color red="0.12549019607843137" green="0.29411764705882354" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

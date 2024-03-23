@@ -120,6 +120,8 @@
 		F3A74D632BA4BC6A00E91DFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A74D622BA4BC6A00E91DFE /* SceneDelegate.swift */; };
 		F3A74D6A2BA4BC6C00E91DFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A74D692BA4BC6C00E91DFE /* Assets.xcassets */; };
 		F3A74D6D2BA4BC6C00E91DFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A74D6B2BA4BC6C00E91DFE /* LaunchScreen.storyboard */; };
+		F3EEA77D2BAEDBEE00D89776 /* TableTitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EEA77B2BAEDBEE00D89776 /* TableTitleHeader.swift */; };
+		F3EEA77E2BAEDBEE00D89776 /* TableTitleHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EEA77C2BAEDBEE00D89776 /* TableTitleHeader.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -265,6 +267,8 @@
 		F3A74D692BA4BC6C00E91DFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3A74D6C2BA4BC6C00E91DFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3A74D6E2BA4BC6C00E91DFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3EEA77B2BAEDBEE00D89776 /* TableTitleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTitleHeader.swift; sourceTree = "<group>"; };
+		F3EEA77C2BAEDBEE00D89776 /* TableTitleHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableTitleHeader.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -496,6 +500,7 @@
 		F33AA1172BA4C27400119193 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F3EEA77A2BAEDBDA00D89776 /* TableTitleHeader */,
 				F33031752BAE99BB0053005D /* NotificationCell */,
 				F330315A2BADCF630053005D /* SelectionCell */,
 				F31733E32BADB4C70018AA05 /* Avatar */,
@@ -780,6 +785,15 @@
 			path = fyp;
 			sourceTree = "<group>";
 		};
+		F3EEA77A2BAEDBDA00D89776 /* TableTitleHeader */ = {
+			isa = PBXGroup;
+			children = (
+				F3EEA77B2BAEDBEE00D89776 /* TableTitleHeader.swift */,
+				F3EEA77C2BAEDBEE00D89776 /* TableTitleHeader.xib */,
+			);
+			path = TableTitleHeader;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -919,6 +933,7 @@
 				F3956AE32BA9F7AD000DBD1A /* InboxController.xib in Resources */,
 				F3956A9C2BA9901E000DBD1A /* Inter-Black.ttf in Resources */,
 				F38A71E42BAD9C0B00A0E12F /* LeaveRequestDetailController.xib in Resources */,
+				F3EEA77E2BAEDBEE00D89776 /* TableTitleHeader.xib in Resources */,
 				F31784492BAD390100AD8110 /* LeaveTypeListView.xib in Resources */,
 				F33031532BADC1180053005D /* SelectionController.xib in Resources */,
 				F3956AAD2BA9A027000DBD1A /* CheckBox.xib in Resources */,
@@ -1041,6 +1056,7 @@
 				F31784792BAD55EF00AD8110 /* SelectBox.swift in Sources */,
 				F38A71DE2BAD58FF00A0E12F /* TextBox.swift in Sources */,
 				F3956AAC2BA9A027000DBD1A /* CheckBox.swift in Sources */,
+				F3EEA77D2BAEDBEE00D89776 /* TableTitleHeader.swift in Sources */,
 				F33031602BADD3960053005D /* DateVM.swift in Sources */,
 				F3956AA22BA99309000DBD1A /* NibLoadable.swift in Sources */,
 				F317844C2BAD390B00AD8110 /* LeaveTypeListItemCell.swift in Sources */,

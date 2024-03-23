@@ -12,22 +12,22 @@ module.exports = {
     // get all users
     async getAll() {
         return await db.promise().query(
-            '\
-select u.id as user_id, u.*, DATE_FORMAT(u.dob, "%Y-%m-%d") as dob, \
-r.name as role_name, \
-f1.path as avatar_path, \
-f2.path as employment_agreement_path, \
-f2.original_name as employment_agreement_filename, \
-dep.name as department_name, \
-des.name as designation_name \
-from users as u \
-left join roles as r on r.id=u.role_id \
-left join departments as dep on dep.id=u.department_id \
-left join designations as des on des.id=u.designation_id \
-left join files as f1 on f1.id=u.avatar_id \
-left join files as f2 on f2.id=u.employment_agreement_id \
-order by u.first_name \
-'
+            /*sql*/`
+            select u.id as user_id, u.*, DATE_FORMAT(u.dob, "%Y-%m-%d") as dob,
+            r.name as role_name,
+            f1.path as avatar_path,
+            f2.path as employment_agreement_path,
+            f2.original_name as employment_agreement_filename,
+            dep.name as department_name,
+            des.name as designation_name
+            from users as u
+            left join roles as r on r.id=u.role_id
+            left join departments as dep on dep.id=u.department_id
+            left join designations as des on des.id=u.designation_id
+            left join files as f1 on f1.id=u.avatar_id
+            left join files as f2 on f2.id=u.employment_agreement_id
+            order by u.first_name
+`
         )
     },
 
@@ -55,23 +55,32 @@ order by u.first_name \
 
     // get users by id
     async getById(id) {
-        let [users] = await db.promise().query(
-            '\
-            select u.id as user_id, u.*, DATE_FORMAT(u.dob, "%Y-%m-%d") as dob, \
-            r.name as role_name, \
-            f1.path as avatar_path, \
-            f2.path as employment_agreement_path, \
-            f2.original_name as employment_agreement_filename, \
-            dep.name as department_name, \
-            des.name as designation_name \
-            from users as u \
-            left join roles as r on r.id=u.role_id \
-            left join departments as dep on dep.id=u.department_id \
-            left join designations as des on des.id=u.designation_id \
-            left join files as f1 on f1.id=u.avatar_id \
-            left join files as f2 on f2.id=u.employment_agreement_id \
-            where u.id=? limit 1', 
-            [id]
+        let [users] = await db.promise().query(/*sql*/`
+                select u.id as user_id, u.*, DATE_FORMAT(u.dob, "%Y-%m-%d") as dob,
+                r.name as role_name,
+                f1.path as avatar_path,
+                f2.path as employment_agreement_path,
+                f2.original_name as employment_agreement_filename,
+                dep.name as department_name,
+                des.name as designation_name,
+                u2.*
+                from users as u
+                left join roles as r on r.id=u.role_id
+                left join departments as dep on dep.id=u.department_id
+                left join designations as des on des.id=u.designation_id
+                left join files as f1 on f1.id=u.avatar_id
+                left join files as f2 on f2.id=u.employment_agreement_id
+                left join (
+                    select 
+                    u.id as report_to_id,
+                    u.first_name as report_to_first_name, 
+                    u.last_name as report_to_last_name,
+                    f.path as report_to_avatar_path
+                    from users as u
+                    left join files as f on f.id=u.avatar_id
+                ) as u2 on u.report_to=u2.report_to_id
+                where u.id=? limit 1
+            `, [id]
         )
         return users[0]
     },

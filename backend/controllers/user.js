@@ -52,7 +52,9 @@ exports.store = async (req, res) => {
             gender: z.enum(['Male', 'Female', 'Unspecified']).default('Unspecified'),
             email: z.string().email().optional(),
             work_email: z.string().email().optional(),
-            role_id: z.coerce.number().default(4)
+            status: z.enum(['active', 'deactive']).optional(),
+            role_id: z.coerce.number().optional().default(4),
+            report_to: z.string().min(1).optional(),
         })
         .passthrough()
         .parse(req.body)
@@ -92,6 +94,7 @@ exports.store = async (req, res) => {
     if (isNaN(new Date(newUser.dob))) return res.status(400).send('Invalid dob')
 
     // # Report To
+    // if (!newUser.report_to) newUser.report_to = null
     if (newUser.report_to) {
         let [users] = await db.promise().query(/*sql*/`
             select * from users where id=?
@@ -142,8 +145,20 @@ exports.store = async (req, res) => {
     let [result] = await userdao.insert(newUser)
 
     let [users] = await userdao.getByInsertId(result.insertId)
+    let createdUser = users[0]
 
-    res.status(202).json(users[0])
+    let [leaveBalances] = await db.promise().query(/*sql*/`
+        insert into users_leaves select 
+        (?) as user_id,
+        id as leave_id, 
+        initial as balance 
+        from leaves
+    `, [createdUser.id])
+
+    // res.json(leaveBalances)
+    res.status(202).json({
+        createdUser, leaveBalances
+    })
 }
 
 exports.update = async (req, res) => {
@@ -162,6 +177,7 @@ exports.update = async (req, res) => {
         work_phone: z.string().optional(),
         department_id: z.string().optional(),
         designation_id: z.string().optional(),
+        report_to: z.string().optional(),
 
         emergency_name1: z.string().optional(),
         emergency_number1: z.string().optional(),
@@ -171,7 +187,8 @@ exports.update = async (req, res) => {
         emergency_number2: z.string().optional(),
         emergency_relation2: z.string().optional(),
         
-        status: z.enum(['active', 'deactive']).optional()
+        status: z.enum(['active', 'deactive']).optional(),
+        role_id: z.coerce.number().optional()
     })
 
     // Validate fields
