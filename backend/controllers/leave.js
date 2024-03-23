@@ -286,7 +286,8 @@ exports.user = {
             user_id: recipient.id, // <- target user is recipient
             title: "Leave",
             body: `${requester.first_name} has requested ${requiredBalance} day(s) of ${leaveSetting.name}.`,
-            leave_request_id: insertedLeaveRequest.id
+            leave_request_id: insertedLeaveRequest.id,
+            type: 'leave_request'
         }])
 
         res.sendStatus(201)
@@ -485,7 +486,8 @@ exports.user = {
             user_id: leaveRequest.requester_id, // <- target user is recipient
             title: "Leave",
             body: `${responder.first_name} has ${data.status} the request for ${leaveRequest.outstanding_balance} day(s) of ${leaveSetting.name}.`,
-            leave_request_id: leaveRequest.id
+            leave_request_id: leaveRequest.id,
+            type: 'leave_request'
         }])
         
 

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Bold.ttf">
+            <string>Inter-Bold</string>
+        </array>
+        <array key="Inter-Regular.ttf">
+            <string>Inter-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotificationCell" customModule="fyp" customModuleProvider="target">
+            <connections>
+                <outlet property="bodyLabel" destination="iwF-ix-ULf" id="Xje-jy-cDD"/>
+                <outlet property="dateLabel" destination="aEx-Dp-8kh" id="3v6-cH-qIt"/>
+                <outlet property="iconView" destination="1xQ-gZ-oKa" id="EpM-Th-QXL"/>
+                <outlet property="titleLabel" destination="Nua-8p-XUa" id="ygK-e1-dyh"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="58"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WiB-xc-ZW3">
+                    <rect key="frame" x="10" y="10" width="363" height="38"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" horizontalHuggingPriority="255" verticalHuggingPriority="255" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" translatesAutoresizingMaskIntoConstraints="NO" id="FVr-2X-hUb">
+                            <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon.message-square-more" translatesAutoresizingMaskIntoConstraints="NO" id="1xQ-gZ-oKa">
+                                    <rect key="frame" x="10" y="10" width="18" height="18"/>
+                                    <color key="tintColor" name="neutral-900"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="1xQ-gZ-oKa" secondAttribute="height" multiplier="1:1" id="G0b-zn-avA"/>
+                                        <constraint firstAttribute="width" constant="18" id="uzF-nM-RJQ"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" name="bg-1"/>
+                            <constraints>
+                                <constraint firstItem="1xQ-gZ-oKa" firstAttribute="leading" secondItem="FVr-2X-hUb" secondAttribute="leading" constant="10" id="0Cq-Fi-rKR"/>
+                                <constraint firstAttribute="trailing" secondItem="1xQ-gZ-oKa" secondAttribute="trailing" constant="10" id="6CE-Kw-cJ8"/>
+                                <constraint firstItem="1xQ-gZ-oKa" firstAttribute="top" secondItem="FVr-2X-hUb" secondAttribute="top" constant="10" id="DBC-O2-fej"/>
+                                <constraint firstAttribute="bottom" secondItem="1xQ-gZ-oKa" secondAttribute="bottom" constant="10" id="eme-Bz-YSg"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="19"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" name="neutral-900"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Iaw-B6-GGa">
+                            <rect key="frame" x="48" y="0.0" width="315" height="38"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="m96-pt-hZN">
+                                    <rect key="frame" x="0.0" y="0.0" width="315" height="16"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nua-8p-XUa">
+                                            <rect key="frame" x="0.0" y="0.0" width="259" height="16"/>
+                                            <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="14"/>
+                                            <color key="textColor" name="neutral-900"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="12:01 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEx-Dp-8kh">
+                                            <rect key="frame" x="264" y="0.66666666666666607" width="51" height="14.666666666666666"/>
+                                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
+                                            <color key="textColor" name="neutral-500"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Body" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwF-ix-ULf">
+                                    <rect key="frame" x="0.0" y="21" width="315" height="17"/>
+                                    <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                                    <color key="textColor" name="neutral-700"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="WiB-xc-ZW3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="Fmk-H1-1y9"/>
+                <constraint firstItem="WiB-xc-ZW3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="NhX-Ym-8Rg"/>
+                <constraint firstAttribute="trailing" secondItem="WiB-xc-ZW3" secondAttribute="trailing" constant="20" id="gdM-uB-o0j"/>
+                <constraint firstAttribute="bottom" secondItem="WiB-xc-ZW3" secondAttribute="bottom" constant="10" id="zqe-M7-hIw"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="3.8167938931297707" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon.message-square-more" width="18" height="18"/>
+        <namedColor name="bg-1">
+            <color red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="neutral-500">
+            <color red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="neutral-700">
+            <color red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="neutral-900">
+            <color red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

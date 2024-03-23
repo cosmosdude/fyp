@@ -3,13 +3,20 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-SemiBold.ttf">
+            <string>Inter-SemiBold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InboxController" customModule="fyp" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="lcU-YS-URD" id="gJ1-Ig-YAy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,23 +25,53 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inbox" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SdC-oz-hNy">
-                    <rect key="frame" x="176" y="415.66666666666669" width="41.333333333333343" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="393" placeholderIntrinsicHeight="109" translatesAutoresizingMaskIntoConstraints="NO" id="FEi-Zv-uyT" customClass="NavBarView" customModule="fyp" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="109"/>
+                    <subviews>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JY9-9B-tEQ">
+                            <rect key="frame" x="317" y="59" width="56" height="50"/>
+                            <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Request">
+                                <color key="titleColor" name="primary-500"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="4NK-Vu-BET"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="JY9-9B-tEQ" firstAttribute="top" secondItem="4NK-Vu-BET" secondAttribute="top" id="7CB-16-0PT"/>
+                        <constraint firstItem="4NK-Vu-BET" firstAttribute="trailing" secondItem="JY9-9B-tEQ" secondAttribute="trailing" constant="20" id="IjK-iT-n6o"/>
+                        <constraint firstItem="4NK-Vu-BET" firstAttribute="bottom" secondItem="JY9-9B-tEQ" secondAttribute="bottom" id="eix-Bz-eke"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Inbox"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBackArrowArrow" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lcU-YS-URD">
+                    <rect key="frame" x="0.0" y="109" width="393" height="743"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="SdC-oz-hNy" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="SJd-LM-snV"/>
-                <constraint firstItem="SdC-oz-hNy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ggD-7D-rqH"/>
+                <constraint firstItem="lcU-YS-URD" firstAttribute="top" secondItem="FEi-Zv-uyT" secondAttribute="bottom" id="41T-6i-vgX"/>
+                <constraint firstItem="lcU-YS-URD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="F6J-oW-qea"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lcU-YS-URD" secondAttribute="trailing" id="L1x-Cr-LJ0"/>
+                <constraint firstItem="FEi-Zv-uyT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="NtN-bO-vfD"/>
+                <constraint firstItem="FEi-Zv-uyT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gZ9-mf-WnV"/>
+                <constraint firstItem="FEi-Zv-uyT" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="lQD-5q-Hkw"/>
+                <constraint firstAttribute="bottom" secondItem="lcU-YS-URD" secondAttribute="bottom" id="oue-Tn-a92"/>
             </constraints>
-            <point key="canvasLocation" x="56" y="20"/>
+            <point key="canvasLocation" x="55.725190839694655" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>
+        <namedColor name="primary-500">
+            <color red="0.12549019607843137" green="0.29411764705882354" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

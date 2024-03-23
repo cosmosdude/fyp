@@ -16,7 +16,7 @@ enum Config {
 /// API Config
 public enum Api {
     /// API Host.
-    public static let host = "http://192.168.1.3:3000/"
+    public static let host = "http://192.168.1.4:3000/"
     
     public static func route(_ value: String) -> String {
         host + value
@@ -57,8 +57,10 @@ public struct ApiPath: RawRepresentable, ExpressibleByStringLiteral {
     static let myManagers: Self = "api/users/user/managers"
     
     static let requestLeave: Self = "api/leaves/requests"
+    
+    /// notifications api.
+    static let notifications: Self = "api/notifications"
 }
-
 
 
 let console = Logger(subsystem: "TANetworking", category: "networking")
