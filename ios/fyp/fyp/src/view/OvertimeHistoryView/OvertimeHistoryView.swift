@@ -13,7 +13,7 @@ class OvertimeHistoryView: NibView {
     
     var didSelectItemAt: ((IndexPath) -> Void)?
     
-    var items = [Any]() {
+    var items = [OTRequest]() {
         didSet { tableView.reloadData() }
     }
     
@@ -43,7 +43,20 @@ extension OvertimeHistoryView: UITableViewDataSource {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(OvertimeHistoryItemCell.self, for: indexPath)
+        let cell = tableView.dequeueReusableCell(
+            OvertimeHistoryItemCell.self, for: indexPath
+        )
+        let item = items[indexPath.row]
+        cell.dayView.setDate(item.date ?? Date())
+        cell.titleLabel.text = String(format: "%d min(s)", item.durationSec / 60)
+        cell.statusLabel.text = item.status.capitalized
+        let color: UIColor?
+        switch item.status {
+        case "approved": color = UIColor(named: "success-600")
+        case "rejected": color = UIColor(named: "danger-500")
+        default: color = UIColor(named: "warning-500")
+        }
+        cell.statusLabel.textColor = color
         return cell
     }
     

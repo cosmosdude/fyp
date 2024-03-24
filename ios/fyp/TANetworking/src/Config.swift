@@ -66,6 +66,7 @@ public struct ApiPath: RawRepresentable, ExpressibleByStringLiteral {
     
     // overtime API
     static let requestOvertime: Self = "api/overtimes/requests/request"
+    static let myOvertimeRequests: Self = "api/overtimes/requests/me"
     static func overtimeRequestDetail(id: String) -> Self {
         .init("api/overtimes/requests/request/\(id)")
     }

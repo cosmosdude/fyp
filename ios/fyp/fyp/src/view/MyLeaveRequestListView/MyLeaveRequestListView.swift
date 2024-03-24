@@ -64,7 +64,7 @@ extension MyLeaveRequestListView: UITableViewDataSource {
         
         cell.titleLabel.text = request.leaveName
         
-        cell.subtitleLabel.text = request.status
+        cell.subtitleLabel.text = request.status.capitalized
         let color: UIColor?
         switch request.status {
         case "approved": color = UIColor(named: "success-600")

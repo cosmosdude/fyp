@@ -6,17 +6,20 @@
 //
 
 import UIKit
+import Combine
 
 class OvertimeController: UIViewController {
     
     @IBOutlet private var navBar: NavBarView!
     @IBOutlet private var listView: OvertimeHistoryView!
     
+    let vm = MyOTRequestsVM()
+    var bag = Set<AnyCancellable>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navBar.backArrowBtn.addTarget(self, action: #selector(pop), for: .touchUpInside)
         // Do any additional setup after loading the view.
-        listView.items = (0..<100).map{$0}
         
         listView.didSelectItemAt = { [weak self] _ in
             self?.navigationController?.pushViewController(
@@ -24,6 +27,11 @@ class OvertimeController: UIViewController {
                 animated: true
             )
         }
+        
+        vm.$requests.receive(on: DispatchQueue.main)
+            .sink { [weak self] in self?.listView.items = $0 }.store(in: &bag)
+        
+        vm.fetchRequests()
     }
 
     @IBAction
