@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Medium.ttf">
+            <string>Inter-Medium</string>
+        </array>
+        <array key="Inter-SemiBold.ttf">
+            <string>Inter-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OvertimeController" customModule="fyp" customModuleProvider="target">
+            <connections>
+                <outlet property="listView" destination="TkM-9v-Lpj" id="Rmd-u0-PIU"/>
+                <outlet property="navBar" destination="JiO-jt-3XL" id="hqj-O4-cTl"/>
+                <outlet property="view" destination="BtJ-l0-CRc" id="e7h-iL-QeY"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="BtJ-l0-CRc">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="393" placeholderIntrinsicHeight="109" translatesAutoresizingMaskIntoConstraints="NO" id="JiO-jt-3XL" customClass="NavBarView" customModule="fyp" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="109"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihs-4e-gcu">
+                            <rect key="frame" x="317" y="59" width="56" height="50"/>
+                            <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Request">
+                                <color key="titleColor" name="primary-500"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapRequest" destination="-1" eventType="touchUpInside" id="2XC-m1-uoC"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="YbV-n7-AOj"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="YbV-n7-AOj" firstAttribute="trailing" secondItem="ihs-4e-gcu" secondAttribute="trailing" constant="20" id="Yvf-se-O9C"/>
+                        <constraint firstItem="ihs-4e-gcu" firstAttribute="top" secondItem="YbV-n7-AOj" secondAttribute="top" id="rOx-lx-NDL"/>
+                        <constraint firstItem="YbV-n7-AOj" firstAttribute="bottom" secondItem="ihs-4e-gcu" secondAttribute="bottom" id="wXO-cO-Sds"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Overtime"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="393" placeholderIntrinsicHeight="52" translatesAutoresizingMaskIntoConstraints="NO" id="h51-4M-JLz" customClass="OvertimeStatusView" customModule="fyp" customModuleProvider="target">
+                    <rect key="frame" x="20" y="119" width="353" height="52"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overtime History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSr-dP-H5f">
+                    <rect key="frame" x="20" y="191" width="353" height="22"/>
+                    <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TkM-9v-Lpj" customClass="OvertimeHistoryView" customModule="fyp" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="223" width="393" height="629"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="2vc-X6-irf"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="HSr-dP-H5f" firstAttribute="top" secondItem="h51-4M-JLz" secondAttribute="bottom" constant="20" id="5at-zX-qGe"/>
+                <constraint firstItem="TkM-9v-Lpj" firstAttribute="leading" secondItem="2vc-X6-irf" secondAttribute="leading" id="8Kc-1k-cG7"/>
+                <constraint firstItem="h51-4M-JLz" firstAttribute="top" secondItem="JiO-jt-3XL" secondAttribute="bottom" constant="10" id="ODg-Oe-IKr"/>
+                <constraint firstAttribute="bottom" secondItem="TkM-9v-Lpj" secondAttribute="bottom" id="Osf-jb-vc1"/>
+                <constraint firstItem="TkM-9v-Lpj" firstAttribute="top" secondItem="HSr-dP-H5f" secondAttribute="bottom" constant="10" id="SLd-XZ-lwo"/>
+                <constraint firstItem="JiO-jt-3XL" firstAttribute="leading" secondItem="2vc-X6-irf" secondAttribute="leading" id="UQb-MG-9SJ"/>
+                <constraint firstItem="JiO-jt-3XL" firstAttribute="trailing" secondItem="2vc-X6-irf" secondAttribute="trailing" id="VKU-qG-Kkn"/>
+                <constraint firstItem="2vc-X6-irf" firstAttribute="trailing" secondItem="TkM-9v-Lpj" secondAttribute="trailing" id="gA2-N8-nTx"/>
+                <constraint firstItem="h51-4M-JLz" firstAttribute="leading" secondItem="2vc-X6-irf" secondAttribute="leading" constant="20" id="mMk-d8-zqf"/>
+                <constraint firstItem="2vc-X6-irf" firstAttribute="trailing" secondItem="h51-4M-JLz" secondAttribute="trailing" constant="20" id="mj0-9T-ib6"/>
+                <constraint firstItem="2vc-X6-irf" firstAttribute="trailing" secondItem="HSr-dP-H5f" secondAttribute="trailing" constant="20" id="nK6-b3-A8X"/>
+                <constraint firstItem="JiO-jt-3XL" firstAttribute="top" secondItem="BtJ-l0-CRc" secondAttribute="top" id="td2-F8-TQn"/>
+                <constraint firstItem="HSr-dP-H5f" firstAttribute="leading" secondItem="2vc-X6-irf" secondAttribute="leading" constant="20" id="vzj-tP-EzO"/>
+            </constraints>
+            <point key="canvasLocation" x="58.778625954198468" y="13.380281690140846"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="primary-500">
+            <color red="0.12549019607843137" green="0.29411764705882354" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

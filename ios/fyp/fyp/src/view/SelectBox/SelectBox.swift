@@ -43,7 +43,17 @@ class SelectBox: NibControl {
     }
     
     func setImageURL(_ url: URL?) {
-        leftImage.kf.setImage(with: url)
+        leftImage.kf.setImage(
+            with: url,
+            placeholder: UIImage(systemName: "person.circle.fill")) {
+                _ in
+//                [weak self] in
+//                switch $0 {
+//                case .success: ()
+//                case .failure:
+//                    self?.leftImage.image = UIImage(systemName: "person.circle.fill")
+//                }
+            }
         leftImage.isHidden = false
     }
     

@@ -8,21 +8,21 @@
 import Foundation
 import TANetworking
 
-final class RespondLeaveVM {
+final class RespondLeaveVM: StatusVM<Void, String>{
     
     /// Leave request id to process. If nil, operation is skipped.
     var leaveRequestId: String?
     
     let leaveService = LeaveService(accessToken: LoginModel.accessToken ?? "")
     
-    enum Status {
-        case processing
-        case success
-        case failure(error: String)
-    }
-    
-    @Published
-    private(set) var status: Status?
+//    enum Status {
+//        case processing
+//        case success
+//        case failure(error: String)
+//    }
+//    
+//    @Published
+//    private(set) var status: Status?
     
     struct Response {
         let message: String
@@ -43,7 +43,7 @@ final class RespondLeaveVM {
             )
             status = .success
         } catch {
-            status = .failure(error: error.localizedDescription)
+            status = .failure(error.localizedDescription)
         }
         
     }

@@ -72,10 +72,8 @@ extension MyLeaveRequestListView: UITableViewDataSource {
         default: color = UIColor(named: "warning-500")
         }
         cell.subtitleLabel.textColor = color
-        cell.startView.titleLabel.text = request.from.map(dayF.string(from:))
-        cell.startView.subtitleLabel.text = request.from.map(monthF.string(from:))
-        cell.endView.titleLabel.text = request.to.map(dayF.string(from:))
-        cell.endView.subtitleLabel.text = request.to.map(monthF.string(from:))
+        cell.startView.setDate(request.from)
+        cell.endView.setDate(request.to)
         
         cell.startView.isHidden = (request.fromDate == request.toDate)
         cell.arrow.isHidden = (request.fromDate == request.toDate)

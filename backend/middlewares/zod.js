@@ -9,7 +9,7 @@
 module.exports = (req, res, next) => {
     res.zod = {
         sendError(error) {
-            res.json(Object.fromEntries(
+            res.status(400).json(Object.fromEntries(
                 error.issues.map(i => [i.path.toString(), i.message])
             ))
             // res.status(400).json(error.issues.map(i => {

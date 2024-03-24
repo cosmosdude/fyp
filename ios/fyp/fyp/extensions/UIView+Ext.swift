@@ -10,49 +10,50 @@ import UIKit
 
 public extension UIView {
     
-    @IBInspectable
+    @objc
     var borderColor: UIColor? {
         get { layer.borderColor.flatMap(UIColor.init(cgColor:)) }
         set { layer.borderColor = newValue?.cgColor }
     }
     
-    @IBInspectable
+    @objc
     var borderWidth: CGFloat {
         get { layer.borderWidth }
         set { layer.borderWidth = newValue }
     }
     
-    @IBInspectable
+    @objc
     var cornerRadius: CGFloat {
-        get { layer.cornerRadius }
-        set { layer.cornerRadius = newValue }
+        get { layer.cornerRadius } set { layer.cornerRadius = newValue }
     }
     
-    @IBInspectable
+    @objc
+    var borderRadius: CGFloat {
+        get { layer.cornerRadius } set { layer.cornerRadius = newValue }
+    }
+    
+    @objc
     var smoothCorners: Bool {
         get { layer.cornerCurve == .continuous }
         set { layer.cornerCurve = newValue ? .continuous : .circular }
     }
     
-    @IBInspectable
+    @objc
     var shadowOffset: CGSize {
-        get { layer.shadowOffset }
-        set { layer.shadowOffset = newValue }
+        get { layer.shadowOffset } set { layer.shadowOffset = newValue }
     }
     
-    @IBInspectable
+    @objc
     var shadowOpacity: Float {
-        get { layer.shadowOpacity }
-        set { layer.shadowOpacity = newValue }
+        get { layer.shadowOpacity } set { layer.shadowOpacity = newValue }
     }
     
-    @IBInspectable
+    @objc
     var shadowRadius: CGFloat {
-        get { layer.shadowRadius }
-        set { layer.shadowRadius = newValue }
+        get { layer.shadowRadius } set { layer.shadowRadius = newValue }
     }
     
-    @IBInspectable
+    @objc
     var shadowColor: UIColor? {
         get { layer.shadowColor.map(UIColor.init(cgColor:)) }
         set { layer.shadowColor = newValue?.cgColor }

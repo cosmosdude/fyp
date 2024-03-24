@@ -11,4 +11,35 @@ class DashboardController: UIViewController {
 
     @IBOutlet private var tableView: UITableView!
 
+    @IBAction
+    private func didTapRequestAttendance() {
+        navigationController?.pushViewController(
+            AttendanceRequestController(),
+            animated: true
+        )
+    }
+    
+    @IBAction
+    private func didTapAttendanceHistory() {
+        navigationController?.pushViewController(
+            AttendanceController(),
+            animated: true
+        )
+    }
+    
+    @IBAction
+    private func didTapRequestOvertime() {
+        navigationController?.pushViewController(
+            OvertimeRequestController(),
+            animated: true
+        )
+    }
+    
+    @IBAction
+    private func didTapOvertimeHistory() {
+        navigationController?.pushViewController(
+            OvertimeController(),
+            animated: true
+        )
+    }
 }

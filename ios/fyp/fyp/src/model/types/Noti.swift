@@ -26,8 +26,8 @@ struct Noti: NetworkTypeProxy {
         NotificationType(rawValue: value.type ?? "") ?? .system
     }
     
-    private static let inFormat = DateFormatter()
-        .with(dateFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+    private static let inFormat = ISO8601DateFormatter()
+        .adding(formatOptions: .withFractionalSeconds)
     
     var createDate: Date? {
         Self.inFormat.date(from: value.createdAt ?? "")

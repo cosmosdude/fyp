@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import TANetworking
 
-final class RequestLeaveVM {
+final class RequestLeaveVM: StatusVM<Void, String> {
     
 //leave_id:bc5491f0-e78a-11ee-99b0-52db3199040c
 //from_date:2024-1-3
@@ -19,17 +19,6 @@ final class RequestLeaveVM {
 //request_msg:Hello
     
     let leaveService = LeaveService(accessToken: LoginModel.accessToken)
-    
-    
-    enum Status {
-        case processing
-        case success
-        case failure(error: String)
-    }
-    
-    @Published
-    private(set) var status: Status?
-    
     
     struct RequestObject {
         let leaveId: String
@@ -59,7 +48,7 @@ final class RequestLeaveVM {
             status = .success
         } catch {
             status = .failure(
-                error: "Unable to request leave.\nReason: \(error.localizedDescription)"
+                "Unable to request leave.\nReason: \(error.localizedDescription)"
             )
         }
         

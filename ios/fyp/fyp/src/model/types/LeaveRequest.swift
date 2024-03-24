@@ -19,12 +19,14 @@ struct LeaveRequest: NetworkTypeProxy {
 //        get { value[keyPath: keyPath] }
 //    }
     
-    static let f = {
-        let f = DateFormatter()
-        // 2024-03-21T17:19:56.000Z
-        f.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        return f
-    }()
+//    static let f = {
+//        let f = DateFormatter()
+//        // 2024-03-21T17:19:56.000Z
+//        f.dateFormat = "yyyy-MM-ddTHH:mm:ss.SSSZ"
+//        return f
+//    }()
+    static let f = ISO8601DateFormatter()
+        .with(formatOptions: [.withInternetDateTime, .withFractionalSeconds])
     
     var from: Date? {
         return Self.f.date(from: self.fromDate)

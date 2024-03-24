@@ -20,7 +20,7 @@ class OptionsVM<V> {
         }
     }
     
-    let options: [Option]
+    var options: [Option]
     
     /// Selected option. Default is null
     @Published private(set) var option: Option?
@@ -32,7 +32,13 @@ class OptionsVM<V> {
         }
     }
     
-    init(options: [Option]) {
+    /// Index Path with only row and 0 section
+    var indexPath: IndexPath? {
+        get { index.map{ IndexPath(row: $0, section: 0) } }
+        set { index = newValue?.row }
+    }
+    
+    init(options: [Option] = []) {
         self.options = options
     }
     

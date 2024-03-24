@@ -68,6 +68,10 @@
 		F33AA11D2BA4C2B100119193 /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33AA11B2BA4C2B100119193 /* LoginController.xib */; };
 		F33AA1212BA4C2F400119193 /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AA11F2BA4C2F400119193 /* SplashController.swift */; };
 		F33AA1222BA4C2F400119193 /* SplashController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33AA1202BA4C2F400119193 /* SplashController.xib */; };
+		F35E32052BB08FA7001EBC31 /* ISO8601DateFormatter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E32042BB08FA7001EBC31 /* ISO8601DateFormatter+Ext.swift */; };
+		F35E32072BB09380001EBC31 /* OvertimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E32062BB09380001EBC31 /* OvertimeService.swift */; };
+		F35E32092BB09493001EBC31 /* RequestOvertimeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E32082BB09493001EBC31 /* RequestOvertimeVM.swift */; };
+		F35E320C2BB094A2001EBC31 /* StatusVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E320B2BB094A2001EBC31 /* StatusVM.swift */; };
 		F38A71DE2BAD58FF00A0E12F /* TextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A71DC2BAD58FF00A0E12F /* TextBox.swift */; };
 		F38A71DF2BAD58FF00A0E12F /* TextBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = F38A71DD2BAD58FF00A0E12F /* TextBox.xib */; };
 		F38A71E32BAD9C0B00A0E12F /* LeaveRequestDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A71E12BAD9C0B00A0E12F /* LeaveRequestDetailController.swift */; };
@@ -128,6 +132,23 @@
 		F3EEA7882BB06CEF00D89776 /* TeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EEA7862BB06CEF00D89776 /* TeamCell.xib */; };
 		F3EEA78C2BB06E2300D89776 /* TeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EEA78A2BB06E2300D89776 /* TeamListView.swift */; };
 		F3EEA78D2BB06E2300D89776 /* TeamListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EEA78B2BB06E2300D89776 /* TeamListView.xib */; };
+		F3EEA7922BB072FB00D89776 /* OvertimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EEA7902BB072FB00D89776 /* OvertimeController.swift */; };
+		F3EEA7932BB072FB00D89776 /* OvertimeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EEA7912BB072FB00D89776 /* OvertimeController.xib */; };
+		F3EEA7962BB0730500D89776 /* AttendanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EEA7942BB0730500D89776 /* AttendanceController.swift */; };
+		F3EEA7972BB0730500D89776 /* AttendanceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EEA7952BB0730500D89776 /* AttendanceController.xib */; };
+		F3EEA79B2BB0731F00D89776 /* AttendanceRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EEA7992BB0731F00D89776 /* AttendanceRequestController.swift */; };
+		F3EEA79C2BB0731F00D89776 /* AttendanceRequestController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EEA79A2BB0731F00D89776 /* AttendanceRequestController.xib */; };
+		F3EEA7A02BB0733300D89776 /* OvertimeRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EEA79E2BB0733300D89776 /* OvertimeRequestController.swift */; };
+		F3EEA7A12BB0733300D89776 /* OvertimeRequestController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EEA79F2BB0733300D89776 /* OvertimeRequestController.xib */; };
+		F3EEA7A52BB0744800D89776 /* OvertimeStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EEA7A32BB0744800D89776 /* OvertimeStatusView.swift */; };
+		F3EEA7A62BB0744800D89776 /* OvertimeStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EEA7A42BB0744800D89776 /* OvertimeStatusView.xib */; };
+		F3EEA7AA2BB07A4000D89776 /* OvertimeHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EEA7A82BB07A4000D89776 /* OvertimeHistoryView.swift */; };
+		F3EEA7AB2BB07A4000D89776 /* OvertimeHistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EEA7A92BB07A4000D89776 /* OvertimeHistoryView.xib */; };
+		F3EEA7AE2BB07A4D00D89776 /* OvertimeHistoryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EEA7AC2BB07A4D00D89776 /* OvertimeHistoryItemCell.swift */; };
+		F3EEA7AF2BB07A4D00D89776 /* OvertimeHistoryItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EEA7AD2BB07A4D00D89776 /* OvertimeHistoryItemCell.xib */; };
+		F3EEA7B12BB07C2200D89776 /* RequestStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EEA7B02BB07C2200D89776 /* RequestStatus.swift */; };
+		F3EEA7B52BB084C700D89776 /* OvertimeRequestDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EEA7B32BB084C700D89776 /* OvertimeRequestDetailController.swift */; };
+		F3EEA7B62BB084C700D89776 /* OvertimeRequestDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EEA7B42BB084C700D89776 /* OvertimeRequestDetailController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -219,6 +240,11 @@
 		F33AA11B2BA4C2B100119193 /* LoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginController.xib; sourceTree = "<group>"; };
 		F33AA11F2BA4C2F400119193 /* SplashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
 		F33AA1202BA4C2F400119193 /* SplashController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashController.xib; sourceTree = "<group>"; };
+		F35E32032BB08E7C001EBC31 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Playground.playground; path = ../Playground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		F35E32042BB08FA7001EBC31 /* ISO8601DateFormatter+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ISO8601DateFormatter+Ext.swift"; sourceTree = "<group>"; };
+		F35E32062BB09380001EBC31 /* OvertimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimeService.swift; sourceTree = "<group>"; };
+		F35E32082BB09493001EBC31 /* RequestOvertimeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestOvertimeVM.swift; sourceTree = "<group>"; };
+		F35E320B2BB094A2001EBC31 /* StatusVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusVM.swift; sourceTree = "<group>"; };
 		F38A71DC2BAD58FF00A0E12F /* TextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBox.swift; sourceTree = "<group>"; };
 		F38A71DD2BAD58FF00A0E12F /* TextBox.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextBox.xib; sourceTree = "<group>"; };
 		F38A71E12BAD9C0B00A0E12F /* LeaveRequestDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveRequestDetailController.swift; sourceTree = "<group>"; };
@@ -281,6 +307,23 @@
 		F3EEA7862BB06CEF00D89776 /* TeamCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamCell.xib; sourceTree = "<group>"; };
 		F3EEA78A2BB06E2300D89776 /* TeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListView.swift; sourceTree = "<group>"; };
 		F3EEA78B2BB06E2300D89776 /* TeamListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamListView.xib; sourceTree = "<group>"; };
+		F3EEA7902BB072FB00D89776 /* OvertimeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimeController.swift; sourceTree = "<group>"; };
+		F3EEA7912BB072FB00D89776 /* OvertimeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OvertimeController.xib; sourceTree = "<group>"; };
+		F3EEA7942BB0730500D89776 /* AttendanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceController.swift; sourceTree = "<group>"; };
+		F3EEA7952BB0730500D89776 /* AttendanceController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttendanceController.xib; sourceTree = "<group>"; };
+		F3EEA7992BB0731F00D89776 /* AttendanceRequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceRequestController.swift; sourceTree = "<group>"; };
+		F3EEA79A2BB0731F00D89776 /* AttendanceRequestController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttendanceRequestController.xib; sourceTree = "<group>"; };
+		F3EEA79E2BB0733300D89776 /* OvertimeRequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimeRequestController.swift; sourceTree = "<group>"; };
+		F3EEA79F2BB0733300D89776 /* OvertimeRequestController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OvertimeRequestController.xib; sourceTree = "<group>"; };
+		F3EEA7A32BB0744800D89776 /* OvertimeStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimeStatusView.swift; sourceTree = "<group>"; };
+		F3EEA7A42BB0744800D89776 /* OvertimeStatusView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OvertimeStatusView.xib; sourceTree = "<group>"; };
+		F3EEA7A82BB07A4000D89776 /* OvertimeHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimeHistoryView.swift; sourceTree = "<group>"; };
+		F3EEA7A92BB07A4000D89776 /* OvertimeHistoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OvertimeHistoryView.xib; sourceTree = "<group>"; };
+		F3EEA7AC2BB07A4D00D89776 /* OvertimeHistoryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimeHistoryItemCell.swift; sourceTree = "<group>"; };
+		F3EEA7AD2BB07A4D00D89776 /* OvertimeHistoryItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OvertimeHistoryItemCell.xib; sourceTree = "<group>"; };
+		F3EEA7B02BB07C2200D89776 /* RequestStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStatus.swift; sourceTree = "<group>"; };
+		F3EEA7B32BB084C700D89776 /* OvertimeRequestDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimeRequestDetailController.swift; sourceTree = "<group>"; };
+		F3EEA7B42BB084C700D89776 /* OvertimeRequestDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OvertimeRequestDetailController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,14 +379,13 @@
 		F317843D2BAD325F00AD8110 /* viewmodel */ = {
 			isa = PBXGroup;
 			children = (
+				F35E320E2BB0968E001EBC31 /* leave */,
+				F35E320D2BB09689001EBC31 /* overtime */,
+				F35E320A2BB09496001EBC31 /* types */,
 				F317843E2BAD328600AD8110 /* UserVM.swift */,
-				F31784502BAD3E7500AD8110 /* LeaveVM.swift */,
 				F33031542BADC78A0053005D /* ManagerVM.swift */,
 				F330315F2BADD3960053005D /* DateVM.swift */,
 				F33031652BADD9860053005D /* OptionsVM.swift */,
-				F33031672BADDD970053005D /* RequestLeaveVM.swift */,
-				F33031692BADEB810053005D /* LeaveRequestDetailVM.swift */,
-				F330316B2BADF3480053005D /* RespondLeaveVM.swift */,
 				F33031712BAE92EB0053005D /* NotificationVM.swift */,
 			);
 			path = viewmodel;
@@ -378,6 +420,7 @@
 				F38A71F32BADB17B00A0E12F /* ItemGroup.swift */,
 				F33031582BADCB0D0053005D /* NetworkTypeProxy.swift */,
 				F33031732BAE93390053005D /* Noti.swift */,
+				F3EEA7B02BB07C2200D89776 /* RequestStatus.swift */,
 			);
 			path = types;
 			sourceTree = "<group>";
@@ -475,6 +518,7 @@
 				F3956ACB2BA9F038000DBD1A /* UserService.swift */,
 				F31784552BAD3ED000AD8110 /* LeaveService.swift */,
 				F330316D2BAE910B0053005D /* NotificationService.swift */,
+				F35E32062BB09380001EBC31 /* OvertimeService.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -512,6 +556,8 @@
 		F33AA1172BA4C27400119193 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F3EEA7A72BB07A2B00D89776 /* OvertimeHistoryView */,
+				F3EEA7A22BB0743A00D89776 /* OvertimeStatusView */,
 				F3EEA7892BB06E1700D89776 /* TeamListView */,
 				F3EEA7842BB06CE200D89776 /* TeamCell */,
 				F3EEA77F2BB06AEB00D89776 /* AttendanceStatusView */,
@@ -537,8 +583,11 @@
 		F33AA1182BA4C27800119193 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				F3EEA78F2BB072A300D89776 /* Attendance */,
+				F3EEA7B22BB084B800D89776 /* OvertimeRequestDetail */,
+				F3EEA79D2BB0732500D89776 /* OvertimeRequest */,
 				F3EEA78E2BB0729E00D89776 /* Overtimes */,
+				F3EEA7982BB0730800D89776 /* AttendanceRequest */,
+				F3EEA78F2BB072A300D89776 /* Attendance */,
 				F330314F2BADC10C0053005D /* Selection */,
 				F330314A2BADC0FB0053005D /* DateSelection */,
 				F38A71E52BADB0BC00A0E12F /* ManagerSelection */,
@@ -571,6 +620,33 @@
 				F33AA1202BA4C2F400119193 /* SplashController.xib */,
 			);
 			path = SplashController;
+			sourceTree = "<group>";
+		};
+		F35E320A2BB09496001EBC31 /* types */ = {
+			isa = PBXGroup;
+			children = (
+				F35E320B2BB094A2001EBC31 /* StatusVM.swift */,
+			);
+			path = types;
+			sourceTree = "<group>";
+		};
+		F35E320D2BB09689001EBC31 /* overtime */ = {
+			isa = PBXGroup;
+			children = (
+				F35E32082BB09493001EBC31 /* RequestOvertimeVM.swift */,
+			);
+			path = overtime;
+			sourceTree = "<group>";
+		};
+		F35E320E2BB0968E001EBC31 /* leave */ = {
+			isa = PBXGroup;
+			children = (
+				F33031692BADEB810053005D /* LeaveRequestDetailVM.swift */,
+				F330316B2BADF3480053005D /* RespondLeaveVM.swift */,
+				F33031672BADDD970053005D /* RequestLeaveVM.swift */,
+				F31784502BAD3E7500AD8110 /* LeaveVM.swift */,
+			);
+			path = leave;
 			sourceTree = "<group>";
 		};
 		F38A71DB2BAD58F400A0E12F /* TextBox */ = {
@@ -654,6 +730,7 @@
 				F31784682BAD492400AD8110 /* UITableView+Ext.swift */,
 				F317846F2BAD526D00AD8110 /* UIViewController+Ext.swift */,
 				F330317A2BAE9CA10053005D /* DateFormatter+Ext.swift */,
+				F35E32042BB08FA7001EBC31 /* ISO8601DateFormatter+Ext.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -769,6 +846,7 @@
 		F3A74D542BA4BC6A00E91DFE = {
 			isa = PBXGroup;
 			children = (
+				F35E32032BB08E7C001EBC31 /* Playground.playground */,
 				F3A74D5F2BA4BC6A00E91DFE /* fyp */,
 				F33AA1042BA4BFE000119193 /* TANetworking */,
 				F3A74D5E2BA4BC6A00E91DFE /* Products */,
@@ -841,6 +919,8 @@
 		F3EEA78E2BB0729E00D89776 /* Overtimes */ = {
 			isa = PBXGroup;
 			children = (
+				F3EEA7902BB072FB00D89776 /* OvertimeController.swift */,
+				F3EEA7912BB072FB00D89776 /* OvertimeController.xib */,
 			);
 			path = Overtimes;
 			sourceTree = "<group>";
@@ -848,8 +928,57 @@
 		F3EEA78F2BB072A300D89776 /* Attendance */ = {
 			isa = PBXGroup;
 			children = (
+				F3EEA7942BB0730500D89776 /* AttendanceController.swift */,
+				F3EEA7952BB0730500D89776 /* AttendanceController.xib */,
 			);
 			path = Attendance;
+			sourceTree = "<group>";
+		};
+		F3EEA7982BB0730800D89776 /* AttendanceRequest */ = {
+			isa = PBXGroup;
+			children = (
+				F3EEA7992BB0731F00D89776 /* AttendanceRequestController.swift */,
+				F3EEA79A2BB0731F00D89776 /* AttendanceRequestController.xib */,
+			);
+			path = AttendanceRequest;
+			sourceTree = "<group>";
+		};
+		F3EEA79D2BB0732500D89776 /* OvertimeRequest */ = {
+			isa = PBXGroup;
+			children = (
+				F3EEA79E2BB0733300D89776 /* OvertimeRequestController.swift */,
+				F3EEA79F2BB0733300D89776 /* OvertimeRequestController.xib */,
+			);
+			path = OvertimeRequest;
+			sourceTree = "<group>";
+		};
+		F3EEA7A22BB0743A00D89776 /* OvertimeStatusView */ = {
+			isa = PBXGroup;
+			children = (
+				F3EEA7A32BB0744800D89776 /* OvertimeStatusView.swift */,
+				F3EEA7A42BB0744800D89776 /* OvertimeStatusView.xib */,
+			);
+			path = OvertimeStatusView;
+			sourceTree = "<group>";
+		};
+		F3EEA7A72BB07A2B00D89776 /* OvertimeHistoryView */ = {
+			isa = PBXGroup;
+			children = (
+				F3EEA7A82BB07A4000D89776 /* OvertimeHistoryView.swift */,
+				F3EEA7A92BB07A4000D89776 /* OvertimeHistoryView.xib */,
+				F3EEA7AC2BB07A4D00D89776 /* OvertimeHistoryItemCell.swift */,
+				F3EEA7AD2BB07A4D00D89776 /* OvertimeHistoryItemCell.xib */,
+			);
+			path = OvertimeHistoryView;
+			sourceTree = "<group>";
+		};
+		F3EEA7B22BB084B800D89776 /* OvertimeRequestDetail */ = {
+			isa = PBXGroup;
+			children = (
+				F3EEA7B32BB084C700D89776 /* OvertimeRequestDetailController.swift */,
+				F3EEA7B42BB084C700D89776 /* OvertimeRequestDetailController.xib */,
+			);
+			path = OvertimeRequestDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -956,11 +1085,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3EEA7AF2BB07A4D00D89776 /* OvertimeHistoryItemCell.xib in Resources */,
 				F33AA1222BA4C2F400119193 /* SplashController.xib in Resources */,
 				F3956A992BA9901E000DBD1A /* Inter-ExtraBold.ttf in Resources */,
 				F3956ADE2BA9F791000DBD1A /* DashboardController.xib in Resources */,
 				F317847A2BAD55EF00AD8110 /* SelectBox.xib in Resources */,
+				F3EEA7972BB0730500D89776 /* AttendanceController.xib in Resources */,
 				F3A74D6D2BA4BC6C00E91DFE /* LaunchScreen.storyboard in Resources */,
+				F3EEA7A62BB0744800D89776 /* OvertimeStatusView.xib in Resources */,
 				F317846E2BAD4ECE00AD8110 /* DayView.xib in Resources */,
 				F330315E2BADCF6F0053005D /* SelectionCell.xib in Resources */,
 				F38A71EE2BADB10800A0E12F /* ManagerSelectionCell.xib in Resources */,
@@ -969,6 +1101,8 @@
 				F3956A942BA9901E000DBD1A /* Inter-Medium.ttf in Resources */,
 				F3956A9B2BA9901E000DBD1A /* Inter-ExtraLight.ttf in Resources */,
 				F3EEA7882BB06CEF00D89776 /* TeamCell.xib in Resources */,
+				F3EEA79C2BB0731F00D89776 /* AttendanceRequestController.xib in Resources */,
+				F3EEA7AB2BB07A4000D89776 /* OvertimeHistoryView.xib in Resources */,
 				F31784752BAD52EB00AD8110 /* LeaveRequestController.xib in Resources */,
 				F3956A972BA9901E000DBD1A /* Inter-Bold.ttf in Resources */,
 				F39ACF852BAA75DF0078A017 /* TitleView.xib in Resources */,
@@ -976,6 +1110,7 @@
 				F31784672BAD487900AD8110 /* MyLeaveRequestListCell.xib in Resources */,
 				F31733E72BADB4D80018AA05 /* Avatar.xib in Resources */,
 				F31784442BAD36DF00AD8110 /* NavBarView.xib in Resources */,
+				F3EEA7932BB072FB00D89776 /* OvertimeController.xib in Resources */,
 				F38A71DF2BAD58FF00A0E12F /* TextBox.xib in Resources */,
 				F3EEA78D2BB06E2300D89776 /* TeamListView.xib in Resources */,
 				F3956AE82BA9F7CD000DBD1A /* LeaveController.xib in Resources */,
@@ -993,6 +1128,8 @@
 				F3956A952BA9901E000DBD1A /* Inter-Light.ttf in Resources */,
 				F3956AE32BA9F7AD000DBD1A /* InboxController.xib in Resources */,
 				F3956A9C2BA9901E000DBD1A /* Inter-Black.ttf in Resources */,
+				F3EEA7B62BB084C700D89776 /* OvertimeRequestDetailController.xib in Resources */,
+				F3EEA7A12BB0733300D89776 /* OvertimeRequestController.xib in Resources */,
 				F38A71E42BAD9C0B00A0E12F /* LeaveRequestDetailController.xib in Resources */,
 				F3EEA77E2BAEDBEE00D89776 /* TableTitleHeader.xib in Resources */,
 				F31784492BAD390100AD8110 /* LeaveTypeListView.xib in Resources */,
@@ -1082,6 +1219,7 @@
 				F3956AB22BA9E3D3000DBD1A /* LoginService.swift in Sources */,
 				F317845C2BAD46FA00AD8110 /* LeaveRequestData.swift in Sources */,
 				F31784582BAD3F6A00AD8110 /* LeaveBalanceData.swift in Sources */,
+				F35E32072BB09380001EBC31 /* OvertimeService.swift in Sources */,
 				F33031702BAE91400053005D /* NotificationData.swift in Sources */,
 				F3956AC32BA9EF82000DBD1A /* LoginData.swift in Sources */,
 			);
@@ -1095,6 +1233,7 @@
 				F33031662BADD9860053005D /* OptionsVM.swift in Sources */,
 				F31784692BAD492400AD8110 /* UITableView+Ext.swift in Sources */,
 				F38A71E32BAD9C0B00A0E12F /* LeaveRequestDetailController.swift in Sources */,
+				F3EEA7AA2BB07A4000D89776 /* OvertimeHistoryView.swift in Sources */,
 				F330316C2BADF3480053005D /* RespondLeaveVM.swift in Sources */,
 				F3956AD32BA9F5B8000DBD1A /* BaseController.swift in Sources */,
 				F330314D2BADC1090053005D /* DateSelectionController.swift in Sources */,
@@ -1107,15 +1246,20 @@
 				F3A74D612BA4BC6A00E91DFE /* AppDelegate.swift in Sources */,
 				F3956AB42BA9E474000DBD1A /* LoginModel.swift in Sources */,
 				F33031682BADDD980053005D /* RequestLeaveVM.swift in Sources */,
+				F3EEA7962BB0730500D89776 /* AttendanceController.swift in Sources */,
 				F3956ADD2BA9F791000DBD1A /* DashboardController.swift in Sources */,
 				F317843F2BAD328600AD8110 /* UserVM.swift in Sources */,
 				F33AA1212BA4C2F400119193 /* SplashController.swift in Sources */,
+				F3EEA7B52BB084C700D89776 /* OvertimeRequestDetailController.swift in Sources */,
+				F3EEA7A02BB0733300D89776 /* OvertimeRequestController.swift in Sources */,
 				F38A71ED2BADB10800A0E12F /* ManagerSelectionCell.swift in Sources */,
 				F31784432BAD36DF00AD8110 /* NavBarView.swift in Sources */,
+				F35E32052BB08FA7001EBC31 /* ISO8601DateFormatter+Ext.swift in Sources */,
 				F31784482BAD390100AD8110 /* LeaveTypeListView.swift in Sources */,
 				F38A71F42BADB17B00A0E12F /* ItemGroup.swift in Sources */,
 				F31784792BAD55EF00AD8110 /* SelectBox.swift in Sources */,
 				F38A71DE2BAD58FF00A0E12F /* TextBox.swift in Sources */,
+				F35E320C2BB094A2001EBC31 /* StatusVM.swift in Sources */,
 				F3956AAC2BA9A027000DBD1A /* CheckBox.swift in Sources */,
 				F3EEA77D2BAEDBEE00D89776 /* TableTitleHeader.swift in Sources */,
 				F33031602BADD3960053005D /* DateVM.swift in Sources */,
@@ -1124,8 +1268,11 @@
 				F3956AB02BA9A2EE000DBD1A /* FilledButton.swift in Sources */,
 				F3956AE72BA9F7CD000DBD1A /* LeaveController.swift in Sources */,
 				F31784662BAD487900AD8110 /* MyLeaveRequestListCell.swift in Sources */,
+				F35E32092BB09493001EBC31 /* RequestOvertimeVM.swift in Sources */,
 				F317845E2BAD479A00AD8110 /* LeaveRequest.swift in Sources */,
+				F3EEA7B12BB07C2200D89776 /* RequestStatus.swift in Sources */,
 				F3956A712BA98CFD000DBD1A /* UIApplication+Ext.swift in Sources */,
+				F3EEA7AE2BB07A4D00D89776 /* OvertimeHistoryItemCell.swift in Sources */,
 				F38A71F02BADB13300A0E12F /* Manager.swift in Sources */,
 				F38A71E82BADB0EE00A0E12F /* ManagerSelectionController.swift in Sources */,
 				F3956AA72BA99540000DBD1A /* TextField.swift in Sources */,
@@ -1134,6 +1281,7 @@
 				F33AA1132BA4C16000119193 /* main.swift in Sources */,
 				F33031722BAE92EB0053005D /* NotificationVM.swift in Sources */,
 				F31733E62BADB4D80018AA05 /* Avatar.swift in Sources */,
+				F3EEA79B2BB0731F00D89776 /* AttendanceRequestController.swift in Sources */,
 				F33031522BADC1180053005D /* SelectionController.swift in Sources */,
 				F3EEA7822BB06B0000D89776 /* AttendanceStatusView.swift in Sources */,
 				F330317B2BAE9CA10053005D /* DateFormatter+Ext.swift in Sources */,
@@ -1151,7 +1299,9 @@
 				F3EEA78C2BB06E2300D89776 /* TeamListView.swift in Sources */,
 				F33031742BAE93390053005D /* Noti.swift in Sources */,
 				F317846D2BAD4ECE00AD8110 /* DayView.swift in Sources */,
+				F3EEA7922BB072FB00D89776 /* OvertimeController.swift in Sources */,
 				F3956AD82BA9F770000DBD1A /* ProfileController.swift in Sources */,
+				F3EEA7A52BB0744800D89776 /* OvertimeStatusView.swift in Sources */,
 				F31784622BAD486D00AD8110 /* MyLeaveRequestListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

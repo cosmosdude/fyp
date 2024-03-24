@@ -54,7 +54,7 @@ class LeaveRequestController: UIViewController {
                 case .success:
                     self?.render(spinner: false)
                     self?.pop()
-                case .failure(error: let error):
+                case .failure(let error):
                     self?.render(spinner: false)
                     self?.presentAlert(
                         title: "Error",
@@ -99,6 +99,7 @@ class LeaveRequestController: UIViewController {
     @IBAction
     private func didTapFromDate() {
         let picker = DateSelectionController()
+        picker.date = fromDateVM.date
         picker.didSelectDate = { [weak fromDateVM] in
             fromDateVM?.date = $0
         }

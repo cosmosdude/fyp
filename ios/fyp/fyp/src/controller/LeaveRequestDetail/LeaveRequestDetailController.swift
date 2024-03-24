@@ -61,7 +61,7 @@ class LeaveRequestDetailController: UIViewController {
                 case .success:
                     self?.render(spinner: false)
                     self?.pop()
-                case .failure(error: let error):
+                case .failure(let error):
                     self?.render(spinner: false)
                     self?.presentAlert(
                         title: "Error",

@@ -1,20 +1,21 @@
 //
-//  MyLeaveRequestListCell.swift
+//  OvertimeHistoryItemCell.swift
 //  fyp
 //
-//  Created by Thwin Htoo Aung on 22/3/24.
+//  Created by Thwin Htoo Aung on 24/3/24.
 //
 
 import UIKit
 
-class MyLeaveRequestListCell: NibTableViewCell {
+class OvertimeHistoryItemCell: NibTableViewCell {
     
+    @IBOutlet private(set) var dayView: DayView!
     @IBOutlet private(set) var titleLabel: UILabel!
-    @IBOutlet private(set) var subtitleLabel: UILabel!
+    @IBOutlet private(set) var statusLabel: UILabel!
     
-    @IBOutlet private(set) var startView: DayView!
-    @IBOutlet private(set) var arrow: UIView!
-    @IBOutlet private(set) var endView: DayView!
+    override func didLoadNibFile() {
+        dayView.setDate(Date())
+    }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
