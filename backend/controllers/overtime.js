@@ -92,11 +92,16 @@ exports.respondOT = async (req, res) => {
 
     await db.promise().query(/*sql*/`
         update users_overtimes_requests set ? where id=?
-    `, [data, id])
+    `, [{
+        ...data,
+        responded_at: new Date()
+    }, id])
 
     let otReq = (await db.promise().query(/*sql*/`
         select * from users_overtimes_requests where id=?
     `, id))[0]?.[0]
+
+    if (!otReq) return res.status(400).send("No such request")
 
     // create noti
     await db.promise().query(/*sql*/`
