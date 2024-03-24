@@ -19,6 +19,39 @@ exports.getMyRequests = async (req, res) => {
     res.json(requests)
 }
 
+exports.requestDetail = async (req, res) => {
+    let auth = req.authUser
+    let { id } = req.params
+
+    let [requests] = await db.promise().query(/*sql*/`
+        select 
+        uor.*,
+
+        u1.first_name as requester_first_name, 
+        u1.last_name as requester_last_name,
+        f1.path as requester_avatar_path,
+
+        u2.first_name as recipient_first_name, 
+        u2.last_name as recipient_last_name,
+        f2.path as recipient_avatar_path,
+
+        u3.first_name as responder_first_name, 
+        u3.last_name as responder_last_name,
+        f3.path as responder_avatar_path
+
+        from users_overtimes_requests as uor
+        left join users as u1 on u1.id=uor.requester_id
+        left join files as f1 on u1.avatar_id=f1.id
+        left join users as u2 on u2.id=uor.recipient_id
+        left join files as f2 on u2.avatar_id=f2.id
+        left join users as u3 on u3.id=uor.responder_id
+        left join files as f3 on u3.avatar_id=f3.id
+        where uor.id=?
+    `, id)
+    if (!requests[0]) res.status(404).send("Not request found")
+    else res.json(requests[0])
+}
+
 exports.requestOT = async (req, res) => {
     let auth = req.authUser
     let data = {}
