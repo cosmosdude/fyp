@@ -1389,6 +1389,10 @@ video {
   gap: 5px;
 }
 
+.gap-\[6px\] {
+  gap: 6px;
+}
+
 .gap-x-\[40px\] {
   -moz-column-gap: 40px;
        column-gap: 40px;
@@ -2299,6 +2303,11 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-danger-700 {
+  --tw-text-opacity: 1;
+  color: rgb(153 5 0 / var(--tw-text-opacity));
 }
 
 .underline {

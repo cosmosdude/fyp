@@ -230,5 +230,23 @@ export const apiPaths = {
             */
             respondToLeaveRequest(id) { return `api/leaves/requests/request/${id}/response`},
         }
+    },
+
+    overtime: {
+
+        /**
+         * URL for getting all overtime requests.
+        */
+        getAllOvertimeRequests() {
+            return `api/overtimes/requests`
+        },
+
+        /**
+         * URL for responding to a overtime request.
+        */
+        respondToOvertimeRequest(id: string) {
+            return `api/overtimes/requests/request/${id}`
+        }
+
     }
 }

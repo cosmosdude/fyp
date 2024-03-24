@@ -1,13 +1,64 @@
+import { format } from "date-fns";
 import Avatar from "../../components/Avatar";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
 import FilledButton from "../../components/Buttons/FilledButton";
 import GhostButton from "../../components/Buttons/GhostButton";
+import useAllOvertimeRequests from "../../hooks/useAllOvertimeRequests";
+import { apiPaths, apiRoute } from "../../configs/api.config";
+import { usePushNoti } from "../../components/Noti/NotiSystem";
+import { useAuthContext } from "../../hooks/AuthStateContext";
+import { capitalize } from "../../utils/capitalized";
 
 export default function OvertimesPage() {
+    let auth = useAuthContext()
+    let pushNoti = usePushNoti();
+    // let schedules = []
+    // for (let i = 0; i < 10; i++) schedules.push({id: i})
 
-    let schedules = []
-    for (let i = 0; i < 10; i++) schedules.push({id: i})
+    let [overtimes, setOvertimes] = useAllOvertimeRequests()
+
+/**
+     * @param id overtime request id
+     * @param status response status
+    */
+    async function respond(id, status) {
+        let f = new FormData()
+        f.set('status', status)
+        try {
+            let res = await fetch(apiRoute(apiPaths.overtime.respondToOvertimeRequest(id)), {
+                method: 'PUT',
+                headers: {
+                    'authorization': `Bearer ${auth}`
+                },
+                body: f
+            })
+
+            if (res.status >= 200 && res.status < 300) {
+                pushNoti({
+                    title: "Success", 
+                    message: `Request ${status} successfully`, 
+                    style: "success"
+                })
+                setOvertimes(rs => rs.map(r => {
+                    if (r.id !== id) return r
+                    return {...r, status}
+                }))
+            } else {
+                pushNoti({
+                    title: "Error", 
+                    message: await res.text(), 
+                    style: "danger"
+                })
+            }
+        } catch (error) {
+            pushNoti({
+                title: "Error", 
+                message: error.toString(),
+                style: "danger"
+            })
+        }
+    }
 
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
@@ -58,7 +109,14 @@ export default function OvertimesPage() {
                     </thead>
                     <tbody className="">
                         {/* <AttendanceRow /> */}
-                        {schedules.map(x => <RequestRow key={x.id} no={x.id}/>)}
+                        {overtimes.map( (x, i) => <RequestRow 
+                            key={x.id} no={i + 1} 
+                            date={format(new Date(x.date), 'd MMM, yyyy')}
+                            duration={x.duration_sec}
+                            status={x.status}
+                            onApprove={() => {respond(x.id, 'approved')}}
+                            onReject={() => {respond(x.id, 'rejected')}}
+                        />)}
                     </tbody>
                 </table>
             </div>
@@ -67,7 +125,7 @@ export default function OvertimesPage() {
     );
 }
 
-function RequestRow({no}) {
+function RequestRow({no, date, duration, status, onApprove, onReject}) {
     return (
         <tr className="
         group
@@ -90,19 +148,24 @@ function RequestRow({no}) {
                 </div>
             </td>
             <td className="text-center font-ll text-ll">
-                2 Jan 2024
+                {date}
             </td>
             <td className="text-center font-ll text-ll">
-                2 hr
+                {duration} second(s)
             </td>
             <td className="text-center font-ll text-ll">
                 -
             </td>
             <td className="items-center gap-[4px] text-center">
-                <div className="flex flex-col items-center justify-center gap-[2px]">
-                    <GhostButton className="!py-[0px]">Approve</GhostButton> 
-                    <GhostButton className="!py-[0px]" style='danger'>Reject</GhostButton>
-                </div>
+                {status === 'pending' && <div className="flex items-center justify-center gap-[6px]">
+                    <GhostButton className="!p-[0px]" onClick={onApprove}>Approve</GhostButton> 
+                    <p>/</p>
+                    <GhostButton className="!p-[0px]" style='danger' onClick={onReject}>Reject</GhostButton>
+                </div>}
+                {status !== 'pending' && <p className={`
+                    text-lm font-lm
+                    ${status === 'approved' ? 'text-success-600': 'text-danger-600'}
+                `}>{capitalize(status)}</p>}
             </td>
         </tr>
         
