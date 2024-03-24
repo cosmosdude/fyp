@@ -7,19 +7,9 @@
 
 import UIKit
 
-class LeaveTypeListItemCell: UICollectionViewCell, NibLoadable {
+class LeaveTypeListItemCell: NibCollectionViewCell {
     
     @IBOutlet private(set) var titleLabel: UILabel!
     @IBOutlet private(set) var subtitleLabel: UILabel!
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        loadNibFile()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        loadNibFile()
-    }
     
 }

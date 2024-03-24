@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TextField: UIControl, NibLoadable {
+class TextField: NibControl {
     
     @IBInspectable var title: String? {
         get { titleLabel.text }
@@ -89,15 +89,7 @@ class TextField: UIControl, NibLoadable {
     
     @IBOutlet private var infoLabel: UILabel!
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        loadNibFile()
-        tintColor = UIColor(named: "text")
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        loadNibFile()
+    override func didLoadNibFile() {
         tintColor = UIColor(named: "text")
     }
     

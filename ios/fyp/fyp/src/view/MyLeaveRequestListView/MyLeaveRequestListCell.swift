@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyLeaveRequestListCell: UITableViewCell, NibLoadable {
+class MyLeaveRequestListCell: NibTableViewCell {
     
     @IBOutlet private(set) var titleLabel: UILabel!
     @IBOutlet private(set) var subtitleLabel: UILabel!
@@ -15,15 +15,5 @@ class MyLeaveRequestListCell: UITableViewCell, NibLoadable {
     @IBOutlet private(set) var startView: DayView!
     @IBOutlet private(set) var arrow: UIView!
     @IBOutlet private(set) var endView: DayView!
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        loadNibFile()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        loadNibFile()
-    }
     
 }

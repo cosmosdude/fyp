@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyLeaveRequestListView: UIView, NibLoadable {
+class MyLeaveRequestListView: NibView {
     
     @IBOutlet private var tableView: UITableView!
     
@@ -23,13 +23,11 @@ class MyLeaveRequestListView: UIView, NibLoadable {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        loadNibFile()
         setup()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        loadNibFile()
         setup()
     }
     

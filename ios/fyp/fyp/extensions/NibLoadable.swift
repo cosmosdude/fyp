@@ -39,8 +39,6 @@ extension NibLoadable {
     
     var nibContainerView: UIView! { self }
     
-    func didLoadNibFile() { }
-    
     func loadNibFile() {
         guard let nib else { return }
         
@@ -81,6 +79,7 @@ class NibView: UIView, NibLoadable {
         loadNibFile()
     }
     
+    func didLoadNibFile() { }
 }
 
 class NibControl: UIControl, NibLoadable {
@@ -94,6 +93,8 @@ class NibControl: UIControl, NibLoadable {
         super.init(coder: coder)
         loadNibFile()
     }
+    
+    func didLoadNibFile() { }
     
 }
 
@@ -111,6 +112,7 @@ class NibTableViewCell: UITableViewCell, NibLoadable {
         loadNibFile()
     }
     
+    func didLoadNibFile() { }
 }
 
 class NibTableViewHeaderFooterView: UITableViewHeaderFooterView, NibLoadable {
@@ -127,14 +129,15 @@ class NibTableViewHeaderFooterView: UITableViewHeaderFooterView, NibLoadable {
         loadNibFile()
     }
     
+    func didLoadNibFile() { }
 }
 
-class NibCollectionViewCell: UITableViewCell, NibLoadable {
+class NibCollectionViewCell: UICollectionViewCell, NibLoadable {
     
     var nibContainerView: UIView! { contentView }
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         loadNibFile()
     }
     
@@ -143,4 +146,5 @@ class NibCollectionViewCell: UITableViewCell, NibLoadable {
         loadNibFile()
     }
     
+    func didLoadNibFile() { }
 }

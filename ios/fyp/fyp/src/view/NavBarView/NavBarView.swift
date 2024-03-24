@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NavBarView: UIView, NibLoadable {
+class NavBarView: NibView {
 
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private(set) var backArrowBtn: UIButton!
@@ -20,16 +20,6 @@ class NavBarView: UIView, NibLoadable {
     @IBInspectable var isBackArrowArrow: Bool {
         get { backArrowBtn.isHidden }
         set { backArrowBtn.isHidden = newValue }
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        loadNibFile()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        loadNibFile()
     }
 
 }

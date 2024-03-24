@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class SelectBox: UIControl, NibLoadable {
+class SelectBox: NibControl {
     
     @IBOutlet private var actionOverlay: UIButton!
     
@@ -75,16 +75,6 @@ class SelectBox: UIControl, NibLoadable {
     var isChevronHidden: Bool {
         get { chevron.isHidden }
         set { chevron.isHidden = newValue }
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        loadNibFile()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        loadNibFile()
     }
     
     @IBAction

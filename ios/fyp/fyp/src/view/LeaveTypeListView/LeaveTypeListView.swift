@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LeaveTypeListView: UIView, NibLoadable {
+class LeaveTypeListView: NibView {
     
     @IBOutlet private var listView: UICollectionView!
     private var flowLayout: UICollectionViewFlowLayout!
@@ -18,13 +18,11 @@ class LeaveTypeListView: UIView, NibLoadable {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        loadNibFile()
         setup()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        loadNibFile()
         setup()
     }
     

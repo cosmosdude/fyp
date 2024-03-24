@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TitleView: UIView, NibLoadable {
+class TitleView: NibView {
 
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var descLabel: UILabel!
@@ -20,16 +20,6 @@ class TitleView: UIView, NibLoadable {
     @IBInspectable var text: String? {
         get { descLabel.text }
         set { descLabel.text = newValue }
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        loadNibFile()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        loadNibFile()
     }
 
 }

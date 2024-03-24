@@ -122,6 +122,12 @@
 		F3A74D6D2BA4BC6C00E91DFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A74D6B2BA4BC6C00E91DFE /* LaunchScreen.storyboard */; };
 		F3EEA77D2BAEDBEE00D89776 /* TableTitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EEA77B2BAEDBEE00D89776 /* TableTitleHeader.swift */; };
 		F3EEA77E2BAEDBEE00D89776 /* TableTitleHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EEA77C2BAEDBEE00D89776 /* TableTitleHeader.xib */; };
+		F3EEA7822BB06B0000D89776 /* AttendanceStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EEA7802BB06B0000D89776 /* AttendanceStatusView.swift */; };
+		F3EEA7832BB06B0000D89776 /* AttendanceStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EEA7812BB06B0000D89776 /* AttendanceStatusView.xib */; };
+		F3EEA7872BB06CEF00D89776 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EEA7852BB06CEF00D89776 /* TeamCell.swift */; };
+		F3EEA7882BB06CEF00D89776 /* TeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EEA7862BB06CEF00D89776 /* TeamCell.xib */; };
+		F3EEA78C2BB06E2300D89776 /* TeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EEA78A2BB06E2300D89776 /* TeamListView.swift */; };
+		F3EEA78D2BB06E2300D89776 /* TeamListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EEA78B2BB06E2300D89776 /* TeamListView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -269,6 +275,12 @@
 		F3A74D6E2BA4BC6C00E91DFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3EEA77B2BAEDBEE00D89776 /* TableTitleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTitleHeader.swift; sourceTree = "<group>"; };
 		F3EEA77C2BAEDBEE00D89776 /* TableTitleHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableTitleHeader.xib; sourceTree = "<group>"; };
+		F3EEA7802BB06B0000D89776 /* AttendanceStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceStatusView.swift; sourceTree = "<group>"; };
+		F3EEA7812BB06B0000D89776 /* AttendanceStatusView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttendanceStatusView.xib; sourceTree = "<group>"; };
+		F3EEA7852BB06CEF00D89776 /* TeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
+		F3EEA7862BB06CEF00D89776 /* TeamCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamCell.xib; sourceTree = "<group>"; };
+		F3EEA78A2BB06E2300D89776 /* TeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListView.swift; sourceTree = "<group>"; };
+		F3EEA78B2BB06E2300D89776 /* TeamListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamListView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -500,6 +512,9 @@
 		F33AA1172BA4C27400119193 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F3EEA7892BB06E1700D89776 /* TeamListView */,
+				F3EEA7842BB06CE200D89776 /* TeamCell */,
+				F3EEA77F2BB06AEB00D89776 /* AttendanceStatusView */,
 				F3EEA77A2BAEDBDA00D89776 /* TableTitleHeader */,
 				F33031752BAE99BB0053005D /* NotificationCell */,
 				F330315A2BADCF630053005D /* SelectionCell */,
@@ -522,6 +537,8 @@
 		F33AA1182BA4C27800119193 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				F3EEA78F2BB072A300D89776 /* Attendance */,
+				F3EEA78E2BB0729E00D89776 /* Overtimes */,
 				F330314F2BADC10C0053005D /* Selection */,
 				F330314A2BADC0FB0053005D /* DateSelection */,
 				F38A71E52BADB0BC00A0E12F /* ManagerSelection */,
@@ -794,6 +811,47 @@
 			path = TableTitleHeader;
 			sourceTree = "<group>";
 		};
+		F3EEA77F2BB06AEB00D89776 /* AttendanceStatusView */ = {
+			isa = PBXGroup;
+			children = (
+				F3EEA7802BB06B0000D89776 /* AttendanceStatusView.swift */,
+				F3EEA7812BB06B0000D89776 /* AttendanceStatusView.xib */,
+			);
+			path = AttendanceStatusView;
+			sourceTree = "<group>";
+		};
+		F3EEA7842BB06CE200D89776 /* TeamCell */ = {
+			isa = PBXGroup;
+			children = (
+				F3EEA7852BB06CEF00D89776 /* TeamCell.swift */,
+				F3EEA7862BB06CEF00D89776 /* TeamCell.xib */,
+			);
+			path = TeamCell;
+			sourceTree = "<group>";
+		};
+		F3EEA7892BB06E1700D89776 /* TeamListView */ = {
+			isa = PBXGroup;
+			children = (
+				F3EEA78A2BB06E2300D89776 /* TeamListView.swift */,
+				F3EEA78B2BB06E2300D89776 /* TeamListView.xib */,
+			);
+			path = TeamListView;
+			sourceTree = "<group>";
+		};
+		F3EEA78E2BB0729E00D89776 /* Overtimes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Overtimes;
+			sourceTree = "<group>";
+		};
+		F3EEA78F2BB072A300D89776 /* Attendance */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Attendance;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -910,6 +968,7 @@
 				F31784632BAD486D00AD8110 /* MyLeaveRequestListView.xib in Resources */,
 				F3956A942BA9901E000DBD1A /* Inter-Medium.ttf in Resources */,
 				F3956A9B2BA9901E000DBD1A /* Inter-ExtraLight.ttf in Resources */,
+				F3EEA7882BB06CEF00D89776 /* TeamCell.xib in Resources */,
 				F31784752BAD52EB00AD8110 /* LeaveRequestController.xib in Resources */,
 				F3956A972BA9901E000DBD1A /* Inter-Bold.ttf in Resources */,
 				F39ACF852BAA75DF0078A017 /* TitleView.xib in Resources */,
@@ -918,6 +977,7 @@
 				F31733E72BADB4D80018AA05 /* Avatar.xib in Resources */,
 				F31784442BAD36DF00AD8110 /* NavBarView.xib in Resources */,
 				F38A71DF2BAD58FF00A0E12F /* TextBox.xib in Resources */,
+				F3EEA78D2BB06E2300D89776 /* TeamListView.xib in Resources */,
 				F3956AE82BA9F7CD000DBD1A /* LeaveController.xib in Resources */,
 				F317844D2BAD390B00AD8110 /* LeaveTypeListItemCell.xib in Resources */,
 				F33AA11D2BA4C2B100119193 /* LoginController.xib in Resources */,
@@ -929,6 +989,7 @@
 				F3956A962BA9901E000DBD1A /* Inter-Thin.ttf in Resources */,
 				F3956A982BA9901E000DBD1A /* Inter-Regular.ttf in Resources */,
 				F3A74D6A2BA4BC6C00E91DFE /* Assets.xcassets in Resources */,
+				F3EEA7832BB06B0000D89776 /* AttendanceStatusView.xib in Resources */,
 				F3956A952BA9901E000DBD1A /* Inter-Light.ttf in Resources */,
 				F3956AE32BA9F7AD000DBD1A /* InboxController.xib in Resources */,
 				F3956A9C2BA9901E000DBD1A /* Inter-Black.ttf in Resources */,
@@ -1069,10 +1130,12 @@
 				F38A71E82BADB0EE00A0E12F /* ManagerSelectionController.swift in Sources */,
 				F3956AA72BA99540000DBD1A /* TextField.swift in Sources */,
 				F33031592BADCB0D0053005D /* NetworkTypeProxy.swift in Sources */,
+				F3EEA7872BB06CEF00D89776 /* TeamCell.swift in Sources */,
 				F33AA1132BA4C16000119193 /* main.swift in Sources */,
 				F33031722BAE92EB0053005D /* NotificationVM.swift in Sources */,
 				F31733E62BADB4D80018AA05 /* Avatar.swift in Sources */,
 				F33031522BADC1180053005D /* SelectionController.swift in Sources */,
+				F3EEA7822BB06B0000D89776 /* AttendanceStatusView.swift in Sources */,
 				F330317B2BAE9CA10053005D /* DateFormatter+Ext.swift in Sources */,
 				F3A74D632BA4BC6A00E91DFE /* SceneDelegate.swift in Sources */,
 				F3956AE22BA9F7AD000DBD1A /* InboxController.swift in Sources */,
@@ -1085,6 +1148,7 @@
 				F330316A2BADEB810053005D /* LeaveRequestDetailVM.swift in Sources */,
 				F3956AB82BA9E54D000DBD1A /* UIViewController+Alert.swift in Sources */,
 				F317844F2BAD3AD400AD8110 /* UICollectionView+Ext.swift in Sources */,
+				F3EEA78C2BB06E2300D89776 /* TeamListView.swift in Sources */,
 				F33031742BAE93390053005D /* Noti.swift in Sources */,
 				F317846D2BAD4ECE00AD8110 /* DayView.swift in Sources */,
 				F3956AD82BA9F770000DBD1A /* ProfileController.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TextBox: UIView, NibLoadable {
+class TextBox: NibView {
     
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var textView: UITextView!
@@ -46,16 +46,6 @@ class TextBox: UIView, NibLoadable {
     var text: String? {
         get { textView.text }
         set { textView.text = newValue }
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        loadNibFile()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        loadNibFile()
     }
     
 }

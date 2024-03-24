@@ -11,7 +11,7 @@ class TableTitleHeader: NibTableViewHeaderFooterView {
     
     @IBOutlet private(set) var titleLabel: UILabel!
     
-    func didLoadNibFile() {
+    override func didLoadNibFile() {
         backgroundView?.backgroundColor = .clear
     }
 }

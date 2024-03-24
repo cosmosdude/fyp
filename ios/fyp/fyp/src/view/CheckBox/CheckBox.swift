@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CheckBox: UIControl, NibLoadable {
+class CheckBox: NibControl {
 
     @IBInspectable var isChecked: Bool {
         get { !(checkImage?.isHidden ?? true) }
@@ -30,15 +30,6 @@ class CheckBox: UIControl, NibLoadable {
     @IBOutlet private var checkImage: UIImageView!
     @IBOutlet private var label: UILabel!
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        loadNibFile()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        loadNibFile()
-    }
     
     @IBAction
     private func didTap() {
