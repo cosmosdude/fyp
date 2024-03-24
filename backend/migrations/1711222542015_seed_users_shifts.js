@@ -4,8 +4,8 @@ module.exports = {
         select 
             u.id as 'user_id', 
             days.day as 'day', 
-            '00:00:00' as 'start_at',
-            '00:00:00' as 'end_at', 
+            null as 'start_at',
+            null as 'end_at', 
             0 as break_seconds
         from users as u
         cross join (
