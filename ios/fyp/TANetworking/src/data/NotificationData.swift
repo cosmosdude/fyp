@@ -17,6 +17,7 @@ public struct NotificationData: Codable {
     public let userId: String?
     public let type: String?
     public let leaveRequestId: String?
+    public let overtimeRequestId: String?
     
     private enum CodingKeys: String, CodingKey {
         case iid
@@ -28,5 +29,6 @@ public struct NotificationData: Codable {
         case userId = "user_id"
         case type
         case leaveRequestId = "leave_request_id"
+        case overtimeRequestId = "overtime_request_id"
     }
 }

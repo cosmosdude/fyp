@@ -20,6 +20,8 @@ struct Noti: NetworkTypeProxy {
         case system
         /// Leave request notification
         case leaveRequest = "leave_request"
+        /// Overtime request notification
+        case overtimeRequest = "overtime_request"
     }
     
     var type: NotificationType {

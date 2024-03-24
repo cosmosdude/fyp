@@ -59,6 +59,12 @@ extension InboxController: UITableViewDelegate {
             controller = vc
         }
         
+        if (noti.type == .overtimeRequest) {
+            let vc = OvertimeRequestDetailController()
+            vc.id = noti.overtimeRequestId ?? ""
+            controller = vc
+        }
+        
         controller.map {
             navigationController?.pushViewController($0, animated: true)
         }

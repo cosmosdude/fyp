@@ -72,6 +72,10 @@
 		F35E32072BB09380001EBC31 /* OvertimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E32062BB09380001EBC31 /* OvertimeService.swift */; };
 		F35E32092BB09493001EBC31 /* RequestOvertimeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E32082BB09493001EBC31 /* RequestOvertimeVM.swift */; };
 		F35E320C2BB094A2001EBC31 /* StatusVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E320B2BB094A2001EBC31 /* StatusVM.swift */; };
+		F35E32102BB09DD4001EBC31 /* OvertimeRequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E320F2BB09DD4001EBC31 /* OvertimeRequestData.swift */; };
+		F35E32122BB09F0C001EBC31 /* OTRequestDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E32112BB09F0C001EBC31 /* OTRequestDetailVM.swift */; };
+		F35E32142BB09F5F001EBC31 /* OTRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E32132BB09F5F001EBC31 /* OTRequest.swift */; };
+		F35E32162BB0A57B001EBC31 /* RespondOTVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E32152BB0A57B001EBC31 /* RespondOTVM.swift */; };
 		F38A71DE2BAD58FF00A0E12F /* TextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A71DC2BAD58FF00A0E12F /* TextBox.swift */; };
 		F38A71DF2BAD58FF00A0E12F /* TextBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = F38A71DD2BAD58FF00A0E12F /* TextBox.xib */; };
 		F38A71E32BAD9C0B00A0E12F /* LeaveRequestDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A71E12BAD9C0B00A0E12F /* LeaveRequestDetailController.swift */; };
@@ -245,6 +249,10 @@
 		F35E32062BB09380001EBC31 /* OvertimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimeService.swift; sourceTree = "<group>"; };
 		F35E32082BB09493001EBC31 /* RequestOvertimeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestOvertimeVM.swift; sourceTree = "<group>"; };
 		F35E320B2BB094A2001EBC31 /* StatusVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusVM.swift; sourceTree = "<group>"; };
+		F35E320F2BB09DD4001EBC31 /* OvertimeRequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimeRequestData.swift; sourceTree = "<group>"; };
+		F35E32112BB09F0C001EBC31 /* OTRequestDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTRequestDetailVM.swift; sourceTree = "<group>"; };
+		F35E32132BB09F5F001EBC31 /* OTRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTRequest.swift; sourceTree = "<group>"; };
+		F35E32152BB0A57B001EBC31 /* RespondOTVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondOTVM.swift; sourceTree = "<group>"; };
 		F38A71DC2BAD58FF00A0E12F /* TextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBox.swift; sourceTree = "<group>"; };
 		F38A71DD2BAD58FF00A0E12F /* TextBox.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextBox.xib; sourceTree = "<group>"; };
 		F38A71E12BAD9C0B00A0E12F /* LeaveRequestDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveRequestDetailController.swift; sourceTree = "<group>"; };
@@ -421,6 +429,7 @@
 				F33031582BADCB0D0053005D /* NetworkTypeProxy.swift */,
 				F33031732BAE93390053005D /* Noti.swift */,
 				F3EEA7B02BB07C2200D89776 /* RequestStatus.swift */,
+				F35E32132BB09F5F001EBC31 /* OTRequest.swift */,
 			);
 			path = types;
 			sourceTree = "<group>";
@@ -634,6 +643,8 @@
 			isa = PBXGroup;
 			children = (
 				F35E32082BB09493001EBC31 /* RequestOvertimeVM.swift */,
+				F35E32112BB09F0C001EBC31 /* OTRequestDetailVM.swift */,
+				F35E32152BB0A57B001EBC31 /* RespondOTVM.swift */,
 			);
 			path = overtime;
 			sourceTree = "<group>";
@@ -778,6 +789,7 @@
 				F317845B2BAD46FA00AD8110 /* LeaveRequestData.swift */,
 				F33031562BADC8D20053005D /* ManagerData.swift */,
 				F330316F2BAE91400053005D /* NotificationData.swift */,
+				F35E320F2BB09DD4001EBC31 /* OvertimeRequestData.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -1217,6 +1229,7 @@
 				F3956ACA2BA9EFEB000DBD1A /* String+Error.swift in Sources */,
 				F33031572BADC8D20053005D /* ManagerData.swift in Sources */,
 				F3956AB22BA9E3D3000DBD1A /* LoginService.swift in Sources */,
+				F35E32102BB09DD4001EBC31 /* OvertimeRequestData.swift in Sources */,
 				F317845C2BAD46FA00AD8110 /* LeaveRequestData.swift in Sources */,
 				F31784582BAD3F6A00AD8110 /* LeaveBalanceData.swift in Sources */,
 				F35E32072BB09380001EBC31 /* OvertimeService.swift in Sources */,
@@ -1236,6 +1249,7 @@
 				F3EEA7AA2BB07A4000D89776 /* OvertimeHistoryView.swift in Sources */,
 				F330316C2BADF3480053005D /* RespondLeaveVM.swift in Sources */,
 				F3956AD32BA9F5B8000DBD1A /* BaseController.swift in Sources */,
+				F35E32162BB0A57B001EBC31 /* RespondOTVM.swift in Sources */,
 				F330314D2BADC1090053005D /* DateSelectionController.swift in Sources */,
 				F33031782BAE9ADF0053005D /* NotificationCell.swift in Sources */,
 				F31784702BAD526D00AD8110 /* UIViewController+Ext.swift in Sources */,
@@ -1263,6 +1277,7 @@
 				F3956AAC2BA9A027000DBD1A /* CheckBox.swift in Sources */,
 				F3EEA77D2BAEDBEE00D89776 /* TableTitleHeader.swift in Sources */,
 				F33031602BADD3960053005D /* DateVM.swift in Sources */,
+				F35E32122BB09F0C001EBC31 /* OTRequestDetailVM.swift in Sources */,
 				F3956AA22BA99309000DBD1A /* NibLoadable.swift in Sources */,
 				F317844C2BAD390B00AD8110 /* LeaveTypeListItemCell.swift in Sources */,
 				F3956AB02BA9A2EE000DBD1A /* FilledButton.swift in Sources */,
@@ -1299,6 +1314,7 @@
 				F3EEA78C2BB06E2300D89776 /* TeamListView.swift in Sources */,
 				F33031742BAE93390053005D /* Noti.swift in Sources */,
 				F317846D2BAD4ECE00AD8110 /* DayView.swift in Sources */,
+				F35E32142BB09F5F001EBC31 /* OTRequest.swift in Sources */,
 				F3EEA7922BB072FB00D89776 /* OvertimeController.swift in Sources */,
 				F3956AD82BA9F770000DBD1A /* ProfileController.swift in Sources */,
 				F3EEA7A52BB0744800D89776 /* OvertimeStatusView.swift in Sources */,

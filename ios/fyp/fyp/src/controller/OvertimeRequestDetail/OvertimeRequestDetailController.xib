@@ -11,7 +11,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OvertimeRequestDetailController" customModule="fyp" customModuleProvider="target">
             <connections>
+                <outlet property="buttonStack" destination="0hK-zj-dlF" id="jdj-gF-hBv"/>
+                <outlet property="dateBox" destination="bCt-eE-Na3" id="SIC-Ut-gio"/>
+                <outlet property="durationBox" destination="wbk-34-mmH" id="Bv6-H5-ui5"/>
                 <outlet property="navBar" destination="xqi-NV-Msf" id="ESu-7i-4P7"/>
+                <outlet property="reasonBox" destination="3Y7-1a-7py" id="ppz-Vn-Zka"/>
+                <outlet property="requestFromBox" destination="ulH-TB-bV9" id="gSD-Ju-Way"/>
+                <outlet property="requestToBox" destination="JDv-Rs-bRd" id="U1U-hW-yIN"/>
+                <outlet property="responseBox" destination="MH7-ZD-Qhz" id="Bhg-1f-j2s"/>
+                <outlet property="responseContainer" destination="b6m-XL-VE6" id="CeY-f6-mRr"/>
+                <outlet property="responseTextBox" destination="bYx-T5-Z6M" id="vlI-PA-xpm"/>
+                <outlet property="spinner" destination="Pzw-aL-A8U" id="hzP-v2-pdZ"/>
+                <outlet property="statusBox" destination="e0f-Uk-j7E" id="wbn-RP-c8j"/>
                 <outlet property="view" destination="Szw-P0-IJn" id="mYb-8y-tdP"/>
             </connections>
         </placeholder>
@@ -25,7 +36,7 @@
                     <viewLayoutGuide key="safeArea" id="LMA-SG-q6A"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Leave Request Detail"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Overtime Request Detail"/>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hSx-DZ-Htv">
@@ -35,50 +46,28 @@
                             <rect key="frame" x="0.0" y="0.0" width="393" height="709"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9d-4R-QjI">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="785"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="700"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OAI-ek-BtI">
-                                            <rect key="frame" x="20" y="20" width="353" height="745"/>
+                                            <rect key="frame" x="20" y="20" width="353" height="660"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="5dN-r0-IhJ" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="353" height="65"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Leave"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="text" value="Select Leave ..."/>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isChevronHidden" value="YES"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Lik-7K-DHF">
-                                                    <rect key="frame" x="0.0" y="85" width="353" height="65"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="353" height="65"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="bCt-eE-Na3" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="104.33333333333333" height="65"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="166.66666666666666" height="65"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="From"/>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="text" value="Select Date"/>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Date"/>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="YES"/>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isChevronHidden" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="wbk-34-mmH" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
-                                                            <rect key="frame" x="124.33333333333334" y="0.0" width="104.33333333333334" height="65"/>
+                                                            <rect key="frame" x="186.66666666666663" y="0.0" width="166.33333333333337" height="65"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="To"/>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="text" value="Select Date"/>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="YES"/>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isChevronHidden" value="YES"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </view>
-                                                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="SB1-Tm-IU5" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
-                                                            <rect key="frame" x="248.66666666666671" y="0.0" width="104.33333333333334" height="65"/>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Type"/>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="text" value="Entire Day"/>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Duration"/>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="YES"/>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isChevronHidden" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
@@ -86,7 +75,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="e0f-Uk-j7E" userLabel="status" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="170" width="353" height="65"/>
+                                                    <rect key="frame" x="0.0" y="85" width="353" height="65"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="Status"/>
@@ -96,19 +85,18 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="ulH-TB-bV9" userLabel="request from" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="255" width="353" height="65"/>
+                                                    <rect key="frame" x="0.0" y="170" width="353" height="65"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <color key="tintColor" name="neutral-900"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="image" keyPath="image" value="person.circle.fill" catalog="system"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="Request From"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="text" value="Mr Junior"/>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isChevronHidden" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="3Y7-1a-7py" userLabel="request_reason" customClass="TextBox" customModule="fyp" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="340" width="353" height="150"/>
+                                                    <rect key="frame" x="0.0" y="255" width="353" height="150"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="Reason"/>
@@ -116,19 +104,18 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="JDv-Rs-bRd" userLabel="request to" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="510" width="353" height="65"/>
+                                                    <rect key="frame" x="0.0" y="425" width="353" height="65"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <color key="tintColor" name="neutral-900"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="image" keyPath="image" value="person.circle.fill" catalog="system"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="Request To"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="text" value="Mr Manager"/>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isChevronHidden" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="MH7-ZD-Qhz" userLabel="response_reason" customClass="TextBox" customModule="fyp" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="595" width="353" height="150"/>
+                                                    <rect key="frame" x="0.0" y="510" width="353" height="150"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="Response"/>
@@ -197,6 +184,9 @@
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="__style" value="danger"/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="didTapReject" destination="-1" eventType="touchUpInside" id="cnN-tE-KIK"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJA-e9-WWc" customClass="FilledButton" customModule="fyp" customModuleProvider="target">
                                                     <rect key="frame" x="186.66666666666663" y="0.0" width="166.33333333333337" height="38"/>
@@ -208,6 +198,9 @@
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="__style" value="success"/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="didTapApprove" destination="-1" eventType="touchUpInside" id="sXq-NV-YQX"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>

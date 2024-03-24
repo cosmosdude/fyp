@@ -71,4 +71,71 @@ extension OvertimeService {
         
     }
     
+    public func overtimeRequestDetail(id: String) async throws -> OvertimeRequestData {
+        let req = AF.request(
+            Api.route(.overtimeRequestDetail(id: id)), method: .get,
+            headers: [
+                .authorization(bearerToken: accessToken)
+            ]
+        )
+        req.responseString { res in print("response", res.value ?? "") }
+        
+        let res = await req.serializingDecodable(OvertimeRequestData.self).response
+        
+        guard (200..<300) ~= res.response?.statusCode ?? 0 else {
+            print(res)
+            throw "Unable to get leave request detail"
+        }
+        
+        let data: OvertimeRequestData
+        do {
+            data = try res.result.get()
+        } catch {
+            console.error("Error \(error)")
+            throw error
+        }
+        return data
+    }
+    
+    public enum ResponseStatus: String {
+        case approve = "approved"
+        case reject = "rejected"
+    }
+    
+    public func respondOvertimeRequest(
+        id: String, // approved | rejected
+        reason: String,
+        status: ResponseStatus
+    ) async throws {
+        
+        let req = AF.request(
+            Api.route(.respondOvertimeRequest(id: id)),
+            method: .put,
+            parameters: [
+                "response_msg": reason,
+                "status": status.rawValue
+            ],
+            encoder: URLEncodedFormParameterEncoder(destination: .httpBody),
+            headers: [
+                .authorization(bearerToken: accessToken)
+            ]
+        )
+        
+        req.responseString { res in print("response", res.value ?? "") }
+        
+        let res = await req.serializingString().response
+        
+        let statusCode = res.response?.statusCode ?? 0
+        
+        if statusCode >= 400  {
+            throw try res.result.get()
+        }
+        
+        guard (200..<300) ~= res.response?.statusCode ?? 0 else {
+            print(res)
+            throw "Unknown Error (status: \(statusCode))"
+        }
+        
+    }
+    
 }
