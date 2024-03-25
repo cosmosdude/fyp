@@ -326,6 +326,8 @@ exports.getTeamMembers = async (req, res) => {
     `, auth.id))[0]?.[0]
     if (!user) return res.status(401).send("No such user")
 
+    let formattedDate = format(date, 'yyyy-MM-dd')
+
     let [team] = await db.promise().query(/*sql*/`
         select 
             u.id,
@@ -335,7 +337,9 @@ exports.getTeamMembers = async (req, res) => {
             des.name as designation,
             ua.start_at, ua.end_at,
             ua.checkin_at, ua.checkout_at,
-            (h.date is not null) as is_holiday
+            (h.date is not null) as is_holiday,
+            (ulr.id is not null) as is_on_leave,
+            l.name as leave_name
         from users as u
         left join files as f on u.avatar_id=f.id
         left join departments as dep on dep.id=u.department_id
@@ -346,10 +350,19 @@ exports.getTeamMembers = async (req, res) => {
             where date=?
             limit 1
         ) as h on 1=1
+        left join (
+            select * from users_leaves_requests
+            where 
+                from_date >= ? and 
+                to_date <= ? and 
+                status='approved'
+        ) as ulr on ulr.requester_id=u.id
+        left join leaves as l on l.id=ulr.leave_id
         where u.report_to=? and ua.date=?
     `, [
-        format(date, 'yyyy-MM-dd'),
-        user.report_to, format(date, 'yyyy-MM-dd')
+        formattedDate, // holiday join
+        formattedDate, formattedDate, // leave join
+        user.report_to, formattedDate
     ])
 
     res.json(team)
