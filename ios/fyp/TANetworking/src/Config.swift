@@ -74,6 +74,11 @@ public struct ApiPath: RawRepresentable, ExpressibleByStringLiteral {
     static func respondOvertimeRequest(id: String) -> Self {
         .init("api/overtimes/requests/request/\(id)")
     }
+    
+    // Attendance API
+    static func attendanceRequestDetail(id: String) -> Self {
+        .init("api/attendances/requests/request/\(id)")
+    }
 }
 
 

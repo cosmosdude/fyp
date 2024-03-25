@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -28,6 +29,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         
         window.rootViewController = SplashController()
+        
+        CLLocationManager().requestWhenInUseAuthorization()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

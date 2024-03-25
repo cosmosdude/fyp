@@ -59,6 +59,10 @@
 		F33031782BAE9ADF0053005D /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33031762BAE9ADF0053005D /* NotificationCell.swift */; };
 		F33031792BAE9ADF0053005D /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33031772BAE9ADF0053005D /* NotificationCell.xib */; };
 		F330317B2BAE9CA10053005D /* DateFormatter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F330317A2BAE9CA10053005D /* DateFormatter+Ext.swift */; };
+		F33863722BB134EC00B2CECF /* AttendanceRequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33863712BB134EC00B2CECF /* AttendanceRequestData.swift */; };
+		F33863742BB1350800B2CECF /* AttendanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33863732BB1350800B2CECF /* AttendanceService.swift */; };
+		F33863762BB135CD00B2CECF /* AttendanceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33863752BB135CD00B2CECF /* AttendanceRequest.swift */; };
+		F33863792BB1360D00B2CECF /* AttendanceRequestDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33863782BB1360D00B2CECF /* AttendanceRequestDetailVM.swift */; };
 		F33AA1062BA4BFE000119193 /* TANetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = F33AA1052BA4BFE000119193 /* TANetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F33AA1092BA4BFE000119193 /* TANetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33AA1032BA4BFE000119193 /* TANetworking.framework */; };
 		F33AA10A2BA4BFE000119193 /* TANetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F33AA1032BA4BFE000119193 /* TANetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -129,6 +133,9 @@
 		F3A74D632BA4BC6A00E91DFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A74D622BA4BC6A00E91DFE /* SceneDelegate.swift */; };
 		F3A74D6A2BA4BC6C00E91DFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A74D692BA4BC6C00E91DFE /* Assets.xcassets */; };
 		F3A74D6D2BA4BC6C00E91DFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A74D6B2BA4BC6C00E91DFE /* LaunchScreen.storyboard */; };
+		F3D38A162BB128D200CC47E2 /* fn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D38A152BB128D200CC47E2 /* fn.swift */; };
+		F3D38A1B2BB12C4800CC47E2 /* AttendanceRequestDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D38A192BB12C4800CC47E2 /* AttendanceRequestDetailController.swift */; };
+		F3D38A1C2BB12C4800CC47E2 /* AttendanceRequestDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D38A1A2BB12C4800CC47E2 /* AttendanceRequestDetailController.xib */; };
 		F3EEA77D2BAEDBEE00D89776 /* TableTitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EEA77B2BAEDBEE00D89776 /* TableTitleHeader.swift */; };
 		F3EEA77E2BAEDBEE00D89776 /* TableTitleHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EEA77C2BAEDBEE00D89776 /* TableTitleHeader.xib */; };
 		F3EEA7822BB06B0000D89776 /* AttendanceStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EEA7802BB06B0000D89776 /* AttendanceStatusView.swift */; };
@@ -237,6 +244,10 @@
 		F33031762BAE9ADF0053005D /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		F33031772BAE9ADF0053005D /* NotificationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
 		F330317A2BAE9CA10053005D /* DateFormatter+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Ext.swift"; sourceTree = "<group>"; };
+		F33863712BB134EC00B2CECF /* AttendanceRequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceRequestData.swift; sourceTree = "<group>"; };
+		F33863732BB1350800B2CECF /* AttendanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceService.swift; sourceTree = "<group>"; };
+		F33863752BB135CD00B2CECF /* AttendanceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceRequest.swift; sourceTree = "<group>"; };
+		F33863782BB1360D00B2CECF /* AttendanceRequestDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceRequestDetailVM.swift; sourceTree = "<group>"; };
 		F33AA1032BA4BFE000119193 /* TANetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TANetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F33AA1052BA4BFE000119193 /* TANetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TANetworking.h; sourceTree = "<group>"; };
 		F33AA1102BA4C03200119193 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -309,6 +320,9 @@
 		F3A74D692BA4BC6C00E91DFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3A74D6C2BA4BC6C00E91DFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3A74D6E2BA4BC6C00E91DFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3D38A152BB128D200CC47E2 /* fn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fn.swift; sourceTree = "<group>"; };
+		F3D38A192BB12C4800CC47E2 /* AttendanceRequestDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceRequestDetailController.swift; sourceTree = "<group>"; };
+		F3D38A1A2BB12C4800CC47E2 /* AttendanceRequestDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttendanceRequestDetailController.xib; sourceTree = "<group>"; };
 		F3EEA77B2BAEDBEE00D89776 /* TableTitleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTitleHeader.swift; sourceTree = "<group>"; };
 		F3EEA77C2BAEDBEE00D89776 /* TableTitleHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableTitleHeader.xib; sourceTree = "<group>"; };
 		F3EEA7802BB06B0000D89776 /* AttendanceStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceStatusView.swift; sourceTree = "<group>"; };
@@ -389,6 +403,7 @@
 		F317843D2BAD325F00AD8110 /* viewmodel */ = {
 			isa = PBXGroup;
 			children = (
+				F33863772BB135F800B2CECF /* attendance */,
 				F35E320E2BB0968E001EBC31 /* leave */,
 				F35E320D2BB09689001EBC31 /* overtime */,
 				F35E320A2BB09496001EBC31 /* types */,
@@ -432,6 +447,7 @@
 				F33031732BAE93390053005D /* Noti.swift */,
 				F3EEA7B02BB07C2200D89776 /* RequestStatus.swift */,
 				F35E32132BB09F5F001EBC31 /* OTRequest.swift */,
+				F33863752BB135CD00B2CECF /* AttendanceRequest.swift */,
 			);
 			path = types;
 			sourceTree = "<group>";
@@ -510,6 +526,14 @@
 			path = NotificationCell;
 			sourceTree = "<group>";
 		};
+		F33863772BB135F800B2CECF /* attendance */ = {
+			isa = PBXGroup;
+			children = (
+				F33863782BB1360D00B2CECF /* AttendanceRequestDetailVM.swift */,
+			);
+			path = attendance;
+			sourceTree = "<group>";
+		};
 		F33AA1042BA4BFE000119193 /* TANetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -530,6 +554,7 @@
 				F31784552BAD3ED000AD8110 /* LeaveService.swift */,
 				F330316D2BAE910B0053005D /* NotificationService.swift */,
 				F35E32062BB09380001EBC31 /* OvertimeService.swift */,
+				F33863732BB1350800B2CECF /* AttendanceService.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -597,6 +622,7 @@
 				F3EEA7B22BB084B800D89776 /* OvertimeRequestDetail */,
 				F3EEA79D2BB0732500D89776 /* OvertimeRequest */,
 				F3EEA78E2BB0729E00D89776 /* Overtimes */,
+				F3D38A182BB12C3700CC47E2 /* AttendanceRequestDetail */,
 				F3EEA7982BB0730800D89776 /* AttendanceRequest */,
 				F3EEA78F2BB072A300D89776 /* Attendance */,
 				F330314F2BADC10C0053005D /* Selection */,
@@ -793,6 +819,7 @@
 				F33031562BADC8D20053005D /* ManagerData.swift */,
 				F330316F2BAE91400053005D /* NotificationData.swift */,
 				F35E320F2BB09DD4001EBC31 /* OvertimeRequestData.swift */,
+				F33863712BB134EC00B2CECF /* AttendanceRequestData.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -882,6 +909,7 @@
 		F3A74D5F2BA4BC6A00E91DFE /* fyp */ = {
 			isa = PBXGroup;
 			children = (
+				F3D38A172BB12ABD00CC47E2 /* utils */,
 				F3956A9E2BA99219000DBD1A /* extensions */,
 				F3956AB92BA9E979000DBD1A /* lib */,
 				F3956A722BA98FB0000DBD1A /* resource */,
@@ -893,6 +921,23 @@
 				F33AA1122BA4C16000119193 /* main.swift */,
 			);
 			path = fyp;
+			sourceTree = "<group>";
+		};
+		F3D38A172BB12ABD00CC47E2 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				F3D38A152BB128D200CC47E2 /* fn.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		F3D38A182BB12C3700CC47E2 /* AttendanceRequestDetail */ = {
+			isa = PBXGroup;
+			children = (
+				F3D38A192BB12C4800CC47E2 /* AttendanceRequestDetailController.swift */,
+				F3D38A1A2BB12C4800CC47E2 /* AttendanceRequestDetailController.xib */,
+			);
+			path = AttendanceRequestDetail;
 			sourceTree = "<group>";
 		};
 		F3EEA77A2BAEDBDA00D89776 /* TableTitleHeader */ = {
@@ -1124,6 +1169,7 @@
 				F3956AA82BA99540000DBD1A /* TextField.xib in Resources */,
 				F31784672BAD487900AD8110 /* MyLeaveRequestListCell.xib in Resources */,
 				F31733E72BADB4D80018AA05 /* Avatar.xib in Resources */,
+				F3D38A1C2BB12C4800CC47E2 /* AttendanceRequestDetailController.xib in Resources */,
 				F31784442BAD36DF00AD8110 /* NavBarView.xib in Resources */,
 				F3EEA7932BB072FB00D89776 /* OvertimeController.xib in Resources */,
 				F38A71DF2BAD58FF00A0E12F /* TextBox.xib in Resources */,
@@ -1227,12 +1273,14 @@
 				F31784562BAD3ED000AD8110 /* LeaveService.swift in Sources */,
 				F330316E2BAE910B0053005D /* NotificationService.swift in Sources */,
 				F3956ACE2BA9F1EC000DBD1A /* UserData.swift in Sources */,
+				F33863722BB134EC00B2CECF /* AttendanceRequestData.swift in Sources */,
 				F33AA1112BA4C03200119193 /* Config.swift in Sources */,
 				F3956ACC2BA9F038000DBD1A /* UserService.swift in Sources */,
 				F3956ACA2BA9EFEB000DBD1A /* String+Error.swift in Sources */,
 				F33031572BADC8D20053005D /* ManagerData.swift in Sources */,
 				F3956AB22BA9E3D3000DBD1A /* LoginService.swift in Sources */,
 				F35E32102BB09DD4001EBC31 /* OvertimeRequestData.swift in Sources */,
+				F33863742BB1350800B2CECF /* AttendanceService.swift in Sources */,
 				F317845C2BAD46FA00AD8110 /* LeaveRequestData.swift in Sources */,
 				F31784582BAD3F6A00AD8110 /* LeaveBalanceData.swift in Sources */,
 				F35E32072BB09380001EBC31 /* OvertimeService.swift in Sources */,
@@ -1270,6 +1318,7 @@
 				F33AA1212BA4C2F400119193 /* SplashController.swift in Sources */,
 				F3EEA7B52BB084C700D89776 /* OvertimeRequestDetailController.swift in Sources */,
 				F3EEA7A02BB0733300D89776 /* OvertimeRequestController.swift in Sources */,
+				F3D38A162BB128D200CC47E2 /* fn.swift in Sources */,
 				F38A71ED2BADB10800A0E12F /* ManagerSelectionCell.swift in Sources */,
 				F31784432BAD36DF00AD8110 /* NavBarView.swift in Sources */,
 				F35E32052BB08FA7001EBC31 /* ISO8601DateFormatter+Ext.swift in Sources */,
@@ -1284,6 +1333,7 @@
 				F35E32122BB09F0C001EBC31 /* OTRequestDetailVM.swift in Sources */,
 				F3956AA22BA99309000DBD1A /* NibLoadable.swift in Sources */,
 				F317844C2BAD390B00AD8110 /* LeaveTypeListItemCell.swift in Sources */,
+				F33863792BB1360D00B2CECF /* AttendanceRequestDetailVM.swift in Sources */,
 				F3956AB02BA9A2EE000DBD1A /* FilledButton.swift in Sources */,
 				F3956AE72BA9F7CD000DBD1A /* LeaveController.swift in Sources */,
 				F31784662BAD487900AD8110 /* MyLeaveRequestListCell.swift in Sources */,
@@ -1301,6 +1351,8 @@
 				F33031722BAE92EB0053005D /* NotificationVM.swift in Sources */,
 				F31733E62BADB4D80018AA05 /* Avatar.swift in Sources */,
 				F3EEA79B2BB0731F00D89776 /* AttendanceRequestController.swift in Sources */,
+				F3D38A1B2BB12C4800CC47E2 /* AttendanceRequestDetailController.swift in Sources */,
+				F33863762BB135CD00B2CECF /* AttendanceRequest.swift in Sources */,
 				F33031522BADC1180053005D /* SelectionController.swift in Sources */,
 				F3EEA7822BB06B0000D89776 /* AttendanceStatusView.swift in Sources */,
 				F330317B2BAE9CA10053005D /* DateFormatter+Ext.swift in Sources */,

@@ -75,7 +75,7 @@ class OvertimeRequestDetailController: UIViewController {
         f.dateFormat = "d MMM, yyyy"
         
         dateBox.text = request.date.map(f.string(from:))
-        durationBox.text = String(request.durationSec)
+        durationBox.text = overtimeDurationText(seconds: request.durationSec)
         
         statusBox.text = request.status.capitalized
         

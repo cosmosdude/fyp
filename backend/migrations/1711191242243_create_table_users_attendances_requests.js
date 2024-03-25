@@ -12,6 +12,9 @@ module.exports = {
         status enum('pending', 'approved', 'rejected') default 'pending',
         requested_at datetime default (CURRENT_TIMESTAMP()),
         responded_at datetime,
+
+        lat DECIMAL(10, 8),
+        lng DECIMAL(11, 8),
         
         date date, -- target request attendance date
         time time,

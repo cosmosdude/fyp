@@ -25,7 +25,7 @@
                     <viewLayoutGuide key="safeArea" id="WYh-e6-ysX"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Request Leave"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Request Attendance"/>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ac-fk-JKC">

@@ -22,6 +22,9 @@ struct Noti: NetworkTypeProxy {
         case leaveRequest = "leave_request"
         /// Overtime request notification
         case overtimeRequest = "overtime_request"
+        
+        /// Attendance request notification
+        case attendanceRequest = "attendance_request"
     }
     
     var type: NotificationType {

@@ -80,14 +80,4 @@ extension MyLeaveRequestListView: UITableViewDataSource {
         
         return cell
     }
-    
-    function capitalize(str) {
-        if (!str) return str
-        return str.split(" ").map(capitalizedWord).join(" ")
-    }
-
-    function capitalizedWord(str) {
-        if (!str) return str
-        return str.charAt(0).toUpperCase() + str.slice(1)
-    }
 }

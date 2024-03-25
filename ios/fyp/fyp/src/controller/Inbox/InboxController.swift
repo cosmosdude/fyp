@@ -65,6 +65,12 @@ extension InboxController: UITableViewDelegate {
             controller = vc
         }
         
+        if (noti.type == .attendanceRequest) {
+            let vc = AttendanceRequestDetailController()
+            vc.id = noti.attendanceRequestId ?? ""
+            controller = vc
+        }
+        
         controller.map {
             navigationController?.pushViewController($0, animated: true)
         }

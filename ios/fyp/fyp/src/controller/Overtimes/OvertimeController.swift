@@ -21,11 +21,11 @@ class OvertimeController: UIViewController {
         navBar.backArrowBtn.addTarget(self, action: #selector(pop), for: .touchUpInside)
         // Do any additional setup after loading the view.
         
-        listView.didSelectItemAt = { [weak self] _ in
-            self?.navigationController?.pushViewController(
-                OvertimeRequestDetailController(),
-                animated: true
-            )
+        listView.didSelectItemAt = { [weak self] in
+            guard let item = self?.vm.requests[$0.row] else { return }
+            let vc = OvertimeRequestDetailController()
+            vc.id = item.id
+            self?.navigationController?.pushViewController(vc, animated: true)
         }
         
         vm.$requests.receive(on: DispatchQueue.main)

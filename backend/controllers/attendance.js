@@ -76,14 +76,27 @@ exports.getMyAttendances = async (req, res, next) => {
 exports.getAllAttendanceRequests = async (req, res, next) => {
     let [requests] = await db.promise().query(/*sql*/`
         select 
-            uar.*, 
-            u.first_name, u.last_name, 
-            u.avatar_path 
+            uar.*,
+
+            u1.first_name as requester_first_name, 
+            u1.last_name as requester_last_name,
+            f1.path as requester_avatar_path,
+
+            u2.first_name as recipient_first_name, 
+            u2.last_name as recipient_last_name,
+            f2.path as recipient_avatar_path,
+
+            u3.first_name as responder_first_name, 
+            u3.last_name as responder_last_name,
+            f3.path as responder_avatar_path
+
         from users_attendances_requests as uar
-        left join (
-            select u.*, f.path as avatar_path from users as u
-            left join files as f on u.avatar_id=f.id
-        ) as u on uar.requester_id=u.id
+        left join users as u1 on u1.id=uar.requester_id
+        left join files as f1 on u1.avatar_id=f1.id
+        left join users as u2 on u2.id=uar.recipient_id
+        left join files as f2 on u2.avatar_id=f2.id
+        left join users as u3 on u3.id=uar.responder_id
+        left join files as f3 on u3.avatar_id=f3.id
     `)
     res.json(requests)
 }
@@ -92,17 +105,61 @@ exports.getMyAttendanceRequests = async (req, res, next) => {
     let auth = req.authUser
     let [requests] = await db.promise().query(/*sql*/`
         select 
-            uar.*, 
-            u.first_name, u.last_name, 
-            u.avatar_path 
+            uar.*,
+
+            u1.first_name as requester_first_name, 
+            u1.last_name as requester_last_name,
+            f1.path as requester_avatar_path,
+
+            u2.first_name as recipient_first_name, 
+            u2.last_name as recipient_last_name,
+            f2.path as recipient_avatar_path,
+
+            u3.first_name as responder_first_name, 
+            u3.last_name as responder_last_name,
+            f3.path as responder_avatar_path
+
         from users_attendances_requests as uar
-        left join (
-            select u.*, f.path as avatar_path from users as u
-            left join files as f on u.avatar_id=f.id
-        ) as u on uar.requester_id=u.id
+        left join users as u1 on u1.id=uar.requester_id
+        left join files as f1 on u1.avatar_id=f1.id
+        left join users as u2 on u2.id=uar.recipient_id
+        left join files as f2 on u2.avatar_id=f2.id
+        left join users as u3 on u3.id=uar.responder_id
+        left join files as f3 on u3.avatar_id=f3.id
         where uar.requester_id=?
     `, auth.id)
     res.json(requests)
+}
+
+exports.attendanceRequestDetail = async (req, res, next) => {
+    let { id } = req.params
+    let [requests] = await db.promise().query(/*sql*/`
+        select 
+            uar.*,
+
+            u1.first_name as requester_first_name, 
+            u1.last_name as requester_last_name,
+            f1.path as requester_avatar_path,
+
+            u2.first_name as recipient_first_name, 
+            u2.last_name as recipient_last_name,
+            f2.path as recipient_avatar_path,
+
+            u3.first_name as responder_first_name, 
+            u3.last_name as responder_last_name,
+            f3.path as responder_avatar_path
+
+        from users_attendances_requests as uar
+        left join users as u1 on u1.id=uar.requester_id
+        left join files as f1 on u1.avatar_id=f1.id
+        left join users as u2 on u2.id=uar.recipient_id
+        left join files as f2 on u2.avatar_id=f2.id
+        left join users as u3 on u3.id=uar.responder_id
+        left join files as f3 on u3.avatar_id=f3.id
+        where uar.id=?
+    `, id)
+
+    res.json(requests[0])
 }
 
 exports.requestAttendance = async (req, res, next) => {
@@ -116,7 +173,9 @@ exports.requestAttendance = async (req, res, next) => {
             time: z.string(), // currently not enforced
             type: z.enum(['checkin', 'checkout']),
             recipient_id: z.string(),
-            request_msg: z.string().optional()
+            request_msg: z.string().optional(),
+            lat: z.coerce.number(),
+            lng: z.coerce.number(),
         }).parse(req.body)
     } catch(error) { return res.zod.sendError(error) }
 

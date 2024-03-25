@@ -18,4 +18,9 @@ extension DateFormatter {
         self.timeZone = timeZone
         return self
     }
+    
+    func with(locale: Locale!) -> Self {
+        self.locale = locale
+        return self
+    }
 }
