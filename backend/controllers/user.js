@@ -1,4 +1,4 @@
-const {format} = require('date-fns')
+const {format} = require('../utils/datefns-fast-wrapper')
 const db = require('../mysql')
 const {randomUUID: uuid} = require('crypto')
 const md5 = require('md5')
@@ -308,6 +308,51 @@ exports.delete = async(req, res) => {
     if (results.affectedRows !== 1) 
         return res.status(400).send("unable to delete user.")    
     res.sendStatus(204)
+}
+
+exports.getTeamMembers = async (req, res) => {
+    let auth = req.authUser
+
+    let { date } = req.query
+    try {
+        date = z.coerce.date().optional().parse(date)
+    } catch (error) { return res.zod.sendError(error) }
+
+    if (!date) date = new Date()
+    if (isNaN(date)) date = new Date()
+    
+    let user = (await db.promise().query(/*sql*/`
+        select * from users where id=?
+    `, auth.id))[0]?.[0]
+    if (!user) return res.status(401).send("No such user")
+
+    let [team] = await db.promise().query(/*sql*/`
+        select 
+            u.id,
+            u.first_name, u.last_name, 
+            f.path as avatar_path ,
+            dep.name as department,
+            des.name as designation,
+            ua.start_at, ua.end_at,
+            ua.checkin_at, ua.checkout_at,
+            (h.date is not null) as is_holiday
+        from users as u
+        left join files as f on u.avatar_id=f.id
+        left join departments as dep on dep.id=u.department_id
+        left join designations as des on des.id=u.designation_id
+        left join users_attendances as ua on ua.user_id=u.id
+        left join (
+            select * from holidays
+            where date=?
+            limit 1
+        ) as h on 1=1
+        where u.report_to=? and ua.date=?
+    `, [
+        format(date, 'yyyy-MM-dd'),
+        user.report_to, format(date, 'yyyy-MM-dd')
+    ])
+
+    res.json(team)
 }
 
 // MARK: Report To

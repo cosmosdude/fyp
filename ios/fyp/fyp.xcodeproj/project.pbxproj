@@ -63,6 +63,10 @@
 		F33863742BB1350800B2CECF /* AttendanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33863732BB1350800B2CECF /* AttendanceService.swift */; };
 		F33863762BB135CD00B2CECF /* AttendanceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33863752BB135CD00B2CECF /* AttendanceRequest.swift */; };
 		F33863792BB1360D00B2CECF /* AttendanceRequestDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33863782BB1360D00B2CECF /* AttendanceRequestDetailVM.swift */; };
+		F338637B2BB13E5700B2CECF /* RespondAttendanceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F338637A2BB13E5700B2CECF /* RespondAttendanceVM.swift */; };
+		F33863842BB171E400B2CECF /* CurrentLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33863822BB171E400B2CECF /* CurrentLocationView.swift */; };
+		F33863852BB171E400B2CECF /* CurrentLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33863832BB171E400B2CECF /* CurrentLocationView.xib */; };
+		F33863872BB1774F00B2CECF /* RequestAttendanceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33863862BB1774F00B2CECF /* RequestAttendanceVM.swift */; };
 		F33AA1062BA4BFE000119193 /* TANetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = F33AA1052BA4BFE000119193 /* TANetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F33AA1092BA4BFE000119193 /* TANetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33AA1032BA4BFE000119193 /* TANetworking.framework */; };
 		F33AA10A2BA4BFE000119193 /* TANetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F33AA1032BA4BFE000119193 /* TANetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -248,6 +252,10 @@
 		F33863732BB1350800B2CECF /* AttendanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceService.swift; sourceTree = "<group>"; };
 		F33863752BB135CD00B2CECF /* AttendanceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceRequest.swift; sourceTree = "<group>"; };
 		F33863782BB1360D00B2CECF /* AttendanceRequestDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceRequestDetailVM.swift; sourceTree = "<group>"; };
+		F338637A2BB13E5700B2CECF /* RespondAttendanceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondAttendanceVM.swift; sourceTree = "<group>"; };
+		F33863822BB171E400B2CECF /* CurrentLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationView.swift; sourceTree = "<group>"; };
+		F33863832BB171E400B2CECF /* CurrentLocationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentLocationView.xib; sourceTree = "<group>"; };
+		F33863862BB1774F00B2CECF /* RequestAttendanceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAttendanceVM.swift; sourceTree = "<group>"; };
 		F33AA1032BA4BFE000119193 /* TANetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TANetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F33AA1052BA4BFE000119193 /* TANetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TANetworking.h; sourceTree = "<group>"; };
 		F33AA1102BA4C03200119193 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -530,8 +538,19 @@
 			isa = PBXGroup;
 			children = (
 				F33863782BB1360D00B2CECF /* AttendanceRequestDetailVM.swift */,
+				F338637A2BB13E5700B2CECF /* RespondAttendanceVM.swift */,
+				F33863862BB1774F00B2CECF /* RequestAttendanceVM.swift */,
 			);
 			path = attendance;
+			sourceTree = "<group>";
+		};
+		F33863812BB171C400B2CECF /* CurrentLocationView */ = {
+			isa = PBXGroup;
+			children = (
+				F33863822BB171E400B2CECF /* CurrentLocationView.swift */,
+				F33863832BB171E400B2CECF /* CurrentLocationView.xib */,
+			);
+			path = CurrentLocationView;
 			sourceTree = "<group>";
 		};
 		F33AA1042BA4BFE000119193 /* TANetworking */ = {
@@ -592,6 +611,7 @@
 		F33AA1172BA4C27400119193 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F33863812BB171C400B2CECF /* CurrentLocationView */,
 				F3EEA7A72BB07A2B00D89776 /* OvertimeHistoryView */,
 				F3EEA7A22BB0743A00D89776 /* OvertimeStatusView */,
 				F3EEA7892BB06E1700D89776 /* TeamListView */,
@@ -1164,6 +1184,7 @@
 				F3EEA79C2BB0731F00D89776 /* AttendanceRequestController.xib in Resources */,
 				F3EEA7AB2BB07A4000D89776 /* OvertimeHistoryView.xib in Resources */,
 				F31784752BAD52EB00AD8110 /* LeaveRequestController.xib in Resources */,
+				F33863852BB171E400B2CECF /* CurrentLocationView.xib in Resources */,
 				F3956A972BA9901E000DBD1A /* Inter-Bold.ttf in Resources */,
 				F39ACF852BAA75DF0078A017 /* TitleView.xib in Resources */,
 				F3956AA82BA99540000DBD1A /* TextField.xib in Resources */,
@@ -1294,6 +1315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F33031552BADC78A0053005D /* ManagerVM.swift in Sources */,
+				F338637B2BB13E5700B2CECF /* RespondAttendanceVM.swift in Sources */,
 				F33031662BADD9860053005D /* OptionsVM.swift in Sources */,
 				F31784692BAD492400AD8110 /* UITableView+Ext.swift in Sources */,
 				F38A71E32BAD9C0B00A0E12F /* LeaveRequestDetailController.swift in Sources */,
@@ -1319,6 +1341,8 @@
 				F3EEA7B52BB084C700D89776 /* OvertimeRequestDetailController.swift in Sources */,
 				F3EEA7A02BB0733300D89776 /* OvertimeRequestController.swift in Sources */,
 				F3D38A162BB128D200CC47E2 /* fn.swift in Sources */,
+				F33863872BB1774F00B2CECF /* RequestAttendanceVM.swift in Sources */,
+				F33863842BB171E400B2CECF /* CurrentLocationView.swift in Sources */,
 				F38A71ED2BADB10800A0E12F /* ManagerSelectionCell.swift in Sources */,
 				F31784432BAD36DF00AD8110 /* NavBarView.swift in Sources */,
 				F35E32052BB08FA7001EBC31 /* ISO8601DateFormatter+Ext.swift in Sources */,

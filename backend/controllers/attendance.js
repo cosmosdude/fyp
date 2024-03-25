@@ -29,7 +29,7 @@ exports.getAll = async (req, res, next) => {
         from users_attendances as ua
         left join users as u on ua.user_id=u.id
         where ua.date >= ? and ua.date <= ?
-        group by ua.date desc
+        group by ua.date desc, ua.user_id desc
         limit 366
     `, [
         format(data.from, 'yyyy-MM-dd'), format(data.to, 'yyyy-MM-dd')
@@ -204,26 +204,18 @@ exports.requestAttendance = async (req, res, next) => {
 
     if (!schedule) return res.status(500).send()
 
-
-    let [attendances] = (await db.promise().query(/*sql*/`
-        select * from users_attendances
-        where user_id=? and date=?
-    `, [requester.id, format(data.date, 'yyyy-MM-dd')]))
-
-
-    // if attendance record is not created yet,
-    // create it
-    if (attendances.length === 0) {
-        await db.promise().query(/*sql*/`
-            insert into users_attendances
-            set ?
-        `, [{
+    {
+        let value = {
             user_id: requester.id,
             date: data.date,
             start_at: schedule.start_at, // <- planned start time
             end_at: schedule.end_at, // <- planned end time
             break_seconds: schedule.break_seconds
-        }])
+        }
+        await db.promise().query(/*sql*/`
+            insert into users_attendances
+            set ? on duplicate key update ?
+        `, [value, value])
     }
 
     // insert request

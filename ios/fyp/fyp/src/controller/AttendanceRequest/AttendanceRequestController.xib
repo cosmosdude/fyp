@@ -11,7 +11,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AttendanceRequestController" customModule="fyp" customModuleProvider="target">
             <connections>
+                <outlet property="date" destination="3RA-JT-kte" id="xNg-XJ-J5P"/>
+                <outlet property="map" destination="tz9-Ie-pkp" id="83I-fM-EBn"/>
                 <outlet property="navBar" destination="YuT-9g-0tr" id="p9u-Ax-tYn"/>
+                <outlet property="reason" destination="CYW-NN-0GM" id="xQU-mJ-gD2"/>
+                <outlet property="request" destination="AXf-ps-FOC" id="aiF-lM-IMK"/>
+                <outlet property="requestTo" destination="OuM-dB-Zwz" id="G9M-aO-es4"/>
+                <outlet property="spinner" destination="SJy-4a-Ru3" id="6Hv-g4-JQI"/>
+                <outlet property="time" destination="Evy-aU-2Uy" id="yWw-U3-A5V"/>
+                <outlet property="type" destination="Two-CQ-Xa3" id="WgP-Cq-Ws2"/>
                 <outlet property="view" destination="stA-uH-yJp" id="pZm-va-wsk"/>
             </connections>
         </placeholder>
@@ -32,10 +40,10 @@
                     <rect key="frame" x="0.0" y="109" width="393" height="743"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6rQ-rf-KYn">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="503"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="673"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kgn-QU-LHc">
-                                    <rect key="frame" x="20" y="20" width="353" height="463"/>
+                                    <rect key="frame" x="20" y="20" width="353" height="633"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fa9-Xe-Rm7">
                                             <rect key="frame" x="0.0" y="0.0" width="353" height="65"/>
@@ -47,6 +55,9 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="Date"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="text" value="Select Date"/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="didTapDate" destination="-1" eventType="touchUpInside" id="LQ1-E5-3Qn"/>
+                                                    </connections>
                                                 </view>
                                                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="Evy-aU-2Uy" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
                                                     <rect key="frame" x="186.66666666666663" y="0.0" width="166.33333333333337" height="65"/>
@@ -55,6 +66,9 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="Time"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="text" value="Select Time"/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="didTapTime" destination="-1" eventType="touchUpInside" id="pCS-nZ-Zas"/>
+                                                    </connections>
                                                 </view>
                                             </subviews>
                                         </stackView>
@@ -65,6 +79,9 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="title" value="Type"/>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="text" value="Check In"/>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="didTapType" destination="-1" eventType="touchUpInside" id="9se-tp-YYL"/>
+                                            </connections>
                                         </view>
                                         <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="OuM-dB-Zwz" userLabel="manager" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="170" width="353" height="65"/>
@@ -75,6 +92,9 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="title" value="Request To"/>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="text" value="Select Manager"/>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="didTapRequestTo" destination="-1" eventType="touchUpInside" id="eqd-vY-7Nx"/>
+                                            </connections>
                                         </view>
                                         <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="CYW-NN-0GM" userLabel="reason" customClass="TextBox" customModule="fyp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="255" width="353" height="150"/>
@@ -83,16 +103,26 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="title" value="Reason"/>
                                             </userDefinedRuntimeAttributes>
                                         </view>
+                                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="tz9-Ie-pkp" customClass="CurrentLocationView" customModule="fyp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="425" width="353" height="150"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Your Location"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AXf-ps-FOC" customClass="FilledButton" customModule="fyp" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="425" width="353" height="38"/>
+                                            <rect key="frame" x="0.0" y="595" width="353" height="38"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="38" id="Fqt-p1-8AK"/>
                                             </constraints>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="Request"/>
+                                            <connections>
+                                                <action selector="didTapRequest" destination="-1" eventType="touchUpInside" id="iJg-D0-zyM"/>
+                                            </connections>
                                         </button>
                                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="SJy-4a-Ru3">
-                                            <rect key="frame" x="0.0" y="463" width="353" height="38"/>
+                                            <rect key="frame" x="0.0" y="633" width="353" height="38"/>
                                             <color key="backgroundColor" name="primary-0"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="38" id="7Q4-XB-G1g"/>

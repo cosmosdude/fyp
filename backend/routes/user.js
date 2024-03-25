@@ -22,6 +22,7 @@ router.use(express.json())
 router.get('/', limitExactly(['admin', 'hr']), asyncHandler(controller.getAll))
 router.get('/hrs', asyncHandler(controller.getAllHRs))
 router.get('/managers', asyncHandler(controller.getAllManagers))
+router.get('/team', asyncHandler(controller.getTeamMembers))
 
 router.post('/user', limitExactly(['admin', 'hr']), asyncHandler(controller.store))
 router.get('/user/me', asyncHandler(controller.getMe))
@@ -31,13 +32,10 @@ router.put('/user/:id', limitExactly(['admin', 'hr']), asyncHandler(controller.u
 router.delete('/user/:id', limitExactly(['admin', 'hr']), asyncHandler(controller.delete))
 
 
+router.use('/test', asyncHandler(async (req, res) => {
+    let day = new Date()
+    res.json(day)
+}))
 
-router.use('/test', async (req, res) => {
-    res.send(dirname(require.main.filename))
-    // let db = require('../mysql')
-    // let [results] = await db.promise().query(/*sql*/`
-    // `)
-    // res.json(results)
-})
 
 module.exports = router

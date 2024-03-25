@@ -43,6 +43,7 @@ class AttendanceRequestDetailController: UIViewController {
     var id: String?
     
     let detailVM = AttendanceRequestDetailVM()
+    let responseVM = RespondAttendanceVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,28 +63,28 @@ class AttendanceRequestDetailController: UIViewController {
         mapBox.addAnnotation(mapPin)
         
         detailVM.id = id
-        detailVM.fetch()
-        
-//        responseVM.id = id
+        responseVM.id = id
         
         detailVM.$detail.receive(on: DispatchQueue.main)
             .sink { [weak self] in self?.render($0) }.store(in: &bag)
         
-//        responseVM.$status.receive(on: DispatchQueue.main)
-//            .sink { [weak self] in
-//                self?.buttonStack.isHidden = $0?.isProcessing ?? false
-//                self?.spinner.isHidden = !($0?.isProcessing ?? false)
-//                switch $0 {
-//                case .success:
-//                    self?.pop()
-//                case .failure(let error):
-//                    self?.presentAlert(
-//                        title: "Error",
-//                        message: error
-//                    )
-//                default: ()
-//                }
-//            }.store(in: &bag)
+        responseVM.$status.receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.buttonStack.isHidden = $0?.isProcessing ?? false
+                self?.spinner.isHidden = !($0?.isProcessing ?? false)
+                switch $0 {
+                case .success:
+                    self?.pop()
+                case .failure(let error):
+                    self?.presentAlert(
+                        title: "Error",
+                        message: error
+                    )
+                default: ()
+                }
+            }.store(in: &bag)
+        
+        detailVM.fetch()
     }
     
     private func render(_ request: AttendanceRequest?) {
@@ -120,6 +121,20 @@ class AttendanceRequestDetailController: UIViewController {
         if (request.status == "pending" && roleId < 4) {
             responseContainer.isHidden = false
         }
+    }
+    
+    @IBAction
+    private func didTapReject() {
+        responseVM.respond(.init(
+            message: responseTextBox.text ?? "", status: .reject
+        ))
+    }
+    
+    @IBAction
+    private func didTapApprove() {
+        responseVM.respond(.init(
+            message: responseTextBox.text ?? "", status: .approve
+        ))
     }
     
 }

@@ -209,6 +209,9 @@
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="__style" value="danger"/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="didTapReject" destination="-1" eventType="touchUpInside" id="Rx4-Cy-OIY"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FYu-A2-8AI" customClass="FilledButton" customModule="fyp" customModuleProvider="target">
                                                     <rect key="frame" x="186.66666666666663" y="0.0" width="166.33333333333337" height="38"/>
@@ -220,6 +223,9 @@
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="__style" value="success"/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="didTapApprove" destination="-1" eventType="touchUpInside" id="tPr-0t-ST7"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>

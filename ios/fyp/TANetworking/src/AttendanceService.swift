@@ -51,24 +51,32 @@ extension AttendanceService {
     
 extension AttendanceService {
     
-    public func requestOvertime(
-        date: Date, duration: Int,
+    public func requestAttendance(
+        date: Date, time: Date,
+        type: String,
+        lat: Double?, lng: Double?,
         recipientId: String, reason: String?
     ) async throws -> Void {
         
         
         let request = try URLRequest(
-            url: Api.route(.requestOvertime),
+            url: Api.route(.requestAttendance),
             method: .post,
             headers: [.authorization(bearerToken: accessToken)]
         )
         //
-        let f = DateFormatter()
-        f.dateFormat = "yyyy-MM-dd"
-        
+        let dateF = DateFormatter()
+        dateF.dateFormat = "yyyy-MM-dd"
+        let timeF = DateFormatter()
+        timeF.locale = Locale(identifier: "en_US_POSIX")
+        timeF.dateFormat = "HH:mm:ss"
+            
         let payload = [
-            "date": f.string(from: date),
-            "duration": String(duration),
+            "date": dateF.string(from: date),
+            "time": timeF.string(from: time),
+            "type": type,
+            "lat": lat == nil ? String(lat!) : "",
+            "lng": lat == nil ? String(lat!) : "",
             "recipient_id": recipientId,
             "request_msg": reason ?? "",
         ]
@@ -134,14 +142,14 @@ extension AttendanceService {
         case reject = "rejected"
     }
     
-    public func respondOvertimeRequest(
+    public func respondAttendanceRequest(
         id: String, // approved | rejected
         reason: String,
         status: ResponseStatus
     ) async throws {
         
         let req = AF.request(
-            Api.route(.respondOvertimeRequest(id: id)),
+            Api.route(.respondAttendanceRequest(id: id)),
             method: .put,
             parameters: [
                 "response_msg": reason,

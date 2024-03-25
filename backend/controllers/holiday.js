@@ -74,7 +74,7 @@ exports.getAll = async (req, res) => {
     // let { type, date } = req.query
 
     let schema = z.object({
-        type: z.enum(['past', 'upcoming']).optional(),
+        type: z.enum(['past', 'upcoming', '']).optional(),
         date: z.coerce.date().optional()
     })
 
@@ -82,7 +82,7 @@ exports.getAll = async (req, res) => {
     if (!zResult.success) return res.zod.sendError(zResult.error)
 
     let {type, date} = zResult.data
-    if (!type) type = "upcoming"
+    // if (!type) type = "upcoming"
     if (!date) date = new Date()
 
     let results = [];
@@ -93,12 +93,16 @@ exports.getAll = async (req, res) => {
             where date<=? 
             order by date desc`, date
         ))[0]
-    } else {
+    } else if (type === 'upcoming') {
         results = (await db.promise().query(
             /*sql*/`select * from holidays where date > ? order by date`, date
         ))[0]
+    } else {
+        results = (await db.promise().query(
+            /*sql*/`select * from holidays order by date`
+        ))[0]
     }
-    res.json(results)
+    res.json(results) 
     // res.send("Type is " + type + " Date is " + format(date, 'd MMM yyyy'))
 
 }
