@@ -22,11 +22,12 @@ router.use(express.json())
 router.get('/', limitExactly(['admin', 'hr']), asyncHandler(controller.getAll))
 router.get('/hrs', asyncHandler(controller.getAllHRs))
 router.get('/managers', asyncHandler(controller.getAllManagers))
-router.get('/team', asyncHandler(controller.getTeamMembers))
+
 
 router.post('/user', limitExactly(['admin', 'hr']), asyncHandler(controller.store))
 router.get('/user/me', asyncHandler(controller.getMe))
 router.get('/user/managers', asyncHandler(controller.getManagers))
+router.get('/user/team', asyncHandler(controller.getTeamMembers))
 router.get('/user/:id', asyncHandler(controller.get))
 router.put('/user/:id', limitExactly(['admin', 'hr']), asyncHandler(controller.update))
 router.delete('/user/:id', limitExactly(['admin', 'hr']), asyncHandler(controller.delete))

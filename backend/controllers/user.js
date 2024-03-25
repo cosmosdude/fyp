@@ -314,11 +314,14 @@ exports.getTeamMembers = async (req, res) => {
     let auth = req.authUser
 
     let { date } = req.query
-    try {
-        date = z.coerce.date().optional().parse(date)
-    } catch (error) { return res.zod.sendError(error) }
+    
+    // try {
+    //     date = z.coerce.date().default(new Date()).optional().parse(date)
+    // } catch (error) { return res.zod.sendError(error) }
 
     if (!date) date = new Date()
+    else date = new Date(date)
+
     if (isNaN(date)) date = new Date()
     
     let user = (await db.promise().query(/*sql*/`

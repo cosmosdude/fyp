@@ -8,15 +8,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Inter-Bold.ttf">
-            <string>Inter-Bold</string>
+        <array key="Inter-Medium.ttf">
+            <string>Inter-Medium</string>
         </array>
         <array key="Inter-Regular.ttf">
             <string>Inter-Regular</string>
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TeamCell" customModule="fyp" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TeamCell" customModule="fyp" customModuleProvider="target">
+            <connections>
+                <outlet property="avatar" destination="hqA-nx-dCg" id="ce5-wA-9l0"/>
+                <outlet property="nameLabel" destination="h89-RS-CEY" id="qZM-I7-XFz"/>
+                <outlet property="positionLabel" destination="h4c-Xf-FjJ" id="A3Z-MW-sqf"/>
+                <outlet property="statusLabel" destination="bx6-cW-JGE" id="Xp2-wj-q9q"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="393" height="52"/>
@@ -25,7 +32,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ITr-vV-YTL">
                     <rect key="frame" x="20" y="10" width="353" height="32"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqA-nx-dCg">
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqA-nx-dCg" customClass="Avatar" customModule="fyp" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="1" width="30" height="30"/>
                             <color key="backgroundColor" name="bg-1"/>
                             <constraints>
@@ -39,16 +46,16 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SZC-5M-zjO">
-                            <rect key="frame" x="39.999999999999986" y="0.33333333333333393" width="235.66666666666663" height="31.666666666666664"/>
+                            <rect key="frame" x="40.000000000000014" y="0.33333333333333393" width="237.33333333333337" height="31.666666666666664"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thwin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h89-RS-CEY">
-                                    <rect key="frame" x="0.0" y="0.0" width="235.66666666666666" height="17"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="237.33333333333334" height="17"/>
                                     <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Software Engineer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4c-Xf-FjJ">
-                                    <rect key="frame" x="0.0" y="17" width="235.66666666666666" height="14.666666666666664"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Software Engineer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4c-Xf-FjJ">
+                                    <rect key="frame" x="0.0" y="17" width="237.33333333333334" height="14.666666666666664"/>
                                     <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -56,8 +63,8 @@
                             </subviews>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Not Arrived" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bx6-cW-JGE">
-                            <rect key="frame" x="285.66666666666669" y="8.6666666666666679" width="67.333333333333314" height="14.666666666666668"/>
-                            <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="12"/>
+                            <rect key="frame" x="287.33333333333331" y="8.6666666666666679" width="65.666666666666686" height="14.666666666666668"/>
+                            <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>

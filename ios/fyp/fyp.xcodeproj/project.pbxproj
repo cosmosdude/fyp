@@ -67,6 +67,10 @@
 		F33863842BB171E400B2CECF /* CurrentLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33863822BB171E400B2CECF /* CurrentLocationView.swift */; };
 		F33863852BB171E400B2CECF /* CurrentLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33863832BB171E400B2CECF /* CurrentLocationView.xib */; };
 		F33863872BB1774F00B2CECF /* RequestAttendanceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33863862BB1774F00B2CECF /* RequestAttendanceVM.swift */; };
+		F33863892BB1B3D200B2CECF /* TeamMemberData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33863882BB1B3D100B2CECF /* TeamMemberData.swift */; };
+		F338638B2BB1B56C00B2CECF /* TeamVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F338638A2BB1B56C00B2CECF /* TeamVM.swift */; };
+		F338638D2BB1B5B100B2CECF /* TeamMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = F338638C2BB1B5B100B2CECF /* TeamMember.swift */; };
+		F338638F2BB1B61900B2CECF /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F338638E2BB1B61900B2CECF /* Int+Ext.swift */; };
 		F33AA1062BA4BFE000119193 /* TANetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = F33AA1052BA4BFE000119193 /* TANetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F33AA1092BA4BFE000119193 /* TANetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33AA1032BA4BFE000119193 /* TANetworking.framework */; };
 		F33AA10A2BA4BFE000119193 /* TANetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F33AA1032BA4BFE000119193 /* TANetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -256,6 +260,10 @@
 		F33863822BB171E400B2CECF /* CurrentLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationView.swift; sourceTree = "<group>"; };
 		F33863832BB171E400B2CECF /* CurrentLocationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentLocationView.xib; sourceTree = "<group>"; };
 		F33863862BB1774F00B2CECF /* RequestAttendanceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAttendanceVM.swift; sourceTree = "<group>"; };
+		F33863882BB1B3D100B2CECF /* TeamMemberData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMemberData.swift; sourceTree = "<group>"; };
+		F338638A2BB1B56C00B2CECF /* TeamVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamVM.swift; sourceTree = "<group>"; };
+		F338638C2BB1B5B100B2CECF /* TeamMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMember.swift; sourceTree = "<group>"; };
+		F338638E2BB1B61900B2CECF /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
 		F33AA1032BA4BFE000119193 /* TANetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TANetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F33AA1052BA4BFE000119193 /* TANetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TANetworking.h; sourceTree = "<group>"; };
 		F33AA1102BA4C03200119193 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -420,6 +428,7 @@
 				F330315F2BADD3960053005D /* DateVM.swift */,
 				F33031652BADD9860053005D /* OptionsVM.swift */,
 				F33031712BAE92EB0053005D /* NotificationVM.swift */,
+				F338638A2BB1B56C00B2CECF /* TeamVM.swift */,
 			);
 			path = viewmodel;
 			sourceTree = "<group>";
@@ -456,6 +465,7 @@
 				F3EEA7B02BB07C2200D89776 /* RequestStatus.swift */,
 				F35E32132BB09F5F001EBC31 /* OTRequest.swift */,
 				F33863752BB135CD00B2CECF /* AttendanceRequest.swift */,
+				F338638C2BB1B5B100B2CECF /* TeamMember.swift */,
 			);
 			path = types;
 			sourceTree = "<group>";
@@ -791,6 +801,7 @@
 				F317846F2BAD526D00AD8110 /* UIViewController+Ext.swift */,
 				F330317A2BAE9CA10053005D /* DateFormatter+Ext.swift */,
 				F35E32042BB08FA7001EBC31 /* ISO8601DateFormatter+Ext.swift */,
+				F338638E2BB1B61900B2CECF /* Int+Ext.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -840,6 +851,7 @@
 				F330316F2BAE91400053005D /* NotificationData.swift */,
 				F35E320F2BB09DD4001EBC31 /* OvertimeRequestData.swift */,
 				F33863712BB134EC00B2CECF /* AttendanceRequestData.swift */,
+				F33863882BB1B3D100B2CECF /* TeamMemberData.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -1302,6 +1314,7 @@
 				F3956AB22BA9E3D3000DBD1A /* LoginService.swift in Sources */,
 				F35E32102BB09DD4001EBC31 /* OvertimeRequestData.swift in Sources */,
 				F33863742BB1350800B2CECF /* AttendanceService.swift in Sources */,
+				F33863892BB1B3D200B2CECF /* TeamMemberData.swift in Sources */,
 				F317845C2BAD46FA00AD8110 /* LeaveRequestData.swift in Sources */,
 				F31784582BAD3F6A00AD8110 /* LeaveBalanceData.swift in Sources */,
 				F35E32072BB09380001EBC31 /* OvertimeService.swift in Sources */,
@@ -1322,6 +1335,7 @@
 				F3EEA7AA2BB07A4000D89776 /* OvertimeHistoryView.swift in Sources */,
 				F330316C2BADF3480053005D /* RespondLeaveVM.swift in Sources */,
 				F3956AD32BA9F5B8000DBD1A /* BaseController.swift in Sources */,
+				F338638D2BB1B5B100B2CECF /* TeamMember.swift in Sources */,
 				F35E32162BB0A57B001EBC31 /* RespondOTVM.swift in Sources */,
 				F330314D2BADC1090053005D /* DateSelectionController.swift in Sources */,
 				F33031782BAE9ADF0053005D /* NotificationCell.swift in Sources */,
@@ -1357,6 +1371,7 @@
 				F35E32122BB09F0C001EBC31 /* OTRequestDetailVM.swift in Sources */,
 				F3956AA22BA99309000DBD1A /* NibLoadable.swift in Sources */,
 				F317844C2BAD390B00AD8110 /* LeaveTypeListItemCell.swift in Sources */,
+				F338638B2BB1B56C00B2CECF /* TeamVM.swift in Sources */,
 				F33863792BB1360D00B2CECF /* AttendanceRequestDetailVM.swift in Sources */,
 				F3956AB02BA9A2EE000DBD1A /* FilledButton.swift in Sources */,
 				F3956AE72BA9F7CD000DBD1A /* LeaveController.swift in Sources */,
@@ -1383,6 +1398,7 @@
 				F3A74D632BA4BC6A00E91DFE /* SceneDelegate.swift in Sources */,
 				F3956AE22BA9F7AD000DBD1A /* InboxController.swift in Sources */,
 				F3956AA02BA99229000DBD1A /* UIView+Ext.swift in Sources */,
+				F338638F2BB1B61900B2CECF /* Int+Ext.swift in Sources */,
 				F31784542BAD3E8600AD8110 /* LeaveType.swift in Sources */,
 				F317845A2BAD43BD00AD8110 /* +Ext.swift in Sources */,
 				F3956ABD2BA9EDE6000DBD1A /* UserModel.swift in Sources */,

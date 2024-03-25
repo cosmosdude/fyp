@@ -72,4 +72,39 @@ public struct UserService {
         return data
     }
     
+    public func fetchTeamMemberStatuses(date: Date? = nil) async throws -> [TeamMemberData] {
+        let dateF = DateFormatter()
+        dateF.locale = Locale(identifier: "en_US_POSIX")
+        dateF.dateFormat = "yyyy-MM-dd"
+        let req = AF.request(
+            Api.route(.team),
+            method: .get,
+            parameters: [
+                "date": date.map(dateF.string(from:)) ?? ""
+            ],
+            encoding: URLEncoding(destination: .queryString),
+            headers: [
+                .authorization(bearerToken: accessToken)
+            ]
+        )
+        
+        req.responseString { res in print("response", res.value ?? "") }
+        
+        let res = await req.serializingDecodable([TeamMemberData].self).response
+        
+        guard (200..<300) ~= res.response?.statusCode ?? 0 else {
+            print(res)
+            throw "Unable to get Managers"
+        }
+        
+        let data: [TeamMemberData]
+        do {
+            data = try res.result.get()
+        } catch {
+            console.error("Error \(error)")
+            throw error
+        }
+        return data
+    }
+    
 }
