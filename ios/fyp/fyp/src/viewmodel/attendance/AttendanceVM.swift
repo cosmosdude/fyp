@@ -30,4 +30,21 @@ final class AttendanceVM: @unchecked Sendable {
         ).map(Attendance.init)) ?? []
     }
     
+    func setDateToCurrent() {
+        from = Date()
+        to = Date()
+    }
+    
+    func setDateFromMonthStartToCurrentDate() {
+        let current = Date()
+        
+        let calendar = Calendar(identifier: .gregorian)
+        var components = calendar.dateComponents([.day, .month, .year], from: current)
+        components.day = 1
+        let start = calendar.date(from: components)!
+        
+        self.from = start
+        self.to = current
+    }
+    
 }

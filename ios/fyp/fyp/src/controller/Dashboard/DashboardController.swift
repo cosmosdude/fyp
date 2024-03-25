@@ -10,9 +10,13 @@ import Combine
 
 class DashboardController: UIViewController {
 
+    @IBOutlet private var avatar: Avatar!
+    @IBOutlet private var nameLabel: UILabel!
+    
     @IBOutlet private var attendanceStatusView: AttendanceStatusView!
     @IBOutlet private var teamListView: TeamListView!
     
+    let userVM = UserVM()
     let teamVM = TeamVM()
     let attendanceVM = AttendanceVM()
     
@@ -20,6 +24,13 @@ class DashboardController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userVM.$user.receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] in
+                self?.avatar.render(name: $0?.fullName ?? "")
+                self?.avatar.render(image: $0?.avatarURL)
+            })
+            .store(in: &bag)
         
         attendanceVM.$attendances.receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] in
@@ -36,12 +47,14 @@ class DashboardController: UIViewController {
         
         attendanceVM.fetch()
         teamVM.fetch()
+        userVM.fetchUser()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         teamVM.fetch()
         attendanceVM.fetch()
+        userVM.fetchUser()
     }
     
     @IBAction

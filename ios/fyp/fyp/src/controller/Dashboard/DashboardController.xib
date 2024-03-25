@@ -23,6 +23,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashboardController" customModule="fyp" customModuleProvider="target">
             <connections>
                 <outlet property="attendanceStatusView" destination="zfg-3f-rUN" id="ELV-0O-keB"/>
+                <outlet property="avatar" destination="fWs-HA-ZOI" id="qyS-NI-7GV"/>
+                <outlet property="nameLabel" destination="SrG-Is-jhn" id="HQK-ZY-I6v"/>
                 <outlet property="teamListView" destination="8CO-Br-dFW" id="7Uh-9k-bgU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -38,7 +40,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hi4-sG-UwH">
                             <rect key="frame" x="20" y="10" width="104" height="30"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fWs-HA-ZOI" customClass="Avatar" customModule="fyp" customModuleProvider="target">
+                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fWs-HA-ZOI" customClass="Avatar" customModule="fyp" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                     <color key="backgroundColor" name="bg-1"/>
                                     <constraints>

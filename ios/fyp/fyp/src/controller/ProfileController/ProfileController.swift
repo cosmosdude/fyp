@@ -57,11 +57,15 @@ class ProfileController: UIViewController {
             .sink { [weak self] in
                 self?.render(user: $0)
             }.store(in: &bag)
-        
+        userViewModel.fetchUser()
         super.viewDidLoad()
     }
     
-    private func render(user: UserData?) {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    private func render(user: User?) {
 
         profileImageView.kf.setImage(
             with: URL(string: Api.route(user?.avatarPath ?? ""))

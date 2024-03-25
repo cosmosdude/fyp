@@ -20,6 +20,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AttendanceController" customModule="fyp" customModuleProvider="target">
             <connections>
                 <outlet property="navBar" destination="MSU-cW-4Al" id="rRC-Kp-aUl"/>
+                <outlet property="recordView" destination="Vo0-gz-oCJ" id="ZTZ-Di-hDY"/>
                 <outlet property="view" destination="amm-uf-7KX" id="c7b-UE-tl3"/>
             </connections>
         </placeholder>
@@ -54,14 +55,14 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="Attendance"/>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euY-cW-leO">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euY-cW-leO">
                     <rect key="frame" x="20" y="129" width="353" height="22"/>
                     <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vo0-gz-oCJ" customClass="MyLeaveRequestListView" customModule="fyp" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="151" width="393" height="701"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vo0-gz-oCJ" customClass="AttendanceRecordListView" customModule="fyp" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="171" width="393" height="681"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
             </subviews>
@@ -71,7 +72,7 @@
                 <constraint firstItem="jbx-SL-5fo" firstAttribute="trailing" secondItem="Vo0-gz-oCJ" secondAttribute="trailing" id="3ux-dr-qwb"/>
                 <constraint firstItem="MSU-cW-4Al" firstAttribute="trailing" secondItem="jbx-SL-5fo" secondAttribute="trailing" id="4Lq-9N-Iu0"/>
                 <constraint firstItem="euY-cW-leO" firstAttribute="leading" secondItem="jbx-SL-5fo" secondAttribute="leading" constant="20" id="EBv-Yg-Lgw"/>
-                <constraint firstItem="Vo0-gz-oCJ" firstAttribute="top" secondItem="euY-cW-leO" secondAttribute="bottom" id="F4p-D2-Kwb"/>
+                <constraint firstItem="Vo0-gz-oCJ" firstAttribute="top" secondItem="euY-cW-leO" secondAttribute="bottom" constant="20" id="F4p-D2-Kwb"/>
                 <constraint firstItem="MSU-cW-4Al" firstAttribute="leading" secondItem="jbx-SL-5fo" secondAttribute="leading" id="FqA-54-6uB"/>
                 <constraint firstItem="Vo0-gz-oCJ" firstAttribute="leading" secondItem="jbx-SL-5fo" secondAttribute="leading" id="Zio-Pd-9QR"/>
                 <constraint firstItem="jbx-SL-5fo" firstAttribute="trailing" secondItem="euY-cW-leO" secondAttribute="trailing" constant="20" id="hMa-4Q-dMt"/>

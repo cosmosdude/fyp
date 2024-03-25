@@ -12,11 +12,11 @@ import TANetworking
 final class UserVM {
     
     @Published
-    private(set) var user: UserData?
+    private(set) var user: User?
     
     init() {
         // load from local storage
-        user = UserModel.user
+        user = UserModel.user.map(User.init)
     }
     
     func fetchUser() {
@@ -25,8 +25,9 @@ final class UserVM {
     
     private func fetchUser() async throws {
         guard let token = LoginModel.accessToken else { return }
-        let user = try await UserService().me(accessToken: token)
-        self.user = user
+        let rawUser = try await UserService().me(accessToken: token)
+        UserModel.user = rawUser
+        self.user = User(rawUser)
     }
     
 }

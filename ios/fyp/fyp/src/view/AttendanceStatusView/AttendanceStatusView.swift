@@ -11,6 +11,7 @@ class AttendanceStatusView: NibView {
     
     @IBOutlet private var startLabel: UILabel!
     @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var emptyLabel: UILabel!
     @IBOutlet private var endLabel: UILabel!
     
     @IBOutlet private var leftBar: UIView!
@@ -91,6 +92,9 @@ class AttendanceStatusView: NibView {
         .with(locale: Locale(identifier: "en_US_POSIX"))
         .with(dateFormat: "hh:mm a")
     
+    let dayF = DateFormatter()
+        .with(dateFormat: "EEEE")
+    
     func render(_ attendance: Attendance) {
         startTime = attendance.startTime.map(timeF.string(from:)) ?? ""
         endTime = attendance.endTime.map(timeF.string(from:)) ?? ""
@@ -103,12 +107,16 @@ class AttendanceStatusView: NibView {
         leftBarStyle = .none
         rightBarStyle = .none
         if (attendance.isHoliday) {
-            statusLabel.text = attendance.holidayName ?? "Holiday"
+            statusLabel.text = "Public Holiday - \(attendance.holidayName ?? "N/A")"
+            emptyLabel.text = statusLabel.text
         } else if (attendance.isOnLeave) {
-            statusLabel.text = attendance.leaveName ?? "On Leave"
+            statusLabel.text = "On Leave - \(attendance.leaveName ?? "N/A")"
+            emptyLabel.text = statusLabel.text
         } else if (attendance.isOff) {
-            statusLabel.text = "Off Day"
+            statusLabel.text = "\(dayF.string(from: attendance.date ?? Date())) Off"
+            emptyLabel.text = statusLabel.text
         } else if let checkIn = attendance.checkInTime  {
+            emptyLabel.text = nil
             checkinTime = timeF.string(from: checkIn)
             leftBarStyle = checkIn > attendance.startTime! ? .bad : .good
             statusLabel.text = checkIn > attendance.startTime! ? "Late" : "On Time"
@@ -119,7 +127,10 @@ class AttendanceStatusView: NibView {
             }
         } else {
             statusLabel.text = "Not Arrived"
+            emptyLabel.text = nil
         }
+        
+        emptyLabel.superview?.isHidden = emptyLabel.text?.isEmpty ?? true
         
     }
     

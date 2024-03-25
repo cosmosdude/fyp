@@ -22,6 +22,7 @@
             <connections>
                 <outlet property="checkinLabel" destination="Aav-UL-cWA" id="wfq-Xm-5Pw"/>
                 <outlet property="checkoutLabel" destination="1fJ-Z7-wh8" id="fsU-Zi-jQT"/>
+                <outlet property="emptyLabel" destination="BAZ-MY-z7j" id="poc-0H-8uD"/>
                 <outlet property="endLabel" destination="OL1-dg-As3" id="hFP-2Q-W1K"/>
                 <outlet property="leftBar" destination="IdF-Zn-hOX" id="Kth-TD-H6V"/>
                 <outlet property="middleBar" destination="f5R-TW-f7j" id="nwA-g0-EHI"/>
@@ -136,11 +137,37 @@
                         </stackView>
                     </subviews>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6a-B7-dgR">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="52"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAZ-MY-z7j">
+                            <rect key="frame" x="196.66666666666666" y="26" width="0.0" height="0.0"/>
+                            <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                            <color key="textColor" name="neutral-600"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" name="bg-1"/>
+                    <constraints>
+                        <constraint firstItem="BAZ-MY-z7j" firstAttribute="centerY" secondItem="e6a-B7-dgR" secondAttribute="centerY" id="GGp-za-9HL"/>
+                        <constraint firstItem="BAZ-MY-z7j" firstAttribute="centerX" secondItem="e6a-B7-dgR" secondAttribute="centerX" id="Jjb-sK-3z4"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="6"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="smoothCorners" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="e6a-B7-dgR" secondAttribute="trailing" id="5cT-QF-fFN"/>
+                <constraint firstItem="e6a-B7-dgR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="IHS-zW-Dyt"/>
+                <constraint firstAttribute="bottom" secondItem="e6a-B7-dgR" secondAttribute="bottom" id="aDh-Ic-oub"/>
                 <constraint firstItem="xsu-jR-gx8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bWR-K5-B2B"/>
                 <constraint firstAttribute="bottom" secondItem="xsu-jR-gx8" secondAttribute="bottom" id="dku-Bv-1oQ"/>
+                <constraint firstItem="e6a-B7-dgR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ona-My-hvQ"/>
                 <constraint firstAttribute="trailing" secondItem="xsu-jR-gx8" secondAttribute="trailing" id="uzX-Kx-q2s"/>
                 <constraint firstItem="xsu-jR-gx8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vEI-9b-axN"/>
             </constraints>
@@ -149,11 +176,17 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="bg-1">
+            <color red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="danger-600">
             <color red="0.80000000000000004" green="0.023529411764705882" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="neutral-100">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="neutral-600">
+            <color red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="neutral-900">
             <color red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
