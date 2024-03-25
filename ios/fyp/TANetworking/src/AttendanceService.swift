@@ -20,24 +20,33 @@ public struct AttendanceService {
 
 extension AttendanceService {
     
-    public func getMyOvertimeRequests() async throws -> [OvertimeRequestData] {
+    public func getMyAttendances(from: Date? = nil, to: Date? = nil) async throws -> [AttendanceData] {
+        
+        let dateF = DateFormatter()
+        dateF.locale = Locale(identifier: "en_US_POSIX")
+        dateF.dateFormat = "yyyy-MM-dd"
         
         let req = AF.request(
-            Api.route(.myOvertimeRequests), method: .get,
+            Api.route(.myAttendances), method: .get,
+            parameters: [
+                "from": from.map(dateF.string(from:)) ?? "",
+                "to": to.map(dateF.string(from:)) ?? ""
+            ],
+            encoding: URLEncoding(destination: .queryString),
             headers: [
                 .authorization(bearerToken: accessToken)
             ]
         )
         req.responseString { res in print("response", res.value ?? "") }
         
-        let res = await req.serializingDecodable([OvertimeRequestData].self).response
+        let res = await req.serializingDecodable([AttendanceData].self).response
         
         guard (200..<300) ~= res.response?.statusCode ?? 0 else {
             print(res)
             throw "Unable to get ot requests"
         }
         
-        let data: [OvertimeRequestData]
+        let data: [AttendanceData]
         do {
             data = try res.result.get()
         } catch {

@@ -11,7 +11,7 @@ router.use(require('../middlewares/authenticated'))
 router.use(mw.multipart)
 
 router.get('/', [], asyncHandler(controller.getAll))
-router.get('/me', [], asyncHandler(controller.getAll))
+router.get('/me', [], asyncHandler(controller.getMyAttendances))
 
 router.get('/requests', [], asyncHandler(controller.getAllAttendanceRequests))
 router.get('/requests/me', [], asyncHandler(controller.getMyAttendanceRequests))

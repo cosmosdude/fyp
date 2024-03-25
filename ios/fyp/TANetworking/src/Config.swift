@@ -78,6 +78,7 @@ public struct ApiPath: RawRepresentable, ExpressibleByStringLiteral {
     }
     
     // Attendance API
+    static let myAttendances: Self = "api/attendances/me"
     static let requestAttendance: Self = "api/attendances/requests/request"
     static func attendanceRequestDetail(id: String) -> Self {
         .init("api/attendances/requests/request/\(id)")

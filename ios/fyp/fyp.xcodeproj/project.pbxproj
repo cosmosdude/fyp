@@ -71,6 +71,9 @@
 		F338638B2BB1B56C00B2CECF /* TeamVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F338638A2BB1B56C00B2CECF /* TeamVM.swift */; };
 		F338638D2BB1B5B100B2CECF /* TeamMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = F338638C2BB1B5B100B2CECF /* TeamMember.swift */; };
 		F338638F2BB1B61900B2CECF /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F338638E2BB1B61900B2CECF /* Int+Ext.swift */; };
+		F33863912BB1C9F400B2CECF /* AttendanceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33863902BB1C9F400B2CECF /* AttendanceData.swift */; };
+		F33863932BB1CAA200B2CECF /* AttendanceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33863922BB1CAA200B2CECF /* AttendanceVM.swift */; };
+		F33863952BB1CB0E00B2CECF /* Attendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33863942BB1CB0E00B2CECF /* Attendance.swift */; };
 		F33AA1062BA4BFE000119193 /* TANetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = F33AA1052BA4BFE000119193 /* TANetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F33AA1092BA4BFE000119193 /* TANetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33AA1032BA4BFE000119193 /* TANetworking.framework */; };
 		F33AA10A2BA4BFE000119193 /* TANetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F33AA1032BA4BFE000119193 /* TANetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -264,6 +267,9 @@
 		F338638A2BB1B56C00B2CECF /* TeamVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamVM.swift; sourceTree = "<group>"; };
 		F338638C2BB1B5B100B2CECF /* TeamMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMember.swift; sourceTree = "<group>"; };
 		F338638E2BB1B61900B2CECF /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
+		F33863902BB1C9F400B2CECF /* AttendanceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceData.swift; sourceTree = "<group>"; };
+		F33863922BB1CAA200B2CECF /* AttendanceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceVM.swift; sourceTree = "<group>"; };
+		F33863942BB1CB0E00B2CECF /* Attendance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attendance.swift; sourceTree = "<group>"; };
 		F33AA1032BA4BFE000119193 /* TANetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TANetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F33AA1052BA4BFE000119193 /* TANetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TANetworking.h; sourceTree = "<group>"; };
 		F33AA1102BA4C03200119193 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -466,6 +472,7 @@
 				F35E32132BB09F5F001EBC31 /* OTRequest.swift */,
 				F33863752BB135CD00B2CECF /* AttendanceRequest.swift */,
 				F338638C2BB1B5B100B2CECF /* TeamMember.swift */,
+				F33863942BB1CB0E00B2CECF /* Attendance.swift */,
 			);
 			path = types;
 			sourceTree = "<group>";
@@ -550,6 +557,7 @@
 				F33863782BB1360D00B2CECF /* AttendanceRequestDetailVM.swift */,
 				F338637A2BB13E5700B2CECF /* RespondAttendanceVM.swift */,
 				F33863862BB1774F00B2CECF /* RequestAttendanceVM.swift */,
+				F33863922BB1CAA200B2CECF /* AttendanceVM.swift */,
 			);
 			path = attendance;
 			sourceTree = "<group>";
@@ -852,6 +860,7 @@
 				F35E320F2BB09DD4001EBC31 /* OvertimeRequestData.swift */,
 				F33863712BB134EC00B2CECF /* AttendanceRequestData.swift */,
 				F33863882BB1B3D100B2CECF /* TeamMemberData.swift */,
+				F33863902BB1C9F400B2CECF /* AttendanceData.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -1319,6 +1328,7 @@
 				F31784582BAD3F6A00AD8110 /* LeaveBalanceData.swift in Sources */,
 				F35E32072BB09380001EBC31 /* OvertimeService.swift in Sources */,
 				F33031702BAE91400053005D /* NotificationData.swift in Sources */,
+				F33863912BB1C9F400B2CECF /* AttendanceData.swift in Sources */,
 				F3956AC32BA9EF82000DBD1A /* LoginData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1341,6 +1351,7 @@
 				F33031782BAE9ADF0053005D /* NotificationCell.swift in Sources */,
 				F31784702BAD526D00AD8110 /* UIViewController+Ext.swift in Sources */,
 				F3956ABB2BA9E9A6000DBD1A /* AnyJSON.swift in Sources */,
+				F33863932BB1CAA200B2CECF /* AttendanceVM.swift in Sources */,
 				F31784512BAD3E7500AD8110 /* LeaveVM.swift in Sources */,
 				F35E32182BB0A834001EBC31 /* MyOTRequestsVM.swift in Sources */,
 				F31784742BAD52EB00AD8110 /* LeaveRequestController.swift in Sources */,
@@ -1350,6 +1361,7 @@
 				F33031682BADDD980053005D /* RequestLeaveVM.swift in Sources */,
 				F3EEA7962BB0730500D89776 /* AttendanceController.swift in Sources */,
 				F3956ADD2BA9F791000DBD1A /* DashboardController.swift in Sources */,
+				F33863952BB1CB0E00B2CECF /* Attendance.swift in Sources */,
 				F317843F2BAD328600AD8110 /* UserVM.swift in Sources */,
 				F33AA1212BA4C2F400119193 /* SplashController.swift in Sources */,
 				F3EEA7B52BB084C700D89776 /* OvertimeRequestDetailController.swift in Sources */,
