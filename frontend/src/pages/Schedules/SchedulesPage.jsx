@@ -3,13 +3,16 @@ import Avatar from "../../components/Avatar";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
 import FilledButton from "../../components/Buttons/FilledButton";
+import useAllUserShifts from "../../hooks/useAllUserShifts";
+import { imageRoute } from "../../configs/api.config";
+import { format } from "date-fns";
 
 function SchedulesPage() {
 
     let navigate = useNavigate()
 
-    let schedules = []
-    for (let i = 0; i < 100; i++) schedules.push({id: i})
+    let schedules = useAllUserShifts()
+    // for (let i = 0; i < 100; i++) schedules.push({id: i})
 
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
@@ -32,7 +35,7 @@ function SchedulesPage() {
                 <table className="table-auto min-w-full mx-auto border-separate border-spacing-0">
                     <thead className="sticky top-[0px] left-0 z-10">
                         <tr className="
-                        [&>*]:px-[24px] [&>*]:py-[16px]
+                        [&>*]:px-[50px] [&>*]:py-[16px]
                         [&>*]:border-[0.5px] 
                         [&>*]:font-bm [&>*]:text-bm
                         [&>*]:bg-background-1
@@ -50,9 +53,10 @@ function SchedulesPage() {
                     </thead>
                     <tbody className="">
                         {/* <ScheduleRow /> */}
-                        {schedules.map(x => <ScheduleRow 
+                        {schedules.map( (x,i) => <ScheduleRow 
                         key={x.id} 
-                        no={x.id}
+                        no={i + 1}
+                        shift={x}
                         onClick={() => navigate('id-something')}
                         />)}
                     </tbody>
@@ -63,7 +67,9 @@ function SchedulesPage() {
     );
 }
 
-function ScheduleRow({no, onClick}) {
+function ScheduleRow({no, shift, onClick}) {
+    let name = [shift.first_name, shift.last_name].filter(x => !!x).join(' ')
+
     return (
         <tr className="
         group
@@ -76,40 +82,66 @@ function ScheduleRow({no, onClick}) {
         "
         onClick={onClick}
         >
-            <td className="sticky left-0 text-center font-bs text-bs">
+            <td className="sticky left-0 text-center text-bs whitespace-nowrap">
                 {no ?? ''}
             </td>
-            <td className="sticky left-0 flex gap-[10px] items-center bg-white group-hover:bg-primary-50 text-left min-w-[300px]">
-                <Avatar src={undefined} size={30} title="John Doe"/>
+            <td className="sticky left-0 flex gap-[10px] items-center bg-white group-hover:bg-primary-50 text-left whitespace-nowrap">
+                <Avatar src={imageRoute(shift.avatar_path)} size={30} title="John Doe"/>
                 <div className="flex flex-col">
-                    <p className="font-ll text-ll">Admin</p>
+                    <p className="font-ll text-ll">{name}</p>
                     {/* <p className="font-ls text-ls">admin@yopmail.com</p> */}
                 </div>
                 
             </td>
-            <td className="text-center font-bs text-bs min-w-[250px]">
-                9:00 AM to 6:00 PM
-            </td>
-            <td className="text-center font-bs text-bs min-w-[250px]">
-                9:00 AM to 6:00 PM
-            </td>
-            <td className="text-center font-bs text-bs min-w-[250px]">
-                9:00 AM to 6:00 PM
-            </td>
-            <td className="text-center font-bs text-bs min-w-[250px]">
-                9:00 AM to 6:00 PM
-            </td>
-            <td className="text-center font-bs text-bs min-w-[250px]">
-                9:00 AM to 6:00 PM
-            </td>
-            <td className="text-center font-bs text-bs min-w-[250px]">
-                9:00 AM to 6:00 PM
-            </td>
-            <td className="text-center font-bs text-bs min-w-[250px]">
-                9:00 AM to 6:00 PM
-            </td>
+            <ShiftCell>
+                {schedule(shift.sun_start_at, shift.sun_end_at) ?? "Off Day"}
+            </ShiftCell>
+            <ShiftCell>
+                {schedule(shift.mon_start_at, shift.mon_end_at) ?? "Off Day"}
+            </ShiftCell>
+            <ShiftCell>
+                {schedule(shift.tue_start_at, shift.tue_end_at) ?? "Off Day"}
+            </ShiftCell>
+            <ShiftCell>
+            {schedule(shift.wed_start_at, shift.wed_end_at) ?? "Off Day"}
+            </ShiftCell>
+            <ShiftCell>
+                {schedule(shift.thu_start_at, shift.thu_end_at) ?? "Off Day"}
+            </ShiftCell>
+            <ShiftCell>
+                {schedule(shift.fri_start_at, shift.fri_end_at) ?? "Off Day"}
+            </ShiftCell>
+            <ShiftCell>
+                {schedule(shift.sat_start_at, shift.sat_end_at) ?? "Off Day"}
+            </ShiftCell>
         </tr>
     )
 }
 
 export default SchedulesPage;
+
+function ShiftCell({children}) {
+    return(
+        <td className="text-center text-ls whitespace-nowrap">
+            {children}
+        </td>
+    )
+}
+
+function schedule(from, to) {
+    if (!from || !to) return null
+    /**
+     * @param time Time in HH:mm:ss format
+    */
+    function dateFromTime(time) {
+        return `2000-01-01 ${time}`
+    }
+
+    let displyText = [new Date(dateFromTime(from)), new Date(dateFromTime(to))]
+        .map(x => {
+            console.log(x)
+            return format(x, 'hh:mm a')
+        })
+        .join(' to ')
+    return displyText
+}

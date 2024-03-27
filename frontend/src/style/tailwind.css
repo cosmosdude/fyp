@@ -846,12 +846,12 @@ video {
   z-index: 50;
 }
 
-.z-\[1\] {
-  z-index: 1;
-}
-
 .z-\[100\] {
   z-index: 100;
+}
+
+.z-\[1\] {
+  z-index: 1;
 }
 
 .col-span-1 {
@@ -875,6 +875,11 @@ video {
   margin-right: 0.5rem;
 }
 
+.mx-\[20px\] {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -883,15 +888,6 @@ video {
 .my-auto {
   margin-top: auto;
   margin-bottom: auto;
-}
-
-.mx-\[20px\] {
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-.mr-\[20px\] {
-  margin-right: 20px;
 }
 
 .mr-auto {
@@ -1373,33 +1369,12 @@ video {
   gap: 20px;
 }
 
-.gap-\[2px\] {
-  gap: 2px;
-}
-
-.gap-\[40px\] {
-  gap: 40px;
-}
-
 .gap-\[4px\] {
   gap: 4px;
 }
 
-.gap-\[5px\] {
-  gap: 5px;
-}
-
 .gap-\[6px\] {
   gap: 6px;
-}
-
-.gap-x-\[40px\] {
-  -moz-column-gap: 40px;
-       column-gap: 40px;
-}
-
-.gap-y-\[40px\] {
-  row-gap: 40px;
 }
 
 .self-end {
@@ -1448,6 +1423,10 @@ video {
 
 .overflow-y-scroll {
   overflow-y: scroll;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
 }
 
 .text-wrap {
@@ -1946,6 +1925,10 @@ video {
   padding: 0px !important;
 }
 
+.\!p-\[0px\] {
+  padding: 0px !important;
+}
+
 .p-0 {
   padding: 0px;
 }
@@ -1972,14 +1955,6 @@ video {
 
 .p-\[6px\] {
   padding: 6px;
-}
-
-.p-\[0px\] {
-  padding: 0px;
-}
-
-.\!p-\[0px\] {
-  padding: 0px !important;
 }
 
 .\!py-0 {
@@ -2022,11 +1997,6 @@ video {
   padding-bottom: 0px;
 }
 
-.py-\[0px\] {
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-
 .py-\[10px\] {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -2050,11 +2020,6 @@ video {
 .py-\[4px\] {
   padding-top: 4px;
   padding-bottom: 4px;
-}
-
-.\!py-\[0px\] {
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
 }
 
 .pb-\[10px\] {
@@ -2191,6 +2156,10 @@ video {
   font-weight: 600;
 }
 
+.font-black {
+  font-weight: 900;
+}
+
 .capitalize {
   text-transform: capitalize;
 }
@@ -2218,6 +2187,11 @@ video {
 .text-danger-600 {
   --tw-text-opacity: 1;
   color: rgb(204 7 0 / var(--tw-text-opacity));
+}
+
+.text-danger-700 {
+  --tw-text-opacity: 1;
+  color: rgb(153 5 0 / var(--tw-text-opacity));
 }
 
 .text-neutral-200 {
@@ -2303,11 +2277,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-danger-700 {
-  --tw-text-opacity: 1;
-  color: rgb(153 5 0 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -2618,6 +2587,11 @@ video {
 .\[\&\>\*\]\:py-\[16px\]>* {
   padding-top: 16px;
   padding-bottom: 16px;
+}
+
+.\[\&\>\*\]\:px-\[50px\]>* {
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .\[\&\>\*\]\:text-bm>* {

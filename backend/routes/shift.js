@@ -12,7 +12,7 @@ router.use(mw.multipart)
 
 router.get('/', [], asyncHandler(controller.getAll))
 router.put('/shift', [], asyncHandler(controller.updateShift))
-router.get('/me', [], asyncHandler(controller.getMyShifts))
+router.get('/:id', [], asyncHandler(controller.getUserShifts))
 
 
 module.exports = router

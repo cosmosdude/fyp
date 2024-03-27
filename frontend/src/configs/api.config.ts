@@ -248,5 +248,14 @@ export const apiPaths = {
             return `api/overtimes/requests/request/${id}`
         }
 
+    },
+
+    shift: {
+        /**
+         * URL for getting all user shifts.
+        */
+        getAll() {
+            return `api/shifts/`
+        },
     }
 }
