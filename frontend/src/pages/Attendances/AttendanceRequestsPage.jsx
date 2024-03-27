@@ -141,13 +141,13 @@ function RequestRow({no, request, onApprove, onReject}) {
             <td className="text-center font-ll text-ll whitespace-nowrap">
                 {timeDisplayText(request.time)}
             </td>
-            <td className="items-center gap-[4px] text-center font-ll text-ll whitespace-nowrap">
+            <td className="items-center gap-[4px] text-center font-ls text-ls whitespace-nowrap">
                 { status === 'pending' && <div className="flex items-center justify-center gap-[4px]">
-                    <GhostButton className="!p-0" onClick={onApprove}>Approve</GhostButton> 
+                    <GhostButton className="!p-0" style='success' onClick={onApprove}>Approve</GhostButton> 
                     <p>/</p>
                     <GhostButton className="!p-0" style='danger' onClick={onReject}>Reject</GhostButton>
                 </div>}
-                {status !== 'pending' && <p>{capitalize(status)}</p>}
+                {status !== 'pending' && <p className={`${status === 'approved' ? "text-success-600": "text-danger-600"}`}>{capitalize(status)}</p>}
             </td>
         </tr>
         

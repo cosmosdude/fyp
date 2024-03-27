@@ -8,7 +8,8 @@ export default function GhostButton({
     let navigate = useNavigate()
 
     let textColor = 'text-primary'
-    if (style == 'danger') textColor = 'text-danger-500'
+    if (style == 'danger') textColor = 'text-danger-600'
+    if (style == 'success') textColor = 'text-success-600'
 
     return ( 
         <button 
