@@ -2727,6 +2727,11 @@ video {
   padding-right: 14px;
 }
 
+.\[\&\>\*\]\:py-\[8px\]>* {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
 .\[\&\>\*\]\:text-bm>* {
   font-size: 16px;
 }

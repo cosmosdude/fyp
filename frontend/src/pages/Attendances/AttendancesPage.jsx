@@ -141,14 +141,14 @@ function AttendanceRow({no, record}) {
             <td className="text-center font-ll text-ll whitespace-nowrap">
                 {breakTimeDisplayText(record.break_seconds)}
             </td>
-            <td className="items-center gap-[4px] text-center font-ll text-ll whitespace-nowrap">
-                <div className="flex items-center gap-[10px]">
+            <td className="items-center gap-[4px] justify-center font-ll text-ll whitespace-nowrap">
+                <div className="flex items-center justify-center gap-[10px]">
                     <p>{checkInTimeText}</p> 
                     {isLateCheckIn && <p className="bg-warning-500 px-[6px] py-[4px] rounded-[4px]">Late</p>}
                 </div>
             </td>
             <td className="text-center font-ll text-ll whitespace-nowrap">
-                <div className="flex items-center gap-[10px]">
+                <div className="flex items-center justify-center gap-[10px]">
                     <p>{checkOutTimeText}</p> 
                     {isEarlyCheckOut && <p className="bg-warning-500 px-[6px] py-[4px] rounded-[4px]">Early</p>}
                 </div>

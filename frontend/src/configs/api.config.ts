@@ -198,6 +198,11 @@ export const apiPaths = {
              * relative URL for getting all leaves
             */
             getAll() { return `api/leaves` },
+
+            /**
+             * relative URL for getting all users on leave
+            */
+            getAllUsersOnLeave() { return `api/leaves/onleave` },
             /**
              * relative URL for getting leave detail
             */
@@ -288,6 +293,9 @@ export const apiPaths = {
             return `api/attendances/requests`
         },
 
+        /**
+         * Respond to attendance request.
+        */
         respondRequest(id: string) {
             return `api/attendances/requests/request/${id}`
         }

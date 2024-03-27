@@ -135,11 +135,28 @@ exports.delete = async (req, res) => {
     res.send(results[0])
 }
 
-// User Specific
-// exports.getAllBalances = async (req, res) => {
-//     let user = req.authentication.data
-//     res.json(user)
-// }
+exports.usersOnLeaves = async (req, res) => {
+    let date = new Date()
+    let d = datefns.format(date, 'yyyy-mm-dd')
+    let [requests] = await db.promise().query(/*sql*/`
+        select 
+            ulr.from_date, ulr.to_date,
+            l.name as leave_name,
+            u.first_name, u.last_name,
+            f.path as avatar_path,
+            ds.name as designation_name,
+            dp.name as department_name
+        from users_leaves_requests as ulr
+        left join leaves as l on l.id=ulr.leave_id
+        left join users as u on u.id=ulr.requester_id
+        left join files as f on f.id=u.avatar_id
+        left join designations as ds on ds.id=u.designation_id
+        left join departments as dp on dp.id=u.department_id
+        where ulr.status="approved" and '2024-03-27'>=ulr.from_date and '2024-03-27'<=ulr.to_date
+    `, [d, d])
+
+    res.json(requests)
+}
 
 /**
  * Leave api related to each user.

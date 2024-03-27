@@ -20,6 +20,7 @@ router.use(require('../middlewares/authenticated'))
 
 // Routes
 router.get('/', asyncHandler(controller.getAll))
+router.get('/onleave', asyncHandler(controller.usersOnLeaves))
 router.post('/leave/', multipart, asyncHandler(controller.create))
 router.get('/leave/:id', asyncHandler(controller.get))
 router.put('/leave/:id', multipart, asyncHandler(controller.update))

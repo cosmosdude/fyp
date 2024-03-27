@@ -9,6 +9,7 @@ import { format } from "date-fns";
 import { apiPaths, apiRoute, imageRoute } from "../../configs/api.config";
 import { usePushNoti } from "../../components/Noti/NotiSystem";
 import { useAuthContext } from "../../hooks/AuthStateContext";
+import { capitalize } from "../../utils/capitalized";
 
 export default function LeaveRequestsPage() {
     let pushNoti = usePushNoti()
@@ -91,7 +92,6 @@ export default function LeaveRequestsPage() {
                             <th>Type</th>
                             <th>From</th>
                             <th>To</th>
-                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -150,15 +150,13 @@ function RequestRow({no, requesterImgSrc, requesterName, type, from, to, status,
             <td className="text-center font-ll text-ll min-w-[50px]">
                 {to}
             </td>
-            <td className="text-center font-ll text-ll min-w-[50px]">
-                {status}
-            </td>
-            <td className="items-center gap-[4px] text-center font-ll text-ll min-w-[100px]">
-                {status === 'pending' && <div className="flex flex-col justify-center gap-[4px]">
-                    <GhostButton className="!p-[0px]" onClick={onApprove}>Approve</GhostButton> 
-                    <GhostButton className="!p-[0px]" style='danger' onClick={onReject}>Reject</GhostButton>
+            <td className="items-center gap-[4px] text-center font-ls text-ls whitespace-nowrap">
+                { status === 'pending' && <div className="flex items-center justify-center gap-[4px]">
+                    <GhostButton className="!p-0" style='success' onClick={onApprove}>Approve</GhostButton> 
+                    <p>/</p>
+                    <GhostButton className="!p-0" style='danger' onClick={onReject}>Reject</GhostButton>
                 </div>}
-                
+                {status !== 'pending' && <p className={`${status === 'approved' ? "text-success-600": "text-danger-600"}`}>{capitalize(status)}</p>}
             </td>
         </tr>
         
