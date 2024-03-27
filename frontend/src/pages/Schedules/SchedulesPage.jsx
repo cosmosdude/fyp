@@ -6,6 +6,7 @@ import FilledButton from "../../components/Buttons/FilledButton";
 import useAllUserShifts from "../../hooks/useAllUserShifts";
 import { imageRoute } from "../../configs/api.config";
 import { format } from "date-fns";
+import { scheduleDisplayText } from "../../utils/scheduleDisplayText";
 
 function SchedulesPage() {
 
@@ -129,19 +130,4 @@ function ShiftCell({children}) {
     )
 }
 
-function schedule(from, to) {
-    if (!from || !to) return null
-    /**
-     * @param time Time in HH:mm:ss format
-    */
-    function dateFromTime(time) {
-        return `2000-01-01 ${time}`
-    }
-
-    let displyText = [new Date(dateFromTime(from)), new Date(dateFromTime(to))]
-        .map(x => {
-            return format(x, 'hh:mm a')
-        })
-        .join(' to ')
-    return displyText
-}
+const schedule = scheduleDisplayText

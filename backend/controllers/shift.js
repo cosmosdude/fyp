@@ -1,7 +1,8 @@
 const db = require('../mysql');
 const {randomUUID: uuid} = require('crypto');
 //const {format} = require('date-fns');
-const z = require('zod')
+const z = require('zod');
+const create_user_attendances = require('../crons/create_user_attendances');
 
 exports.getAll = async (req, res, next) => {
     let [shifts] = await db.promise().query(/*sql*/`
@@ -95,16 +96,21 @@ exports.updateShift = async (req, res, next) => {
         data.end_at = null
     }
 
+    // update user shifts
     await db.promise().query(/*sql*/`
         update users_shifts
         set ?
         where user_id=? and day=?
     `, [data, data.user_id, data.day])
 
+    // update 
+
     let [results] = await db.promise().query(/*sql*/`
         select * from users_shifts
         where user_id=? and day=?
     `, [data.user_id, data.day])
+
+    create_user_attendances(data.user_id)
 
     res.json(results)
 }

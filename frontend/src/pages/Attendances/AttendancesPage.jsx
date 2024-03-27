@@ -3,11 +3,21 @@ import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
 import FilledButton from "../../components/Buttons/FilledButton";
 import GhostButton from "../../components/Buttons/GhostButton";
+import { imageRoute } from "../../configs/api.config";
+import useAllAttendanceRecords from "../../hooks/useAllAttendanceRecords";
+import breakTimeDisplayText from "../../utils/breakTime";
+import { format } from "../../utils/fast-date-fns";
+import { fullname } from "../../utils/fullname";
+import { position } from "../../utils/position";
+import { scheduleDisplayText } from "../../utils/scheduleDisplayText";
+import timeDisplayText, { dateFrom24HrTime } from "../../utils/timeDisplayText";
 
 function AttendancesPage() {
 
-    let schedules = []
-    for (let i = 0; i < 10; i++) schedules.push({id: i})
+    // let schedules = []
+    // for (let i = 0; i < 10; i++) schedules.push({id: i})
+
+    let records = useAllAttendanceRecords()
 
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
@@ -35,7 +45,7 @@ function AttendancesPage() {
                         [&>*]:font-bm [&>*]:text-bm
                         [&>*]:bg-background-1
                         ">
-                            <th className="sticky left-0items-center">No.</th>
+                            <th className="sticky left-0 items-center">No.</th>
                             <th className="sticky left-0 text-left font-bm text-bm">Employee</th>
                             <th>Shift</th>
                             <th>Break</th>
@@ -46,7 +56,10 @@ function AttendancesPage() {
                     </thead>
                     <tbody className="">
                         {/* <AttendanceRow /> */}
-                        {schedules.map(x => <AttendanceRow key={x.id} no={x.id}/>)}
+                        {records.map((x, i) => <AttendanceRow 
+                            key={i} no={i + 1}
+                            record={x}
+                        />)}
                     </tbody>
                 </table>
             </div>
@@ -55,7 +68,50 @@ function AttendancesPage() {
     );
 }
 
-function AttendanceRow({no}) {
+function AttendanceRow({no, record}) {
+
+    let shift = ""
+    
+    if (record?.leave_name) {
+        shift = `On Leave - ${record?.leave_name}`
+    } else if (record?.holiday_name) {
+        shift = `Public Holiday - ${record?.holiday_name}`
+    } else {
+        shift = scheduleDisplayText(record.start_at, record.end_at)
+        shift = !shift ? "Off" : shift
+    }
+
+    let checkInDate = dateFrom24HrTime(record?.checkin_at)
+    let startDate = dateFrom24HrTime(record?.start_at)
+    let isLateCheckIn = false
+    let checkInTimeText = "-"
+
+    if (checkInDate) {
+        checkInTimeText = format(checkInDate, 'hh:mm a')
+        if (startDate) {
+            isLateCheckIn = checkInDate.getTime() > startDate.getTime()
+        }
+    }
+
+    let checkOutDate = dateFrom24HrTime(record?.checkout_at)
+    let endDate = dateFrom24HrTime(record?.end_at)
+    let isEarlyCheckOut = false
+    let checkOutTimeText = "-"
+
+    if (checkOutDate) {
+        checkOutTimeText = format(checkOutDate, 'hh:mm a')
+        if (endDate) {
+            isEarlyCheckOut = checkOutDate.getTime() < endDate.getTime()
+        }
+    }
+
+    let breakSeconds = record?.break_seconds ?? 0
+    let totalWorkHour = "-"
+    if (checkOutDate && checkInDate) {
+        let diff = ((checkOutDate.getTime() - checkInDate.getTime()) / 1000) - breakSeconds
+        totalWorkHour = breakTimeDisplayText(diff)
+    }
+
     return (
         <tr className="
         group
@@ -66,34 +122,39 @@ function AttendanceRow({no}) {
         transition-all
         [&>*]:transition-all
         ">
-            <td className="sticky left-0 text-center font-bs text-bs">
+            <td className="sticky left-0 text-center font-bs text-bs whitespace-nowrap">
                 {no ?? ''}
             </td>
-            <td className="sticky left-0 bg-white group-hover:bg-primary-50 text-left min-w-[200px]">
+            <td className="sticky left-0 bg-white group-hover:bg-primary-50 text-left whitespace-nowrap">
                 <div className="flex items-center gap-[10px]">
-                    <Avatar className="" src={null} size={30} title="John Doe"/>
+                    <Avatar className="" src={imageRoute(record.avatar_path)} size={30} title="John Doe"/>
                     <div className="flex flex-col">
-                        <p className="font-ll text-ll">Admin</p>
+                        <p className="font-ll text-ll">{fullname(record.first_name, record.last_name)}</p>
+                        <p className="font-ls text-ls max-w-[250px] whitespace-normal">{position(record.designation_name, record.department_name)}</p>
                     </div>
                 </div>
             </td>
-            <td className="text-center font-ll text-ll min-w-[150px]">
-                9:00 AM to 6:00 PM
+            <td className="text-center font-ll text-ll whitespace-nowrap">
+                {/* 9:00 AM to 6:00 PM */}
+                {shift}
             </td>
-            <td className="text-center font-ll text-ll min-w-[50px]">
-                1 hr
+            <td className="text-center font-ll text-ll whitespace-nowrap">
+                {breakTimeDisplayText(record.break_seconds)}
             </td>
-            <td className="items-center gap-[4px] text-center font-ll text-ll min-w-[100px]">
+            <td className="items-center gap-[4px] text-center font-ll text-ll whitespace-nowrap">
                 <div className="flex items-center gap-[10px]">
-                    <p>10:10 AM</p> 
-                    <p className="bg-warning-500 px-[6px] py-[4px] rounded-[4px]">Late</p>
+                    <p>{checkInTimeText}</p> 
+                    {isLateCheckIn && <p className="bg-warning-500 px-[6px] py-[4px] rounded-[4px]">Late</p>}
                 </div>
             </td>
-            <td className="text-center font-ll text-ll min-w-[100px]">
-                6:00 PM
+            <td className="text-center font-ll text-ll whitespace-nowrap">
+                <div className="flex items-center gap-[10px]">
+                    <p>{checkOutTimeText}</p> 
+                    {isEarlyCheckOut && <p className="bg-warning-500 px-[6px] py-[4px] rounded-[4px]">Early</p>}
+                </div>
             </td>
-            <td className="text-center font-ll text-ll min-w-[100px]">
-                6hr 50min
+            <td className="text-center font-ll text-ll whitespace-nowrap">
+                {totalWorkHour}
             </td>
         </tr>
     )

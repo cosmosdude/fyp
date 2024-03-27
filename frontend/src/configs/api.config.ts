@@ -271,5 +271,14 @@ export const apiPaths = {
         update() {
             return `api/shifts/shift`
         }
+    },
+
+    attendance: {
+        /**
+         * URL for getting all user attendance.
+        */
+        getAllRecords(from: string = "", to: string = "") {
+            return `api/attendances?from=${from}&to=${to}`
+        },
     }
 }

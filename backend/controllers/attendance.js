@@ -4,32 +4,56 @@ const {format} = require('../utils/datefns-fast-wrapper');
 const z = require("zod")
 
 /**
- * Get all attendance requests
+ * Get all attendance records
 */
 exports.getAll = async (req, res, next) => {
 
-    let data = {}
-    try {
-        data = z.object({
-            from: z.coerce.date().optional(),
-            to: z.coerce.date().optional()
-        }).parse(req.query)
-    } catch (error) { return res.zod.sendError(error) }
+    let data = req.query
+    // try {
+    //     data = z.object({
+    //         from: z.coerce.date().optional(),
+    //         to: z.coerce.date().optional()
+    //     }).parse(req.query)
+    // } catch (error) { return res.zod.sendError(error) }
 
+    data.from = new Date(data.from)
+    if (isNaN(data.from)) data.from = new Date() 
+
+    data.to = new Date(data.to)
+    if (isNaN(data.to)) data.to = new Date()
     
     // if no from date, assume current date
-    if (!data.from) data.from = new Date()
+    // if (!data.from) data.from = new Date()
     // if no to date, assume the same as from date
-    if (!data.to) data.to = data.from
+    // if (!data.to) data.to = data.from
 
     let [requests] = await db.promise().query(/*sql*/`
         select 
             ua.*,
-            u.first_name, u.last_name
+            u.first_name, u.last_name,
+            f.path as avatar_path,
+            ds.name as designation_name,
+            dp.name as department_name,
+            (h.date is not null) as is_holiday,
+            h.name as holiday_name,
+            (ulr.id is not null) as is_on_leave,
+            l.name as leave_name
         from users_attendances as ua
         left join users as u on ua.user_id=u.id
+        left join files as f on u.avatar_id=f.id
+        left join designations as ds on ds.id=u.designation_id
+        left join departments as dp on dp.id=u.department_id
+        left join (
+            select * from holidays
+        ) as h on h.date=ua.date 
+        left join (
+            select * from users_leaves_requests
+            where 
+                status='approved'
+        ) as ulr on ulr.requester_id=u.id and ulr.from_date>=ua.date and ulr.to_date<=ua.date
+        left join leaves as l on l.id=ulr.leave_id
         where ua.date >= ? and ua.date <= ?
-        group by ua.date desc, ua.user_id desc
+        order by ua.date desc, u.first_name asc
         limit 366
     `, [
         format(data.from, 'yyyy-MM-dd'), format(data.to, 'yyyy-MM-dd')

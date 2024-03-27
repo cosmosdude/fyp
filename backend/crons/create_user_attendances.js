@@ -2,7 +2,7 @@ const db = require('../mysql')
 const { format } = require('../utils/datefns-fast-wrapper')
 
 let count = 0
-module.exports = async () => {
+module.exports = async function createUserAttendances(userId) {
     console.log("Call Count", count++)
     // days of current month
     let days = monthDatesOfCurrentDate()
@@ -11,6 +11,9 @@ module.exports = async () => {
     let [users] = await db.promise().query(/*sql*/`
         select * from users
     `)
+
+    // if user id is given, only update for given user
+    if (userId) users = users.filter(u => u.id === userId)
 
     // for each users
     for (const day of days) {
