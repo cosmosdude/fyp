@@ -21,6 +21,7 @@
             <connections>
                 <outlet property="listView" destination="TkM-9v-Lpj" id="Rmd-u0-PIU"/>
                 <outlet property="navBar" destination="JiO-jt-3XL" id="hqj-O4-cTl"/>
+                <outlet property="overtimeView" destination="h51-4M-JLz" id="p5p-I7-dFL"/>
                 <outlet property="view" destination="BtJ-l0-CRc" id="e7h-iL-QeY"/>
             </connections>
         </placeholder>

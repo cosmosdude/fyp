@@ -16,7 +16,13 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OvertimeStatusView" customModule="fyp" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OvertimeStatusView" customModule="fyp" customModuleProvider="target">
+            <connections>
+                <outlet property="monthLabel" destination="8tD-Xq-aHh" id="jr5-9e-8Sf"/>
+                <outlet property="todayLabel" destination="N3h-UR-vFF" id="ja9-2h-d9N"/>
+                <outlet property="weekLabel" destination="r7N-D7-V59" id="tSW-Pj-2wp"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QQ2-7n-YiA">
             <rect key="frame" x="0.0" y="0.0" width="353" height="52"/>

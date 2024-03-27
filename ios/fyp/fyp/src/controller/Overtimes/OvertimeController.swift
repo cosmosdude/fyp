@@ -11,9 +11,11 @@ import Combine
 class OvertimeController: UIViewController {
     
     @IBOutlet private var navBar: NavBarView!
+    @IBOutlet private var overtimeView: OvertimeStatusView!
     @IBOutlet private var listView: OvertimeHistoryView!
     
     let vm = MyOTRequestsVM()
+    let otVM = MyOTVM()
     var bag = Set<AnyCancellable>()
     
     override func viewDidLoad() {
@@ -28,10 +30,22 @@ class OvertimeController: UIViewController {
             self?.navigationController?.pushViewController(vc, animated: true)
         }
         
+        otVM.$ot.receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self, weak vm = otVM] _ in
+//                guard let attesceStatusView.render(attendance)
+                let otv = self?.overtimeView
+                otv?.today = vm?.today ?? ""
+                otv?.week = vm?.week ?? ""
+                otv?.month = vm?.month ?? ""
+                print("OT today", vm?.today ?? "")
+            })
+            .store(in: &bag)
+        
         vm.$requests.receive(on: DispatchQueue.main)
             .sink { [weak self] in self?.listView.items = $0 }.store(in: &bag)
         
         vm.fetchRequests()
+        otVM.fetch()
     }
 
     @IBAction

@@ -18,15 +18,34 @@ final class ManagerVM {
     private(set) var selectedManager: Manager?
     
     var selectedIndex: IndexPath? {
-        didSet {
-            guard let selectedIndex else { return selectedManager = nil }
-            
-            selectedManager = managers[selectedIndex.section][selectedIndex.row]
+//        didSet {
+//            guard let selectedIndex else { return selectedManager = nil }
+//            
+//            selectedManager = managers[selectedIndex.section][selectedIndex.row]
+//        }
+        get {
+            for section in 0..<managers.count {
+                let group = managers[section]
+                for row in 0..<group.count {
+                    if (group[row].id == selectedManager?.id) {
+                        return IndexPath(row: row, section: section)
+                    }
+                }
+            }
+            return nil
+        }
+        set {
+            guard let newValue else { return selectedManager = nil }
+            selectedManager = managers[newValue.section][newValue.row]
         }
     }
     
     @Published
     private(set) var managers = [ItemGroup<String, [Manager]>]()
+    
+    /// Indicate whether a manager should be automatically selected
+    /// when managers are fetched and the selection is not yet made.
+    var autoSelect = false
     
     let userService = UserService(accessToken: LoginModel.accessToken)
     
@@ -45,5 +64,12 @@ final class ManagerVM {
             ItemGroup(info: "Manager", items: personalManagers),
             ItemGroup(info: "HR Managers", items: hrManagers)
         ]
+        
+        if (autoSelect && selectedManager == nil) {
+            selectedManager = managers.first?.first
+        }
+        
     }
 }
+
+

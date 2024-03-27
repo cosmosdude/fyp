@@ -20,6 +20,33 @@ public struct OvertimeService {
 
 extension OvertimeService {
     
+    public func getMyOvertime() async throws -> OvertimeData {
+        
+        let req = AF.request(
+            Api.route(.myOvertime), method: .get,
+            headers: [
+                .authorization(bearerToken: accessToken)
+            ]
+        )
+        req.responseString { res in print("response", res.value ?? "") }
+        
+        let res = await req.serializingDecodable(OvertimeData.self).response
+        
+        guard (200..<300) ~= res.response?.statusCode ?? 0 else {
+            print(res)
+            throw "Unable to get ot requests"
+        }
+        
+        let data: OvertimeData
+        do {
+            data = try res.result.get()
+        } catch {
+            console.error("Error \(error)")
+            throw error
+        }
+        return data
+    }
+    
     public func getMyOvertimeRequests() async throws -> [OvertimeRequestData] {
         
         let req = AF.request(

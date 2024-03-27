@@ -70,21 +70,25 @@ class LeaveRequestController: UIViewController {
                 leaveBox?.text = "\(leave.name) - \(leave.balance) day(s)"
             }.store(in: &bag)
         
+        fromDateVM.date = Date()
         fromDateVM.$displayText.receive(on: DispatchQueue.main)
             .sink { [weak box = fromDateSelectBox] in
                 box?.text = $0 ?? "Select date"
             }.store(in: &bag)
         
+        toDateVM.date = Date()
         toDateVM.$displayText.receive(on: DispatchQueue.main)
             .sink { [weak box = toDateSelectBox] in
                 box?.text = $0 ?? "Select date"
             }.store(in: &bag)
         
+        typeVM.index = 0
         typeVM.$option.receive(on: DispatchQueue.main)
             .sink { [weak box = typeSelectBox] in
                 box?.text = $0?.displayText ?? "Entire Day"
             }.store(in: &bag)
         
+        managerVM.autoSelect = true
         managerVM.$selectedManager.receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 guard let manager = $0 else { return }

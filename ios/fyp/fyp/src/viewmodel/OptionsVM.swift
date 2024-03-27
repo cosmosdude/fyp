@@ -28,6 +28,7 @@ class OptionsVM<V> {
     var index: Int? {
         didSet {
             guard let index else { return option = nil }
+            guard 0..<options.count ~= index else { return self.index = nil}
             option = options[index]
         }
     }

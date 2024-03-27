@@ -25,6 +25,7 @@
                 <outlet property="attendanceStatusView" destination="zfg-3f-rUN" id="ELV-0O-keB"/>
                 <outlet property="avatar" destination="fWs-HA-ZOI" id="qyS-NI-7GV"/>
                 <outlet property="nameLabel" destination="SrG-Is-jhn" id="HQK-ZY-I6v"/>
+                <outlet property="overtimeView" destination="ntI-Rx-0oA" id="2A1-lF-sJX"/>
                 <outlet property="teamListView" destination="8CO-Br-dFW" id="7Uh-9k-bgU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

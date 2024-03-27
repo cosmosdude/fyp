@@ -1,7 +1,9 @@
 const db = require('../mysql');
 const {randomUUID: uuid} = require('crypto');
+const { format } = require('date-fns');
 //const {format} = require('date-fns');
-const z = require('zod')
+const z = require('zod');
+const { getWeek, getMonth } = require('../utils/date');
 
 exports.getAllRequests = async (req, res) => {
     let [requests] = await db.promise().query(/*sql*/`
@@ -192,4 +194,43 @@ exports.respondOT = async (req, res) => {
     }])
 
     res.sendStatus(202)
+}
+
+exports.getTotalOvertime = async(req, res) => {
+    let auth = req.authUser
+    let { id } = req.params
+
+    if (!id) id = auth.id
+
+    let now = new Date()
+    
+    let [today] = await db.promise().query(/*sql*/`
+        select SUM(duration_sec) as total
+        from users_overtimes_requests
+        where status='approved' and requester_id=? and date=?
+    `, [auth.id, format(now, 'yyyy-MM-dd')])
+
+    let week = getWeek()
+
+    let [thisWeek] = await db.promise().query(/*sql*/`
+        select SUM(duration_sec) as total
+        from users_overtimes_requests
+        where status='approved' and requester_id=? and date>=? and date<=?
+    `, [auth.id, format(week[0], 'yyyy-MM-dd'), format(week[6], 'yyyy-MM-dd')])
+
+    let month = getMonth()
+
+    let [thisMonth] = await db.promise().query(/*sql*/`
+        select SUM(duration_sec) as total
+        from users_overtimes_requests
+        where status='approved' and requester_id=? and date>=? and date<=?
+    `, [auth.id, format(month[0], 'yyyy-MM-dd'), format(month[month.length - 1], 'yyyy-MM-dd')])
+
+    let data = {
+        today_sec: Number(today[0].total),
+        week_sec: Number(thisWeek[0].total),
+        month_sec: Number(thisMonth[0].total)
+    }
+
+    res.json(data)
 }

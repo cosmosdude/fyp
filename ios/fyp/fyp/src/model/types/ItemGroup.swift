@@ -21,6 +21,7 @@ struct ItemGroup<Info, Items> {
 
 extension ItemGroup where Items: Collection {
     var count: Int { items.count }
+    var first: Items.Element? { items.first }
 }
 
 extension ItemGroup where Items: RandomAccessCollection {

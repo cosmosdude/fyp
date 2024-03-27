@@ -14,11 +14,13 @@ class DashboardController: UIViewController {
     @IBOutlet private var nameLabel: UILabel!
     
     @IBOutlet private var attendanceStatusView: AttendanceStatusView!
+    @IBOutlet private var overtimeView: OvertimeStatusView!
     @IBOutlet private var teamListView: TeamListView!
     
     let userVM = UserVM()
     let teamVM = TeamVM()
     let attendanceVM = AttendanceVM()
+    let otVM = MyOTVM()
     
     var bag = Set<AnyCancellable>()
     
@@ -39,6 +41,17 @@ class DashboardController: UIViewController {
             })
             .store(in: &bag)
         
+        otVM.$ot.receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self, weak vm = otVM] _ in
+//                guard let attesceStatusView.render(attendance)
+                let otv = self?.overtimeView
+                otv?.today = vm?.today ?? ""
+                otv?.week = vm?.week ?? ""
+                otv?.month = vm?.month ?? ""
+                print("OT today", vm?.today ?? "")
+            })
+            .store(in: &bag)
+        
         teamVM.$teamMembers.receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] in
                 self?.teamListView.team = $0
@@ -48,6 +61,7 @@ class DashboardController: UIViewController {
         attendanceVM.fetch()
         teamVM.fetch()
         userVM.fetchUser()
+        otVM.fetch()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -55,6 +69,7 @@ class DashboardController: UIViewController {
         teamVM.fetch()
         attendanceVM.fetch()
         userVM.fetchUser()
+        otVM.fetch()
     }
     
     @IBAction

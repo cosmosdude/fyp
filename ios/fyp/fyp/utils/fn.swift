@@ -12,12 +12,17 @@ import Foundation
 /// Convert given seconds to overtime duratime string
 /// i.e %d hr(s) %d min(s)
 func overtimeDurationText(seconds s: Int) -> String {
-    let m = s / 60
+    var m = s / 60
     let h = m / 60
+    m = m % 60
     
-    return (h > 0) ? String(
-        format: "%d hr(s) %d min(s)", h, m
-    ) : String(
-        format: "%d min(s)", m
-    )
+    return [h > 0 ? "\(h) hr(s)" : nil, m > 0 ? "\(m) min(s)" : nil]
+        .compactMap{ $0 }
+        .joined(separator: " ")
+    
+//    return (h > 0) ? String(
+//        format: "%d hr(s) %d min(s)", h, m
+//    ) : String(
+//        format: "%d min(s)", m
+//    )
 }

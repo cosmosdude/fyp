@@ -41,17 +41,19 @@ class AttendanceRequestController: UIViewController {
         super.viewDidLoad()
         navBar.backArrowBtn.addTarget(self, action: #selector(pop), for: .touchUpInside)
         // Do any additional setup after loading the view.
-        
+        managerVM.autoSelect = true
         managerVM.$selectedManager.receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 self?.requestTo.setImageURL($0?.avatarURL)
                 self?.requestTo.text = $0?.fullName ?? "Select Manager"
             }.store(in: &bag)
         
+        
         dateVM.$displayText.receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 self?.date.text = $0 ?? "Select Date"
             }.store(in: &bag)
+        
         
         timeVM.$displayText.receive(on: DispatchQueue.main)
             .sink { [weak self] in
@@ -76,6 +78,8 @@ class AttendanceRequestController: UIViewController {
             }.store(in: &bag)
         
         timeVM.displayFormat = "hh:mm a"
+        dateVM.date = Date()
+        timeVM.date = Date()
         typeVM.options = [
             .init("Check In", "checkin"),
             .init("Check Out", "checkout")
