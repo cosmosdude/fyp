@@ -25,7 +25,12 @@ function DatePicker({
     let [fallbackText, setFallbackText] = useState("")
     let textToDisplay = text === undefined ? fallbackText : text
     // for input type
-    let inputValue = format(date ?? new Date(), type == 'time' ? 'HH:mm:ss' : 'yyyy-MM-dd')
+    date = new Date(date?.getTime?.())
+
+    let inputValue = format(!isNaN(date) ? date : new Date(), type == 'time' ? 'HH:mm:ss' : 'yyyy-MM-dd')
+    // console.log("In Date", text)
+    // console.log("In Date", date)
+    // console.log("In Date", inputValue)
     let picker = useRef(null)
 
     let _type = "date"

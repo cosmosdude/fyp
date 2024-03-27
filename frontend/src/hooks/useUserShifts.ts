@@ -3,16 +3,16 @@ import { useAuthContext } from "./AuthStateContext"
 import { apiPaths, apiRoute } from "../configs/api.config"
 
 /**
- * Fetch all overtime requests from the server.
+ * Fetch shifts of given user with
 */
-export default function useAllUserShifts() {
+export default function useUserShifts(id) {
     let auth = useAuthContext()
     let [shifts, setShifts] = useState([])
     useEffect(() => {
         let aborter = new AbortController()
         async function fetchData() {
             try {
-                let res = await fetch(apiRoute(apiPaths.shift.getAll()), {
+                let res = await fetch(apiRoute(apiPaths.shift.get(id)), {
                     method: "GET",
                     signal: aborter.signal,
                     headers: {
@@ -25,10 +25,9 @@ export default function useAllUserShifts() {
                 }
             } catch { }
         }
-
-        fetchData()
+        if(id) fetchData()
         return () => aborter.abort()
-    }, [])
+    }, [id])
 
     return shifts
 }

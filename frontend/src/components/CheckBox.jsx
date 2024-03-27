@@ -19,7 +19,7 @@ const CheckBox = forwardRef(function({checked, label, name, onInput, onChange}, 
                     "
                     name={name} checked={checked} ref={ref}
                     type="checkbox" 
-                    onInput={onInput} onChange={onChange}
+                    onInput={e => {onInput?.(e)}} onChange={e => {onChange?.(e)}}
                     />
                 {/* <img className="absolute top-0 left-0 w-[18px] h-[18px]" /> */}
                 <LucideIcon 

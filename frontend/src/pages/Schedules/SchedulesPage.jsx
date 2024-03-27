@@ -35,7 +35,7 @@ function SchedulesPage() {
                 <table className="table-auto min-w-full mx-auto border-separate border-spacing-0">
                     <thead className="sticky top-[0px] left-0 z-10">
                         <tr className="
-                        [&>*]:px-[50px] [&>*]:py-[16px]
+                        [&>*]:px-[14px] [&>*]:py-[16px]
                         [&>*]:border-[0.5px] 
                         [&>*]:font-bm [&>*]:text-bm
                         [&>*]:bg-background-1
@@ -54,10 +54,10 @@ function SchedulesPage() {
                     <tbody className="">
                         {/* <ScheduleRow /> */}
                         {schedules.map( (x,i) => <ScheduleRow 
-                        key={x.id} 
+                        key={i} 
                         no={i + 1}
                         shift={x}
-                        onClick={() => navigate('id-something')}
+                        onClick={() => navigate(x.user_id)}
                         />)}
                     </tbody>
                 </table>
@@ -69,6 +69,7 @@ function SchedulesPage() {
 
 function ScheduleRow({no, shift, onClick}) {
     let name = [shift.first_name, shift.last_name].filter(x => !!x).join(' ')
+    let position = [shift.designation_name, shift.department_name].filter(x => !!x).join(' of ')
 
     return (
         <tr className="
@@ -89,7 +90,7 @@ function ScheduleRow({no, shift, onClick}) {
                 <Avatar src={imageRoute(shift.avatar_path)} size={30} title="John Doe"/>
                 <div className="flex flex-col">
                     <p className="font-ll text-ll">{name}</p>
-                    {/* <p className="font-ls text-ls">admin@yopmail.com</p> */}
+                    <p className="font-ls text-ls">{position}</p>
                 </div>
                 
             </td>
@@ -139,7 +140,6 @@ function schedule(from, to) {
 
     let displyText = [new Date(dateFromTime(from)), new Date(dateFromTime(to))]
         .map(x => {
-            console.log(x)
             return format(x, 'hh:mm a')
         })
         .join(' to ')

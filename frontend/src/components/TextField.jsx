@@ -41,7 +41,7 @@ const TextField = forwardRef(function TextField({
                 focus-within:border-[2px]
                 ${ (!isInvalid && !error) ? 'border-neutral-200' : 'border-danger-200'}
                 focus-within:border-primary
-                ${disabled ? 'bg-background-2' : 'bg-background-0'}
+                ${disabled ? 'bg-background-1' : 'bg-background-0'}
                 transition-all
                 `}
             >
@@ -54,8 +54,7 @@ const TextField = forwardRef(function TextField({
                     className={`
                     peer 
                     grow outline-none text-neutral-900 placeholder-neutral-300
-                    disabled:bg-transparent
-                    
+                    bg-transparent
                     `}
                     name={name}
                     placeholder={placeholder}

@@ -257,5 +257,12 @@ export const apiPaths = {
         getAll() {
             return `api/shifts/`
         },
+
+        /**
+         * URL for getting user's shifts.
+        */
+        get(id: string) {
+            return `api/shifts/${id}`
+        }
     }
 }

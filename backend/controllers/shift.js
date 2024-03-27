@@ -8,6 +8,8 @@ exports.getAll = async (req, res, next) => {
         select 
             u.id as user_id,
             u.first_name, u.last_name,
+            dep.name as department_name,
+            ds.name as designation_name,
             us1.start_at as sun_start_at, us1.end_at as sun_end_at,
             us2.start_at as mon_start_at, us2.end_at as mon_end_at,
             us3.start_at as tue_start_at, us3.end_at as tue_end_at,
@@ -17,6 +19,8 @@ exports.getAll = async (req, res, next) => {
             us7.start_at as sat_start_at, us7.end_at as sat_end_at,
             f.path as avatar_path
         from users as u
+        left join departments as dep on dep.id=u.department_id
+        left join designations as ds on ds.id=u.designation_id
         left join (
             select * from users_shifts where day='sun'
         ) as us1 on us1.user_id=u.id

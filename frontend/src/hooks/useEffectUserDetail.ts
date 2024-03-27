@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuthContext } from "./AuthStateContext";
 import employeeService from "../services/employeeService";
 
-function useEffectUserDetail() {
+function useEffectUserDetail(id) {
     let [user, setUser] = useState({})
     let auth = useAuthContext()
     useEffect(() => {
@@ -11,7 +11,7 @@ function useEffectUserDetail() {
         async function fetchData() {
             try {
                 let res = await employeeService.get(
-                    'me', auth, aborter.signal
+                    id ?? 'me', auth, aborter.signal
                 )
                 if (res.status >= 200 && res.status < 300) {
                     setUser(await res.json())
