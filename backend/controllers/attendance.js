@@ -143,6 +143,8 @@ exports.getAllAttendanceRequests = async (req, res, next) => {
         left join files as f2 on u2.avatar_id=f2.id
         left join users as u3 on u3.id=uar.responder_id
         left join files as f3 on u3.avatar_id=f3.id
+
+        order by uar.date desc, uar.type asc, uar.time desc
     `)
     res.json(requests)
 }

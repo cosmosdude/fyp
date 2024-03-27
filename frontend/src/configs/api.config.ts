@@ -280,5 +280,18 @@ export const apiPaths = {
         getAllRecords(from: string = "", to: string = "") {
             return `api/attendances?from=${from}&to=${to}`
         },
+
+        /**
+         * Get all attendance requests.
+        */
+        getAllRequests() {
+            return `api/attendances/requests`
+        },
+
+        respondRequest(id: string) {
+            return `api/attendances/requests/request/${id}`
+        }
+
+        
     }
 }
