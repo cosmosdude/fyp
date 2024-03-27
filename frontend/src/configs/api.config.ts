@@ -263,6 +263,13 @@ export const apiPaths = {
         */
         get(id: string) {
             return `api/shifts/${id}`
+        },
+
+        /**
+         * URL for updating shift
+        */
+        update() {
+            return `api/shifts/shift`
         }
     }
 }

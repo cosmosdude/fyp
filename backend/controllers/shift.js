@@ -83,12 +83,17 @@ exports.updateShift = async (req, res, next) => {
 
         data = z.object({
             user_id: z.string().min(1),
-            day: z.enum(['sun', 'mon', 'tue', 'wed', 'thu', 'fri',' sat']),
+            day: z.enum(['sun', 'mon', 'tue', 'wed', 'thu', 'fri','sat']),
             start_at: z.string(),
             end_at: z.string(),
             break_seconds: z.coerce.number(),
         }).parse(req.body)
     } catch(error) { res.zod.sendError(error) }
+
+    if (!data.start_at || !data.end_at) {
+        data.start_at = null
+        data.end_at = null
+    }
 
     await db.promise().query(/*sql*/`
         update users_shifts

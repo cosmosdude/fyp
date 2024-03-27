@@ -12,24 +12,38 @@ import { useParams } from "react-router-dom";
 import useEffectUserDetail from "../../hooks/useEffectUserDetail";
 import { fullname } from "../../utils/fullname";
 import { position } from "../../utils/position";
-import { imageRoute } from "../../configs/api.config";
+import { apiPaths, apiRoute, imageRoute } from "../../configs/api.config";
 import useUserShifts from "../../hooks/useUserShifts";
 import { format } from "../../utils/fast-date-fns";
+import { usePushNoti } from "../../components/Noti/NotiSystem";
+import { useAuthContext } from "../../hooks/AuthStateContext";
+import LucideIcon from "../../lib/LucideIcon";
+import HoverInfo from "../../components/HoverInfo";
 
 export default function ScheduleDetailPage() {
 
+    let pushNoti = usePushNoti()
+
     let { id } = useParams()
+
+    let auth = useAuthContext()
 
     let user = useEffectUserDetail(id)
 
     let shifts = useUserShifts(user.id)
-    let [sun, setSun] = useState({})
-    let [mon, setMon] = useState({})
-    let [tue, setTue] = useState({})
-    let [wed, setWed] = useState({})
-    let [thu, setThu] = useState({})
-    let [fri, setFri] = useState({})
-    let [sat, setSat] = useState({})
+    let [sun, setSun] = useState({off: true})
+    let [mon, setMon] = useState({off: true})
+    let [tue, setTue] = useState({off: true})
+    let [wed, setWed] = useState({off: true})
+    let [thu, setThu] = useState({off: true})
+    let [fri, setFri] = useState({off: true})
+    let [sat, setSat] = useState({off: true})
+
+    let noOffCount = [sun, mon, tue, wed, thu, fri, sat].reduce((p, c) => {
+        return p + (Number(!c.off))
+    }, 0)
+    console.log("No Off Count", noOffCount)
+    let isBreachingMax6DaysAWeek = noOffCount > 6
 
     useEffect(() => {
         // console.log("sun", shifts.find(x => x.day === 'sun') ?? {})
@@ -53,6 +67,74 @@ export default function ScheduleDetailPage() {
     console.log("User", user)
     console.log("Shifts", shifts)
 
+    async function update() {
+        try {
+            await updateShift(sun)
+            await updateShift(mon)
+            await updateShift(tue)
+            await updateShift(wed)
+            await updateShift(thu)
+            await updateShift(fri)
+            await updateShift(sat)
+            pushNoti({
+                title: "Success", 
+                message: "Shift data successfully updated.", 
+                style: "success"
+            })
+        } catch (error) {
+            pushNoti({
+                title: "Error",
+                message: `Unable to update shift. ${error.toString()}`,
+                style: "danger"
+            })
+        }
+    }
+
+    async function updateShift(shift) {
+        let data = {
+            user_id: id,
+            start_at: !shift.off ? shift.start_at : "",
+            end_at: !shift.off ? shift.end_at : "",
+            day: String(shift.day),
+            break_seconds: shift.break_seconds.toString()
+        }
+
+        let body = Object.entries(data).map(([k, v]) => `${k}=${v}`).join("&")
+        // console.log("Body", body)
+        // let form = new FormData()
+        // Object.entries(data).forEach(([k, v]) => form.set(k, v))
+
+        try {
+            let res = await fetch(apiRoute(apiPaths.shift.update()), {
+                method: 'PUT',
+                headers: {
+                    'authorization': `Bearer ${auth}`,
+                    'content-type': 'application/x-www-form-urlencoded'
+                },
+                body: body
+            })
+            if (res.status >= 400) {
+                let str = await res.text()
+                throw str
+            }
+            // if (res.status >= 200 && res.status < 300) {
+                // pushNoti({
+                //     title: "Success", 
+                //     message: "Shift data successfully updated.", 
+                //     style: "success"
+                // })
+            //     navigate(-1)
+            // }
+        } catch (error) {
+            // pushNoti({
+            //     title: "Error", 
+            //     message: "Unable to update shift data.",
+            //     style: "danger"
+            // })
+            throw error
+        }
+    }
+
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
             {/* Top nav */}
@@ -66,7 +148,7 @@ export default function ScheduleDetailPage() {
                 </Breadcrumb>
                 <div className="grow"/>
                 {/* <GhostButton to="settings" rightIcon='settings'>Leave Types</GhostButton> */}
-                <FilledButton>Update</FilledButton>
+                <FilledButton onClick={update}>Update</FilledButton>
             </div>
             
             {/* Title */}
@@ -82,6 +164,13 @@ export default function ScheduleDetailPage() {
                     <p className="font-ll text-ll">{fullname(user.first_name, user.last_name)}</p>
                     <p className="font-ls text-ls">{position(user.designation_name, user.department_name)}</p>
                 </div>
+                {/* Hover item */}
+                {isBreachingMax6DaysAWeek && <div className="relative flex">
+                    <div className="absolute left-0 top-0 w-[18px] h-[18px] bg-danger-200 rounded-full animate-ping"/>
+                    <HoverInfo>
+                        An employee should only be allowed to work for 6 days a week.
+                    </HoverInfo>
+                </div>}
             </div>
 
             <div className="
@@ -191,6 +280,12 @@ function ScheduleItem({
         return iso.split('T')[1]?.split('.')[0]
     }
 
+    let dateDiff = (endDate.getTime() - startDate.getTime()) / 1000
+    let offSeconds = shift?.break_seconds ?? 0
+
+    let diff = dateDiff - offSeconds
+    let isBreaching = diff > (8 * 60 * 60)
+
     return (
         <fieldset className={`
         relative rounded-[6px] 
@@ -248,6 +343,15 @@ function ScheduleItem({
                         })
                     }}
                 />
+                {isBreaching && <div className="flex items-center">
+                    <div className="relative flex">
+                        <div className="absolute left-0 top-0 w-[18px] h-[18px] bg-danger-200 rounded-full animate-ping"/>
+                        <HoverInfo>
+                            An employee should only be allowed to work no more than 8 hours a day.
+                        </HoverInfo>
+                    </div>
+                </div>}
+                
             </section>
             {/* <p className="
             m-auto 
