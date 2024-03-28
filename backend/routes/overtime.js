@@ -10,11 +10,13 @@ const mw = {
 router.use(require('../middlewares/authenticated'))
 router.use(mw.multipart)
 
-router.get('/:id', [], asyncHandler(controller.getTotalOvertime))
+
 router.get('/requests', [], asyncHandler(controller.getAllRequests))
 router.get('/requests/me', [], asyncHandler(controller.getMyRequests))
 router.get('/requests/request/:id', [], asyncHandler(controller.requestDetail))
 router.post('/requests/request', [], asyncHandler(controller.requestOT))
 router.put('/requests/request/:id', [], asyncHandler(controller.respondOT))
+router.get('/monthly', [], asyncHandler(controller.getMonthlyOvertime))
+router.get('/:id', [], asyncHandler(controller.getTotalOvertime))
 
 module.exports = router

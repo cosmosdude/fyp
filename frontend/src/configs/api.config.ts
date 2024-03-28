@@ -251,6 +251,10 @@ export const apiPaths = {
         */
         respondToOvertimeRequest(id: string) {
             return `api/overtimes/requests/request/${id}`
+        },
+
+        getMonthlyStatistic() {
+            return `api/overtimes/monthly`
         }
 
     },

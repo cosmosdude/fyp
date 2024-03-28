@@ -22,25 +22,25 @@ exports.getAll = async (req, res, next) => {
         from users as u
         left join departments as dep on dep.id=u.department_id
         left join designations as ds on ds.id=u.designation_id
-        left join (
+        join (
             select * from users_shifts where day='sun'
         ) as us1 on us1.user_id=u.id
-        left join (
+        join (
             select * from users_shifts where day='mon'
         ) as us2 on us2.user_id=u.id
-        left join (
+        join (
             select * from users_shifts where day='tue'
         ) as us3 on us3.user_id=u.id
-        left join (
+        join (
             select * from users_shifts where day='wed'
         ) as us4 on us4.user_id=u.id
-        left join (
+        join (
             select * from users_shifts where day='thu'
         ) as us5 on us5.user_id=u.id
-        left join (
+        join (
             select * from users_shifts where day='fri'
         ) as us6 on us6.user_id=u.id
-        left join (
+        join (
             select * from users_shifts where day='sat'
         ) as us7 on us7.user_id=u.id
         left join files as f on u.avatar_id=f.id

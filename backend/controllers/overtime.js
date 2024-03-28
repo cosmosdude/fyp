@@ -53,9 +53,9 @@ exports.getMyRequests = async (req, res) => {
         f3.path as responder_avatar_path
 
         from users_overtimes_requests as uor
-        left join users as u1 on u1.id=uor.requester_id
+        join users as u1 on u1.id=uor.requester_id
         left join files as f1 on u1.avatar_id=f1.id
-        left join users as u2 on u2.id=uor.recipient_id
+        join users as u2 on u2.id=uor.recipient_id
         left join files as f2 on u2.avatar_id=f2.id
         left join users as u3 on u3.id=uor.responder_id
         left join files as f3 on u3.avatar_id=f3.id
@@ -85,9 +85,9 @@ exports.requestDetail = async (req, res) => {
         f3.path as responder_avatar_path
 
         from users_overtimes_requests as uor
-        left join users as u1 on u1.id=uor.requester_id
+        join users as u1 on u1.id=uor.requester_id
         left join files as f1 on u1.avatar_id=f1.id
-        left join users as u2 on u2.id=uor.recipient_id
+        join users as u2 on u2.id=uor.recipient_id
         left join files as f2 on u2.avatar_id=f2.id
         left join users as u3 on u3.id=uor.responder_id
         left join files as f3 on u3.avatar_id=f3.id
@@ -233,4 +233,40 @@ exports.getTotalOvertime = async(req, res) => {
     }
 
     res.json(data)
+}
+
+exports.getMonthlyOvertime = async (req, res) => {
+    let month = getMonth()
+
+    let [users] = await db.promise().query(/*sql*/`
+        select distinct requester_id
+        from users_overtimes_requests
+        where status='approved' and date>=? and date<=?
+        group by requester_id
+    `, [format(month[0], 'yyyy-MM-dd'), format(month[month.length - 1], 'yyyy-MM-dd')])
+
+    // return res.json(users)
+
+    let [thisMonthTotal] = await db.promise().query(/*sql*/`
+        select SUM(duration_sec) as total
+        from users_overtimes_requests
+        where status='approved' and date>=? and date<=?
+    `, [format(month[0], 'yyyy-MM-dd'), format(month[month.length - 1], 'yyyy-MM-dd')])
+
+    thisMonthTotal = thisMonthTotal[0].total
+
+    let [statistic] = await db.promise().query(/*sql*/`
+        select status, COUNT(status) as count
+        from users_overtimes_requests
+        where date>=? and date<=?
+        group by status
+    `, [format(month[0], 'yyyy-MM-dd'), format(month[month.length - 1], 'yyyy-MM-dd')])
+
+    // return res.json(statistic)
+
+    res.json({
+        user_total: Number(users.length),
+        month_total_sec: Number(thisMonthTotal),
+        statistic
+    })
 }

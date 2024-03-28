@@ -5,10 +5,15 @@ import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
 import FilledButton from "../../components/Buttons/FilledButton";
 import GhostButton from "../../components/Buttons/GhostButton";
 import useAllOvertimeRequests from "../../hooks/useAllOvertimeRequests";
-import { apiPaths, apiRoute } from "../../configs/api.config";
+import { apiPaths, apiRoute, imageRoute } from "../../configs/api.config";
 import { usePushNoti } from "../../components/Noti/NotiSystem";
 import { useAuthContext } from "../../hooks/AuthStateContext";
 import { capitalize } from "../../utils/capitalized";
+import timeDisplayText from "../../utils/timeDisplayText";
+import breakTimeDisplayText from "../../utils/breakTime";
+import useMonthlyOvertimeStatistics from "../../hooks/useMonthlyOvertimeStatistics";
+import { useEffect, useState } from "react";
+import { fullname } from "../../utils/fullname";
 
 export default function OvertimesPage() {
     let auth = useAuthContext()
@@ -17,7 +22,18 @@ export default function OvertimesPage() {
     // for (let i = 0; i < 10; i++) schedules.push({id: i})
 
     let [overtimes, setOvertimes] = useAllOvertimeRequests()
+    let statistic = useMonthlyOvertimeStatistics()
+    console.log("Statistic", statistic)
 
+    let [pending, setPending] = useState(0)
+    let [approved, setApproved] = useState(0)
+    let [rejected, setRejected] = useState(0)
+
+    useEffect(() => {
+        setPending(statistic?.statistic?.filter(x => x.status === 'pending')?.[0]?.count ?? 0)
+        setApproved(statistic?.statistic?.filter(x => x.status === 'approved')?.[0]?.count ?? 0)
+        setRejected(statistic?.statistic?.filter(x => x.status === 'rejected')?.[0]?.count ?? 0)
+    }, [statistic])
 /**
      * @param id overtime request id
      * @param status response status
@@ -44,6 +60,10 @@ export default function OvertimesPage() {
                     if (r.id !== id) return r
                     return {...r, status}
                 }))
+
+                setPending(x => x-1)
+                if (status === 'approved') setApproved(x => x+1)
+                if (status === 'rejected') setRejected(x => x+1)
             } else {
                 pushNoti({
                     title: "Error", 
@@ -79,11 +99,13 @@ export default function OvertimesPage() {
                 <p className="text-neutral-900 text-bm font-bm">This month overtime information is shown here.</p>
             </div>
             <div className="flex w-full overflow-x-scroll p-[10px] shrink-0 gap-[20px]">                    
-                <OvertimeCard title="10" subtitle="Overtimed Employees" />
-                <OvertimeCard title="6 hr" subtitle="Total Overtimed Hours" />
-                <OvertimeCard title="8 days" subtitle="Total Off-in-lieu given" />
-                <OvertimeCard title="14" subtitle="Pending Requests" />
-                <OvertimeCard title="6" subtitle="Rejected" />
+                <OvertimeCard 
+                    title={statistic?.user_total ?? 0} subtitle="Overtimed Employees" 
+                />
+                <OvertimeCard title={breakTimeDisplayText(statistic?.month_total_sec ?? 0)} subtitle="Total Overtimed Hours" />
+                <OvertimeCard title={pending} subtitle="Pending Requests" />
+                <OvertimeCard title={approved} subtitle="Approved" />
+                <OvertimeCard title={rejected} subtitle="Rejected" />
             </div>
             {/* Title */}
             <div className="flex flex-col">
@@ -103,7 +125,7 @@ export default function OvertimesPage() {
                             <th className="sticky left-0 text-left font-bm text-bm">Employee</th>
                             <th>Date</th>
                             <th>Duration</th>
-                            <th>Off-in-lieu</th>
+                            {/* <th>Off-in-lieu</th> */}
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -111,6 +133,7 @@ export default function OvertimesPage() {
                         {/* <AttendanceRow /> */}
                         {overtimes.map( (x, i) => <RequestRow 
                             key={x.id} no={i + 1} 
+                            overtime={x}
                             date={format(new Date(x.date), 'd MMM, yyyy')}
                             duration={x.duration_sec}
                             status={x.status}
@@ -125,7 +148,7 @@ export default function OvertimesPage() {
     );
 }
 
-function RequestRow({no, date, duration, status, onApprove, onReject}) {
+function RequestRow({no, overtime, date, duration, status, onApprove, onReject}) {
     return (
         <tr className="
         group
@@ -141,9 +164,9 @@ function RequestRow({no, date, duration, status, onApprove, onReject}) {
             </td>
             <td className="sticky left-0 bg-white group-hover:bg-primary-50 text-left min-w-[200px]">
                 <div className="flex items-center gap-[10px]">
-                    <Avatar className="" src={null} size={30} title="John Doe"/>
+                    <Avatar className="" src={imageRoute(overtime.requester_avatar_path)} size={30} title="John Doe"/>
                     <div className="flex flex-col">
-                        <p className="font-ll text-ll">Admin</p>
+                        <p className="font-ll text-ll">{fullname(overtime.requester_first_name, overtime.requester_last_name)}</p>
                     </div>
                 </div>
             </td>
@@ -151,11 +174,11 @@ function RequestRow({no, date, duration, status, onApprove, onReject}) {
                 {date}
             </td>
             <td className="text-center font-ll text-ll">
-                {duration} second(s)
+                {breakTimeDisplayText(duration)}
             </td>
-            <td className="text-center font-ll text-ll">
+            {/* <td className="text-center font-ll text-ll">
                 -
-            </td>
+            </td> */}
             <td className="items-center gap-[4px] text-center">
                 {status === 'pending' && <div className="flex items-center justify-center gap-[6px]">
                     <GhostButton className="!p-[0px]" onClick={onApprove}>Approve</GhostButton> 
