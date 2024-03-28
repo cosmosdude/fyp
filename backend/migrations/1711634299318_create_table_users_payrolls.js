@@ -1,8 +1,8 @@
 module.exports = {
     "up": /*sql*/`
     create table users_payrolls (
-        iid int unique auto_increment,
-        id varchar(36) not null default (uuid()) primary key,
+        -- iid int unique auto_increment,
+        -- id varchar(36) not null default (uuid()) primary key,
         user_id varchar(36),
         salary int not null default 0, 
         wage int not null default 0,
@@ -11,7 +11,9 @@ module.exports = {
 
         constraint fk_users_payrolls_user_id
         foreign key (user_id)
-        references users(id)
+        references users(id),
+
+        primary key (user_id)
     )
     `,
     "down": /*sql*/`

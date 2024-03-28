@@ -7,19 +7,22 @@ const mw = {
     multipart: require('../middlewares/formidable-multipart'),
 }
 
+router.use(require('../middlewares/authenticated'))
+router.use(mw.multipart)
+
 // Get all payrolls
 router.get('/', [], asyncHandler(controller.getAll))
 
 // User's payroll
-router.get('/user/:userId', [], asyncHandler(controller.getAll))
+router.get('/user/:userId', [], asyncHandler(controller.get))
 // Payroll Update
-router.put('/user/:userId', [], asyncHandler(controller.getAll))
+router.put('/user/:userId', [], asyncHandler(controller.update))
 
 // Get user's payroll items
-router.get('/user/:userId/item', [], asyncHandler(controller.getAll))
+router.get('/user/:userId/items', [], asyncHandler(controller.getUserPayrollItems))
 // Add user's payroll item
-router.post('/user/:userId/item', [], asyncHandler(controller.getAll))
+router.post('/user/:userId/items', [], asyncHandler(controller.addUserPayrollItem))
 // Delete user's payroll item
-router.delete('/user/:userId/item/:itemId', [], asyncHandler(controller.getAll))
+router.delete('/user/:userId/items/:itemId', [], asyncHandler(controller.deleteUserPayrollItem))
 
 module.exports = router

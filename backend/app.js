@@ -35,6 +35,8 @@ app.use('/api/shifts', require('./routes/shift'))
 
 app.use('/api/overtimes', require('./routes/overtime'))
 
+app.use('/api/payrolls', require('./routes/payroll'))
+
 app.use('/api/notifications', require('./routes/notifications'))
 
 app.use('/api/statistic', require('./routes/statistics'))
