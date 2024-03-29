@@ -62,7 +62,7 @@ class BaseTabBarController: UITabBarController {
         setTabItems([
             .init(title: "Dashboard", image: UIImage(named: "icon.tab.layout-grid")),
             .init(title: "Leave", image: UIImage(named: "icon.tab.calendar-days")),
-            .init(title: "Payslip", image: UIImage(named: "")),
+            .init(title: "Payslip", image: UIImage(named: "icon.tab.circle-dollar-sign")),
             .init(title: "Inbox", image: UIImage(named: "icon.tab.bell")),
             .init(title: "Profile", image: UIImage(named: "icon.tab.user"))
         ])
