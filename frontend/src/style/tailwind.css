@@ -946,6 +946,14 @@ video {
   margin-top: auto;
 }
 
+.mr-\[20px\] {
+  margin-right: 20px;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -2135,6 +2143,11 @@ video {
 .px-\[250px\] {
   padding-left: 250px;
   padding-right: 250px;
+}
+
+.py-\[8px\] {
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .pb-\[10px\] {

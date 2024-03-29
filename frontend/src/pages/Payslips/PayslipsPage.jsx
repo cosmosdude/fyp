@@ -31,6 +31,10 @@ function PayslipsPage() {
 
     let [generating, setGenerating] = useState([])
 
+    async function generateForAllUsers() {
+        records.forEach(x => generate(x.user_id))
+    }
+
     async function generate(userId) {
         setGenerating(x => [...x, userId])
         await sleep(250)
@@ -53,7 +57,7 @@ function PayslipsPage() {
                 })
 
                 let newItem = await res.json()
-                setRecords(records.map(r => r.user_id === userId ? newItem : r))
+                setRecords(x => x.map(r => r.user_id === userId ? newItem : r))
             } else {
                 pushNoti({
                     title: "Error", 
@@ -81,7 +85,7 @@ function PayslipsPage() {
                     <BreadcrumbItem title="Payslips" current/>
                 </Breadcrumb>
                 <div className="grow"/>
-                <FilledButton to="requests" rightIcon='arrow-right'>Generate</FilledButton>
+                <FilledButton onClick={generateForAllUsers}>Generate</FilledButton>
             </div>
             {/* Title */}
             <div className="flex flex-col">
