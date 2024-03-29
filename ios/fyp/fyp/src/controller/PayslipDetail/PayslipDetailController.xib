@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PayslipDetailController" customModule="fyp" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="2re-sE-Y5p">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" verticalHuggingPriority="251" placeholderIntrinsicWidth="393" placeholderIntrinsicHeight="109" translatesAutoresizingMaskIntoConstraints="NO" id="DgK-Oj-Zk2" customClass="NavBarView" customModule="fyp" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="109"/>
+                    <viewLayoutGuide key="safeArea" id="WNy-Ug-Dpm"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Overtime Request Detail"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="chO-ZQ-wcR">
+                    <rect key="frame" x="0.0" y="109" width="393" height="709"/>
+                    <subviews>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EyX-xL-Px0">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="709"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNw-5s-sOj">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="700"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="X8L-Cj-9gj">
+                                            <rect key="frame" x="20" y="20" width="353" height="660"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="y7l-OQ-ZND">
+                                                    <rect key="frame" x="0.0" y="0.0" width="353" height="65"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="rLI-WU-fdL" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="166.66666666666666" height="65"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Date"/>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="YES"/>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isChevronHidden" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="4WP-sd-t8y" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
+                                                            <rect key="frame" x="186.66666666666663" y="0.0" width="166.33333333333337" height="65"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Duration"/>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="YES"/>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isChevronHidden" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                    </subviews>
+                                                </stackView>
+                                                <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="ANq-dE-iUe" userLabel="status" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="85" width="353" height="65"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Status"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="text" value="Pending"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isChevronHidden" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="wFd-xb-EDW" userLabel="request from" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="170" width="353" height="65"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="tintColor" name="neutral-900"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="person.circle.fill" catalog="system"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Request From"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isChevronHidden" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="xxw-nR-uNV" userLabel="request_reason" customClass="TextBox" customModule="fyp" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="255" width="353" height="150"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Reason"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="2mg-SB-dYw" userLabel="request to" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="425" width="353" height="65"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="tintColor" name="neutral-900"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="person.circle.fill" catalog="system"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Request To"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isChevronHidden" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="q5A-uB-Bwm" userLabel="response_reason" customClass="TextBox" customModule="fyp" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="510" width="353" height="150"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Response"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="X8L-Cj-9gj" secondAttribute="trailing" constant="20" id="1lP-V9-fh5"/>
+                                        <constraint firstAttribute="bottom" secondItem="X8L-Cj-9gj" secondAttribute="bottom" constant="20" id="gg5-sL-FIz"/>
+                                        <constraint firstItem="X8L-Cj-9gj" firstAttribute="leading" secondItem="CNw-5s-sOj" secondAttribute="leading" constant="20" id="iSL-sF-dx8"/>
+                                        <constraint firstItem="X8L-Cj-9gj" firstAttribute="top" secondItem="CNw-5s-sOj" secondAttribute="top" constant="20" id="yvw-sG-3LA"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="CNw-5s-sOj" firstAttribute="width" secondItem="uYS-Pw-Xz9" secondAttribute="width" id="CZh-cN-b0V"/>
+                                <constraint firstItem="CNw-5s-sOj" firstAttribute="top" secondItem="E9U-YT-wrr" secondAttribute="top" id="qpZ-Pp-NVC"/>
+                                <constraint firstItem="CNw-5s-sOj" firstAttribute="trailing" secondItem="E9U-YT-wrr" secondAttribute="trailing" id="sRo-pK-Ab0"/>
+                                <constraint firstItem="CNw-5s-sOj" firstAttribute="leading" secondItem="E9U-YT-wrr" secondAttribute="leading" id="xRF-7B-EkY"/>
+                                <constraint firstItem="CNw-5s-sOj" firstAttribute="bottom" secondItem="E9U-YT-wrr" secondAttribute="bottom" id="ydF-nn-src"/>
+                            </constraints>
+                            <viewLayoutGuide key="contentLayoutGuide" id="E9U-YT-wrr"/>
+                            <viewLayoutGuide key="frameLayoutGuide" id="uYS-Pw-Xz9"/>
+                        </scrollView>
+                        <view hidden="YES" contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CSd-mz-qp4" userLabel="response_container">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="98"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jCT-8g-6Pg" userLabel="separator">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="1"/>
+                                    <color key="backgroundColor" name="neutral-0"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="gwM-iD-QtP"/>
+                                    </constraints>
+                                </view>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="2R7-IB-rLm">
+                                    <rect key="frame" x="20" y="20" width="353" height="58"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="oba-UG-q2j" customClass="TextBox" customModule="fyp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="353" height="0.0"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isReadOnly" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Reason"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="shJ-dK-AOg">
+                                            <rect key="frame" x="0.0" y="10" width="353" height="38"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="38" id="e0z-bW-h4J"/>
+                                            </constraints>
+                                        </activityIndicatorView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Yjn-zI-Nlt">
+                                            <rect key="frame" x="0.0" y="20" width="353" height="38"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWr-7Q-hmO" customClass="FilledButton" customModule="fyp" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="166.66666666666666" height="38"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="38" id="pa7-UO-jrr"/>
+                                                    </constraints>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="Reject"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="__style" value="danger"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nK4-VV-orW" customClass="FilledButton" customModule="fyp" customModuleProvider="target">
+                                                    <rect key="frame" x="186.66666666666663" y="0.0" width="166.33333333333337" height="38"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="38" id="Cm7-WW-V1L"/>
+                                                    </constraints>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="Approve"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="__style" value="success"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="2R7-IB-rLm" firstAttribute="top" secondItem="CSd-mz-qp4" secondAttribute="top" constant="20" id="3Rh-x2-XRH"/>
+                                <constraint firstItem="2R7-IB-rLm" firstAttribute="leading" secondItem="CSd-mz-qp4" secondAttribute="leading" constant="20" id="6fK-W0-AZb"/>
+                                <constraint firstAttribute="trailing" secondItem="2R7-IB-rLm" secondAttribute="trailing" constant="20" id="LoQ-P9-6J5"/>
+                                <constraint firstItem="jCT-8g-6Pg" firstAttribute="top" secondItem="CSd-mz-qp4" secondAttribute="top" id="Mca-SM-YeG"/>
+                                <constraint firstAttribute="bottom" secondItem="2R7-IB-rLm" secondAttribute="bottom" constant="20" id="fKO-Ah-H3t"/>
+                                <constraint firstItem="jCT-8g-6Pg" firstAttribute="leading" secondItem="CSd-mz-qp4" secondAttribute="leading" id="gtl-5H-MdV"/>
+                                <constraint firstAttribute="trailing" secondItem="jCT-8g-6Pg" secondAttribute="trailing" id="iYU-P4-QGg"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="ER5-f8-dtR"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="DgK-Oj-Zk2" firstAttribute="leading" secondItem="ER5-f8-dtR" secondAttribute="leading" id="A5d-YO-hIF"/>
+                <constraint firstItem="chO-ZQ-wcR" firstAttribute="top" secondItem="DgK-Oj-Zk2" secondAttribute="bottom" id="EIp-kP-iMB"/>
+                <constraint firstItem="ER5-f8-dtR" firstAttribute="trailing" secondItem="chO-ZQ-wcR" secondAttribute="trailing" id="F0V-Mx-aS5"/>
+                <constraint firstItem="chO-ZQ-wcR" firstAttribute="top" secondItem="DgK-Oj-Zk2" secondAttribute="bottom" id="Vkj-XL-y1G"/>
+                <constraint firstItem="ER5-f8-dtR" firstAttribute="bottom" secondItem="chO-ZQ-wcR" secondAttribute="bottom" id="Zre-M7-8Rg"/>
+                <constraint firstItem="chO-ZQ-wcR" firstAttribute="leading" secondItem="ER5-f8-dtR" secondAttribute="leading" id="u2J-9k-Xa9"/>
+                <constraint firstItem="DgK-Oj-Zk2" firstAttribute="top" secondItem="2re-sE-Y5p" secondAttribute="top" id="yyB-o5-hh6"/>
+                <constraint firstItem="DgK-Oj-Zk2" firstAttribute="trailing" secondItem="ER5-f8-dtR" secondAttribute="trailing" id="zcQ-5d-Dzn"/>
+            </constraints>
+            <point key="canvasLocation" x="3.8167938931297707" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="person.circle.fill" catalog="system" width="128" height="123"/>
+        <namedColor name="neutral-0">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="neutral-900">
+            <color red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

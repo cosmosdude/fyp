@@ -21,7 +21,7 @@ public struct PayslipDetailData: Codable {
     public let tax: Double?
     public let ssb: Int?
     public let overtime: Int?
-    public let createdAt: String?
+    public let createdAt: String
     public let deletedAt: String?
     public let acknowledgedAt: String?
 

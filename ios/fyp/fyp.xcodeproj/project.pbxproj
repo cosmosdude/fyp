@@ -155,6 +155,14 @@
 		F3D10A7F2BB6EC3300A279D7 /* PayslipItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D10A7E2BB6EC3300A279D7 /* PayslipItemData.swift */; };
 		F3D10A812BB6EC7400A279D7 /* PayslipData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D10A802BB6EC7400A279D7 /* PayslipData.swift */; };
 		F3D10A832BB6ECB300A279D7 /* PayslipService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D10A822BB6ECB300A279D7 /* PayslipService.swift */; };
+		F3D10A882BB6F72800A279D7 /* MyPayslipVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D10A872BB6F72800A279D7 /* MyPayslipVM.swift */; };
+		F3D10A8A2BB6F76D00A279D7 /* PayslipDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D10A892BB6F76D00A279D7 /* PayslipDetail.swift */; };
+		F3D10A8E2BB6F90F00A279D7 /* PayslipController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D10A8C2BB6F90F00A279D7 /* PayslipController.swift */; };
+		F3D10A8F2BB6F90F00A279D7 /* PayslipController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D10A8D2BB6F90F00A279D7 /* PayslipController.xib */; };
+		F3D10A932BB6FBA100A279D7 /* PayslipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D10A912BB6FBA100A279D7 /* PayslipCell.swift */; };
+		F3D10A942BB6FBA100A279D7 /* PayslipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D10A922BB6FBA100A279D7 /* PayslipCell.xib */; };
+		F3D10A982BB7006500A279D7 /* PayslipDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D10A962BB7006500A279D7 /* PayslipDetailController.swift */; };
+		F3D10A992BB7006500A279D7 /* PayslipDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D10A972BB7006500A279D7 /* PayslipDetailController.xib */; };
 		F3D38A162BB128D200CC47E2 /* fn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D38A152BB128D200CC47E2 /* fn.swift */; };
 		F3D38A1B2BB12C4800CC47E2 /* AttendanceRequestDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D38A192BB12C4800CC47E2 /* AttendanceRequestDetailController.swift */; };
 		F3D38A1C2BB12C4800CC47E2 /* AttendanceRequestDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D38A1A2BB12C4800CC47E2 /* AttendanceRequestDetailController.xib */; };
@@ -364,6 +372,14 @@
 		F3D10A7E2BB6EC3300A279D7 /* PayslipItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayslipItemData.swift; sourceTree = "<group>"; };
 		F3D10A802BB6EC7400A279D7 /* PayslipData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayslipData.swift; sourceTree = "<group>"; };
 		F3D10A822BB6ECB300A279D7 /* PayslipService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayslipService.swift; sourceTree = "<group>"; };
+		F3D10A872BB6F72800A279D7 /* MyPayslipVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPayslipVM.swift; sourceTree = "<group>"; };
+		F3D10A892BB6F76D00A279D7 /* PayslipDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayslipDetail.swift; sourceTree = "<group>"; };
+		F3D10A8C2BB6F90F00A279D7 /* PayslipController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayslipController.swift; sourceTree = "<group>"; };
+		F3D10A8D2BB6F90F00A279D7 /* PayslipController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayslipController.xib; sourceTree = "<group>"; };
+		F3D10A912BB6FBA100A279D7 /* PayslipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayslipCell.swift; sourceTree = "<group>"; };
+		F3D10A922BB6FBA100A279D7 /* PayslipCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayslipCell.xib; sourceTree = "<group>"; };
+		F3D10A962BB7006500A279D7 /* PayslipDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayslipDetailController.swift; sourceTree = "<group>"; };
+		F3D10A972BB7006500A279D7 /* PayslipDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayslipDetailController.xib; sourceTree = "<group>"; };
 		F3D38A152BB128D200CC47E2 /* fn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fn.swift; sourceTree = "<group>"; };
 		F3D38A192BB12C4800CC47E2 /* AttendanceRequestDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceRequestDetailController.swift; sourceTree = "<group>"; };
 		F3D38A1A2BB12C4800CC47E2 /* AttendanceRequestDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttendanceRequestDetailController.xib; sourceTree = "<group>"; };
@@ -447,6 +463,7 @@
 		F317843D2BAD325F00AD8110 /* viewmodel */ = {
 			isa = PBXGroup;
 			children = (
+				F3D10A842BB6F70200A279D7 /* payslip */,
 				F33863772BB135F800B2CECF /* attendance */,
 				F35E320E2BB0968E001EBC31 /* leave */,
 				F35E320D2BB09689001EBC31 /* overtime */,
@@ -496,6 +513,7 @@
 				F338638C2BB1B5B100B2CECF /* TeamMember.swift */,
 				F33863942BB1CB0E00B2CECF /* Attendance.swift */,
 				F338639F2BB1D92100B2CECF /* User.swift */,
+				F3D10A892BB6F76D00A279D7 /* PayslipDetail.swift */,
 			);
 			path = types;
 			sourceTree = "<group>";
@@ -664,6 +682,7 @@
 		F33AA1172BA4C27400119193 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F3D10A902BB6FB8E00A279D7 /* PayslipCell */,
 				F33863962BB1D4A700B2CECF /* AttendanceRecordListView */,
 				F33863812BB171C400B2CECF /* CurrentLocationView */,
 				F3EEA7A72BB07A2B00D89776 /* OvertimeHistoryView */,
@@ -693,6 +712,8 @@
 		F33AA1182BA4C27800119193 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				F3D10A952BB7005800A279D7 /* PayslipDetail */,
+				F3D10A8B2BB6F90200A279D7 /* Payslip */,
 				F3EEA7B22BB084B800D89776 /* OvertimeRequestDetail */,
 				F3EEA79D2BB0732500D89776 /* OvertimeRequest */,
 				F3EEA78E2BB0729E00D89776 /* Overtimes */,
@@ -1005,6 +1026,41 @@
 			path = fyp;
 			sourceTree = "<group>";
 		};
+		F3D10A842BB6F70200A279D7 /* payslip */ = {
+			isa = PBXGroup;
+			children = (
+				F3D10A872BB6F72800A279D7 /* MyPayslipVM.swift */,
+			);
+			path = payslip;
+			sourceTree = "<group>";
+		};
+		F3D10A8B2BB6F90200A279D7 /* Payslip */ = {
+			isa = PBXGroup;
+			children = (
+				F3D10A8C2BB6F90F00A279D7 /* PayslipController.swift */,
+				F3D10A8D2BB6F90F00A279D7 /* PayslipController.xib */,
+			);
+			path = Payslip;
+			sourceTree = "<group>";
+		};
+		F3D10A902BB6FB8E00A279D7 /* PayslipCell */ = {
+			isa = PBXGroup;
+			children = (
+				F3D10A912BB6FBA100A279D7 /* PayslipCell.swift */,
+				F3D10A922BB6FBA100A279D7 /* PayslipCell.xib */,
+			);
+			path = PayslipCell;
+			sourceTree = "<group>";
+		};
+		F3D10A952BB7005800A279D7 /* PayslipDetail */ = {
+			isa = PBXGroup;
+			children = (
+				F3D10A962BB7006500A279D7 /* PayslipDetailController.swift */,
+				F3D10A972BB7006500A279D7 /* PayslipDetailController.xib */,
+			);
+			path = PayslipDetail;
+			sourceTree = "<group>";
+		};
 		F3D38A172BB12ABD00CC47E2 /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -1229,6 +1285,7 @@
 			files = (
 				F3EEA7AF2BB07A4D00D89776 /* OvertimeHistoryItemCell.xib in Resources */,
 				F33AA1222BA4C2F400119193 /* SplashController.xib in Resources */,
+				F3D10A942BB6FBA100A279D7 /* PayslipCell.xib in Resources */,
 				F3956A992BA9901E000DBD1A /* Inter-ExtraBold.ttf in Resources */,
 				F3956ADE2BA9F791000DBD1A /* DashboardController.xib in Resources */,
 				F317847A2BAD55EF00AD8110 /* SelectBox.xib in Resources */,
@@ -1259,10 +1316,12 @@
 				F3EEA78D2BB06E2300D89776 /* TeamListView.xib in Resources */,
 				F338639A2BB1D4B700B2CECF /* AttendanceRecordListView.xib in Resources */,
 				F338639E2BB1D51500B2CECF /* AttendanceRecordCell.xib in Resources */,
+				F3D10A992BB7006500A279D7 /* PayslipDetailController.xib in Resources */,
 				F3956AE82BA9F7CD000DBD1A /* LeaveController.xib in Resources */,
 				F317844D2BAD390B00AD8110 /* LeaveTypeListItemCell.xib in Resources */,
 				F33AA11D2BA4C2B100119193 /* LoginController.xib in Resources */,
 				F38A71E92BADB0EE00A0E12F /* ManagerSelectionController.xib in Resources */,
+				F3D10A8F2BB6F90F00A279D7 /* PayslipController.xib in Resources */,
 				F33031792BAE9ADF0053005D /* NotificationCell.xib in Resources */,
 				F3956A9A2BA9901E000DBD1A /* OFL.txt in Resources */,
 				F3956AD92BA9F770000DBD1A /* ProfileController.xib in Resources */,
@@ -1405,8 +1464,10 @@
 				F31784512BAD3E7500AD8110 /* LeaveVM.swift in Sources */,
 				F35E32182BB0A834001EBC31 /* MyOTRequestsVM.swift in Sources */,
 				F31784742BAD52EB00AD8110 /* LeaveRequestController.swift in Sources */,
+				F3D10A982BB7006500A279D7 /* PayslipDetailController.swift in Sources */,
 				F338639D2BB1D51500B2CECF /* AttendanceRecordCell.swift in Sources */,
 				F330315D2BADCF6F0053005D /* SelectionCell.swift in Sources */,
+				F3D10A882BB6F72800A279D7 /* MyPayslipVM.swift in Sources */,
 				F3A74D612BA4BC6A00E91DFE /* AppDelegate.swift in Sources */,
 				F3956AB42BA9E474000DBD1A /* LoginModel.swift in Sources */,
 				F33031682BADDD980053005D /* RequestLeaveVM.swift in Sources */,
@@ -1448,9 +1509,11 @@
 				F38A71F02BADB13300A0E12F /* Manager.swift in Sources */,
 				F38A71E82BADB0EE00A0E12F /* ManagerSelectionController.swift in Sources */,
 				F3956AA72BA99540000DBD1A /* TextField.swift in Sources */,
+				F3D10A8E2BB6F90F00A279D7 /* PayslipController.swift in Sources */,
 				F33031592BADCB0D0053005D /* NetworkTypeProxy.swift in Sources */,
 				F3EEA7872BB06CEF00D89776 /* TeamCell.swift in Sources */,
 				F33AA1132BA4C16000119193 /* main.swift in Sources */,
+				F3D10A8A2BB6F76D00A279D7 /* PayslipDetail.swift in Sources */,
 				F33031722BAE92EB0053005D /* NotificationVM.swift in Sources */,
 				F31733E62BADB4D80018AA05 /* Avatar.swift in Sources */,
 				F3EEA79B2BB0731F00D89776 /* AttendanceRequestController.swift in Sources */,
@@ -1460,6 +1523,7 @@
 				F3EEA7822BB06B0000D89776 /* AttendanceStatusView.swift in Sources */,
 				F330317B2BAE9CA10053005D /* DateFormatter+Ext.swift in Sources */,
 				F3A74D632BA4BC6A00E91DFE /* SceneDelegate.swift in Sources */,
+				F3D10A932BB6FBA100A279D7 /* PayslipCell.swift in Sources */,
 				F3956AE22BA9F7AD000DBD1A /* InboxController.swift in Sources */,
 				F3956AA02BA99229000DBD1A /* UIView+Ext.swift in Sources */,
 				F338638F2BB1B61900B2CECF /* Int+Ext.swift in Sources */,

@@ -27,7 +27,7 @@ extension PayslipService {
                 .authorization(bearerToken: accessToken)
             ]
         )
-        req.responseString { res in print("response", res.value ?? "") }
+        req.responseString { res in print("Payslip response", res.value ?? "", res.request as Any) }
         
         let res = await req.serializingDecodable([PayslipDetailData].self).response
         

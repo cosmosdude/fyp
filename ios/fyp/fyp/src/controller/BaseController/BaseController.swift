@@ -35,6 +35,7 @@ class BaseTabBarController: UITabBarController {
         viewControllers = [
             DashboardController(),
             LeaveController(),
+            PayslipController(),
             InboxController(),
             ProfileController()
         ]
@@ -61,6 +62,7 @@ class BaseTabBarController: UITabBarController {
         setTabItems([
             .init(title: "Dashboard", image: UIImage(named: "icon.tab.layout-grid")),
             .init(title: "Leave", image: UIImage(named: "icon.tab.calendar-days")),
+            .init(title: "Payslip", image: UIImage(named: "")),
             .init(title: "Inbox", image: UIImage(named: "icon.tab.bell")),
             .init(title: "Profile", image: UIImage(named: "icon.tab.user"))
         ])

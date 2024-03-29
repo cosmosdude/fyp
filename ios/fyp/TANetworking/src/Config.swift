@@ -90,7 +90,7 @@ public struct ApiPath: RawRepresentable, ExpressibleByStringLiteral {
     }
     
     // Payslips
-    static let payslips: Self = "api/payslips/user/"
+    static let payslips: Self = "api/payslips/user/ "
     static func payslipDetail(id: String) -> Self {
         .init("api/payslips/payslip/\(id)")
     }
