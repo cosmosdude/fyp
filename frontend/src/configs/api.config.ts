@@ -342,5 +342,18 @@ export const apiPaths = {
         deleteUserPayrollItems(id: string, itemId: string) {
             return `api/payrolls/user/${id}/items/${itemId}`
         }
+    },
+
+    payslip: {
+        /**
+         * URL for getting payslips of given month and year.
+        */
+        getAll(month, year) {
+            return `api/payslips?month=${month}&year=${year}`
+        },
+
+        generate(userId, month, year) {
+            return `api/payslips/generate/user/${userId}?month=${month}&year=${year}`
+        }
     }
 }

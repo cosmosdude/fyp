@@ -20,7 +20,10 @@ exports.getAll = async (req, res, next) => {
         select 
             u.first_name, u.last_name,
             f.path as avatar_path,
-            up.* from users as u
+            up.* ,
+            u.id as user_id
+        from users as u
+            
         left join users_payslips as up on up.user_id=u.id and up.deleted_at is NULL and up.from_date>=? and up.to_date<=?
         left join files as f on u.avatar_id=f.id
         order by u.first_name
@@ -104,7 +107,14 @@ exports.generateForUser = async (req, res, next) => {
 
     // get last inserted payslip
     let payslip = (await db.promise().query(/*sql*/`
-        select * from users_payslips where iid=?
+        select 
+            up.*,
+            u.first_name, u.last_name,
+            f.path as avatar_path
+        from users_payslips as up 
+        join users as u on u.id=up.user_id
+        left join files as f on u.avatar_id=f.id
+        where up.iid=?
     `, [payslipInsertion.insertId]))[0]?.[0]
 
     items.forEach(item => {
@@ -121,7 +131,14 @@ exports.payslipDetail = async (req, res, next) => {
     let {id} = req.params
     
     let payslip = (await db.promise().query(/*sql*/`
-        select * from users_payslips where id=?
+        select 
+            up.*,
+            u.first_name, u.last_name,
+            f.path as avatar_path
+        from users_payslips as up 
+        join users as u on u.id=up.user_id
+        left join files as f on u.avatar_id=f.id
+        where up.id=?
     `, id))[0]?.[0]
 
     if (!payslip) return res.status(400).send(payslip)
