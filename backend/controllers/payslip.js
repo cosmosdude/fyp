@@ -23,14 +23,56 @@ exports.getAll = async (req, res, next) => {
             up.* ,
             u.id as user_id
         from users as u
-            
-        left join users_payslips as up on up.user_id=u.id and up.deleted_at is NULL and up.from_date>=? and up.to_date<=?
+        left join users_payslips as up 
+            on up.user_id=u.id and up.deleted_at is NULL 
+            and up.from_date>=? and up.to_date<=?
         left join files as f on u.avatar_id=f.id
         order by u.first_name
-    `, [format(monthDates[0], 'yyyy-MM-dd'), format(monthDates[monthDates.length - 1], 'yyyy-MM-dd')])
+    `, [
+        format(monthDates[0], 'yyyy-MM-dd'), 
+        format(monthDates[monthDates.length - 1], 'yyyy-MM-dd')
+    ])
 
     res.json(payslips)
 }
+
+exports.getUserPayslips = async (req, res, next) => {
+
+    let auth = req.authUser
+    let {userId} = req.query
+    if (!userId) userId = auth.id
+
+    let [payslips] = await db.promise().query(/*sql*/`
+        select 
+            u.first_name, u.last_name,
+            f.path as avatar_path,
+            up.* ,
+            u.id as user_id
+        from users as u
+        left join users_payslips as up 
+            on up.user_id=u.id and up.deleted_at is NULL 
+        left join files as f on u.avatar_id=f.id
+        where u.id=?
+        order by up.from_date
+    `, [userId])
+
+    res.json(payslips)
+}
+
+exports.acknowledge = async (req, res, next) => {
+
+    let {id} = req.params
+    // return res.json(id)
+    await db.promise().query(/*sql*/`
+        update users_payslips
+        set acknowledged_at=CURRENT_TIMESTAMP()
+        where id=?    
+    `, [id])
+
+    res.sendStatus(202)
+}
+
+
 
 exports.generateForUser = async (req, res, next) => {
     let {userId} = req.params

@@ -88,6 +88,15 @@ public struct ApiPath: RawRepresentable, ExpressibleByStringLiteral {
     static func respondAttendanceRequest(id: String) -> Self {
         .init("api/attendances/requests/request/\(id)")
     }
+    
+    // Payslips
+    static let payslips: Self = "api/payslips/user/"
+    static func payslipDetail(id: String) -> Self {
+        .init("api/payslips/payslip/\(id)")
+    }
+    static func acknowledgePayslip(id: String) -> Self {
+        .init("api/payslips/payslip/\(id)/acknowledge")
+    }
 }
 
 

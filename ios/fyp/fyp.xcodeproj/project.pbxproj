@@ -151,6 +151,10 @@
 		F3A74D6D2BA4BC6C00E91DFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A74D6B2BA4BC6C00E91DFE /* LaunchScreen.storyboard */; };
 		F3D10A792BB4B24500A279D7 /* OvertimeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D10A782BB4B24500A279D7 /* OvertimeData.swift */; };
 		F3D10A7B2BB4B4C300A279D7 /* MyOTVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D10A7A2BB4B4C300A279D7 /* MyOTVM.swift */; };
+		F3D10A7D2BB6EB7700A279D7 /* PayslipDetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D10A7C2BB6EB7700A279D7 /* PayslipDetailData.swift */; };
+		F3D10A7F2BB6EC3300A279D7 /* PayslipItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D10A7E2BB6EC3300A279D7 /* PayslipItemData.swift */; };
+		F3D10A812BB6EC7400A279D7 /* PayslipData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D10A802BB6EC7400A279D7 /* PayslipData.swift */; };
+		F3D10A832BB6ECB300A279D7 /* PayslipService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D10A822BB6ECB300A279D7 /* PayslipService.swift */; };
 		F3D38A162BB128D200CC47E2 /* fn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D38A152BB128D200CC47E2 /* fn.swift */; };
 		F3D38A1B2BB12C4800CC47E2 /* AttendanceRequestDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D38A192BB12C4800CC47E2 /* AttendanceRequestDetailController.swift */; };
 		F3D38A1C2BB12C4800CC47E2 /* AttendanceRequestDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D38A1A2BB12C4800CC47E2 /* AttendanceRequestDetailController.xib */; };
@@ -356,6 +360,10 @@
 		F3A74D6E2BA4BC6C00E91DFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3D10A782BB4B24500A279D7 /* OvertimeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimeData.swift; sourceTree = "<group>"; };
 		F3D10A7A2BB4B4C300A279D7 /* MyOTVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOTVM.swift; sourceTree = "<group>"; };
+		F3D10A7C2BB6EB7700A279D7 /* PayslipDetailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayslipDetailData.swift; sourceTree = "<group>"; };
+		F3D10A7E2BB6EC3300A279D7 /* PayslipItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayslipItemData.swift; sourceTree = "<group>"; };
+		F3D10A802BB6EC7400A279D7 /* PayslipData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayslipData.swift; sourceTree = "<group>"; };
+		F3D10A822BB6ECB300A279D7 /* PayslipService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayslipService.swift; sourceTree = "<group>"; };
 		F3D38A152BB128D200CC47E2 /* fn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fn.swift; sourceTree = "<group>"; };
 		F3D38A192BB12C4800CC47E2 /* AttendanceRequestDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceRequestDetailController.swift; sourceTree = "<group>"; };
 		F3D38A1A2BB12C4800CC47E2 /* AttendanceRequestDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttendanceRequestDetailController.xib; sourceTree = "<group>"; };
@@ -618,6 +626,7 @@
 				F330316D2BAE910B0053005D /* NotificationService.swift */,
 				F35E32062BB09380001EBC31 /* OvertimeService.swift */,
 				F33863732BB1350800B2CECF /* AttendanceService.swift */,
+				F3D10A822BB6ECB300A279D7 /* PayslipService.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -890,6 +899,9 @@
 				F33863882BB1B3D100B2CECF /* TeamMemberData.swift */,
 				F33863902BB1C9F400B2CECF /* AttendanceData.swift */,
 				F3D10A782BB4B24500A279D7 /* OvertimeData.swift */,
+				F3D10A7C2BB6EB7700A279D7 /* PayslipDetailData.swift */,
+				F3D10A7E2BB6EC3300A279D7 /* PayslipItemData.swift */,
+				F3D10A802BB6EC7400A279D7 /* PayslipData.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -1356,9 +1368,13 @@
 				F35E32102BB09DD4001EBC31 /* OvertimeRequestData.swift in Sources */,
 				F33863742BB1350800B2CECF /* AttendanceService.swift in Sources */,
 				F33863892BB1B3D200B2CECF /* TeamMemberData.swift in Sources */,
+				F3D10A832BB6ECB300A279D7 /* PayslipService.swift in Sources */,
+				F3D10A7D2BB6EB7700A279D7 /* PayslipDetailData.swift in Sources */,
+				F3D10A812BB6EC7400A279D7 /* PayslipData.swift in Sources */,
 				F317845C2BAD46FA00AD8110 /* LeaveRequestData.swift in Sources */,
 				F31784582BAD3F6A00AD8110 /* LeaveBalanceData.swift in Sources */,
 				F35E32072BB09380001EBC31 /* OvertimeService.swift in Sources */,
+				F3D10A7F2BB6EC3300A279D7 /* PayslipItemData.swift in Sources */,
 				F33031702BAE91400053005D /* NotificationData.swift in Sources */,
 				F33863912BB1C9F400B2CECF /* AttendanceData.swift in Sources */,
 				F3956AC32BA9EF82000DBD1A /* LoginData.swift in Sources */,
