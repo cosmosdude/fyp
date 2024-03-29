@@ -19,10 +19,12 @@ import ActivityIndicator from "../../components/ActivityIndicator";
 import { usePushNoti } from "../../components/Noti/NotiSystem";
 import { useAuthContext } from "../../hooks/AuthStateContext";
 import sleep from "../../utils/sleep";
+import { useNavigate } from "react-router-dom";
 
 function PayslipsPage() {
 
     let pushNoti = usePushNoti()
+    let navigate = useNavigate()
     let auth = useAuthContext()
 
     let [trigger, setTrigger] = useState(Math.random())
@@ -122,6 +124,7 @@ function PayslipsPage() {
                             record={x}
                             isGenerating={generating.includes(x.user_id)}
                             onGenerate={() => generate(x.user_id)}
+                            onView={() => navigate(x.id)}
                         />)}
                     </tbody>
                 </table>

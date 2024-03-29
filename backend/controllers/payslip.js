@@ -79,9 +79,22 @@ exports.generateForUser = async (req, res, next) => {
     let intrim = {
         grossIncome,
         grossDeduction, 
-        tax: grossIncome * payroll.tax_rate,
+        tax: payroll.tax_rate,
         ssb
     }
+
+    let [overtimes] = await db.promise().query(/*sql*/`
+        select SUM(duration_sec) as total from users_overtimes_requests
+        where status="approved" and requester_id=? and date>=? and date<=?
+    `, [userId, from_date, to_date])
+
+    let totalOvertimeSec = Number(overtimes[0]?.total ?? 0)
+
+    let overtimeHrs = totalOvertimeSec / 3600
+
+    let hourlyRate = payroll.wage / 8
+    let overtimePayout = overtimeHrs * hourlyRate * payroll.overtime_rate
+    // return res.json({overtimeHrs, hourlyRate, overtimePayout})
 
     // return res.json(intrim)
 
@@ -92,6 +105,7 @@ exports.generateForUser = async (req, res, next) => {
         salary: payroll.salary,
         tax: intrim.tax,
         ssb: intrim.ssb,
+        overtime: overtimePayout
     }
 
     // delete existing payslip
@@ -144,9 +158,14 @@ exports.payslipDetail = async (req, res, next) => {
     if (!payslip) return res.status(400).send(payslip)
 
     let [items] = await db.promise().query(/*sql*/`
-    select * from payslips_items
+    select 
+        pi.*,
+        upi.name, upi.amount,
+        upi.relative_amount, upi.type
+    from payslips_items as pi
+    join users_payrolls_items as upi on upi.id=pi.payroll_item_id
     where payslip_id=?
     `, payslip.id)
 
-    return res.json({payslip, items})
+    return res.json({detail: payslip, items})
 }

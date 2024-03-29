@@ -29,6 +29,7 @@ import PayrollsPage from './pages/Payrolls/PayrollsPage'
 import PayslipsPage from './pages/Payslips/PayslipsPage'
 import UsersPayrollPage from './pages/Payrolls/UserPayrollPage'
 import NewUserPayrollItemPage from './pages/Payrolls/NewUserPayrollItemPage'
+import PayslipDetailPage from './pages/Payslips/PayslipDetailPage'
 
 function App() {
 
@@ -87,8 +88,8 @@ function App() {
             <Route path="/payrolls/:userId" element={<UsersPayrollPage/>}/>
             <Route path="/payrolls/:userId/items/new" element={<NewUserPayrollItemPage/>}/>
             
-
             <Route path="/payslips" element={<PayslipsPage/>}/>
+            <Route path="/payslips/:id" element={<PayslipDetailPage/>}/>
         </Route>
           {/* <Route path='/' element={<IndexPage/>}>
             <Route path="" element={<HomeNavigationPage/>}>

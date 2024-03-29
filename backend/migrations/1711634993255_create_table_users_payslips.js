@@ -7,8 +7,9 @@ module.exports = {
         name varchar(128) not null default "",
         from_date date, to_date date,
         salary int, -- salary at the time this payslip is generated
-        tax int, -- absolute tax mmk
+        tax float, -- absolute tax mmk
         ssb int, -- absolute ssb mmk
+        overtime float not null default 0,
         created_at datetime not null default CURRENT_TIMESTAMP(),
         deleted_at datetime,
         acknowledged_at datetime,

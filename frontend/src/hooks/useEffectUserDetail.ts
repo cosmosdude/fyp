@@ -20,7 +20,7 @@ function useEffectUserDetail(id) {
         }
         fetchData()
         return () => aborter.abort()
-    }, [auth])
+    }, [auth, id])
 
     return user
 }

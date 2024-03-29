@@ -354,6 +354,10 @@ export const apiPaths = {
 
         generate(userId, month, year) {
             return `api/payslips/generate/user/${userId}?month=${month}&year=${year}`
+        },
+
+        detail(id: string) {
+            return `api/payslips/payslip/${id}`
         }
     }
 }
