@@ -314,5 +314,12 @@ export const apiPaths = {
         getAll() {
             return `api/payrolls`
         },
+
+        /**
+         * URL for getting or updating user's payroll.
+         * */ 
+        userPayroll(id: string) {
+            return `api/payrolls/user/${id}`
+        }
     }
 }

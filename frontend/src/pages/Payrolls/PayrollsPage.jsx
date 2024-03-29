@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
@@ -15,6 +16,7 @@ import timeDisplayText, { dateFrom24HrTime } from "../../utils/timeDisplayText";
 
 function PayrollsPage() {
 
+    let navigate = useNavigate()
     // let schedules = []
     // for (let i = 0; i < 10; i++) schedules.push({id: i})
 
@@ -58,6 +60,9 @@ function PayrollsPage() {
                         {records.map((x, i) => <PayrollRow 
                             key={i} no={i + 1}
                             record={x}
+                            onClick={() => {
+                                navigate(x.user_id)
+                            }}
                         />)}
                     </tbody>
                 </table>
@@ -67,7 +72,7 @@ function PayrollsPage() {
     );
 }
 
-function PayrollRow({no, record}) {
+function PayrollRow({no, record, onClick}) {
 
     let shift = ""
     
@@ -120,7 +125,9 @@ function PayrollRow({no, record}) {
         cursor-pointer
         transition-all
         [&>*]:transition-all
-        ">
+        "
+        onClick={onClick}
+        >
             <td className="sticky left-0 text-center font-bs text-bs whitespace-nowrap">
                 {no ?? ''}
             </td>

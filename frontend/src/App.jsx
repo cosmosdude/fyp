@@ -27,6 +27,7 @@ import HolidayDetailPage from './pages/Holidays/HolidayDetailPage'
 import ScheduleDetailPage from './pages/Schedules/ScheduleDetailPage'
 import PayrollsPage from './pages/Payrolls/PayrollsPage'
 import PayslipsPage from './pages/Payslips/PayslipsPage'
+import UsersPayrollPage from './pages/Payrolls/UserPayrollPage'
 
 function App() {
 
@@ -82,6 +83,8 @@ function App() {
             <Route path="/leaves/types/:id" element={<LeaveTypeDetailPage/>}/>
 
             <Route path="/payrolls" element={<PayrollsPage/>}/>
+            <Route path="/payrolls/:userId" element={<UsersPayrollPage/>}/>
+            
 
             <Route path="/payslips" element={<PayslipsPage/>}/>
         </Route>
