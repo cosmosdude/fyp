@@ -38,7 +38,15 @@ class PayslipController: UIViewController {
 }
 
 extension PayslipController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let vc = PayslipDetailController()
+        vc.id = payslipVM.payslips[indexPath.row].id
+        navigationController?.pushViewController(
+            vc, animated: true
+        )
+    }
 }
 
 extension PayslipController: UITableViewDataSource {

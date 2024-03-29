@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -31,19 +30,19 @@
                     <rect key="frame" x="20" y="10" width="353" height="56"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PBk-AO-hQG">
-                            <rect key="frame" x="10" y="10" width="333" height="36"/>
+                            <rect key="frame" x="0.0" y="0.0" width="353" height="56"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="WpF-Hq-vld">
-                                    <rect key="frame" x="0.0" y="0.33333333333333215" width="315" height="35.666666666666671"/>
+                                    <rect key="frame" x="0.0" y="10.333333333333332" width="335" height="35.666666666666671"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7FB-xf-JkN">
-                                            <rect key="frame" x="0.0" y="0.0" width="315" height="17"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="17"/>
                                             <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUf-vN-fYs">
-                                            <rect key="frame" x="0.0" y="21.000000000000004" width="315" height="14.666666666666668"/>
+                                            <rect key="frame" x="0.0" y="21.000000000000004" width="335" height="14.666666666666668"/>
                                             <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -51,7 +50,7 @@
                                     </subviews>
                                 </stackView>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4Bb-Jo-Rkg">
-                                    <rect key="frame" x="315" y="10.999999999999998" width="18" height="14.33333333333333"/>
+                                    <rect key="frame" x="335" y="21" width="18" height="14.333333333333329"/>
                                     <color key="tintColor" name="neutral-900"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="18" id="Pqz-2e-PQM"/>
@@ -61,12 +60,12 @@
                             </subviews>
                         </stackView>
                     </subviews>
-                    <color key="backgroundColor" name="bg-1"/>
+                    <color key="backgroundColor" name="clear"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="PBk-AO-hQG" secondAttribute="trailing" constant="10" id="Pf7-Fr-vUm"/>
-                        <constraint firstAttribute="bottom" secondItem="PBk-AO-hQG" secondAttribute="bottom" constant="10" id="gpZ-3x-JCt"/>
-                        <constraint firstItem="PBk-AO-hQG" firstAttribute="leading" secondItem="PrU-rY-fJe" secondAttribute="leading" constant="10" id="if4-Vn-5mo"/>
-                        <constraint firstItem="PBk-AO-hQG" firstAttribute="top" secondItem="PrU-rY-fJe" secondAttribute="top" constant="10" id="kd6-pU-oxX"/>
+                        <constraint firstAttribute="trailing" secondItem="PBk-AO-hQG" secondAttribute="trailing" id="Pf7-Fr-vUm"/>
+                        <constraint firstAttribute="bottom" secondItem="PBk-AO-hQG" secondAttribute="bottom" id="gpZ-3x-JCt"/>
+                        <constraint firstItem="PBk-AO-hQG" firstAttribute="leading" secondItem="PrU-rY-fJe" secondAttribute="leading" id="if4-Vn-5mo"/>
+                        <constraint firstItem="PBk-AO-hQG" firstAttribute="top" secondItem="PrU-rY-fJe" secondAttribute="top" id="kd6-pU-oxX"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -76,7 +75,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="clear"/>
             <constraints>
                 <constraint firstItem="PrU-rY-fJe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="1RZ-L4-UKB"/>
                 <constraint firstAttribute="trailing" secondItem="PrU-rY-fJe" secondAttribute="trailing" constant="20" id="Phh-km-qnh"/>
@@ -89,14 +88,11 @@
     </objects>
     <resources>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
-        <namedColor name="bg-1">
-            <color red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="clear">
+            <color red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="neutral-900">
             <color red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

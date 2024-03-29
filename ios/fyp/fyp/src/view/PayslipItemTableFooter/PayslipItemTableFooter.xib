@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Bold.ttf">
+            <string>Inter-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PayslipItemTableFooter" customModule="fyp" customModuleProvider="target">
+            <connections>
+                <outlet property="subtitleLabel" destination="4ZM-6A-06d" id="db6-M5-rFI"/>
+                <outlet property="titleLabel" destination="aup-rw-47O" id="OsW-41-LLA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="FGP-fZ-IZ2">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="52"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T3g-3q-FQU">
+                    <rect key="frame" x="20" y="10" width="353" height="32"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aup-rw-47O">
+                            <rect key="frame" x="0.0" y="0.0" width="43.666666666666664" height="32"/>
+                            <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Eu-Lx-i6D">
+                            <rect key="frame" x="43.666666666666671" y="0.0" width="203.66666666666663" height="32"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3000000 MMK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZM-6A-06d">
+                            <rect key="frame" x="247.33333333333329" y="0.0" width="105.66666666666666" height="32"/>
+                            <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jxa-Tm-gWC" userLabel="separator">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="1"/>
+                    <color key="backgroundColor" name="bg-2"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="9JA-Cv-vdj"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="T3g-3q-FQU" firstAttribute="leading" secondItem="FGP-fZ-IZ2" secondAttribute="leading" constant="20" id="82k-Ix-Ebh"/>
+                <constraint firstItem="Jxa-Tm-gWC" firstAttribute="top" secondItem="FGP-fZ-IZ2" secondAttribute="top" id="DLl-Lm-dXC"/>
+                <constraint firstAttribute="trailing" secondItem="T3g-3q-FQU" secondAttribute="trailing" constant="20" id="ERH-NK-MfC"/>
+                <constraint firstItem="T3g-3q-FQU" firstAttribute="top" secondItem="FGP-fZ-IZ2" secondAttribute="top" constant="10" id="Jog-GM-cns"/>
+                <constraint firstAttribute="trailing" secondItem="Jxa-Tm-gWC" secondAttribute="trailing" id="MCY-JK-QJ8"/>
+                <constraint firstItem="Jxa-Tm-gWC" firstAttribute="leading" secondItem="FGP-fZ-IZ2" secondAttribute="leading" id="PuI-q8-YOL"/>
+                <constraint firstAttribute="bottom" secondItem="T3g-3q-FQU" secondAttribute="bottom" constant="10" id="Q7C-DI-PLg"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="3.8167938931297707" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="bg-2">
+            <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

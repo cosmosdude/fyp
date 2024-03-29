@@ -17,6 +17,13 @@ public struct PayslipDetail: NetworkTypeProxy {
     private static let inFormat = ISO8601DateFormatter()
         .adding(formatOptions: .withFractionalSeconds)
     
+    public var salary: Double { Double(value.salary ?? 0) }
+    public var overtime: Double { Double(value.overtime ?? 0) }
+    
+    public var tax: Double { Double(value.tax ?? 0) }
+    public var ssb: Double { Double(value.ssb ?? 0) }
+    
+    
     public var from: Date? {
         value.fromDate.flatMap(Self.inFormat.date(from:))
     }
