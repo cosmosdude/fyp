@@ -59,6 +59,10 @@ export default function HomePage() {
                         <SideNavItem to='/overtimes' title='Overtimes' icon='timer-reset'/>
                         <SideNavItem to='/holidays' title='Holidays' icon='calendar-days'/>
                         <SideNavItem to='/leaves' title='Leaves' icon='calendar-range'/>
+
+                        <SideNavItem to='/payrolls' title='Payroll' icon='dollar-sign'/>
+                        <SideNavItem to='/payslips' title='Payslips' icon='badge-dollar-sign'/>
+                        
                     </ul>
                 </div>
 

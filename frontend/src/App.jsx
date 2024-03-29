@@ -25,6 +25,8 @@ import LeaveTypesPage from './pages/LeaveTypes/LeaveTypesPage'
 import LeaveTypeDetailPage from './pages/LeaveTypes/LeaveTypeDetailPage'
 import HolidayDetailPage from './pages/Holidays/HolidayDetailPage'
 import ScheduleDetailPage from './pages/Schedules/ScheduleDetailPage'
+import PayrollsPage from './pages/Payrolls/PayrollsPage'
+import PayslipsPage from './pages/Payslips/PayslipsPage'
 
 function App() {
 
@@ -66,19 +68,22 @@ function App() {
             <Route path="/attendances" element={<AttendancesPage/>}/>
             <Route path="/attendances/requests" element={<AttendanceRequestsPage/>}/>
             
-            
             {/* Schedules */}
             <Route path="/overtimes" element={<OvertimesPage/>}/>
 
-            {/* Schedules */}
+            {/* Holidays */}
             <Route path="/holidays" element={<HolidaysPage/>}/>
             <Route path="/holidays/:id" element={<HolidayDetailPage/>}/>
 
-            {/* Schedules */}
+            {/* Leaves */}
             <Route path="/leaves" element={<LeavesPage/>}/>
             <Route path="/leaves/requests" element={<LeaveRequestsPage/>}/>
             <Route path="/leaves/types" element={<LeaveTypesPage/>}/>
             <Route path="/leaves/types/:id" element={<LeaveTypeDetailPage/>}/>
+
+            <Route path="/payrolls" element={<PayrollsPage/>}/>
+
+            <Route path="/payslips" element={<PayslipsPage/>}/>
         </Route>
           {/* <Route path='/' element={<IndexPage/>}>
             <Route path="" element={<HomeNavigationPage/>}>

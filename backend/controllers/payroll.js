@@ -85,12 +85,14 @@ exports.update = async (req, res, next) => {
 }
 
 exports.getUserPayrollItems = async (req, res, next) => {
+
     let {userId} = req.params
 
     let [items] = await db.promise().query(/*sql*/`
     select * from users_payrolls_items
     where user_id=? and deleted_at is NULL
     `, [userId])
+    
     res.json(items)
 }
 

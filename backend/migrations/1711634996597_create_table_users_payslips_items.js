@@ -1,6 +1,6 @@
 module.exports = {
     "up": /*sql*/`
-    create table users_payslips_items (
+    create table payslips_items (
         iid int unique auto_increment,
         id varchar(36) not null default (uuid()) primary key,
         payslip_id varchar(36),
@@ -16,6 +16,6 @@ module.exports = {
     )
     `,
     "down": /*sql*/`
-    drop table users_payslips_items
+    drop table payslips_items
     `
 }

@@ -305,5 +305,14 @@ export const apiPaths = {
         }
 
         
+    },
+
+    payroll: {
+        /**
+         * URL for getting all user payrolls.
+        */
+        getAll() {
+            return `api/payrolls`
+        },
     }
 }
