@@ -14,6 +14,8 @@ import LucideIcon from "../../lib/LucideIcon";
 import useUserPayroll from "../../hooks/useUserPayroll";
 import { usePushNoti } from "../../components/Noti/NotiSystem";
 import { useAuthContext } from "../../hooks/AuthStateContext";
+import useUserPayrollItems from "../../hooks/useUserPayrollItems";
+import { useEffect, useState } from "react";
 
 export default function UsersPayrollPage() {
 
@@ -26,6 +28,7 @@ export default function UsersPayrollPage() {
     let user = useEffectUserDetail(userId)
 
     let [payroll, setPayroll] = useUserPayroll(userId)
+    let [items, setItems] = useUserPayrollItems(userId)
 
     function setWage(wage) {
         wage = Math.abs(~~Number(wage))
@@ -54,8 +57,13 @@ export default function UsersPayrollPage() {
         })
     }
 
-    let past = useEffectGetHolidays('past')
-    let upcoming = useEffectGetHolidays('upcoming')
+    let [allowances, setAllowances] = useState([])
+    let [deductions, setDeductions] = useState([])
+
+    useEffect(() => {
+        setAllowances(items.filter(x => x.type==='allowance'))
+        setDeductions(items.filter(x => x.type==='deduction'))
+    }, [items])
 
     async function updatePayroll() {
         try {
@@ -91,8 +99,38 @@ export default function UsersPayrollPage() {
         }
     }
 
-    function deleteItem() {
+    async function deleteItem(id) {
+        try {
+            let res = await fetch(apiRoute(apiPaths.payroll.deleteUserPayrollItems(userId, id)), {
+                method: "DELETE",
+                headers: {
+                    'authorization': `Bearer ${auth}`
+                },
+            })
 
+            if (res.status >= 200 && res.status < 300) {
+                // setPayroll(await res.json())
+                pushNoti({
+                    title: "Deleted", 
+                    message: "Payroll item successfully deleted.",
+                    style: "success"
+                })
+                // finally remove item with the same id.
+                setItems(items.filter(x => x.id !== id))
+            } else {
+                pushNoti({
+                    title: "Error", 
+                    message: "Unable to delete payroll item.",
+                    style: "danger"
+                })
+            }
+        } catch (error) { 
+            pushNoti({
+                title: "Error", 
+                message: `Unable to delete payroll item. ${error}`,
+                style: "danger"
+            })
+        }
     }
 
     return (
@@ -140,14 +178,12 @@ export default function UsersPayrollPage() {
                         <PayrollItemTableHeader/>
                         <tbody className="">
                             {/* <AttendanceRow /> */}
-                            {past.map((x, i) => (
+                            {allowances.map((x, i) => (
                                 <PayrollItemTableRow 
                                     key={x.id} 
-                                    no={i} 
-                                    name={x.name}
-                                    date={format(new Date(x.date), 'd MMM')} 
-                                    day={format(new Date(x.date), 'EEE')}
-                                    onClick={() => navigate(x.id)}
+                                    no={i + 1} 
+                                    item={x}
+                                    onDelete={() => deleteItem(x.id)}
                                 />
                             )
                             )}
@@ -161,14 +197,12 @@ export default function UsersPayrollPage() {
                         <PayrollItemTableHeader/>
                         <tbody className="">
                             {/* <AttendanceRow /> */}
-                            {upcoming.map((x, i) => (
+                            {deductions.map((x, i) => (
                                 <PayrollItemTableRow 
                                     key={x.id} 
-                                    no={i} 
-                                    name={x.name}
-                                    date={format(new Date(x.date), 'd MMM')} 
-                                    day={format(new Date(x.date), 'EEE')}
-                                    onClick={() => navigate(x.id)}
+                                    no={i + 1} 
+                                    item={x}
+                                    onDelete={() => deleteItem(x.id)}
                                 />
                             )
                             )}
@@ -210,7 +244,15 @@ function PayrollItemTableHeader() {
     )
 }
 
-function PayrollItemTableRow({no, name, date, day, onClick}) {
+function PayrollItemTableRow({no, item, onDelete}) {
+
+    function getAmount() {
+        let amount = Number(item.amount)
+        if (isNaN(amount)) amount = 0
+        let isRelative = Boolean(item.relative_amount)
+        return `${(amount * (isRelative ? 100 : 1)).toFixed(0)}${isRelative ? "%" : ""}`
+    }
+
     return (
         <tr className="
         group
@@ -221,21 +263,19 @@ function PayrollItemTableRow({no, name, date, day, onClick}) {
         transition-all
         [&>*]:transition-all
         "
-        onClick={onClick}
         >
             <td className="text-center font-ls text-ls w-[50px]">
                 {no ?? ''}
             </td>
             <td className="text-left font-bs text-bs whitespace-nowrap">
-                {name}
-                {/* Thingyan lkasjdf kljaskldjf klasjdklfj aklsdfkljklasdfkl */}
+                {item.name}
             </td>
             <td className="text-center font-ll text-ll whitespace-nowrap">
-                {date}
+                {getAmount()}
                 {/* 13 April, 2024 */}
             </td>
             <td className="text-center font-ll text-ll whitespace-nowrap">
-                <button className="text-danger-600 hover:opacity-25 transition-all">
+                <button className="text-danger-600 hover:opacity-25 transition-all" onClick={onDelete}>
                     <LucideIcon size={18} name="trash-2"/>
                 </button>
             </td>

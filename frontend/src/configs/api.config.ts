@@ -320,6 +320,27 @@ export const apiPaths = {
          * */ 
         userPayroll(id: string) {
             return `api/payrolls/user/${id}`
+        },
+
+        /**
+         * URL for getting user's payroll items.
+        */
+        userPayrollItems(id: string) {
+            return `api/payrolls/user/${id}/items`
+        },
+
+        /**
+         * URL for creating user's payroll item.
+        */
+        createUserPayrollItems(id: string) {
+            return `api/payrolls/user/${id}/items`
+        },
+
+        /**
+         * URL for deleting user's payroll item.
+        */
+        deleteUserPayrollItems(id: string, itemId: string) {
+            return `api/payrolls/user/${id}/items/${itemId}`
         }
     }
 }
