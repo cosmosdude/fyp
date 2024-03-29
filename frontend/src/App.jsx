@@ -28,6 +28,7 @@ import ScheduleDetailPage from './pages/Schedules/ScheduleDetailPage'
 import PayrollsPage from './pages/Payrolls/PayrollsPage'
 import PayslipsPage from './pages/Payslips/PayslipsPage'
 import UsersPayrollPage from './pages/Payrolls/UserPayrollPage'
+import NewUserPayrollItemPage from './pages/Payrolls/NewUserPayrollItemPage'
 
 function App() {
 
@@ -84,6 +85,7 @@ function App() {
 
             <Route path="/payrolls" element={<PayrollsPage/>}/>
             <Route path="/payrolls/:userId" element={<UsersPayrollPage/>}/>
+            <Route path="/payrolls/:userId/items/new" element={<NewUserPayrollItemPage/>}/>
             
 
             <Route path="/payslips" element={<PayslipsPage/>}/>

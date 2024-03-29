@@ -140,10 +140,12 @@ export default function UsersPayrollPage() {
                 <Breadcrumb>
                     <BreadcrumbItem title="Home" to='/'/>
                     <BreadcrumbItem title="/"/>
-                    <BreadcrumbItem title="Holidays" current/>
+                    <BreadcrumbItem title="Payroll" to={-1}/>
+                    <BreadcrumbItem title="/"/>
+                    <BreadcrumbItem title="Update" current/>
                 </Breadcrumb>
                 <div className="grow"/>
-                <FilledButton icon='plus' to='new'>Add Payroll Item</FilledButton>
+                <FilledButton icon='plus' to='items/new'>Add Payroll Item</FilledButton>
             </div>
             {/* Title */}
             <div className="grid grid-cols-2 gap-[20px]">
@@ -250,7 +252,7 @@ function PayrollItemTableRow({no, item, onDelete}) {
         let amount = Number(item.amount)
         if (isNaN(amount)) amount = 0
         let isRelative = Boolean(item.relative_amount)
-        return `${(amount * (isRelative ? 100 : 1)).toFixed(0)}${isRelative ? "%" : ""}`
+        return `${(amount * (isRelative ? 100 : 1)).toFixed(0)}${isRelative ? "%" : " MMK"}`
     }
 
     return (
