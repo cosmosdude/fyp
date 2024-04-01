@@ -111,5 +111,37 @@ module.exports = {
     async delete(id) {
         return await db.promise()
             .query('update users set deleted_at=curdate() where id=?', id)
+    },
+
+    /**
+     * Create shifts for given user 
+     */
+    async createShifts(userId) {
+        return await db.promise().query(/*sql*/`
+            insert into users_shifts (user_id, day, start_at, end_at, break_seconds)
+            select * from (
+                select users.id as user_id, shifts.* from users
+                cross join (
+                    select 'sun' as 'day', null as start_at, null as end_at, 0 as break_seconds union all
+                    select 'mon' as 'day', '06:00:00' as start_at, '18:00:00' as end_at, 3600 as break_seconds union all
+                    select 'tue' as 'day', '06:00:00' as start_at, '18:00:00' as end_at, 3600 as break_seconds union all
+                    select 'wed' as 'day', '06:00:00' as start_at, '18:00:00' as end_at, 3600 as break_seconds union all
+                    select 'thu' as 'day', '06:00:00' as start_at, '18:00:00' as end_at, 3600 as break_seconds union all
+                    select 'fri' as 'day', '06:00:00' as start_at, '18:00:00' as end_at, 3600 as break_seconds union all
+                    select 'sat' as 'day', null as start_at, null as end_at, 0 as break_seconds
+                ) as shifts
+                where users.id=?
+            ) as shifts
+        `, [userId])
+    },
+
+    async createUserLeaveBalances(userId) {
+        return await db.promise().query(/*sql*/`
+            insert into users_leaves select 
+            (?) as user_id,
+            id as leave_id, 
+            initial as balance 
+            from leaves
+        `, [userId])
     }
 }

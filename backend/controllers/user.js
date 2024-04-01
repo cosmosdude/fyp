@@ -12,6 +12,7 @@ const { moveToUploads, removeFile } = require('../services/fileHandling')
 
 const userdao = require('../dao/users')
 const filedao = require('../dao/files')
+const create_user_attendances = require('../crons/create_user_attendances')
 
 exports.getAll = async (req, res) => {
     let [users] = await userdao.getAll()
@@ -147,13 +148,13 @@ exports.store = async (req, res) => {
     let [users] = await userdao.getByInsertId(result.insertId)
     let createdUser = users[0]
 
-    let [leaveBalances] = await db.promise().query(/*sql*/`
-        insert into users_leaves select 
-        (?) as user_id,
-        id as leave_id, 
-        initial as balance 
-        from leaves
-    `, [createdUser.id])
+    // insert shifts for new user
+    let [shifts] = await userdao.createShifts(createdUser.id)
+
+    create_user_attendances(createdUser.id)
+
+    // insert leave balances
+    let [leaveBalances] = await userdao.createUserLeaveBalances(createdUser.id)
 
     // res.json(leaveBalances)
     res.status(202).json({
