@@ -196,6 +196,8 @@ function RequestRow({no, overtime, date, duration, status, onApprove, onReject})
 }
 
 function OvertimeCard({title, subtitle}) {
+    title = (String(title).length > 0) ? title : "0"
+    subtitle = subtitle ? subtitle : " "
     return (
         <div className="flex flex-col border rounded-[6px] px-[16px] py-[10px]">
             <h3 className="text-ts font-ts">{title ?? " "}</h3>

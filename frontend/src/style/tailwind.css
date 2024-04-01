@@ -998,6 +998,10 @@ video {
   height: 18px;
 }
 
+.h-\[1px\] {
+  height: 1px;
+}
+
 .h-\[24px\] {
   height: 24px;
 }
@@ -1024,10 +1028,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[1px\] {
-  height: 1px;
 }
 
 .max-h-\[160px\] {
@@ -2202,6 +2202,10 @@ video {
   font-weight: 400;
 }
 
+.font-normal {
+  font-weight: 400;
+}
+
 .font-thin {
   font-weight: 100;
 }
@@ -2212,10 +2216,6 @@ video {
 
 .font-ts {
   font-weight: 600;
-}
-
-.font-normal {
-  font-weight: 400;
 }
 
 .capitalize {

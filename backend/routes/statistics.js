@@ -16,6 +16,7 @@ router.use(require('../middlewares/authenticated'))
 // Routes
 router.get('/departments', asyncHandler(controller.departments))
 router.get('/designations', asyncHandler(controller.designations))
+router.get('/leave-trends', asyncHandler(controller.leaveTrends))
 
 
 module.exports = router

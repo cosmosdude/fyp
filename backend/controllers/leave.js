@@ -171,14 +171,24 @@ exports.user = {
         // auth user info.
         let auth = req.authentication.data
         
+        let user = (await db.promise().query(/*sql*/`
+            select * from users where id=?
+        `, [auth.id]))[0]?.[0]
+
+        if (!user) return res.json([])
+
         let [balances] = await db.promise().query(/*sql*/`
             select l.id, l.name, ul.balance,
             l.initial, l.max, l.gender, 
             l.halfday, l.carried, l.earnable
             from users_leaves as ul
             left join leaves as l on l.id=ul.leave_id
-            where ul.user_id=? and l.deleted_at is NULL and l.enabled is true
-        `, [auth.id])
+            where 
+                ul.user_id=? 
+                and l.deleted_at is NULL 
+                and l.enabled is true
+                and (l.gender='All' or l.gender=?)
+        `, [auth.id, user.gender])
 
         res.json(balances)
     },
