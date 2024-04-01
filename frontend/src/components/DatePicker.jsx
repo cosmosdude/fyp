@@ -14,6 +14,7 @@ import LucideIcon from '../lib/LucideIcon'
  * @param onDateSelect Date selection callback
 */
 function DatePicker({
+    className,
     title, placeholder, 
     text = undefined,  // to display
     date, // to control input
@@ -37,7 +38,7 @@ function DatePicker({
     if (type === 'time') _type = "time"
 
     return (
-        <div className="relative flex flex-col gap-[4px]">
+        <div className={`relative flex flex-col gap-[4px] ${className}`}>
             { !!title && <p className="font-bs text-lm text-neutral-900">{title}</p> }
 
             {/* Textfield like area */}

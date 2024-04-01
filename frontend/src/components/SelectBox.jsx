@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Icon from '../assets/Icons/chevron-down.svg'
 
 function SelectBox({
+    className,
     title, placeholder, error, 
     text = undefined,
     options,
@@ -25,7 +26,7 @@ function SelectBox({
     // ${show ? 'visible opacity-100': 'invisible opacity-0'}
     return (
     <>
-        <div className="relative flex flex-col gap-[4px]">
+        <div className={`relative flex flex-col gap-[4px] ${className}`}>
             <div 
                 className={`
                 fixed flex

@@ -862,6 +862,10 @@ video {
   grid-column: span 2 / span 2;
 }
 
+.col-span-3 {
+  grid-column: span 3 / span 3;
+}
+
 .m-0 {
   margin: 0px;
 }
@@ -1030,6 +1034,26 @@ video {
   height: 100vh;
 }
 
+.h-\[200px\] {
+  height: 200px;
+}
+
+.h-\[2000px\] {
+  height: 2000px;
+}
+
+.h-\[100px\] {
+  height: 100px;
+}
+
+.h-\[400px\] {
+  height: 400px;
+}
+
+.h-\[500px\] {
+  height: 500px;
+}
+
 .max-h-\[160px\] {
   max-height: 160px;
 }
@@ -1100,6 +1124,10 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-\[150px\] {
+  width: 150px;
 }
 
 .min-w-\[100px\] {
@@ -1994,6 +2022,10 @@ video {
 
 .p-\[6px\] {
   padding: 6px;
+}
+
+.p-\[16px\] {
+  padding: 16px;
 }
 
 .\!py-0 {

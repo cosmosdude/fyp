@@ -92,11 +92,11 @@ exports.leaveTrends = async (req, res) => {
 
         datas.push(data)
     }
-
-    res.json({
-        day: date.getDate(),
-        month: date.getMonth(),
-        year: date.getFullYear(),
-        datas: datas
-    })
+    res.json(datas)
+    // res.json({
+    //     day: date.getDate(),
+    //     month: date.getMonth(),
+    //     year: date.getFullYear(),
+    //     datas: datas
+    // })
 }
