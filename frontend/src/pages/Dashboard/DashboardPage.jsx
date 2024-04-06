@@ -4,6 +4,7 @@ import DepartmentPersonnelChart from "./charts/DepartmentPersonnelChart";
 import DesignationDistributionChart from "./charts/DesignationDistributionChart";
 import DatePicker from "../../components/DatePicker";
 import LeaveTrendChart from "./charts/LeaveTrendChart";
+import AbsenteeismRateChart from "./charts/AbsenteeismRateChart";
 
 function DashboardPage() {
 
@@ -25,6 +26,10 @@ function DashboardPage() {
 
                     <div className="flex col-span-3">
                         <LeaveTrendChart/>
+                    </div>
+
+                    <div className="flex col-span-3">
+                        <AbsenteeismRateChart/>
                     </div>
                     {/* <div className="flex p-[10px] col-span-3 rounded-[6px] border h-[200px]">
                         

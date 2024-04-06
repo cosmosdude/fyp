@@ -66,7 +66,9 @@ function DesignationDistributionChart() {
                                 type: 'linear',
                                 display: true,
                                 precision: 1,
-                                stepSize: 1,
+                                ticks: {
+                                    stepSize: 1,
+                                },
                                 suggestedMax: 6,
                                 
                                 // legend: {

@@ -4,6 +4,7 @@ import useEffectLeaveTrendData from "../../../hooks/statistics/useEffectLeaveTre
 import AnyChart from "../../../lib/Chart/AnyChart";
 import { format } from "../../../utils/fast-date-fns";
 import SelectBox from "../../../components/SelectBox";
+import useEffectAbsentRateData from "../../../hooks/statistics/useEffectAbsentRateData";
 
 let bgColors = [
     "#FFE066", // yellow
@@ -16,10 +17,10 @@ let bgColors = [
 
 let borderColors = bgColors.map(x => x + (255*0.25).toString(16))
 
-function LeaveTrendChart() {
+function AbsenteeismRateChart() {
 
     let [date, setDate] = useState(new Date())
-    let data = useEffectLeaveTrendData(date)
+    let data = useEffectAbsentRateData(date)
     
     let labels = data.map(x => x.month)
     let trendCount = data[0]?.trend?.length ?? 0
@@ -32,22 +33,36 @@ function LeaveTrendChart() {
     // console.log("Trend Count", trendCount)
     // console.log("Trend", data)
 
-    let trendDatasets = []
-    for (let i = 0; i < trendCount; i++) {
-        let dataset = {
-            label: data[0]?.trend?.[i]?.name ?? "Unknown",
-            data: data.map(x => Number(x.trend[i].count) ),
-            fill: true,
-            borderWidth: 0.5,
-            tension: 0.25
-        }
-        trendDatasets.push(dataset)
-        console.log("Dataset", dataset)
-    }
+    // let datasets = data.map(x => ({
+    //     label: "Absent Rate",
+
+    // }))
+    let datasets = [{
+        label: "Absent Rate", 
+        data: data.map(x => {
+            let absent = Number(x.absentDays)
+            let working = Number(x.workingDays)
+            return working === 0 ? 0: (absent / working) * 100
+        }),
+        tension: 0.4
+    }]
+
+    // let trendDatasets = []
+    // for (let i = 0; i < trendCount; i++) {
+    //     let dataset = {
+    //         label: data[0]?.trend?.[i]?.name ?? "Unknown",
+    //         data: data.map(x => Number(x.trend[i].count) ),
+    //         fill: true,
+    //         borderWidth: 0.5,
+    //         tension: 0.1
+    //     }
+    //     trendDatasets.push(dataset)
+    //     console.log("Dataset", dataset)
+    // }
     return (
         <div className="flex flex-col w-full h-full p-[10px] rounded-[6px] border">
             <div className="flex grow text-bs font-bs">
-                <h1>Leave Trend</h1>
+                <h1>Absent Rate</h1>
                 <div className="grow"/>
                 <SelectBox 
                     className="w-[150px]"
@@ -65,7 +80,7 @@ function LeaveTrendChart() {
                     type='line'
                     data={{
                         labels: labels,
-                        datasets: trendDatasets,
+                        datasets: datasets,
                     }}
                     options={{
                         responsive: true,
@@ -73,9 +88,11 @@ function LeaveTrendChart() {
                         scales: {
                             y: {
                               // the data minimum used for determining the ticks is Math.min(dataMin, suggestedMin)
-                                suggestedMin: 0,
-                                suggestedMax: 10,
-                                min: 0,
+                              suggestedMin: 0,
+                              min: 0,
+                      
+                              // the data maximum used for determining the ticks is Math.max(dataMax, suggestedMax)
+                              suggestedMax: 100,
                             }
                         }
                     }}
@@ -86,4 +103,4 @@ function LeaveTrendChart() {
     );
 }
 
-export default LeaveTrendChart;
+export default AbsenteeismRateChart;

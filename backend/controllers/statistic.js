@@ -85,7 +85,7 @@ exports.leaveTrends = async (req, res) => {
         `, [format(first, 'yyyy-MM-dd'), format(last, 'yyyy-MM-dd')])
 
         let data = {
-            month: format(startOfMonth, 'MMM'),
+            month: format(startOfMonth, 'MMMM'),
             first: format(first, 'yyyy-MM-dd'), last: format(last, 'yyyy-MM-dd'),
             trend: leaveTrend
         }
@@ -177,7 +177,7 @@ exports.absentRate = async (req, res) => {
         `, [format(first, 'yyyy-MM-dd'), format(last, 'yyyy-MM-dd')]))[0]?.[0].count ?? 0
 
         let data = {
-            month: format(startOfMonth, 'MMM'),
+            month: format(startOfMonth, 'MMMM'),
             first: format(first, 'yyyy-MM-dd'), last: format(last, 'yyyy-MM-dd'),
             //trend: leaveTrend
             workingDays,
