@@ -277,7 +277,10 @@ function ScheduleItem({
 
     // expected format <- 1970-01-01T10:00:00.000Z
     function getTimePart(iso = "") {
-        return iso.split('T')[1]?.split('.')[0]
+        let time = iso.split('T')[1]?.split('.')[0]
+        let hr = time.split(':')[0]
+        let min = time.split(':')[1]
+        return `${hr}:${min}:00`
     }
 
     let dateDiff = (endDate.getTime() - startDate.getTime()) / 1000

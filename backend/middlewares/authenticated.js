@@ -1,6 +1,6 @@
 const jwt = require('../jwt')
 
-module.exports = async (req, res, next) => {
+module.exports = async function checkAuth(req, res, next) {
     // if header does not exists, it's unauthenticated
     if (!headerExists(req)) return res.sendStatus(401)
     

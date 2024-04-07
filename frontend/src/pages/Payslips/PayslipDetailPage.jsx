@@ -80,6 +80,10 @@ export default function PayslipDetailPage() {
         grossDeduction = deductionCap
     }
     
+    function hasOvertime() {
+        ~~Number(payslip.detail?.overtime) !== 0
+    }
+
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
             {/* Top nav */}
@@ -133,7 +137,7 @@ export default function PayslipDetailPage() {
                             style="success"
                         />
                     })}
-                    {payslip.detail?.overtime && <PayslipItem title="Overtime" amount={payslip.detail?.overtime ?? ""} boldAmount/>}
+                    {hasOvertime() && <PayslipItem title="Overtime" amount={payslip.detail?.overtime ?? ""} boldAmount/>}
                     <Separator/>
                     <PayslipItem boldTitle title="Gross Income" amount={`${grossIncome} MMK`} boldAmount style="success"/>
                     <Separator/>

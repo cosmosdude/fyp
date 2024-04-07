@@ -156,6 +156,15 @@ exports.store = async (req, res) => {
     // insert leave balances
     let [leaveBalances] = await userdao.createUserLeaveBalances(createdUser.id)
 
+    let [payroll] = await db.promise().query(/*sql*/`
+        insert into users_payrolls set ?
+    `, {
+        user_id: createdUser.id,
+        salary: 17400, wage: 5800,
+        overtime_rate: 2.0,
+        tax_rate: 0.0
+    })
+
     // res.json(leaveBalances)
     res.status(202).json({
         createdUser, leaveBalances

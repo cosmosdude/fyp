@@ -1,6 +1,6 @@
 const formidable = require('formidable')
 
-module.exports = async (req, res, next) => {
+module.exports = async function parse(req, res, next) {
 
     // Formidable is only used for form parsing here.
     let contentType = req.headers['content-type']
