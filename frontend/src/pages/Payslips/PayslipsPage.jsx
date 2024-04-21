@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Avatar from "../../components/Avatar";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
@@ -20,6 +20,7 @@ import { usePushNoti } from "../../components/Noti/NotiSystem";
 import { useAuthContext } from "../../hooks/AuthStateContext";
 import sleep from "../../utils/sleep";
 import { useNavigate } from "react-router-dom";
+import SearchBox from "../../components/SearchBox";
 
 function PayslipsPage() {
 
@@ -32,6 +33,17 @@ function PayslipsPage() {
     let [records, setRecords] = useAllPayslips(date, trigger)
 
     let [generating, setGenerating] = useState([])
+
+    let [predicate, setPredicate] = useState("")
+    let [filtered, setFiltered] = useState([])
+
+    useEffect(() => {
+        let text = predicate.toLowerCase()
+        setFiltered(records.filter(rec => {
+            let name = fullname(rec.first_name, rec.last_name).toLowerCase()
+            return name.includes(text);
+        }))
+    }, [records, predicate])
 
     async function generateForAllUsers() {
         records.forEach(x => generate(x.user_id))
@@ -94,7 +106,14 @@ function PayslipsPage() {
                 <h1 className="text-neutral-900 text-tl font-tl">Attendance</h1>
                 <p className="text-neutral-900 text-bm font-bm">All attendance records are shown here.</p>
             </div>
-            <div className="grid grid-cols-4">
+            <div className="grid grid-cols-4 gap-[20px]">
+                <SearchBox 
+                    text={predicate}
+                    placeholder="Search employees by name"
+                    onChange={e => {
+                        setPredicate(e.target.value ?? "")
+                    }}
+                />
                 <DatePicker 
                     text={format(date ?? new Date(), 'MMMM yyy') }
                     date={date} onDateSelect={x => {
@@ -119,7 +138,7 @@ function PayslipsPage() {
                     </thead>
                     <tbody className="">
                         {/* <AttendanceRow /> */}
-                        {records.map((x, i) => <PayslipRow 
+                        {filtered.map((x, i) => <PayslipRow 
                             key={i} no={i + 1}
                             record={x}
                             isGenerating={generating.includes(x.user_id)}

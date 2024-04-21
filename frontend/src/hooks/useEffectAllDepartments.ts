@@ -27,5 +27,5 @@ export default function useEffectAllDepartments(): any[] {
         return () => aborter.abort()
     }, [])
 
-    return departments
+    return [departments, setDepartments]
 }

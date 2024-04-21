@@ -24,7 +24,7 @@ function DesignationDetailPage() {
 
     let accessToken = useAuthContext()
 
-    let departments = useEffectAllDepartments()
+    let [departments] = useEffectAllDepartments()
 
     let [name, setName] = useState("");
     let [selectedIndex, setSelectedIndex] = useState(null)

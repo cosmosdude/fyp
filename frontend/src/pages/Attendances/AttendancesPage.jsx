@@ -1,8 +1,10 @@
+import { useEffect, useState } from "react";
 import Avatar from "../../components/Avatar";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
 import FilledButton from "../../components/Buttons/FilledButton";
 import GhostButton from "../../components/Buttons/GhostButton";
+import SearchBox from "../../components/SearchBox";
 import { imageRoute } from "../../configs/api.config";
 import useAllAttendanceRecords from "../../hooks/useAllAttendanceRecords";
 import breakTimeDisplayText from "../../utils/breakTime";
@@ -18,6 +20,17 @@ function AttendancesPage() {
     // for (let i = 0; i < 10; i++) schedules.push({id: i})
 
     let records = useAllAttendanceRecords()
+
+    let [predicate, setPredicate] = useState("")
+    let [filtered, setFiltered] = useState([])
+
+    useEffect(() => {
+        let text = predicate.toLowerCase()
+        setFiltered(records.filter(rec => {
+            let name = fullname(rec.first_name, rec.last_name).toLowerCase()
+            return name.includes(text);
+        }))
+    }, [records, predicate])
 
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
@@ -35,6 +48,15 @@ function AttendancesPage() {
             <div className="flex flex-col">
                 <h1 className="text-neutral-900 text-tl font-tl">Attendance</h1>
                 <p className="text-neutral-900 text-bm font-bm">All attendance records are shown here.</p>
+            </div>
+            <div className="grid grid-cols-3 gap-[20px]">
+                <SearchBox 
+                    text={predicate}
+                    placeholder="Search employees by name"
+                    onChange={e => {
+                        setPredicate(e.target.value ?? "")
+                    }}
+                />
             </div>
             <div className="block overflow-scroll w-full border rounded-[6px]">
                 <table className="table-auto min-w-full mx-auto border-separate border-spacing-0">
@@ -56,7 +78,7 @@ function AttendancesPage() {
                     </thead>
                     <tbody className="">
                         {/* <AttendanceRow /> */}
-                        {records.map((x, i) => <AttendanceRow 
+                        {filtered.map((x, i) => <AttendanceRow 
                             key={i} no={i + 1}
                             record={x}
                         />)}
@@ -136,7 +158,8 @@ function AttendanceRow({no, record}) {
             </td>
             <td className="text-center font-ll text-ll whitespace-nowrap">
                 {/* 9:00 AM to 6:00 PM */}
-                {shift}
+                {/* {shift} */}
+                <ShiftLabel shift={shift}/>
             </td>
             <td className="text-center font-ll text-ll whitespace-nowrap">
                 {breakTimeDisplayText(record.break_seconds)}
@@ -158,6 +181,13 @@ function AttendanceRow({no, record}) {
             </td>
         </tr>
     )
+}
+
+function ShiftLabel({shift}) {
+    return <>
+        {shift !== 'Off' && <p>{shift}</p>}
+        {shift === 'Off' && <p className="text-neutral-300 p-[4px] border-[1.5px] rounded-[8px]  border-dashed">{"Off"}</p>}
+    </>
 }
 
 export default AttendancesPage;

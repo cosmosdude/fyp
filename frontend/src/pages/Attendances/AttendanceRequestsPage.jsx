@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Avatar from "../../components/Avatar";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
@@ -11,6 +12,7 @@ import { capitalize } from "../../utils/capitalized";
 import { format } from "../../utils/fast-date-fns";
 import { fullname } from "../../utils/fullname";
 import timeDisplayText from "../../utils/timeDisplayText";
+import SearchBox from "../../components/SearchBox";
 
 export default function AttendanceRequestsPage() {
     let pushNoti = usePushNoti()
@@ -19,6 +21,17 @@ export default function AttendanceRequestsPage() {
     // for (let i = 0; i < 10; i++) schedules.push({id: i})
 
     let [requests, setRequests] = useAllAttendanceRequests()
+
+    let [predicate, setPredicate] = useState("")
+    let [filtered, setFiltered] = useState([])
+
+    useEffect(() => {
+        let text = predicate.toLowerCase()
+        setFiltered(requests.filter(req => {
+            let name = fullname(req.requester_first_name, req.requester_last_name).toLowerCase()
+            return name.includes(text);
+        }))
+    }, [requests, predicate])
 
     async function respond(id, status) {
         let f = new FormData()
@@ -76,6 +89,15 @@ export default function AttendanceRequestsPage() {
                 <h1 className="text-neutral-900 text-tl font-tl">Attendance Requests</h1>
                 <p className="text-neutral-900 text-bm font-bm">Attendance request made by employees are shown here.</p>
             </div>
+            <div className="grid grid-cols-3 gap-[20px]">
+                <SearchBox 
+                    text={predicate}
+                    placeholder="Search employees by name"
+                    onChange={e => {
+                        setPredicate(e.target.value ?? "")
+                    }}
+                />
+            </div>
             <div className="block overflow-scroll w-full border rounded-[6px]">
                 <table className="table-auto min-w-full mx-auto border-separate border-spacing-0">
                     <thead className="sticky top-[0px] left-0 z-10">
@@ -95,7 +117,7 @@ export default function AttendanceRequestsPage() {
                     </thead>
                     <tbody className="">
                         {/* <AttendanceRow /> */}
-                        {requests.map((x, i) => <RequestRow 
+                        {filtered.map((x, i) => <RequestRow 
                             key={i} no={i + 1}
                             request={x}
                             onApprove={() => {respond(x.id, 'approved')}}

@@ -13,6 +13,8 @@ import { fullname } from "../../utils/fullname";
 import { position } from "../../utils/position";
 import { scheduleDisplayText } from "../../utils/scheduleDisplayText";
 import timeDisplayText, { dateFrom24HrTime } from "../../utils/timeDisplayText";
+import { useEffect, useState } from "react";
+import SearchBox from "../../components/SearchBox";
 
 function PayrollsPage() {
 
@@ -21,6 +23,17 @@ function PayrollsPage() {
     // for (let i = 0; i < 10; i++) schedules.push({id: i})
 
     let records = useAllUserPayrolls()
+
+    let [predicate, setPredicate] = useState("")
+    let [filtered, setFiltered] = useState([])
+
+    useEffect(() => {
+        let text = predicate.toLowerCase()
+        setFiltered(records.filter(rec => {
+            let name = fullname(rec.first_name, rec.last_name).toLowerCase()
+            return name.includes(text);
+        }))
+    }, [records, predicate])
 
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
@@ -39,16 +52,25 @@ function PayrollsPage() {
                 <h1 className="text-neutral-900 text-tl font-tl">Payroll</h1>
                 <p className="text-neutral-900 text-bm font-bm">Employee payroll information.</p>
             </div>
+            <div className="grid grid-cols-3 gap-[20px]">
+                <SearchBox 
+                    text={predicate}
+                    placeholder="Search employees by name"
+                    onChange={e => {
+                        setPredicate(e.target.value ?? "")
+                    }}
+                />
+            </div>
             <div className="block overflow-scroll w-full border rounded-[6px]">
                 <table className="table-auto min-w-full mx-auto border-separate border-spacing-0">
                     <thead className="sticky top-[0px] left-0 z-10">
                         <tr className="
-                        [&>*]:px-[24px] [&>*]:py-[16px]
+                        [&>*]:px-[8px] [&>*]:py-[16px]
                         [&>*]:border-[0.5px] 
                         [&>*]:font-bm [&>*]:text-bm
                         [&>*]:bg-background-1
                         ">
-                            <th className="sticky left-0 items-center">No.</th>
+                            <th className="sticky left-0 items-center whitespace-nowrap">No.</th>
                             <th className="sticky left-0 text-left font-bm text-bm">Employee</th>
                             <th>Salary</th>
                             <th>Wage</th>
@@ -57,7 +79,7 @@ function PayrollsPage() {
                     </thead>
                     <tbody className="">
                         {/* <AttendanceRow /> */}
-                        {records.map((x, i) => <PayrollRow 
+                        {filtered.map((x, i) => <PayrollRow 
                             key={i} no={i + 1}
                             record={x}
                             onClick={() => {
@@ -128,7 +150,7 @@ function PayrollRow({no, record, onClick}) {
         "
         onClick={onClick}
         >
-            <td className="sticky left-0 text-center font-bs text-bs whitespace-nowrap">
+            <td className="sticky left-0 text-center font-ll text-ll whitespace-nowrap">
                 {no ?? ''}
             </td>
             <td className="sticky left-0 bg-white group-hover:bg-primary-50 text-left whitespace-nowrap">

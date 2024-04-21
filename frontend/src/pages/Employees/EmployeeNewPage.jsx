@@ -36,7 +36,7 @@ function EmployeeNewPage() {
 
     let navigate = useNavigate()
     let authToken = useAuthContext()
-    let departments = useEffectAllDepartments()
+    let [departments] = useEffectAllDepartments()
     let managers = useAllManagers()
 
     let me = useEffectUserDetail()

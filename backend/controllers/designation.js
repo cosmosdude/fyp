@@ -6,19 +6,21 @@ exports.getAll = async (req, res) => {
     console.log(req.query)
     let {departmentId} = req.query
 
-    let [results] = await con.promise().query(
-        `\
-select A.id, \
-A.name, \
-B.id as department_id, \
-B.name as department_name, \
-A.deleted_at \
-from designations as A \
-inner join departments as B \
-on A.department_id=B.id \
-${departmentId ? 'where B.id=?' : ''}\ 
-group by A.name
-        `, [departmentId])
+    let [results] = await con.promise().query(/*sql*/`
+        select A.id, 
+        A.name, 
+        B.id as department_id, 
+        B.name as department_name, 
+        A.deleted_at 
+        from designations as A 
+        inner join departments as B 
+        on A.department_id=B.id 
+        where B.deleted_at is NULL and A.deleted_at is NULL
+        ${departmentId ? 'and B.id=?' : ''}
+
+        group by A.name
+        `, [departmentId]
+    )
     res.json(results)
 }
 

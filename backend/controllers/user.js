@@ -43,12 +43,13 @@ exports.store = async (req, res) => {
     })()
 
     let newUser = req.body || {}
+    if (!newUser.dob) newUser.dob = undefined;
 
     try {
         newUser = z.object({
             username: z.string().min(8),
             password: z.string().min(8),
-            first_name: z.string().min(1),
+            first_name: z.string().min(1).optional(),
             dob: z.coerce.date().optional(),
             gender: z.enum(['Male', 'Female', 'Unspecified']).default('Unspecified'),
             email: z.string().email().optional(),
@@ -90,9 +91,8 @@ exports.store = async (req, res) => {
     if (newUser.work_email && !isEmail(newUser.work_email))
     return res.status(400).send("work_email is not a valid email address.")
 
-
     // if invalid date range
-    if (isNaN(new Date(newUser.dob))) return res.status(400).send('Invalid dob')
+    if (newUser.dob && isNaN(new Date(newUser.dob))) return res.status(400).send('Invalid dob')
 
     // # Report To
     // if (!newUser.report_to) newUser.report_to = null

@@ -10,11 +10,14 @@ import departmentService from "../../services/department";
 import { useAuthContext } from "../../hooks/AuthStateContext";
 import useEffectAllDepartments from "../../hooks/useEffectAllDepartments";
 import SearchBox from "../../components/SearchBox";
+import { apiPaths, apiRoute } from "../../configs/api.config";
+import { usePushNoti } from "../../components/Noti/NotiSystem";
 
 export default function DepartmentsPage() {
     let navigate = useNavigate()
-
-    let departments = useEffectAllDepartments()
+    let pushNoti = usePushNoti()
+    let accessToken = useAuthContext()
+    let [departments, setDepartments] = useEffectAllDepartments()
 
     let [predicate, setPredicate] = useState("")
     let [filtered, setFiltered] = useState([])
@@ -26,6 +29,36 @@ export default function DepartmentsPage() {
             return name.includes(text);
         }))
     }, [departments, predicate])
+
+    async function deleteItem(id) {
+        try {
+            let res = await fetch(
+                apiRoute(apiPaths.department.delete(id)), 
+                {
+                    method: "DELETE",
+                    headers: { 
+                        // 'content-type': "application/json",
+                        'authorization': `Bearer ${accessToken}`
+                    }
+                }
+            )
+
+            if (res.status >= 200 && res.status < 300) {
+                let text = await res.text()
+                pushNoti({
+                    title: "Deleted", 
+                    message: `Designation successfully deleted ${id} ${text} `, 
+                    style: "success"
+                })
+                setDepartments(departments.filter(d => d.id !== id))
+            } else {
+                pushNoti({title: "Error", message: `Unable to delete designation ${id}`, style: "danger"})
+            }
+        } catch (error) {
+            console.error(error)
+            pushNoti({title: "Error", message: `Unable to delete designation ${id}`, style: "danger"})
+        }
+    }
 
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
@@ -55,12 +88,13 @@ export default function DepartmentsPage() {
                 />
             </div>
 
-            <div className="grid grid-cols-3 gap-[20px]">
+            <div className="grid grid-cols-3 gap-[20px] items-start">
                 {filtered.map((dep) => {
                     return <DepartmentCard 
                         key={dep.id}
                         title={dep.name}
                         onClick={() => navigate(`/departments/${dep.id}`)}
+                        onDelete={() => deleteItem(dep.id)}
                     />    
                 })}
             </div>
