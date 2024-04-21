@@ -37,7 +37,7 @@ module.exports = {
     // Delete file given by id.
     async deleteById(id) {
         return await db.promise().query(
-            'update files set deleted_at=CURDATE() where id=?', [id]
+            /*sql*/`update files set deleted_at=CURDATE() where id=?`, [id]
         )
     }
 

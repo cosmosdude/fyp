@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import departmentService from "../../services/department";
 import designationService from "../../services/designations";
 import { useNavigate } from "react-router-dom";
+import SearchBox from "../../components/SearchBox";
 
 export default function DesignationsPage() {
     let navigate = useNavigate()
@@ -39,6 +40,18 @@ export default function DesignationsPage() {
         return () => aborter.abort()
     }, [])
 
+    let [predicate, setPredicate] = useState("");
+
+    let [filtered, setFiltered] = useState([]);
+
+    useEffect(() => {
+        let text = predicate.toLowerCase()
+        setFiltered(designations.filter(des => {
+            let name = des.name.toLowerCase()
+            return name.includes(text);
+        }))
+    }, [designations, predicate]);
+
     return(
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
             {/* Top nav */}
@@ -58,11 +71,21 @@ export default function DesignationsPage() {
             </div>
 
             <div className="grid grid-cols-3 gap-[20px]">
-                {designations.map(department => {
+                <SearchBox 
+                    text={predicate}
+                    placeholder="Search designations by name"
+                    onChange={e => {
+                        setPredicate(e.target.value ?? "")
+                    }}
+                />
+            </div>
+
+            <div className="grid grid-cols-3 gap-[20px]">
+                {filtered.map(des => {
                     return <DesignationCard 
-                        key={department.id}
-                        title={department.name}
-                        onClick={() => navigate(`/designations/${department.id}`)}
+                        key={des.id}
+                        title={des.name}
+                        onClick={() => navigate(`/designations/${des.id}`)}
                     />    
                 })}
             </div>

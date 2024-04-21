@@ -17,6 +17,7 @@ import { useAuthState, useAuthStateContext } from '../hooks/AuthStateContext'
 import signin from '../services/signin'
 import sleep from '../utils/sleep'
 import { Navigate, useNavigate } from 'react-router-dom'
+import { usePushNoti } from '../components/Noti/NotiSystem'
 
 let images = [
     AgencyImage, DocumentsImage, PieChartImage, PresentationImage, 
@@ -26,6 +27,7 @@ let images = [
 export default function LoginPage() {
 
     let navigate = useNavigate()
+    let pushNoti = usePushNoti()
 
     let [isLoading, setIsLoading] = useState(false)
 
@@ -50,7 +52,11 @@ export default function LoginPage() {
 
         if (res.status === 200) {
             let json = await res.json()
-            setAuth(json.accessToken)
+            if (json?.user?.role_id > 2) {
+                setError("You don't have access to dashboard.")
+            } else {
+                setAuth(json.accessToken)
+            }
         } else if (res.status === 400) {
             let json = await res.json()
             setError(json.error)

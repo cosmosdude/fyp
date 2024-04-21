@@ -21,7 +21,7 @@
   "scripts": {
     "dev": "nodemon index.ts -e js,ts",
     "prod": "node index.js",
-    "route:list": "ts-node list-routes",
+    "route:list": "npx ts-node list-routes",
     "migration:add": "ts-node migration add migration",
     "migration:seed": "ts-node migration add seed",
     "migration": "ts-node migration up",

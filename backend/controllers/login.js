@@ -30,7 +30,10 @@ exports.login = async function login(req, res) {
             role_id: user.role_id
         }
         let token = jwt.sign(theUser, { algorithm: 'RS512' })
-        res.json({accessToken: token})
+        res.json({
+            accessToken: token,
+            user: theUser
+        })
     } catch (error) { 
         throw error
     }

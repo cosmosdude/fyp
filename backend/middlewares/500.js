@@ -7,6 +7,7 @@ module.exports = (error, req, res, next) => {
         res.status(500).send(`
         DEVELOPMENT ONLY\n
         ${error.stack}
+        ${error}
         `)
     }
     else res.send('Internal Server Error')

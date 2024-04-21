@@ -42,6 +42,16 @@ app.use('/api/notifications', require('./routes/notifications'))
 
 app.use('/api/statistic', require('./routes/statistics'))
 
+app.use(
+    '/test',
+    (req, res, next) => { 
+        // auth fail
+        next()
+    },
+    (req, res) => { 
+        throw "Testing 1 2 3"
+    }
+)
 
 // # Tests
 const upload = require('./services/fileHandling.js')
@@ -64,6 +74,8 @@ const upload = require('./services/fileHandling.js')
 //         uploadedFiles
 //     })
 // })
+
+// [no-route], ['/test']
 
 // MW: 404
 app.use(require('./middlewares/404')) // catch unhandled routes as 404

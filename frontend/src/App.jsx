@@ -30,6 +30,7 @@ import PayslipsPage from './pages/Payslips/PayslipsPage'
 import UsersPayrollPage from './pages/Payrolls/UserPayrollPage'
 import NewUserPayrollItemPage from './pages/Payrolls/NewUserPayrollItemPage'
 import PayslipDetailPage from './pages/Payslips/PayslipDetailPage'
+import NotiSystem from './components/Noti/NotiSystem'
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
   console.log('authState:', authState)
 
   return (
+    <NotiSystem>
     <AuthStateContext.Provider value={authState}>
       <AuthContext.Provider value={authState[0]}>
         <Routes>
@@ -100,6 +102,7 @@ function App() {
         </Routes>
       </AuthContext.Provider>
     </AuthStateContext.Provider>
+    </NotiSystem>
   )
 }
 

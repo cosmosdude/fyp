@@ -60,7 +60,7 @@ export default {
         
         'neutral-50': '#f2f2f2',
         'neutral-100': '#e6e6e6',
-        'neutral-200': '#cccccc',
+        'neutral-200': '#cccccc', 'border': '#cccccc',
         'neutral-300': '#b3b3b3',
         'neutral-400': '#999999',
         'neutral-500': '#808080',

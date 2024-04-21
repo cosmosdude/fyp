@@ -39,7 +39,6 @@ export default function HomePage() {
     let fullname = [me?.first_name, me?.last_name].filter(x => !!x).join(' ')
 
     return (
-        <NotiSystem>
         <div className="relative flex gap-[20px] p-[20px] w-screen h-screen">
             {/* Left Nav */}
             <div className="flex flex-col gap-[10px] min-w-[300px] max-w-[300px] overflow-hidden">
@@ -99,7 +98,6 @@ export default function HomePage() {
 
             {/* <NotiStackView/> */}
         </div>
-        </NotiSystem>
     )
 }
 

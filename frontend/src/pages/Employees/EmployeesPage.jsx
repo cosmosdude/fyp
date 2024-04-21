@@ -8,10 +8,25 @@ import useEffectGetAllEmployees from "../../hooks/useEffectGetAllEmployees";
 import { format } from "date-fns";
 import { imageRoute } from "../../configs/api.config";
 import { useNavigate } from "react-router-dom";
+import SearchBox from "../../components/SearchBox";
+import { fullname } from "../../utils/fullname";
+import { useEffect, useState } from "react";
 
 function EmployeesPage() {
     let navigate = useNavigate()
     let employees = useEffectGetAllEmployees();
+
+    let [predicate, setPredicate] = useState("");
+
+    let [filtered, setFiltered] = useState([]);
+
+    useEffect(() => {
+        let text = predicate.toLowerCase()
+        setFiltered(employees.filter(emp => {
+            let name = String(fullname(emp.first_name, emp.last_name)?.toLowerCase() ?? "")
+            return name.includes(text);
+        }))
+    }, [employees, predicate]);
     
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
@@ -31,13 +46,22 @@ function EmployeesPage() {
                 <p className="text-neutral-900 text-bm font-bm">All employees are listed here.</p>
             </div>
             
+            <div className="grid grid-cols-3 gap-[20px]">
+                <SearchBox 
+                    text={predicate}
+                    placeholder="Search employee by name"
+                    onChange={e => {
+                        setPredicate(e.target.value ?? "")
+                    }}
+                />
+            </div>
             {/* Search Section */}
             {/* <div className="mx-auto"></div> */}
 
             {/* Card list view */}
             <div className="grow overflow-y-scroll">
                 <div className="grid grid-cols-3 gap-[20px]">
-                    {employees.map(
+                    {filtered.map(
                         (emp, i) => {
                             return <
                                 EmployeeCard 

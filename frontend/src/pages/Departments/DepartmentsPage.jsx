@@ -9,11 +9,23 @@ import { useEffect, useState } from "react";
 import departmentService from "../../services/department";
 import { useAuthContext } from "../../hooks/AuthStateContext";
 import useEffectAllDepartments from "../../hooks/useEffectAllDepartments";
+import SearchBox from "../../components/SearchBox";
 
 export default function DepartmentsPage() {
     let navigate = useNavigate()
 
     let departments = useEffectAllDepartments()
+
+    let [predicate, setPredicate] = useState("")
+    let [filtered, setFiltered] = useState([])
+
+    useEffect(() => {
+        let text = predicate.toLowerCase()
+        setFiltered(departments.filter(des => {
+            let name = des.name.toLowerCase()
+            return name.includes(text);
+        }))
+    }, [departments, predicate])
 
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
@@ -34,7 +46,17 @@ export default function DepartmentsPage() {
             </div>
 
             <div className="grid grid-cols-3 gap-[20px]">
-                {departments.map((dep) => {
+                <SearchBox 
+                    text={predicate}
+                    placeholder="Search departments by name"
+                    onChange={e => {
+                        setPredicate(e.target.value ?? "")
+                    }}
+                />
+            </div>
+
+            <div className="grid grid-cols-3 gap-[20px]">
+                {filtered.map((dep) => {
                     return <DepartmentCard 
                         key={dep.id}
                         title={dep.name}
