@@ -1,4 +1,5 @@
 const jwt = require('../jwt')
+const db = require('../mysql')
 
 module.exports = async function checkAuth(req, res, next) {
     // if header does not exists, it's unauthenticated

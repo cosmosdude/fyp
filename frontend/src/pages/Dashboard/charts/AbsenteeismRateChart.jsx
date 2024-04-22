@@ -72,6 +72,7 @@ function AbsenteeismRateChart() {
                     onSelect={(item, i) => {
                         setDate(new Date(`${item}-01-01`))
                     }}
+                    position="right" fullWidth={false}
                 />
             </div>   
             <div className="grow p-[10px]">

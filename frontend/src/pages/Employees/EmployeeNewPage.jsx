@@ -98,6 +98,11 @@ function EmployeeNewPage() {
 
             if (res.status >= 200 && res.status < 300) {
                 console.log(await res.json())
+                pushNoti({
+                    title: "Created", 
+                    message: `Employee has been created`, 
+                    style: "success"
+                })
                 navigate(-1)
             } else {
                 let error = await res.text()
@@ -126,6 +131,11 @@ function EmployeeNewPage() {
 
             if (res.status >= 200 && res.status < 300) {
                 console.log(await res.json())
+                pushNoti({
+                    title: "Updated", 
+                    message: `Employee information updated`, 
+                    style: "success"
+                })
                 navigate(-1)
             } else {
                 let error = await res.text()
@@ -370,14 +380,14 @@ function EmployeeNewPage() {
 
                                 <SelectBox 
                                     title='Status' 
-                                    placeholder="active"
-                                    text={employee.status}
-                                    options={["active", 'deactive']}
+                                    placeholder="Active"
+                                    text={employee.status === 'active' ? 'Active' : 'Terminated'}
+                                    options={["Active", 'Terminated']}
                                     selected={["active", 'deactive'].indexOf(employee.status)}
                                     disabled={type === 'detail'}
-                                    onSelect={(item) => {
+                                    onSelect={(item, index) => {
                                         dispatchEmployee({value: {
-                                            status: item
+                                            status: ["active", 'deactive'][index]
                                         }})
                                     }}
                                 />

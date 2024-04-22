@@ -45,7 +45,7 @@ export default function LeavesPage() {
                         <table className="table-auto min-w-full mx-auto border-spacing-[0px] border-separate">
                             <thead className="sticky top-[0px] left-0 z-[1] border rounded-tr-[6px]">
                                 <tr className="
-                                [&>*]:px-[24px] [&>*]:py-[16px]
+                                [&>*]:px-[8px] [&>*]:py-[16px]
                                 [&>*]:border-[0.5px]
                                 [&>*:first-child]:rounded-tl-[6px]
                                 [&>*:last-child]:rounded-tr-[6px]

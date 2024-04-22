@@ -77,7 +77,7 @@ export default function LoginPage() {
             grow h-full basis-0
             flex items-center justify-end  
             rounded-[14px] 
-            bg-gradient-to-r from-primary-50 to-transparent
+            //bg-gradient-to-r from-primary-50 to-transparent
             ">
                 <img 
                     className="block my-auto"

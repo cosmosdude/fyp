@@ -14,6 +14,7 @@ import breakTimeDisplayText from "../../utils/breakTime";
 import useMonthlyOvertimeStatistics from "../../hooks/useMonthlyOvertimeStatistics";
 import { useEffect, useState } from "react";
 import { fullname } from "../../utils/fullname";
+import SearchBox from "../../components/SearchBox";
 
 export default function OvertimesPage() {
     let auth = useAuthContext()
@@ -24,6 +25,17 @@ export default function OvertimesPage() {
     let [overtimes, setOvertimes] = useAllOvertimeRequests()
     let statistic = useMonthlyOvertimeStatistics()
     console.log("Statistic", statistic)
+
+    let [predicate, setPredicate] = useState("")
+    let [filtered, setFiltered] = useState([])
+
+    useEffect(() => {
+        let text = predicate.toLowerCase()
+        setFiltered(overtimes.filter(ot => {
+            let name = fullname(ot.requester_first_name, ot.requester_last_name).toLowerCase()
+            return name.includes(text);
+        }))
+    }, [overtimes, predicate])
 
     let [pending, setPending] = useState(0)
     let [approved, setApproved] = useState(0)
@@ -112,6 +124,15 @@ export default function OvertimesPage() {
                 <h1 className="text-neutral-900 text-tl font-tl">Requests</h1>
                 <p className="text-neutral-900 text-bm font-bm">Overtime request made by employee are shown here.</p>
             </div>
+            <div className="grid grid-cols-3 gap-[20px]">
+                <SearchBox 
+                    text={predicate}
+                    placeholder="Search employees by name"
+                    onChange={e => {
+                        setPredicate(e.target.value ?? "")
+                    }}
+                />
+            </div>
             <div className="flex w-full border rounded-[6px]">
                 <table className="table-auto min-w-full mx-auto border-separate border-spacing-0">
                     <thead className="sticky top-[0px] left-0 z-10">
@@ -131,7 +152,7 @@ export default function OvertimesPage() {
                     </thead>
                     <tbody className="">
                         {/* <AttendanceRow /> */}
-                        {overtimes.map( (x, i) => <RequestRow 
+                        {filtered.map( (x, i) => <RequestRow 
                             key={x.id} no={i + 1} 
                             overtime={x}
                             date={format(new Date(x.date), 'd MMM, yyyy')}

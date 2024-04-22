@@ -15,8 +15,9 @@ const filedao = require('../dao/files')
 const create_user_attendances = require('../crons/create_user_attendances')
 
 exports.getAll = async (req, res) => {
+    let user = req.authUser
     let [users] = await userdao.getAll()
-    res.json(users)
+    res.json(users.filter(x => x.role_id >= user.role_id))
 }
 
 exports.get = async (req, res) => {

@@ -23,6 +23,8 @@ exports.login = async function login(req, res) {
         let user = results[0]
         //
 
+        if (user.status === 'deactive') return sendError('Your account has been terminated.')
+
         let theUser = {
             id: user.id,
             username: user.username,

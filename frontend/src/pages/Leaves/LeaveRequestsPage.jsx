@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Avatar from "../../components/Avatar";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
@@ -10,6 +10,8 @@ import { apiPaths, apiRoute, imageRoute } from "../../configs/api.config";
 import { usePushNoti } from "../../components/Noti/NotiSystem";
 import { useAuthContext } from "../../hooks/AuthStateContext";
 import { capitalize } from "../../utils/capitalized";
+import { fullname } from "../../utils/fullname";
+import SearchBox from "../../components/SearchBox";
 
 export default function LeaveRequestsPage() {
     let pushNoti = usePushNoti()
@@ -17,6 +19,17 @@ export default function LeaveRequestsPage() {
     let auth = useAuthContext()
 
     let [requests, setRequests] = useAllLeaveRequests()
+
+    let [predicate, setPredicate] = useState("")
+    let [filtered, setFiltered] = useState([])
+
+    useEffect(() => {
+        let text = predicate.toLowerCase()
+        setFiltered(requests.filter(req => {
+            let name = fullname(req.requester_first_name, req.requester_last_name).toLowerCase()
+            return name.includes(text);
+        }))
+    }, [requests, predicate])
 
     /**
      * @param id leave request id
@@ -78,16 +91,25 @@ export default function LeaveRequestsPage() {
                 <h1 className="text-neutral-900 text-tl font-tl">Leave Requests</h1>
                 <p className="text-neutral-900 text-bm font-bm">Leave requests are shown here.</p>
             </div>
+            <div className="grid grid-cols-3 gap-[20px]">
+                <SearchBox 
+                    text={predicate}
+                    placeholder="Search employees by name"
+                    onChange={e => {
+                        setPredicate(e.target.value ?? "")
+                    }}
+                />
+            </div>
             <div className="block overflow-scroll w-full border rounded-[6px]">
                 <table className="table-auto min-w-full mx-auto border-separate border-spacing-0">
                     <thead className="sticky top-[0px] left-0 z-10">
                         <tr className="
-                        [&>*]:px-[24px] [&>*]:py-[16px]
+                        [&>*]:px-[8px] [&>*]:py-[16px]
                         [&>*]:border-[0.5px] 
                         [&>*]:font-bm [&>*]:text-bm
                         [&>*]:bg-background-1
                         ">
-                            <th className="sticky left-0items-center">No.</th>
+                            <th className="sticky left-0items-center whitespace-nowrap">No.</th>
                             <th className="sticky left-0 text-left font-bm text-bm">Employee</th>
                             <th>Type</th>
                             <th>From</th>
@@ -97,7 +119,7 @@ export default function LeaveRequestsPage() {
                     </thead>
                     <tbody className="">
                         {/* <AttendanceRow /> */}
-                        {requests.map((x, i) => <RequestRow 
+                        {filtered.map((x, i) => <RequestRow 
                             key={x.id} no={i+1}
                             requesterImgSrc={imageRoute(x.requester_avatar_path)}
                             requesterName={[
@@ -130,7 +152,7 @@ function RequestRow({no, requesterImgSrc, requesterName, type, from, to, status,
         transition-all
         [&>*]:transition-all
         ">
-            <td className="sticky left-0 text-center font-bs text-bs">
+            <td className="sticky left-0 text-center font-bs text-bs whitespace-nowrap">
                 {no ?? ''}
             </td>
             <td className="sticky left-0 bg-white group-hover:bg-primary-50 text-left min-w-[200px]">
@@ -141,13 +163,13 @@ function RequestRow({no, requesterImgSrc, requesterName, type, from, to, status,
                     </div>
                 </div>
             </td>
-            <td className="text-center font-ll text-ll min-w-[150px]">
+            <td className="text-center font-ll text-ll whitespace-nowrap">
                 {type}
             </td>
-            <td className="text-center font-ll text-ll min-w-[50px]">
+            <td className="text-center font-ll text-ll whitespace-nowrap">
                 {from}
             </td>
-            <td className="text-center font-ll text-ll min-w-[50px]">
+            <td className="text-center font-ll text-ll whitespace-nowrap">
                 {to}
             </td>
             <td className="items-center gap-[4px] text-center font-ls text-ls whitespace-nowrap">

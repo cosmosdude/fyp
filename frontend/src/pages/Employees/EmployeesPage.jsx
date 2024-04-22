@@ -60,7 +60,7 @@ function EmployeesPage() {
 
             {/* Card list view */}
             <div className="grow overflow-y-scroll">
-                <div className="grid grid-cols-3 gap-[20px]">
+                <div className="grid grid-cols-2 gap-[20px]">
                     {filtered.map(
                         (emp, i) => {
                             return <
@@ -71,6 +71,7 @@ function EmployeesPage() {
                                 subtitle={
                                     `${emp.designation_name ?? ""} ${emp.department_name ? `at ${emp.department_name}` : ""}`
                                 }
+                                status={emp.status}
                                 joinDate={`Joined ${format(new Date(emp.created_at), "MMMM yyyy")}`}
                                 onClick={() => {navigate(emp.id)}}
                             />

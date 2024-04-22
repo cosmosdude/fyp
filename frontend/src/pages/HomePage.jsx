@@ -22,6 +22,8 @@ import { imageRoute } from "../configs/api.config";
 import LucideIcon from "../lib/LucideIcon";
 import NotiStackView from "../components/Noti/NotiStackView";
 import NotiSystem from "../components/Noti/NotiSystem";
+import {AlertActions, AlertBody, AlertButton, AlertDialog, AlertTitle } from "../components/AlertDialog/AlertDialog";
+import { useState } from "react";
 
 
 export default function HomePage() {
@@ -37,6 +39,8 @@ export default function HomePage() {
     let me = useEffectUserDetail()
 
     let fullname = [me?.first_name, me?.last_name].filter(x => !!x).join(' ')
+
+    let [isOpen, setIsOpen] = useState(false);
 
     return (
         <div className="relative flex gap-[20px] p-[20px] w-screen h-screen">
@@ -82,7 +86,7 @@ export default function HomePage() {
                         <p className="text-wrap text-ll font-ll">{me?.work_email ?? ""}</p>
                     </div>
                     {/* Logout Button */}
-                    <button className="hover:opacity-25 transition-all" onClick={logout}>
+                    <button className="hover:opacity-25 transition-all" onClick={() => setIsOpen(true)}>
                         <img 
                             src={LogoutIcon}
                             className="min-w-[24px] w-[24px] h-[24px] rounded" 
@@ -95,6 +99,19 @@ export default function HomePage() {
             <div className="flex grow overflow-hidden overflow-y-scroll">
                 <Outlet/>
             </div>
+
+            <AlertDialog isOpen={isOpen}>
+                <AlertTitle>Logout</AlertTitle>
+                <AlertBody>Are you sure you wish to logout?</AlertBody>
+                <AlertActions>
+                    <AlertButton onClick={() => setIsOpen(false)}>
+                        Dismiss
+                    </AlertButton>
+                    <AlertButton style="danger" onClick={logout}>
+                        Confirm
+                    </AlertButton>
+                </AlertActions>
+            </AlertDialog>
 
             {/* <NotiStackView/> */}
         </div>

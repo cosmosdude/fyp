@@ -2,7 +2,7 @@ import Avatar from "../../../components/Avatar";
 
 import { LucideCalendarDays } from "lucide-react";
 
-function EmployeeCard({avatarSrc, title, subtitle, joinDate, onClick}) {
+function EmployeeCard({avatarSrc, title, subtitle, status, joinDate, onClick}) {
     subtitle = subtitle.trim()
     // console.log("Subtitle", subtitle.length)
     return (
@@ -12,7 +12,7 @@ function EmployeeCard({avatarSrc, title, subtitle, joinDate, onClick}) {
              bg-background-0
             border rounded-[6px] 
             hover:opacity-50 transition-all
-            // overflow-scroll
+            
             "
             onClick={e => {
                 e.preventDefault()
@@ -29,6 +29,7 @@ function EmployeeCard({avatarSrc, title, subtitle, joinDate, onClick}) {
                     <h4 className="font-bs text-bs text-left">{title}</h4>
                     {subtitle && <p className="font-ll text-ll text-left">{subtitle}</p>}
                 </div>
+                {status !== 'active' && <p className="font-lm text-lm text-left text-danger-500">Terminated</p>}
                 <div className="flex items-center gap-[4px] text-neutral-500 ">
                     {/* <img className="w-[18px] h-[18px]"/> */}
                     {/* <CalendarDays size={18} color="text-black"/> */}

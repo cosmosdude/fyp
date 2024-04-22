@@ -9,6 +9,7 @@ function SelectBox({
     disabled,
     leftImageSrc,
     selected, onSelect,
+    position, fullWidth = true
 }) {
     if (!options) options = []
     console.log()
@@ -77,11 +78,12 @@ function SelectBox({
             <div
                 className={`
                 absolute 
-                left-0 top-full
+                ${position === 'right' ? 'right-0': 'left-0'}
+                top-full
                 pt-[5px]
                 z-50
                 ${show ? 'visible opacity-100': 'invisible opacity-0'}
-                w-full
+                ${fullWidth ? 'w-full' : ''}
                 transition-all
                 `}
             >

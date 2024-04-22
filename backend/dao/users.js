@@ -15,6 +15,7 @@ module.exports = {
             /*sql*/`
             select u.id as user_id, u.*, DATE_FORMAT(u.dob, "%Y-%m-%d") as dob,
             r.name as role_name,
+            r.id as role_id,
             f1.path as avatar_path,
             f2.path as employment_agreement_path,
             f2.original_name as employment_agreement_filename,

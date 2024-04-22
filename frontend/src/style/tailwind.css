@@ -838,6 +838,54 @@ video {
   top: 100%;
 }
 
+.left-\[100px\] {
+  left: 100px;
+}
+
+.right-\[00px\] {
+  right: 00px;
+}
+
+.left-\[0px\] {
+  left: 0px;
+}
+
+.right-\[0px\] {
+  right: 0px;
+}
+
+.right-\[100px\] {
+  right: 100px;
+}
+
+.right-\[1px\] {
+  right: 1px;
+}
+
+.right-\[20px\] {
+  right: 20px;
+}
+
+.right-full {
+  right: 100%;
+}
+
+.right-1\/2 {
+  right: 50%;
+}
+
+.right-1 {
+  right: 0.25rem;
+}
+
+.right-\[50\%\] {
+  right: 50%;
+}
+
+.right-\[25\%\] {
+  right: 25%;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -852,6 +900,14 @@ video {
 
 .z-\[1\] {
   z-index: 1;
+}
+
+.z-\[1000\] {
+  z-index: 1000;
+}
+
+.z-\[100000\] {
+  z-index: 100000;
 }
 
 .col-span-1 {
@@ -912,6 +968,18 @@ video {
 
 .mt-auto {
   margin-top: auto;
+}
+
+.mt-\[250px\] {
+  margin-top: 250px;
+}
+
+.mt-\[100px\] {
+  margin-top: 100px;
+}
+
+.mb-auto {
+  margin-bottom: auto;
 }
 
 .box-border {
@@ -1172,6 +1240,14 @@ video {
 
 .max-w-full {
   max-width: 100%;
+}
+
+.max-w-\[150px\] {
+  max-width: 150px;
+}
+
+.max-w-\[375px\] {
+  max-width: 375px;
 }
 
 .flex-shrink {
@@ -1882,6 +1958,10 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-black\/50 {
+  background-color: rgb(26 26 26 / 0.5);
+}
+
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
@@ -2102,6 +2182,11 @@ video {
 .py-\[8px\] {
   padding-top: 8px;
   padding-bottom: 8px;
+}
+
+.px-\[20px\] {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .pb-\[10px\] {
@@ -2368,6 +2453,11 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-neutral-600 {
+  --tw-text-opacity: 1;
+  color: rgb(102 102 102 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -2702,6 +2792,16 @@ video {
 .\[\&\>\*\]\:px-\[8px\]>* {
   padding-left: 8px;
   padding-right: 8px;
+}
+
+.\[\&\>\*\]\:px-\[4px\]>* {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.\[\&\>\*\]\:px-\[px\]>* {
+  padding-left: px;
+  padding-right: px;
 }
 
 .\[\&\>\*\]\:text-bm>* {

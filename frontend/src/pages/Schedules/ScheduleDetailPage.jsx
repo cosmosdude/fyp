@@ -174,7 +174,7 @@ export default function ScheduleDetailPage() {
             </div>
 
             <div className="
-            grid grid-cols-2 gap-[20px] overflow-scroll
+            grid grid-cols-1 gap-[20px] overflow-scroll
             items-start
             [&>fieldset>legend]:font-bs
             [&>fieldset>legend]:text-bs
@@ -296,8 +296,16 @@ function ScheduleItem({
         border p-[10px]
         ${isOff ? 'bg-background-1' : 'bg-background-0'}
         `}>
-            <legend className="flex w-full items-center gap-[4px]">
+            <legend className="flex w-full items-center gap-[10px]">
                 {day ?? ''}
+                {isBreaching && <div className="flex items-center text-ls font-ls">
+                    <div className="relative flex">
+                        <div className="absolute left-0 top-0 w-[18px] h-[18px] bg-danger-200 rounded-full animate-ping"/>
+                        <HoverInfo>
+                            An employee should only be allowed to work no more than 8 hours a day.
+                        </HoverInfo>
+                    </div>
+                </div>}
                 <div className="grow h-[0.5px] bg-neutral-100"/>
                 <div>
                     <CheckBox label="Off-day" checked={isOff} onChange={(e) => {
@@ -305,8 +313,9 @@ function ScheduleItem({
                         setShift({...shift, off: e.target.checked})
                     }}/>
                 </div>
+                
             </legend>
-            <section className="grid grid-cols-2 gap-[20px]">
+            <section className="grid grid-cols-3 gap-[20px]">
                 <DatePicker 
                     title="Start" type="time"
                     text={startDateText}
@@ -346,14 +355,6 @@ function ScheduleItem({
                         })
                     }}
                 />
-                {isBreaching && <div className="flex items-center">
-                    <div className="relative flex">
-                        <div className="absolute left-0 top-0 w-[18px] h-[18px] bg-danger-200 rounded-full animate-ping"/>
-                        <HoverInfo>
-                            An employee should only be allowed to work no more than 8 hours a day.
-                        </HoverInfo>
-                    </div>
-                </div>}
                 
             </section>
             {/* <p className="

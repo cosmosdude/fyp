@@ -17,6 +17,8 @@ import { useAuthContext } from "../../hooks/AuthStateContext";
 import useUserPayrollItems from "../../hooks/useUserPayrollItems";
 import { useEffect, useState } from "react";
 
+import { AlertActions, AlertBody, AlertButton, AlertDialog, AlertTitle } from "../../components/AlertDialog/AlertDialog";
+
 export default function UsersPayrollPage() {
 
     let navigate = useNavigate()
@@ -99,6 +101,9 @@ export default function UsersPayrollPage() {
         }
     }
 
+
+    let [deletingItem, setDeletingItem] = useState(null);
+
     async function deleteItem(id) {
         try {
             let res = await fetch(apiRoute(apiPaths.payroll.deleteUserPayrollItems(userId, id)), {
@@ -134,6 +139,7 @@ export default function UsersPayrollPage() {
     }
 
     return (
+        <>
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
             {/* Top nav */}
             <div className="flex items-center">
@@ -185,7 +191,7 @@ export default function UsersPayrollPage() {
                                     key={x.id} 
                                     no={i + 1} 
                                     item={x}
-                                    onDelete={() => deleteItem(x.id)}
+                                    onDelete={() => setDeletingItem(x)}
                                 />
                             )
                             )}
@@ -204,7 +210,7 @@ export default function UsersPayrollPage() {
                                     key={x.id} 
                                     no={i + 1} 
                                     item={x}
-                                    onDelete={() => deleteItem(x.id)}
+                                    onDelete={() => setDeletingItem(x)}
                                 />
                             )
                             )}
@@ -214,6 +220,22 @@ export default function UsersPayrollPage() {
             </div>
         </div>
 
+        <AlertDialog isOpen={deletingItem !== null}>
+            <AlertTitle>Delete '{deletingItem?.type === 'allowance' ? "Allowance" : "Deduction"}' Item?</AlertTitle>
+            <AlertBody>Are you sure you wish to delete '{deletingItem?.name}'? This operation can't be undone.</AlertBody>
+            <AlertActions>
+                <AlertButton onClick={() => setDeletingItem(null)}>
+                    Dismiss
+                </AlertButton>
+                <AlertButton style="danger" onClick={() => {
+                    deleteItem(deletingItem.id)
+                    setDeletingItem(null)
+                }}>
+                    Confirm
+                </AlertButton>
+            </AlertActions>
+        </AlertDialog>
+        </>
     );
 }
 

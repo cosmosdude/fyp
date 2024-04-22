@@ -12,6 +12,7 @@ import useEffectAllDepartments from "../../hooks/useEffectAllDepartments";
 import SearchBox from "../../components/SearchBox";
 import { apiPaths, apiRoute } from "../../configs/api.config";
 import { usePushNoti } from "../../components/Noti/NotiSystem";
+import { AlertActions, AlertBody, AlertButton, AlertDialog, AlertTitle } from "../../components/AlertDialog/AlertDialog";
 
 export default function DepartmentsPage() {
     let navigate = useNavigate()
@@ -30,6 +31,8 @@ export default function DepartmentsPage() {
         }))
     }, [departments, predicate])
 
+    let [itemId, setItemId] = useState(null);
+
     async function deleteItem(id) {
         try {
             let res = await fetch(
@@ -47,7 +50,7 @@ export default function DepartmentsPage() {
                 let text = await res.text()
                 pushNoti({
                     title: "Deleted", 
-                    message: `Designation successfully deleted ${id} ${text} `, 
+                    message: `Designation successfully deleted.`, 
                     style: "success"
                 })
                 setDepartments(departments.filter(d => d.id !== id))
@@ -61,6 +64,7 @@ export default function DepartmentsPage() {
     }
 
     return (
+        <>
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
             {/* Top nav */}
             <div className="flex items-center">
@@ -94,10 +98,26 @@ export default function DepartmentsPage() {
                         key={dep.id}
                         title={dep.name}
                         onClick={() => navigate(`/departments/${dep.id}`)}
-                        onDelete={() => deleteItem(dep.id)}
+                        onDelete={() => setItemId(dep.id)}
                     />    
                 })}
             </div>
         </div>
+        <AlertDialog isOpen={itemId !== null}>
+            <AlertTitle>Delete</AlertTitle>
+            <AlertBody>Are you sure you wish to delete this department? This operation can't be undone.</AlertBody>
+            <AlertActions>
+                <AlertButton onClick={() => setItemId(null)}>
+                    Dismiss
+                </AlertButton>
+                <AlertButton style="danger" onClick={() => {
+                    deleteItem(itemId)
+                    setItemId(null)
+                }}>
+                    Confirm
+                </AlertButton>
+            </AlertActions>
+        </AlertDialog>
+        </>
     )
 }
