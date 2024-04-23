@@ -64,4 +64,9 @@ struct LeaveRequest: NetworkTypeProxy {
             .joined(separator: " ")
     }
     
+    /// Get attachment urls
+    var attachmentURLs: [URL] {
+        value.attachments?.map(\.path).map(Api.route).compactMap(URL.init(string:)) ?? []
+    }
+    
 }

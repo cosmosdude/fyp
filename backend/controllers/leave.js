@@ -1,7 +1,8 @@
 const z = require('zod')
 const db = require('../mysql')
 const datefns = require('date-fns')
-
+const { moveToUploads } = require('../services/fileHandling')
+const filedao = require('../dao/files')
 /**
  * Get all leave types.
 */
@@ -214,7 +215,15 @@ exports.user = {
         } catch (error) { return res.zod.sendError(error) }
 
         console.log(req.files)
-        return res.json(req.files)
+        // return res.json(req.files)
+
+        let attachmentIds = await Promise.all(
+            req.files.attachments.map(async x => {
+                return (
+                    await saveFile(x)
+                )?.insertId
+            })
+        )
 
         // == set up ==
         // clear halfday if not available
@@ -306,6 +315,13 @@ exports.user = {
             where iid=?
         `, [leaveRequestInsertion.insertId]))[0]?.[0]
 
+        for (const attachmentId of attachmentIds) {
+            await db.promise().query(/*sql*/`
+            insert into leave_requests_attachments
+            values (?, ?)
+            `, [insertedLeaveRequest.id, attachmentId])
+        }
+
         // return res.json(insertedLeaveRequest)
 
         // == create notification for recipient ==
@@ -346,7 +362,9 @@ exports.user = {
 
             u3.first_name as responder_first_name, 
             u3.last_name as responder_last_name,
-            f3.path as responder_avatar_path
+            f3.path as responder_avatar_path,
+
+            count(lra.leave_request_id) as "attachment_count"
 
             from users_leaves_requests as ulr
             left join leaves as l on l.id=ulr.leave_id
@@ -356,8 +374,9 @@ exports.user = {
             left join files as f2 on u2.avatar_id=f2.id
             left join users as u3 on u3.id=ulr.responder_id
             left join files as f3 on u3.avatar_id=f3.id
-
-            order by ulr.responded_at desc, ulr.requested_at desc
+            left join leave_requests_attachments as lra on lra.leave_request_id=ulr.id
+            group by ulr.id
+            order by ulr.requested_at desc, ulr.responded_at desc
             -- where ulr.status='pending'
         `)
 
@@ -387,7 +406,9 @@ exports.user = {
 
             u3.first_name as responder_first_name, 
             u3.last_name as responder_last_name,
-            f3.path as responder_avatar_path
+            f3.path as responder_avatar_path,
+
+            count(lra.leave_request_id) as "attachment_count"
 
             from users_leaves_requests as ulr
             left join leaves as l on l.id=ulr.leave_id
@@ -397,8 +418,10 @@ exports.user = {
             left join files as f2 on u2.avatar_id=f2.id
             left join users as u3 on u3.id=ulr.responder_id
             left join files as f3 on u3.avatar_id=f3.id
+            left join leave_requests_attachments as lra on lra.leave_request_id=ulr.id
             where ulr.requester_id=?
-            order by ulr.responded_at desc, ulr.requested_at desc
+            group by ulr.id
+            order by ulr.requested_at desc, ulr.responded_at desc
         `, auth.id)
 
         res.json(requests)
@@ -435,8 +458,19 @@ exports.user = {
             left join files as f3 on u3.avatar_id=f3.id
             where ulr.id=?
         `, id)
-        if (!requests[0]) res.status(404).send("Not request found")
-        else res.json(requests[0])
+        if (!requests[0]) return res.status(404).send("Not request found")
+        let result = requests[0]
+
+        let [files] = await db.promise().query(/*sql*/`
+        select f.* from 
+        leave_requests_attachments as lra 
+        join files as f on f.id=lra.file_id
+        where lra.leave_request_id=?
+        `, [result.id])
+
+        result.attachments = files
+
+        return res.json(result)
     },
 
     async response(req, res) {
@@ -524,4 +558,28 @@ exports.user = {
         res.sendStatus(201)
     }
 
+}
+
+
+/**
+     * Save file to public/uploads and insert into files table.
+     * 
+     * @returns Insertion info.
+    */
+async function saveFile(file) {
+    if (!file) return undefined
+    let moved = moveToUploads(file) || {}
+    console.log("Avatar", moved)
+    // insert the file
+    let [fileResult] = await filedao.insert({
+        original_name: moved.originalFilename,
+        name: moved.uuidFilename,
+        extension: moved.extension,
+        path: moved.uploadedFilepath,
+        mime: moved.mimetype,
+        size: moved.size
+    })
+    console.log("Insert File result:", fileResult)  
+
+    return fileResult
 }

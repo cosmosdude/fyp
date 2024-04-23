@@ -25,11 +25,14 @@ class LeaveRequestDetailController: UIViewController {
     
     @IBOutlet private var statusBox: SelectBox!
     
+    @IBOutlet private var imageBox: AttachmentView!
+    
     @IBOutlet private var requestFromBox: SelectBox!
     @IBOutlet private var reasonBox: TextBox!
     
     @IBOutlet private var requestToBox: SelectBox!
     @IBOutlet private var responseBox: TextBox!
+    
     
     @IBOutlet private var responseContainer: UIView!
     @IBOutlet private var responseTextBox: TextBox!
@@ -50,6 +53,9 @@ class LeaveRequestDetailController: UIViewController {
         navBar.backArrowBtn.addTarget(
             self, action: #selector(self.pop), for: .touchUpInside
         )
+        
+        imageBox.addAllowed = false
+        imageBox.deleteAllowed = false
         
         // prepare viewmodels
         responseVM.leaveRequestId = leaveRequestID
@@ -113,6 +119,8 @@ class LeaveRequestDetailController: UIViewController {
         if (request.status == "pending" && roleId < 4) {
             responseContainer.isHidden = false
         }
+        imageBox.isHidden = request.attachments?.isEmpty ?? true
+        imageBox.images = request.attachmentURLs.map { .url($0) }
     }
     
     @IBAction

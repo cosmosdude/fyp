@@ -34,6 +34,8 @@ public struct LeaveRequestData: Codable {
     public let responderLastName: String?
     public let responderAvatarPath: String?
     
+    public let attachments: [LeaveAttachment]?
+    
     private enum CodingKeys: String, CodingKey {
         case iid
         case id
@@ -60,5 +62,18 @@ public struct LeaveRequestData: Codable {
         case responderFirstName = "responder_first_name"
         case responderLastName = "responder_last_name"
         case responderAvatarPath = "responder_avatar_path"
+        
+        case attachments
     }
+}
+
+
+public struct LeaveAttachment: Codable {
+    public let id: Int
+//    public let originalName: String
+    public let name: String
+    public let `extension`: String
+    public let path: String
+    public let mime: String
+    public let size: Int
 }

@@ -127,7 +127,7 @@ public struct LeaveService {
             }
             for each in images {
                 form.append(
-                    each, withName: "attachment",
+                    each, withName: "attachments",
                     fileName: UUID().uuidString + ".png", mimeType: "image/png"
                 )
             }
