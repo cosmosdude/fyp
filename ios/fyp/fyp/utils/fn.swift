@@ -16,7 +16,7 @@ func overtimeDurationText(seconds s: Int) -> String {
     let h = m / 60
     m = m % 60
     
-    return [h > 0 ? "\(h) hr(s)" : nil, m > 0 ? "\(m) min(s)" : nil]
+    return [h > 0 ? "\(h) hr(s)" : nil, m > 0 ? "\(m) min(s)" : "0 min"]
         .compactMap{ $0 }
         .joined(separator: " ")
     

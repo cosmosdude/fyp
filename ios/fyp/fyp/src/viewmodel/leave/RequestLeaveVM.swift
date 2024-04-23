@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import TANetworking
+import UIKit.UIImage
 
 final class RequestLeaveVM: StatusVM<Void, String> {
     
@@ -27,6 +28,7 @@ final class RequestLeaveVM: StatusVM<Void, String> {
         let recipientId: String
         let type: String
         let reason: String?
+        let images: [UIImage]
     }
     
     func request(request: RequestObject) {
@@ -43,7 +45,8 @@ final class RequestLeaveVM: StatusVM<Void, String> {
                 to: req.to,
                 recipientId: req.recipientId,
                 halfday: req.type,
-                reason: req.reason
+                reason: req.reason,
+                images: req.images.compactMap { $0.pngData() }
             )
             status = .success
         } catch {
@@ -51,9 +54,7 @@ final class RequestLeaveVM: StatusVM<Void, String> {
                 "Unable to request leave.\nReason: \(error.localizedDescription)"
             )
         }
-        
+
     }
-    
-    
     
 }

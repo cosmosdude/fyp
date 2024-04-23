@@ -45,9 +45,9 @@ class DashboardController: UIViewController {
             .sink(receiveValue: { [weak self, weak vm = otVM] _ in
 //                guard let attesceStatusView.render(attendance)
                 let otv = self?.overtimeView
-                otv?.today = vm?.today ?? ""
-                otv?.week = vm?.week ?? ""
-                otv?.month = vm?.month ?? ""
+                otv?.today = vm?.today ?? "0 min"
+                otv?.week = vm?.week ?? "0 min"
+                otv?.month = vm?.month ?? "0 min"
                 print("OT today", vm?.today ?? "")
             })
             .store(in: &bag)

@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="btn" destination="Lnd-N2-2cm" id="t4m-PX-0Ib"/>
                 <outlet property="fromDateSelectBox" destination="Uby-bQ-51g" id="vpn-3T-8HT"/>
+                <outlet property="imageBox" destination="pNf-Vg-nNy" id="7eF-g1-H8B"/>
                 <outlet property="leaveSelectBox" destination="BO0-Pw-yiH" id="zo4-nX-qqq"/>
                 <outlet property="managerSelectBox" destination="9X4-rt-4Fc" id="hIb-4f-Qr6"/>
                 <outlet property="navBar" destination="mpo-rJ-fHM" id="rHm-Wo-kEW"/>
@@ -40,10 +41,10 @@
                     <rect key="frame" x="0.0" y="109" width="393" height="743"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WqK-Gi-u4N">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="588"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="758"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nya-z4-xg3">
-                                    <rect key="frame" x="20" y="20" width="353" height="548"/>
+                                    <rect key="frame" x="20" y="20" width="353" height="718"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="BO0-Pw-yiH" userLabel="leave" customClass="SelectBox" customModule="fyp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="353" height="65"/>
@@ -107,15 +108,27 @@
                                                 <action selector="didTapManagers" destination="-1" eventType="touchUpInside" id="Z3d-H6-Skf"/>
                                             </connections>
                                         </view>
-                                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="bPr-rc-KoJ" userLabel="reason" customClass="TextBox" customModule="fyp" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNf-Vg-nNy" customClass="AttachmentView" customModule="fyp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="340" width="353" height="150"/>
+                                            <color key="backgroundColor" name="bg-0"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="150" id="X79-3O-iSF"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
+                                                    <integer key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="bPr-rc-KoJ" userLabel="reason" customClass="TextBox" customModule="fyp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="510" width="353" height="150"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="title" value="Reason"/>
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lnd-N2-2cm" customClass="FilledButton" customModule="fyp" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="510" width="353" height="38"/>
+                                            <rect key="frame" x="0.0" y="680" width="353" height="38"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="38" id="F2b-Re-JQH"/>
                                             </constraints>
@@ -126,7 +139,7 @@
                                             </connections>
                                         </button>
                                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1rS-Pa-hPR">
-                                            <rect key="frame" x="0.0" y="548" width="353" height="38"/>
+                                            <rect key="frame" x="0.0" y="718" width="353" height="38"/>
                                             <color key="backgroundColor" name="primary-0"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="38" id="bG2-3n-sAm"/>
@@ -176,6 +189,9 @@
     </objects>
     <resources>
         <image name="person.circle.fill" catalog="system" width="128" height="123"/>
+        <namedColor name="bg-0">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="neutral-700">
             <color red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

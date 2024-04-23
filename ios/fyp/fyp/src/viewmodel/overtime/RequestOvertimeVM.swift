@@ -7,6 +7,7 @@
 
 import Foundation
 import TANetworking
+import UIKit
 
 final class RequestOvertimeVM: StatusVM<Void, String> {
     
@@ -17,6 +18,18 @@ final class RequestOvertimeVM: StatusVM<Void, String> {
         let duration: Int
         let recipientId: String
         let reason: String?
+        
+        var images: [Data]
+        init(
+            date: Date, duration: Int, recipientId: String, reason: String?,
+            images: [UIImage] = []
+        ) {
+            self.date = date
+            self.duration = duration
+            self.recipientId = recipientId
+            self.reason = reason
+            self.images = []
+        }
     }
     
     func request(_ req: Request) {

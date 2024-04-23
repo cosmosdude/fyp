@@ -213,6 +213,9 @@ exports.user = {
             }).parse(req.body)
         } catch (error) { return res.zod.sendError(error) }
 
+        console.log(req.files)
+        return res.json(req.files)
+
         // == set up ==
         // clear halfday if not available
         if (!data.halfday) data.halfday = null

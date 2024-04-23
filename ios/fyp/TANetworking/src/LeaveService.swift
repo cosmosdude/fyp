@@ -93,7 +93,8 @@ public struct LeaveService {
     
     public func requestLeave(
         leaveId: String, from: Date, to: Date,
-        recipientId: String, halfday: String, reason: String?
+        recipientId: String, halfday: String, reason: String?,
+        images: [Data] = []
     ) async throws -> Void {
 //        leave_id:bc5491f0-e78a-11ee-99b0-52db3199040c
 //        from_date:2024-1-3
@@ -123,6 +124,12 @@ public struct LeaveService {
         let req = AF.upload(multipartFormData: { form in
             for (k,v) in payload {
                 form.append(v.data(using: .utf8)!, withName: k)
+            }
+            for each in images {
+                form.append(
+                    each, withName: "attachment",
+                    fileName: UUID().uuidString + ".png", mimeType: "image/png"
+                )
             }
         }, with: request)
         

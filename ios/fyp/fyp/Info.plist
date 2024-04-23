@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Images and photos are required to send in leave requests.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Your location will be used when requesting attendance for audit purpose.</string>
 	<key>UIAppFonts</key>

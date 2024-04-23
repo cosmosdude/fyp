@@ -88,6 +88,13 @@
 		F33AA11D2BA4C2B100119193 /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33AA11B2BA4C2B100119193 /* LoginController.xib */; };
 		F33AA1212BA4C2F400119193 /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AA11F2BA4C2F400119193 /* SplashController.swift */; };
 		F33AA1222BA4C2F400119193 /* SplashController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33AA1202BA4C2F400119193 /* SplashController.xib */; };
+		F33FF4492BD7552B00E1C11B /* AttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33FF4472BD7552B00E1C11B /* AttachmentView.swift */; };
+		F33FF44A2BD7552B00E1C11B /* AttachmentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33FF4482BD7552B00E1C11B /* AttachmentView.xib */; };
+		F33FF44D2BD7553600E1C11B /* AttachmentViewAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33FF44B2BD7553600E1C11B /* AttachmentViewAddCell.swift */; };
+		F33FF44E2BD7553600E1C11B /* AttachmentViewAddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33FF44C2BD7553600E1C11B /* AttachmentViewAddCell.xib */; };
+		F33FF4512BD7554200E1C11B /* AttachmentViewImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33FF44F2BD7554200E1C11B /* AttachmentViewImageCell.swift */; };
+		F33FF4522BD7554200E1C11B /* AttachmentViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33FF4502BD7554200E1C11B /* AttachmentViewImageCell.xib */; };
+		F33FF4542BD75EA300E1C11B /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33FF4532BD75EA300E1C11B /* Image.swift */; };
 		F35E32052BB08FA7001EBC31 /* ISO8601DateFormatter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E32042BB08FA7001EBC31 /* ISO8601DateFormatter+Ext.swift */; };
 		F35E32072BB09380001EBC31 /* OvertimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E32062BB09380001EBC31 /* OvertimeService.swift */; };
 		F35E32092BB09493001EBC31 /* RequestOvertimeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E32082BB09493001EBC31 /* RequestOvertimeVM.swift */; };
@@ -312,6 +319,13 @@
 		F33AA11B2BA4C2B100119193 /* LoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginController.xib; sourceTree = "<group>"; };
 		F33AA11F2BA4C2F400119193 /* SplashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
 		F33AA1202BA4C2F400119193 /* SplashController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashController.xib; sourceTree = "<group>"; };
+		F33FF4472BD7552B00E1C11B /* AttachmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentView.swift; sourceTree = "<group>"; };
+		F33FF4482BD7552B00E1C11B /* AttachmentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttachmentView.xib; sourceTree = "<group>"; };
+		F33FF44B2BD7553600E1C11B /* AttachmentViewAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentViewAddCell.swift; sourceTree = "<group>"; };
+		F33FF44C2BD7553600E1C11B /* AttachmentViewAddCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttachmentViewAddCell.xib; sourceTree = "<group>"; };
+		F33FF44F2BD7554200E1C11B /* AttachmentViewImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentViewImageCell.swift; sourceTree = "<group>"; };
+		F33FF4502BD7554200E1C11B /* AttachmentViewImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttachmentViewImageCell.xib; sourceTree = "<group>"; };
+		F33FF4532BD75EA300E1C11B /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		F35E32032BB08E7C001EBC31 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Playground.playground; path = ../Playground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F35E32042BB08FA7001EBC31 /* ISO8601DateFormatter+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ISO8601DateFormatter+Ext.swift"; sourceTree = "<group>"; };
 		F35E32062BB09380001EBC31 /* OvertimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimeService.swift; sourceTree = "<group>"; };
@@ -536,6 +550,7 @@
 				F3D10A892BB6F76D00A279D7 /* PayslipDetail.swift */,
 				F3D10AAB2BB70C0A00A279D7 /* Payslip.swift */,
 				F3D10AAD2BB70D5D00A279D7 /* PayslipItem.swift */,
+				F33FF4532BD75EA300E1C11B /* Image.swift */,
 			);
 			path = types;
 			sourceTree = "<group>";
@@ -704,6 +719,7 @@
 		F33AA1172BA4C27400119193 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F33FF4462BD7551D00E1C11B /* AttachmentView */,
 				F3D10A9C2BB701F400A279D7 /* PayslipItemTableFooter */,
 				F3D10A9B2BB701EF00A279D7 /* PayslipItemTableCell */,
 				F3D10A9A2BB701DF00A279D7 /* PayslipItemTableHeader */,
@@ -777,6 +793,19 @@
 				F33AA1202BA4C2F400119193 /* SplashController.xib */,
 			);
 			path = SplashController;
+			sourceTree = "<group>";
+		};
+		F33FF4462BD7551D00E1C11B /* AttachmentView */ = {
+			isa = PBXGroup;
+			children = (
+				F33FF4472BD7552B00E1C11B /* AttachmentView.swift */,
+				F33FF4482BD7552B00E1C11B /* AttachmentView.xib */,
+				F33FF44B2BD7553600E1C11B /* AttachmentViewAddCell.swift */,
+				F33FF44C2BD7553600E1C11B /* AttachmentViewAddCell.xib */,
+				F33FF44F2BD7554200E1C11B /* AttachmentViewImageCell.swift */,
+				F33FF4502BD7554200E1C11B /* AttachmentViewImageCell.xib */,
+			);
+			path = AttachmentView;
 			sourceTree = "<group>";
 		};
 		F35E320A2BB09496001EBC31 /* types */ = {
@@ -1360,6 +1389,7 @@
 				F3EEA7AB2BB07A4000D89776 /* OvertimeHistoryView.xib in Resources */,
 				F31784752BAD52EB00AD8110 /* LeaveRequestController.xib in Resources */,
 				F33863852BB171E400B2CECF /* CurrentLocationView.xib in Resources */,
+				F33FF44E2BD7553600E1C11B /* AttachmentViewAddCell.xib in Resources */,
 				F3956A972BA9901E000DBD1A /* Inter-Bold.ttf in Resources */,
 				F39ACF852BAA75DF0078A017 /* TitleView.xib in Resources */,
 				F3956AA82BA99540000DBD1A /* TextField.xib in Resources */,
@@ -1370,11 +1400,13 @@
 				F3EEA7932BB072FB00D89776 /* OvertimeController.xib in Resources */,
 				F38A71DF2BAD58FF00A0E12F /* TextBox.xib in Resources */,
 				F3EEA78D2BB06E2300D89776 /* TeamListView.xib in Resources */,
+				F33FF44A2BD7552B00E1C11B /* AttachmentView.xib in Resources */,
 				F338639A2BB1D4B700B2CECF /* AttendanceRecordListView.xib in Resources */,
 				F338639E2BB1D51500B2CECF /* AttendanceRecordCell.xib in Resources */,
 				F3D10A992BB7006500A279D7 /* PayslipDetailController.xib in Resources */,
 				F3956AE82BA9F7CD000DBD1A /* LeaveController.xib in Resources */,
 				F3D10AA42BB7046400A279D7 /* PayslipItemTableFooter.xib in Resources */,
+				F33FF4522BD7554200E1C11B /* AttachmentViewImageCell.xib in Resources */,
 				F317844D2BAD390B00AD8110 /* LeaveTypeListItemCell.xib in Resources */,
 				F33AA11D2BA4C2B100119193 /* LoginController.xib in Resources */,
 				F38A71E92BADB0EE00A0E12F /* ManagerSelectionController.xib in Resources */,
@@ -1510,10 +1542,12 @@
 				F3EEA7AA2BB07A4000D89776 /* OvertimeHistoryView.swift in Sources */,
 				F330316C2BADF3480053005D /* RespondLeaveVM.swift in Sources */,
 				F3956AD32BA9F5B8000DBD1A /* BaseController.swift in Sources */,
+				F33FF4542BD75EA300E1C11B /* Image.swift in Sources */,
 				F338638D2BB1B5B100B2CECF /* TeamMember.swift in Sources */,
 				F35E32162BB0A57B001EBC31 /* RespondOTVM.swift in Sources */,
 				F330314D2BADC1090053005D /* DateSelectionController.swift in Sources */,
 				F33031782BAE9ADF0053005D /* NotificationCell.swift in Sources */,
+				F33FF4512BD7554200E1C11B /* AttachmentViewImageCell.swift in Sources */,
 				F33863992BB1D4B700B2CECF /* AttendanceRecordListView.swift in Sources */,
 				F31784702BAD526D00AD8110 /* UIViewController+Ext.swift in Sources */,
 				F3956ABB2BA9E9A6000DBD1A /* AnyJSON.swift in Sources */,
@@ -1562,6 +1596,7 @@
 				F3956AE72BA9F7CD000DBD1A /* LeaveController.swift in Sources */,
 				F31784662BAD487900AD8110 /* MyLeaveRequestListCell.swift in Sources */,
 				F35E32092BB09493001EBC31 /* RequestOvertimeVM.swift in Sources */,
+				F33FF4492BD7552B00E1C11B /* AttachmentView.swift in Sources */,
 				F317845E2BAD479A00AD8110 /* LeaveRequest.swift in Sources */,
 				F3EEA7B12BB07C2200D89776 /* RequestStatus.swift in Sources */,
 				F3956A712BA98CFD000DBD1A /* UIApplication+Ext.swift in Sources */,
@@ -1603,6 +1638,7 @@
 				F33031742BAE93390053005D /* Noti.swift in Sources */,
 				F317846D2BAD4ECE00AD8110 /* DayView.swift in Sources */,
 				F35E32142BB09F5F001EBC31 /* OTRequest.swift in Sources */,
+				F33FF44D2BD7553600E1C11B /* AttachmentViewAddCell.swift in Sources */,
 				F3EEA7922BB072FB00D89776 /* OvertimeController.swift in Sources */,
 				F3956AD82BA9F770000DBD1A /* ProfileController.swift in Sources */,
 				F3EEA7A52BB0744800D89776 /* OvertimeStatusView.swift in Sources */,

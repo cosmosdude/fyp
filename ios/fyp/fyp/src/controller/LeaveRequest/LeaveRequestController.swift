@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 import Combine
 
 class LeaveRequestController: UIViewController {
@@ -16,6 +17,7 @@ class LeaveRequestController: UIViewController {
     @IBOutlet private var toDateSelectBox: SelectBox!
     @IBOutlet private var typeSelectBox: SelectBox!
     @IBOutlet private var managerSelectBox: SelectBox!
+    @IBOutlet private var imageBox: AttachmentView!
     @IBOutlet private var reasonTextBox: TextBox!
     
     @IBOutlet private var spinner: UIActivityIndicatorView!
@@ -35,6 +37,8 @@ class LeaveRequestController: UIViewController {
     
     let requestVM = RequestLeaveVM()
     
+    var images = [UIImage]()
+    
     func render(spinner flag: Bool) {
         btn.isHidden = flag
         spinner.isHidden = !flag
@@ -45,6 +49,9 @@ class LeaveRequestController: UIViewController {
         navBar.backArrowBtn.addTarget(
             self, action: #selector(self.pop), for: .touchUpInside
         )
+        
+        imageBox.onAdd = { [weak self] in self?.pickImage() }
+        imageBox.onDelete = { [weak self] in self?.removeImage(index: $0) }
         
         requestVM.$status.receive(on: DispatchQueue.main)
             .sink { [weak self] in
@@ -98,6 +105,24 @@ class LeaveRequestController: UIViewController {
         
         leaveVM.fetchLeaveTypes()
         managerVM.fetchManagers()
+    }
+    
+    private func pickImage() {
+        var configuration = PHPickerConfiguration()
+        //0 - unlimited 1 - default
+        configuration.selectionLimit = 0
+        configuration.filter = .images
+        let pickerViewController = PHPickerViewController(configuration: configuration)
+        pickerViewController.delegate = self
+        present(pickerViewController, animated: true)
+    }
+    
+    private func removeImage(index: Int) {
+        images.remove(at: index)
+        renderImages()
+    }
+    private func renderImages() {
+        imageBox.images = self.images.map{.uiimage($0)}
     }
     
     @IBAction
@@ -166,8 +191,45 @@ class LeaveRequestController: UIViewController {
             to: toDateVM.date ?? Date(),
             recipientId: managerVM.selectedManager?.id ?? "",
             type: typeVM.option?.value ?? "",
-            reason: reasonTextBox.text ?? ""
+            reason: reasonTextBox.text ?? "",
+            images: images
         ))
     }
     
+}
+
+extension LeaveRequestController: PHPickerViewControllerDelegate {
+    func picker(
+        _ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]
+    ) {
+        picker.dismiss(animated: true)
+        Task {
+            let images = await extractImages(results)
+            add(images: images)
+        }
+    }
+    
+    @MainActor
+    private func add(images: [UIImage]) {
+        self.images.append(contentsOf: images)
+        renderImages()
+    }
+    
+    private func extractImages(_ results: [PHPickerResult]) async -> [UIImage] {
+        var images = [UIImage?]()
+        for each in results {
+            images.append(await extractImage(each.itemProvider))
+        }
+        return images.compactMap { $0 }
+    }
+    
+    private func extractImage(_ provider: NSItemProvider) async -> UIImage?  {
+        guard provider.canLoadObject(ofClass: UIImage.self) else { return nil }
+        
+        return await withCheckedContinuation { ctx in
+            provider.loadObject(ofClass: UIImage.self) { image , error  in
+                ctx.resume(returning: image as? UIImage)
+            }
+        }
+    }
 }
