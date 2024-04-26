@@ -1457,6 +1457,10 @@ video {
   align-items: stretch;
 }
 
+.justify-start {
+  justify-content: flex-start;
+}
+
 .justify-end {
   justify-content: flex-end;
 }
@@ -2739,6 +2743,10 @@ video {
 
 .hover\:opacity-50:hover {
   opacity: 0.5;
+}
+
+.hover\:opacity-75:hover {
+  opacity: 0.75;
 }
 
 .focus\:bg-primary-700:focus {

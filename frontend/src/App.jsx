@@ -31,6 +31,7 @@ import UsersPayrollPage from './pages/Payrolls/UserPayrollPage'
 import NewUserPayrollItemPage from './pages/Payrolls/NewUserPayrollItemPage'
 import PayslipDetailPage from './pages/Payslips/PayslipDetailPage'
 import NotiSystem from './components/Noti/NotiSystem'
+import FrontendLicensesPage from './pages/FrontendLicensesPage'
 
 function App() {
 
@@ -45,7 +46,7 @@ function App() {
       <AuthContext.Provider value={authState[0]}>
         <Routes>
         <Route path="signin" element={<LoginPage/>}/>
-
+        <Route path="acknowledgements" element={<FrontendLicensesPage/>}/>
         <Route element={<HomePage/>}>
             <Route path="/" element={<DashboardPage/>}/>
             <Route path="/employees" element={<EmployeesPage/>}/>

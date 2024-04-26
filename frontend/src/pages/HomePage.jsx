@@ -65,6 +65,15 @@ export default function HomePage() {
 
                         <SideNavItem to='/payrolls' title='Payroll' icon='dollar-sign'/>
                         <SideNavItem to='/payslips' title='Payslips' icon='badge-dollar-sign'/>
+                        <div className="rounded bg-background-1 p-[10px] text-ls font-ls mx-auto text-neutral-500 flex flex-col w-full">
+                            <p>v1.0.0 (alpha)</p>
+                            <a 
+                                className="text-left text-ls font-lm text-neutral-500 underline hover:opacity-75 transition-all"
+                                href="/acknowledgements"
+                            >Acknowledgement</a>
+                            <p>Thwin Htoo Aung (001353943)</p>
+                            <p>© University of Greenwich</p>
+                        </div>
                         
                     </ul>
                 </div>
