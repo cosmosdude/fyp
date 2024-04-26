@@ -30,6 +30,7 @@ export default function UsersPayrollPage() {
     let user = useEffectUserDetail(userId)
 
     let [payroll, setPayroll] = useUserPayroll(userId)
+
     let [items, setItems] = useUserPayrollItems(userId)
 
     function setWage(wage) {
@@ -101,8 +102,10 @@ export default function UsersPayrollPage() {
         }
     }
 
-
     let [deletingItem, setDeletingItem] = useState(null);
+
+    let isWageIllegal = Number(payroll?.wage) < 5800
+    let isOvertimeIllegal = Number(payroll?.overtime_rate) < 2
 
     async function deleteItem(id) {
         try {
@@ -157,7 +160,7 @@ export default function UsersPayrollPage() {
             <div className="grid grid-cols-2 gap-[20px]">
                 <div className="flex flex-col gap-[10px]">
                     <div className="flex items-center gap-[10px]">
-                        <Avatar src={imageRoute(user.avatar_path)} size={40} title="A"/>
+                        <Avatar src={imageRoute(user.avatar_path)} size={40} title={fullname(user.first_name, user.last_name)}/>
                         <div className="flex flex-col">
                             <p className="font-ll text-ll">{fullname(user.first_name, user.last_name)}</p>
                             <p className="font-ls text-ls">{position(user.designation_name, user.department_name)}</p>
@@ -173,11 +176,17 @@ export default function UsersPayrollPage() {
                         onChange={e => {setOvertimeRate(e.target.value)}}
                     />
                     <div className="grid grid-cols-2 gap-[20px]">
-                        <FilledButton onClick={updatePayroll}>Update</FilledButton>
+                        <FilledButton onClick={updatePayroll} disabled={isWageIllegal || isOvertimeIllegal}>Update</FilledButton>
                         <div/>
                     </div>
                 </div>
-                <div/>
+                <div className="flex flex-col pt-[70px]">
+                    { (isWageIllegal || isOvertimeIllegal) && <ul className="border border-danger-300 bg-danger-50 rounded-[4px] p-[8px] text-ll font-ll text-danger-600">
+                        {isWageIllegal && <li>• Wage is below legally allowed minimum (5800 MMK).</li>}
+                        {isWageIllegal && <li>• Salary is below legally allowed minimum (174000 MMK).</li>}
+                        {isOvertimeIllegal && <li>• Overtime rate is below legally allowed minimum (200%).</li>}
+                    </ul>}
+                </div>
             </div>
             <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-[20px] overflow-hidden">
                 <div className="flex flex-col gap-[10px] overflow-hidden ">

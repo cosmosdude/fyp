@@ -218,11 +218,11 @@ exports.user = {
         // return res.json(req.files)
 
         let attachmentIds = await Promise.all(
-            req.files.attachments.map(async x => {
+            req.files?.attachments?.map(async x => {
                 return (
                     await saveFile(x)
                 )?.insertId
-            })
+            }) ?? []
         )
 
         // == set up ==

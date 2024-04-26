@@ -80,8 +80,16 @@ export default function PayslipDetailPage() {
         grossDeduction = deductionCap
     }
     
+    function getKyat(value) {
+        return ~~Number(value) + " MMK"
+    }
+
     function hasOvertime() {
-        ~~Number(payslip.detail?.overtime) !== 0
+        return ~~Number(payslip.detail?.overtime) !== 0
+    }
+
+    function getOvertime() {
+        return getKyat(payslip.detail?.overtime)
     }
 
     return (
@@ -106,7 +114,7 @@ export default function PayslipDetailPage() {
 
             {/* User */}
             <div className="flex items-center gap-[10px]">
-                <Avatar src={imageRoute(user.avatar_path)} size={40} title="A"/>
+                <Avatar src={imageRoute(user.avatar_path)} size={40} title={fullname(user.first_name, user.last_name)}/>
                 <div className="flex flex-col">
                     <p className="font-ll text-ll">{fullname(user.first_name, user.last_name)}</p>
                     <p className="font-ls text-ls">{position(user.designation_name, user.department_name)}</p>
@@ -128,7 +136,7 @@ export default function PayslipDetailPage() {
                 <div className="flex flex-col">
                     <PayslipItem boldTitle title="Income"/>
 
-                    <PayslipItem title="Base Salary" amount={payslip.detail?.salary ?? ""} boldAmount/>
+                    <PayslipItem title="Base Salary" amount={getKyat(payslip.detail?.salary)} boldAmount/>
                     {allowances.map(x => {
                         return <PayslipItem 
                             key={x.id} 
@@ -137,7 +145,7 @@ export default function PayslipDetailPage() {
                             style="success"
                         />
                     })}
-                    {hasOvertime() && <PayslipItem title="Overtime" amount={payslip.detail?.overtime ?? ""} boldAmount/>}
+                    {hasOvertime() && <PayslipItem title="Overtime" amount={getOvertime()} boldAmount/>}
                     <Separator/>
                     <PayslipItem boldTitle title="Gross Income" amount={`${grossIncome} MMK`} boldAmount style="success"/>
                     <Separator/>

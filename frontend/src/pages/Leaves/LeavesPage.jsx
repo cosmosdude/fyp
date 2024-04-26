@@ -102,7 +102,10 @@ function LeaveRow({no, user}) {
             </td>
             <td className="sticky left-0 bg-white group-hover:bg-primary-50 text-left whitespace-nowrap">
                 <div className="flex items-center gap-[10px]">
-                    <Avatar className="" src={imageRoute(user.avatar_path)} size={30} title="John Doe"/>
+                    <Avatar 
+                        className="" src={imageRoute(user.avatar_path)} size={30} 
+                        title={fullname(user.first_name, user.last_name)}
+                    />
                     <div className="flex flex-col">
                         <p className="font-ll text-ll">{fullname(user.first_name, user.last_name)}</p>
                         <p className="font-ls text-ls">{position(user.designation_name, user.department_name)}</p>

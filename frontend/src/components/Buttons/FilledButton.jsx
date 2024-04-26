@@ -1,19 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import LucideIcon from "../../lib/LucideIcon";
 
-function FilledButton({icon, rightIcon, src, children, onClick, to}) {
+function FilledButton({icon, rightIcon, src, children, onClick, to, disabled}) {
     let navigate = useNavigate()
     return ( 
         <button 
-            className="
+            className={`
                 flex items-center gap-[10px]
                 px-[16px] py-[10px]
                 text-white text-bs font-bs
-                bg-primary 
+                ${disabled ? 'bg-neutral-200' :'bg-primary'}
+                
                 rounded-[4px]
-                hover:bg-primary-400
+                ${disabled ? '': 'hover:bg-primary-400'}
                 transition-all
-            "
+            `}
+            disabled={disabled}
             onClick={(e) => {
                 onClick && onClick(e)
                 if (to) {

@@ -111,7 +111,10 @@ function ScheduleRow({no, shift, onClick}) {
                 {no ?? ''}
             </td>
             <td className="sticky left-0 flex gap-[10px] items-center bg-white group-hover:bg-primary-50 text-left whitespace-nowrap">
-                <Avatar src={imageRoute(shift.avatar_path)} size={30} title="John Doe"/>
+                <Avatar 
+                    src={imageRoute(shift.avatar_path)} size={30} 
+                    title={fullname(shift.first_name, shift.last_name)}
+                />
                 <div className="flex flex-col">
                     <p className="font-ll text-ll">{name}</p>
                     <p className="font-ls text-ls">{position}</p>

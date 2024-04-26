@@ -185,7 +185,11 @@ function RequestRow({no, overtime, date, duration, status, onApprove, onReject})
             </td>
             <td className="sticky left-0 bg-white group-hover:bg-primary-50 text-left min-w-[200px]">
                 <div className="flex items-center gap-[10px]">
-                    <Avatar className="" src={imageRoute(overtime.requester_avatar_path)} size={30} title="John Doe"/>
+                    <Avatar 
+                        className="" 
+                        src={imageRoute(overtime.requester_avatar_path)} size={30} 
+                        title={fullname(overtime.requester_first_name, overtime.requester_last_name)}
+                    />
                     <div className="flex flex-col">
                         <p className="font-ll text-ll">{fullname(overtime.requester_first_name, overtime.requester_last_name)}</p>
                     </div>

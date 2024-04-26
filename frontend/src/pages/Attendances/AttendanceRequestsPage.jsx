@@ -148,7 +148,10 @@ function RequestRow({no, request, onApprove, onReject}) {
             </td>
             <td className="sticky left-0 bg-white group-hover:bg-primary-50 text-left whitespace-nowrap">
                 <div className="flex items-center gap-[10px]">
-                    <Avatar className="" src={imageRoute(request.requester_avatar_path)} size={30} title="John Doe"/>
+                    <Avatar 
+                        className="" src={imageRoute(request.requester_avatar_path)} size={30} 
+                        title={fullname(request.requester_first_name, request.requester_last_name)}
+                    />
                     <div className="flex flex-col">
                         <p className="font-ll text-ll">{fullname(request.requester_first_name, request.requester_last_name)}</p>
                     </div>
