@@ -12,11 +12,12 @@ import SearchBox from "../../components/SearchBox";
 import { fullname } from "../../utils/fullname";
 import { useEffect, useState } from "react";
 import EmptyView from "../../components/EmptyView";
+import useEffectUserDetail from "../../hooks/useEffectUserDetail";
 
 function EmployeesPage() {
     let navigate = useNavigate()
     let employees = useEffectGetAllEmployees();
-
+    let me = useEffectUserDetail("me")
     let [predicate, setPredicate] = useState("");
 
     let [filtered, setFiltered] = useState([]);
@@ -67,6 +68,9 @@ function EmployeesPage() {
                             return <
                                 EmployeeCard 
                                 key={emp.id} 
+                                me={me}
+                                emp={emp}
+                                id={emp.id}
                                 avatarSrc={imageRoute(emp.avatar_path)}
                                 title={(emp.first_name ?? "") + (emp.last_name ? ` ${emp.last_name}` : "")}
                                 subtitle={

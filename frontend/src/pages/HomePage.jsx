@@ -76,15 +76,21 @@ export default function HomePage() {
                         {/* Avatar */}
                         {/* <div className="bg-neutral-200 w-full h-full rounded-full"></div> */}
                     {/* </div> */}
-                    <Avatar
-                        src={imageRoute(me?.avatar_path)}
-                        title={fullname}
-                    />
-                    {/* Labels */}
-                    <div className="grow flex flex-col">
-                        <p className="text-wrap text-bs font-bs">{fullname}</p>
-                        <p className="text-wrap text-ll font-ll">{me?.work_email ?? ""}</p>
-                    </div>
+                    <Link 
+                        className="flex gap-[10px] grow hover:opacity-50 transition-all cursor-pointer items-center"
+                        to={me?.id ? `/employees/${me?.id}`: ''}
+                    >
+                        <Avatar
+                            src={imageRoute(me?.avatar_path)}
+                            title={fullname}
+                        />
+                        {/* Labels */}
+                        <div className="flex flex-col">
+                            <p className="text-wrap text-bs font-bs">{fullname}</p>
+                            <p className="text-wrap text-ll font-ll">{me?.work_email ?? ""}</p>
+                        </div>
+                    </Link>
+                    
                     {/* Logout Button */}
                     <button className="hover:opacity-25 transition-all" onClick={() => setIsOpen(true)}>
                         <img 
