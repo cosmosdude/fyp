@@ -13,6 +13,7 @@ import { format } from "../../utils/fast-date-fns";
 import { fullname } from "../../utils/fullname";
 import timeDisplayText from "../../utils/timeDisplayText";
 import SearchBox from "../../components/SearchBox";
+import EmptyView from "../../components/EmptyView";
 
 export default function AttendanceRequestsPage() {
     let pushNoti = usePushNoti()
@@ -126,6 +127,13 @@ export default function AttendanceRequestsPage() {
                     </tbody>
                 </table>
             </div>
+            {filtered.length === 0 && <EmptyView 
+                    title="No Request" body="There is no request for now."
+                    // cta="Add Holiday"
+                    // onCta= {() => {
+                    //     navigate("new")
+                    // }}
+                />}
         </div>
 
     );

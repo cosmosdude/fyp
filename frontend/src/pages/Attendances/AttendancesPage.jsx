@@ -13,6 +13,7 @@ import { fullname } from "../../utils/fullname";
 import { position } from "../../utils/position";
 import { scheduleDisplayText } from "../../utils/scheduleDisplayText";
 import timeDisplayText, { dateFrom24HrTime } from "../../utils/timeDisplayText";
+import EmptyView from "../../components/EmptyView";
 
 function AttendancesPage() {
 
@@ -85,6 +86,13 @@ function AttendancesPage() {
                     </tbody>
                 </table>
             </div>
+            {filtered.length === 0 && <EmptyView 
+                    title="No Record" body="There are no matching records."
+                    // cta="Add Holiday"
+                    // onCta= {() => {
+                    //     navigate("new")
+                    // }}
+                />}
         </div>
 
     );

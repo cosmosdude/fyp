@@ -13,6 +13,7 @@ import SearchBox from "../../components/SearchBox";
 import { apiPaths, apiRoute } from "../../configs/api.config";
 import { usePushNoti } from "../../components/Noti/NotiSystem";
 import { AlertActions, AlertBody, AlertButton, AlertDialog, AlertTitle } from "../../components/AlertDialog/AlertDialog";
+import EmptyView from "../../components/EmptyView";
 
 export default function DepartmentsPage() {
     let navigate = useNavigate()
@@ -102,6 +103,13 @@ export default function DepartmentsPage() {
                     />    
                 })}
             </div>
+            {filtered.length === 0 && <EmptyView 
+                    title="No Department" body="There is no department for now."
+                    // cta="Add Holiday"
+                    // onCta= {() => {
+                    //     navigate("new")
+                    // }}
+                />}
         </div>
         <AlertDialog isOpen={itemId !== null}>
             <AlertTitle>Delete</AlertTitle>

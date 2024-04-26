@@ -14,6 +14,7 @@ import { usePushNoti } from "../../components/Noti/NotiSystem";
 import { apiPaths, apiRoute } from "../../configs/api.config";
 
 import { AlertActions, AlertBody, AlertButton, AlertDialog, AlertTitle } from "../../components/AlertDialog/AlertDialog";
+import EmptyView from "../../components/EmptyView";
 
 export default function DesignationsPage() {
     let navigate = useNavigate()
@@ -126,6 +127,14 @@ export default function DesignationsPage() {
                     />    
                 })}
             </div>
+
+            {filtered.length === 0 && <EmptyView 
+                    title="No Designation" body="There is no designation for now."
+                    // cta="Add Holiday"
+                    // onCta= {() => {
+                    //     navigate("new")
+                    // }}
+                />}
         </div>
         <AlertDialog isOpen={itemId !== null}>
             <AlertTitle>Delete</AlertTitle>

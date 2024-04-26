@@ -15,6 +15,7 @@ import useMonthlyOvertimeStatistics from "../../hooks/useMonthlyOvertimeStatisti
 import { useEffect, useState } from "react";
 import { fullname } from "../../utils/fullname";
 import SearchBox from "../../components/SearchBox";
+import EmptyView from "../../components/EmptyView";
 
 export default function OvertimesPage() {
     let auth = useAuthContext()
@@ -164,6 +165,13 @@ export default function OvertimesPage() {
                     </tbody>
                 </table>
             </div>
+            {filtered.length === 0 && <EmptyView 
+                    title="No Request" body="There are no overtime request for now."
+                    // cta="Add Holiday"
+                    // onCta= {() => {
+                    //     navigate("new")
+                    // }}
+                />}
         </div>
 
     );

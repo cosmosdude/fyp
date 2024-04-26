@@ -21,6 +21,7 @@ import { useAuthContext } from "../../hooks/AuthStateContext";
 import sleep from "../../utils/sleep";
 import { useNavigate } from "react-router-dom";
 import SearchBox from "../../components/SearchBox";
+import EmptyView from "../../components/EmptyView";
 
 function PayslipsPage() {
 
@@ -148,6 +149,14 @@ function PayslipsPage() {
                     </tbody>
                 </table>
             </div>
+
+            {filtered.length === 0 && <EmptyView 
+                    title="No Record" body="There are no matching records."
+                    // cta="Add Holiday"
+                    // onCta= {() => {
+                    //     navigate("new")
+                    // }}
+                />}
         </div>
 
     );

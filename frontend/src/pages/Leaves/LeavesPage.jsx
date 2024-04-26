@@ -3,6 +3,7 @@ import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
 import FilledButton from "../../components/Buttons/FilledButton";
 import GhostButton from "../../components/Buttons/GhostButton";
+import EmptyView from "../../components/EmptyView";
 import { imageRoute } from "../../configs/api.config";
 import useAllUsersOnLeave from "../../hooks/useAllUsersOnLeave";
 import { capitalize } from "../../utils/capitalized";
@@ -76,6 +77,8 @@ export default function LeavesPage() {
                         </table>
                     </div>
                 </div>
+
+                {users.length === 0 && <EmptyView title="No Leaves Taken" body="No one is on leave for now"/>}
             </div>
         </div>
 

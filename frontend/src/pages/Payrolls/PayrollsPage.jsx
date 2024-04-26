@@ -15,6 +15,7 @@ import { scheduleDisplayText } from "../../utils/scheduleDisplayText";
 import timeDisplayText, { dateFrom24HrTime } from "../../utils/timeDisplayText";
 import { useEffect, useState } from "react";
 import SearchBox from "../../components/SearchBox";
+import EmptyView from "../../components/EmptyView";
 
 function PayrollsPage() {
 
@@ -89,6 +90,14 @@ function PayrollsPage() {
                     </tbody>
                 </table>
             </div>
+
+            {filtered.length === 0 && <EmptyView 
+                    title="No Record" body="There are no matching records."
+                    // cta="Add Holiday"
+                    // onCta= {() => {
+                    //     navigate("new")
+                    // }}
+                />}
         </div>
 
     );

@@ -5,6 +5,7 @@ import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
 import FilledButton from "../../components/Buttons/FilledButton";
 import useEffectGetHolidays from "../../hooks/useEffectGetHolidays";
 import { useNavigate } from "react-router-dom";
+import EmptyView from "../../components/EmptyView";
 
 export default function HolidaysPage() {
 
@@ -50,6 +51,13 @@ export default function HolidaysPage() {
                             )}
                         </tbody>
                     </HolidayTable>
+                    {past.length === 0 && <EmptyView 
+                    title="No Past Holidays" body="There are no past holidays for now."
+                    // cta="Would you like to define leave type?"
+                    // onCta= {() => {
+                    //     navigate("new")
+                    // }}
+                    />}
                 </div>
 
                 <div className="flex flex-col gap-[10px] overflow-hidden ">
@@ -71,6 +79,13 @@ export default function HolidaysPage() {
                             )}
                         </tbody>
                     </HolidayTable>
+                    {upcoming.length === 0 && <EmptyView 
+                        title="No Upcoming Holidays" body="There are no upcoming holidays for now."
+                        cta="Add Holiday"
+                        onCta= {() => {
+                            navigate("new")
+                        }}
+                    />}
                 </div>
             </div>
         </div>

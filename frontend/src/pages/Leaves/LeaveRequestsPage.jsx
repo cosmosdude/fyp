@@ -12,6 +12,7 @@ import { useAuthContext } from "../../hooks/AuthStateContext";
 import { capitalize } from "../../utils/capitalized";
 import { fullname } from "../../utils/fullname";
 import SearchBox from "../../components/SearchBox";
+import EmptyView from "../../components/EmptyView";
 
 export default function LeaveRequestsPage() {
     let pushNoti = usePushNoti()
@@ -135,6 +136,13 @@ export default function LeaveRequestsPage() {
                         />)}
                     </tbody>
                 </table>
+                {filtered.length === 0 && <EmptyView 
+                    title="No Request" body="There are no request for now."
+                    // cta="Would you like to define leave type?"
+                    // onCta= {() => {
+                    //     navigate("new")
+                    // }}
+                />}
             </div>
         </div>
 

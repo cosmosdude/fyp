@@ -10,6 +10,7 @@ import { scheduleDisplayText } from "../../utils/scheduleDisplayText";
 import SearchBox from "../../components/SearchBox";
 import { fullname } from "../../utils/fullname";
 import { useEffect, useState } from "react";
+import EmptyView from "../../components/EmptyView";
 
 function SchedulesPage() {
 
@@ -86,6 +87,13 @@ function SchedulesPage() {
                     </tbody>
                 </table>
             </div>
+            {filtered.length === 0 && <EmptyView 
+                    title="No Record" body="There are no matching records."
+                    // cta="Add Holiday"
+                    // onCta= {() => {
+                    //     navigate("new")
+                    // }}
+                />}
         </div>
 
     );

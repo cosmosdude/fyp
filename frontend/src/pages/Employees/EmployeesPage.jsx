@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import SearchBox from "../../components/SearchBox";
 import { fullname } from "../../utils/fullname";
 import { useEffect, useState } from "react";
+import EmptyView from "../../components/EmptyView";
 
 function EmployeesPage() {
     let navigate = useNavigate()
@@ -78,6 +79,13 @@ function EmployeesPage() {
                         }
                     )}
                 </div>
+                {filtered.length === 0 && <EmptyView 
+                    title="No Employee Found" body="No matching employee found for now."
+                    // cta="Add Holiday"
+                    // onCta= {() => {
+                    //     navigate("new")
+                    // }}
+                />}
             </div>
             
         </div>

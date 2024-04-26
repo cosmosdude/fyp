@@ -605,8 +605,6 @@ function EmployeeNewPage() {
                                     placeholder="eg. john.work@hrms.com"
                                     text={employee.workEmail}
                                     error={errors.workEmail}
-                                    // required={type==='new'}
-                                    error={errors.workEmail}
                                     disabled={type === 'detail'}
                                     onChange={(e) => {
                                         dispatchEmployee({value: {

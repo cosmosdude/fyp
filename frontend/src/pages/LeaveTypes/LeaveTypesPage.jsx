@@ -7,6 +7,7 @@ import GhostButton from "../../components/Buttons/GhostButton";
 import { useAuthContext } from "../../hooks/AuthStateContext";
 import useAllLeaveTypes from "../../hooks/useAllLeaveTypes";
 import { useNavigate } from "react-router-dom";
+import EmptyView from "../../components/EmptyView";
 
 export default function LeaveTypesPage() {
 
@@ -90,6 +91,14 @@ export default function LeaveTypesPage() {
                         </table>
                     </div>
                 </div>
+
+                {leaves.length === 0 && <EmptyView 
+                    title="No Leaves Type" body="There are no leave type defined."
+                    cta="Would you like to define leave type?"
+                    onCta= {() => {
+                        navigate("new")
+                    }}
+                />}
             </div>
         </div>
 
