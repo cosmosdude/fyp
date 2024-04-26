@@ -48,7 +48,19 @@ function DepartmentDetailPage() {
         return () => aborter.abort()
     }, [])
 
+    let [errors, setErrors] = useState({});
+    function validate() {
+        let result = true;
+        setErrors({});
+        if (!name) {
+            setErrors({...errors, name: "Must not be empty"})
+            result = false
+        }
+        return result
+    }
+
     async function update() {
+        if (!validate()) return
         try {
             let res = await departmentService.update(
                 {id, departmentName: name, accessToken}
@@ -59,6 +71,7 @@ function DepartmentDetailPage() {
     }
 
     async function create() {
+        if (!validate()) return
         try {
             let res = await departmentService.create(
                 {departmentName: name, accessToken}
@@ -115,9 +128,9 @@ function DepartmentDetailPage() {
                             title={`Department Name ${type !== 'detail' ? '(required)' : ''}`} 
                             placeholder="eg. Marketing Department"
                             text={name}
+                            error={errors.name}
                             // disable only when type is detail
                             disabled={type === 'detail'}
-                            required
                             onChange={(e) => {
                                 setName(e.target.value)
                             }}

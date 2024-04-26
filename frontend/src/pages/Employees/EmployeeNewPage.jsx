@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
 import FilledButton from "../../components/Buttons/FilledButton";
@@ -21,6 +21,10 @@ import LabeledText from "../../components/LabeledText";
 import useEffectUserDetail from "../../hooks/useEffectUserDetail";
 import useAllManagers from "../../hooks/useAllManagers";
 import { usePushNoti } from "../../components/Noti/NotiSystem";
+
+import {validate as isEmail} from 'email-validator'
+import { isPhone } from "../../utils/isPhone";
+import LucideIcon from "../../lib/LucideIcon";
 
 function EmployeeNewPage() {
 
@@ -85,7 +89,74 @@ function EmployeeNewPage() {
 
     let designations = useEffectDesignations(employee?.department?.id ?? "null")
 
+    let [errors, setErrors] = useState({});
+    function validate() {
+        let result = true;
+        let errors = {}
+        
+        if (!employee.username) {
+            errors = {...errors, username: "Must not be empty"}
+            result = false
+        } else if (employee.username.length < 8) {
+            errors = {...errors, username: "Must be at least 8 characters long."}
+            result = false
+        }
+
+        if (type==='new') {
+            if (!employee.password) {
+                errors = {...errors, password: "Must not be empty"}
+                result = false
+            }
+
+            if (!employee.retypePassword) {
+                errors = {...errors, retypePassword: "Must not be empty"}
+                result = false
+            }
+        }
+
+        // Email
+        if (!!employee.email && !isEmail(employee.email)) {
+            errors = {...errors, email: "Incorrect email format"}
+            result = false
+        }
+
+        // Phone
+        if (!!employee.phone && !isPhone(employee.phone)) {
+            errors = {...errors, phone: "Is not a valid phone number"}
+            result = false
+        }
+
+        // Work Email
+        if (!employee.workEmail) {
+            errors = {...errors, workEmail: "Must not be empty"}
+            result = false
+        } else if (!isEmail(employee.workEmail)) {
+            errors = {...errors, workEmail: "Incorrect email format"}
+            result = false
+        }
+
+        // Work Phone
+        if (!!employee.workPhone && !isPhone(employee.workPhone)) {
+            errors = {...errors, workPhone: "Is not a valid phone number"}
+            result = false
+        }
+
+        if (!!employee.ecPhone1 && !isPhone(employee.ecPhone1)) {
+            errors = {...errors, ecPhone1: "Is not a valid phone number"}
+            result = false
+        }
+
+        if (!!employee.ecPhone2 && !isPhone(employee.ecPhone2)) {
+            errors = {...errors, ecPhone2: "Is not a valid phone number"}
+            result = false
+        }
+
+        setErrors(errors);
+        return result
+    }
+
     function handleFormSubmit() {
+        if (!validate()) return ;
         if (type === 'new') createEmployee()
         if (type === 'update') updateEmployee()
     }
@@ -307,11 +378,12 @@ function EmployeeNewPage() {
                                     title='Username (required)' 
                                     placeholder="eg. john-doe"
                                     text={employee.username}
+                                    error={errors.username}
                                     disabled={type === 'detail'}
-                                    required
+                                    // required
                                     onChange={(e) => {
                                         dispatchEmployee({value: {
-                                            username: e.target.value
+                                            username: e.target.value?.trim?.().replace(/ /g, '') ?? ""
                                         }})
                                     }}
                                 />}
@@ -326,10 +398,11 @@ function EmployeeNewPage() {
                                 grid-cols-2 gap-[20px]
                                 `}>
                                 <TextField 
-                                    title='Password (required)' 
-                                    placeholder="eg. john1234"
+                                    title={`Password ${type==='new' ?'(required)' : ''}`}
+                                    placeholder={`Password ${type==='new' ? "eg. john1234" : '********'}`}
                                     text={employee.password}
-                                    required={type==='new'}
+                                    // required={type==='new'}
+                                    error={errors.password}
                                     disabled={type === 'detail'}
                                     secureTextEntry
                                     onChange={(e) => {
@@ -339,10 +412,10 @@ function EmployeeNewPage() {
                                     }}
                                 />
                                 <TextField 
-                                    title='Retype Password (required)' 
-                                    placeholder="eg. john1234"
+                                    title={`Retype Password ${type==='new' ?'(required)' : ''}`}
+                                    placeholder={`Password ${type==='new' ? "eg. john1234" : '********'}`}
                                     text={employee.retypePassword}
-                                    required={type==='new'}
+                                    error={errors.retypePassword}
                                     disabled={type === 'detail'}
                                     secureTextEntry
                                     onChange={(e) => {
@@ -471,6 +544,7 @@ function EmployeeNewPage() {
                                     title='Email' 
                                     placeholder=""
                                     text={employee.email}
+                                    error={errors.email}
                                     disabled={type === 'detail'}
                                     onChange={(e) => {
                                         dispatchEmployee({value: {
@@ -482,6 +556,7 @@ function EmployeeNewPage() {
                                     title='Phone' 
                                     placeholder=""
                                     text={employee.phone}
+                                    error={errors.phone}
                                     disabled={type === 'detail'}
                                     onChange={(e) => {
                                         dispatchEmployee({value: {
@@ -529,7 +604,9 @@ function EmployeeNewPage() {
                                     title='Work Email (required)' 
                                     placeholder="eg. john.work@hrms.com"
                                     text={employee.workEmail}
-                                    required={type==='new'}
+                                    error={errors.workEmail}
+                                    // required={type==='new'}
+                                    error={errors.workEmail}
                                     disabled={type === 'detail'}
                                     onChange={(e) => {
                                         dispatchEmployee({value: {
@@ -545,6 +622,7 @@ function EmployeeNewPage() {
                                     title='Work Phone' 
                                     placeholder="eg. 0123456789"
                                     text={employee.workPhone}
+                                    error={errors.workPhone}
                                     disabled={type === 'detail'}
                                     onChange={(e) => {
                                         dispatchEmployee({value: {
@@ -647,7 +725,7 @@ function EmployeeNewPage() {
                                 />
                                 <TextField 
                                     title='Relationship' 
-                                    placeholder="eg. john1234"
+                                    placeholder="eg. Dad"
                                     text={employee.ecRelation1}
                                     disabled={type === 'detail'}
                                     onChange={(e) => {
@@ -661,8 +739,9 @@ function EmployeeNewPage() {
                             <div className="grid grid-cols-1 gap-[20px]">
                                 <TextField 
                                     title='Phone' 
-                                    placeholder="eg. john1234"
+                                    placeholder="+95 12345678"
                                     text={employee.ecPhone1}
+                                    error={errors.ecPhone1}
                                     disabled={type === 'detail'}
                                     onChange={(e) => {
                                         dispatchEmployee({value: {
@@ -687,7 +766,7 @@ function EmployeeNewPage() {
                                 />
                                 <TextField 
                                     title='Relationship' 
-                                    placeholder="eg. john1234"
+                                    placeholder="eg. Mom"
                                     text={employee.ecRelation2}
                                     disabled={type === 'detail'}
                                     onChange={(e) => {
@@ -701,8 +780,9 @@ function EmployeeNewPage() {
                             <div className="grid grid-cols-1 gap-[20px]">
                                 <TextField 
                                     title='Phone' 
-                                    placeholder="eg. john1234"
+                                    placeholder="+95 12345678"
                                     text={employee.ecPhone2}
+                                    error={errors.ecPhone2}
                                     disabled={type === 'detail'}
                                     onChange={(e) => {
                                         dispatchEmployee({value: {
@@ -744,7 +824,21 @@ function EmployeeNewPage() {
                             </div>
                         </div>
                     </section>
+                    {Object.entries(errors).length > 0 &&<section className="flex flex-col border border-danger-300 rounded-[4px] bg-danger-50 text-danger-600 text-ll font-ll">
+                         <ul className="p-[8px]">
+                            {errors.username && <li>• Username - {errors.username}</li>}
+                            {errors.password && <li>• Password - {errors.password}</li>}
+                            {errors.retypePassword && <li>• Retype Password - {errors.retypePassword}</li>}
+                            {errors.email && <li>• Email - {errors.email}</li>}
+                            {errors.phone && <li>• Phone - {errors.phone}</li>}
 
+                            {errors.workEmail && <li>• Work Email - {errors.workEmail}</li>}
+                            {errors.workPhone && <li>• Work Phone - {errors.workPhone}</li>}
+
+                            {errors.ecPhone1 && <li>• Emergency Contact 1 - {errors.ecPhone1}</li>}
+                            {errors.ecPhone2 && <li>• Emergency Contact 2 - {errors.ecPhone2}</li>}
+                         </ul>
+                    </section>}
                     {/* Button Section */}
                     {type !== 'detail' && <section className="grid grid-cols-2 gap-[20px]">
                         <div/>
@@ -863,4 +957,8 @@ function employeeReducer(state, action) {
             }
             return newObject
     }
+}
+
+function Info() {
+    return <span><LucideIcon size={18} name="info"/></span>
 }

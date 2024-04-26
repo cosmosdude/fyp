@@ -73,10 +73,28 @@ function DesignationDetailPage() {
         return () => aborter.abort()
     }, [departments])
 
+    let [errors, setErrors] = useState({});
+    function validate() {
+        let result = true;
+        let errors = {}
+        
+        if (!name) {
+            errors = {...errors, name: "Must not be empty"}
+            result = false
+        }
+
+        if (!isValidSelectedIndex()) {
+            errors = {...errors, department: "Must not be empty."}
+            result = false
+        }
+        setErrors(errors);
+        return result
+    }
+
     async function update() {
-        setDepartmentError(null)
-        console.log("is valid", isValidSelectedIndex())
-        if (!isValidSelectedIndex())  return setDepartmentError("Please select department")
+        if (!validate()) return
+        // console.log("is valid", isValidSelectedIndex())
+        // if (!isValidSelectedIndex())  return setDepartmentError("Please select department")
 
         try {
             let res = await designationService.update(
@@ -93,9 +111,9 @@ function DesignationDetailPage() {
     }
 
     async function create() {
-        setDepartmentError(null)
-        console.log("is valid", isValidSelectedIndex())
-        if (!isValidSelectedIndex()) return setDepartmentError("Please select department")
+        if (!validate()) return
+        // console.log("is valid", isValidSelectedIndex())
+        // if (!isValidSelectedIndex()) return setDepartmentError("Please select department")
 
         try {
             let res = await designationService.create(
@@ -159,7 +177,8 @@ function DesignationDetailPage() {
                             text={name}
                             // disable only when type is detail
                             disabled={type === 'detail'}
-                            required
+                            error={errors.name}
+                            // required
                             onChange={(e) => {
                                 setName(e.target.value)
                             }}
@@ -175,7 +194,7 @@ function DesignationDetailPage() {
                                 setSelectedIndex(index)
                                 console.log("DesignationDetailPage.onSelect", item, index)
                             }}
-                            error={departmentError}
+                            error={errors.department}
                             options={departments}
                             disabled={type === 'detail'}
                         />
