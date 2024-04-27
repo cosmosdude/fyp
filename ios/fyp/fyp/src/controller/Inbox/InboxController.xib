@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InboxController" customModule="fyp" customModuleProvider="target">
             <connections>
+                <outlet property="emptyView" destination="QqY-Rt-zXX" id="9am-1Y-HdW"/>
                 <outlet property="tableView" destination="lcU-YS-URD" id="gJ1-Ig-YAy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -53,22 +54,36 @@
                     <rect key="frame" x="0.0" y="109" width="393" height="743"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="345" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="QqY-Rt-zXX" customClass="EmptyView" customModule="fyp" customModuleProvider="target">
+                    <rect key="frame" x="24" y="362" width="345" height="128"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="illu.no-inbox"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="No Inbox"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="message" value="There is no inbox for now"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="lcU-YS-URD" firstAttribute="top" secondItem="FEi-Zv-uyT" secondAttribute="bottom" id="41T-6i-vgX"/>
                 <constraint firstItem="lcU-YS-URD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="F6J-oW-qea"/>
+                <constraint firstItem="QqY-Rt-zXX" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Hh8-rp-GmI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lcU-YS-URD" secondAttribute="trailing" id="L1x-Cr-LJ0"/>
                 <constraint firstItem="FEi-Zv-uyT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="NtN-bO-vfD"/>
+                <constraint firstItem="QqY-Rt-zXX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="fj7-aX-JO0"/>
                 <constraint firstItem="FEi-Zv-uyT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gZ9-mf-WnV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QqY-Rt-zXX" secondAttribute="trailing" constant="24" id="iFy-WD-8UL"/>
                 <constraint firstItem="FEi-Zv-uyT" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="lQD-5q-Hkw"/>
+                <constraint firstItem="QqY-Rt-zXX" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lbx-X2-olC"/>
                 <constraint firstAttribute="bottom" secondItem="lcU-YS-URD" secondAttribute="bottom" id="oue-Tn-a92"/>
             </constraints>
             <point key="canvasLocation" x="55.725190839694655" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>
+        <image name="illu.no-inbox" width="576.499267578125" height="493.5"/>
         <namedColor name="primary-500">
             <color red="0.12549019607843137" green="0.29411764705882354" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

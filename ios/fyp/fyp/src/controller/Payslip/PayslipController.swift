@@ -11,6 +11,7 @@ import Combine
 class PayslipController: UIViewController {
 
     @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var emptyView: EmptyView!
 
     private var bag = Set<AnyCancellable>()
     
@@ -24,7 +25,10 @@ class PayslipController: UIViewController {
         tableView.dataSource = self
         
         payslipVM.$payslips.receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in self?.tableView?.reloadData() }
+            .sink { [weak self] in
+                self?.tableView?.reloadData()
+                self?.emptyView.isHidden = !$0.isEmpty
+            }
             .store(in: &bag)
         
         payslipVM.fetch()

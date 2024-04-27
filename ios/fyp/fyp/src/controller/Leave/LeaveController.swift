@@ -13,6 +13,8 @@ class LeaveController: UIViewController {
     @IBOutlet private(set) var leaveTypeListView: LeaveTypeListView!
     @IBOutlet private(set) var leaveRequestListView: MyLeaveRequestListView!
     
+    @IBOutlet private(set) var emptyView: EmptyView!
+    
     let leaveViewModel = LeaveVM()
     var bag = Set<AnyCancellable>()
     
@@ -33,7 +35,10 @@ class LeaveController: UIViewController {
             .store(in: &bag)
         
         leaveViewModel.$leaveRequests.receive(on: DispatchQueue.main)
-            .sink { [weak self] in self?.leaveRequestListView.requests = $0 }
+            .sink { [weak self] in
+                self?.leaveRequestListView.requests = $0
+                self?.emptyView.isHidden = !$0.isEmpty
+            }
             .store(in: &bag)
         
         leaveViewModel.fetchLeaveTypes()

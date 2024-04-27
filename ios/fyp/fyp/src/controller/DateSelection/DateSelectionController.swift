@@ -7,12 +7,23 @@
 
 import UIKit
 
-class DateSelectionController: UIViewController {
+class DateSelectionController: UIViewController, UIViewControllerTransitioningDelegate {
 
     @IBOutlet private(set) var datePicker: UIDatePicker!
     
     override var modalPresentationStyle: UIModalPresentationStyle {
-        set { } get { .overFullScreen }
+        set { } get { .custom }
+    }
+    
+    override var transitioningDelegate: UIViewControllerTransitioningDelegate? {
+        set { } get { self }
+    }
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        DimmingBackgroundPresentationController(
+            presentedViewController: presented,
+            presenting: presenting
+        )
     }
     
     var didSelectDate: (Date) -> Void = {_ in}

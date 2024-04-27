@@ -15,6 +15,7 @@ class InboxController: UIViewController {
     var bag = Set<AnyCancellable>()
     
     @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var emptyView: EmptyView!
     private let refresh = UIRefreshControl()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -32,6 +33,7 @@ class InboxController: UIViewController {
             .sink { [weak self] in
                 print("Notifications", $0)
                 self?.tableView.reloadData()
+                self?.emptyView.isHidden = !$0.isEmpty
             }.store(in: &bag)
         
         notiViewModel.$status.receive(on: DispatchQueue.main)

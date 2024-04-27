@@ -14,6 +14,8 @@ class OvertimeController: UIViewController {
     @IBOutlet private var overtimeView: OvertimeStatusView!
     @IBOutlet private var listView: OvertimeHistoryView!
     
+    @IBOutlet private var emptyView: EmptyView!
+    
     let vm = MyOTRequestsVM()
     let otVM = MyOTVM()
     var bag = Set<AnyCancellable>()
@@ -42,7 +44,10 @@ class OvertimeController: UIViewController {
             .store(in: &bag)
         
         vm.$requests.receive(on: DispatchQueue.main)
-            .sink { [weak self] in self?.listView.items = $0 }.store(in: &bag)
+            .sink { [weak self] in
+                self?.listView.items = $0
+                self?.emptyView.isHidden = !$0.isEmpty
+            }.store(in: &bag)
         
         vm.fetchRequests()
         otVM.fetch()

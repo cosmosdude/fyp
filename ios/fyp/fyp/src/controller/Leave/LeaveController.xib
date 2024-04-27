@@ -19,6 +19,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeaveController" customModule="fyp" customModuleProvider="target">
             <connections>
+                <outlet property="emptyView" destination="ihs-tL-RPl" id="aAU-9Z-gtK"/>
                 <outlet property="leaveRequestListView" destination="59m-W7-rUR" id="JCZ-tq-7es"/>
                 <outlet property="leaveTypeListView" destination="QNT-uL-JpB" id="NZo-aw-EjI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -71,7 +72,23 @@
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="59m-W7-rUR" customClass="MyLeaveRequestListView" customModule="fyp" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="217" width="393" height="635"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="345" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="ihs-tL-RPl" customClass="EmptyView" customModule="fyp" customModuleProvider="target">
+                            <rect key="frame" x="24" y="253.66666666666669" width="345" height="128"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="No Leave"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="message" value="You haven't requested any leave yet."/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="ihs-tL-RPl" firstAttribute="leading" secondItem="59m-W7-rUR" secondAttribute="leading" constant="24" id="H2G-7W-yLK"/>
+                        <constraint firstItem="ihs-tL-RPl" firstAttribute="centerY" secondItem="59m-W7-rUR" secondAttribute="centerY" id="N1W-Ft-WUM"/>
+                        <constraint firstAttribute="trailing" secondItem="ihs-tL-RPl" secondAttribute="trailing" constant="24" id="a5d-RD-u3E"/>
+                        <constraint firstItem="ihs-tL-RPl" firstAttribute="centerX" secondItem="59m-W7-rUR" secondAttribute="centerX" id="f3g-xV-TsN"/>
+                    </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ManagerSelectionController: UIViewController {
+class ManagerSelectionController: UIViewController, UIViewControllerTransitioningDelegate {
 
     var managers: [ItemGroup<String, [Manager]>] = []
     var selected: IndexPath?
@@ -15,7 +15,18 @@ class ManagerSelectionController: UIViewController {
     var didSelectManagerAt: (IndexPath) -> Void = {_ in}
     
     override var modalPresentationStyle: UIModalPresentationStyle {
-        set { } get { .overFullScreen }
+        set { } get { .custom }
+    }
+    
+    override var transitioningDelegate: UIViewControllerTransitioningDelegate? {
+        set { } get { self }
+    }
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        DimmingBackgroundPresentationController(
+            presentedViewController: presented,
+            presenting: presenting
+        )
     }
     
     @IBOutlet private var tableView: UITableView!

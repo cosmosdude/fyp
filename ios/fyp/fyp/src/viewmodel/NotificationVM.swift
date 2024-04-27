@@ -25,8 +25,10 @@ final class NotificationVM: StatusVM<Void, String> {
     @Sendable
     private func _fetchNotifications() async {
         let service = notiService
-        
+        status = .processing
         notifications = (try? await service.fetchNotifications())?.map(Noti.init) ?? []
+        try? await Task.sleep(for: .seconds(1))
+        status = .success
     }
     
     func read(at index: Int) {

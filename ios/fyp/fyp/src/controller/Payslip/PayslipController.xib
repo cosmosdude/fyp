@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PayslipController" customModule="fyp" customModuleProvider="target">
             <connections>
+                <outlet property="emptyView" destination="bFi-uY-Mnm" id="awS-Jl-jdb"/>
                 <outlet property="tableView" destination="zcz-Ku-jMr" id="MpZ-gn-X62"/>
                 <outlet property="view" destination="2Ec-Ve-z38" id="FSf-my-6rL"/>
             </connections>
@@ -32,22 +33,36 @@
                     <rect key="frame" x="0.0" y="109" width="393" height="743"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="345" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="bFi-uY-Mnm" customClass="EmptyView" customModule="fyp" customModuleProvider="target">
+                    <rect key="frame" x="24" y="362" width="345" height="128"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="illu.no-payslip"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="No Pay Slips"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="message" value="No pay slip has been generated for you yet"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Peg-GM-Cyq"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="Peg-GM-Cyq" firstAttribute="trailing" secondItem="zcz-Ku-jMr" secondAttribute="trailing" id="2OK-VC-tu1"/>
                 <constraint firstItem="M1D-bw-fUL" firstAttribute="trailing" secondItem="Peg-GM-Cyq" secondAttribute="trailing" id="6bC-xl-ruz"/>
+                <constraint firstItem="bFi-uY-Mnm" firstAttribute="centerX" secondItem="2Ec-Ve-z38" secondAttribute="centerX" id="7HY-8G-fwW"/>
                 <constraint firstItem="zcz-Ku-jMr" firstAttribute="top" secondItem="M1D-bw-fUL" secondAttribute="bottom" id="9Hr-XN-pHR"/>
                 <constraint firstAttribute="bottom" secondItem="zcz-Ku-jMr" secondAttribute="bottom" id="9XV-eR-Qxb"/>
+                <constraint firstItem="Peg-GM-Cyq" firstAttribute="trailing" secondItem="bFi-uY-Mnm" secondAttribute="trailing" constant="24" id="Hik-ld-NUh"/>
                 <constraint firstItem="M1D-bw-fUL" firstAttribute="top" secondItem="2Ec-Ve-z38" secondAttribute="top" id="JUG-Ub-keI"/>
+                <constraint firstItem="bFi-uY-Mnm" firstAttribute="centerY" secondItem="2Ec-Ve-z38" secondAttribute="centerY" id="PDO-F2-ghM"/>
                 <constraint firstItem="M1D-bw-fUL" firstAttribute="leading" secondItem="Peg-GM-Cyq" secondAttribute="leading" id="uiD-FL-IBO"/>
+                <constraint firstItem="bFi-uY-Mnm" firstAttribute="leading" secondItem="Peg-GM-Cyq" secondAttribute="leading" constant="24" id="xYf-Vh-vxh"/>
                 <constraint firstItem="zcz-Ku-jMr" firstAttribute="leading" secondItem="Peg-GM-Cyq" secondAttribute="leading" id="yim-xg-jir"/>
             </constraints>
             <point key="canvasLocation" x="55.725190839694655" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>
+        <image name="illu.no-payslip" width="598.1112060546875" height="535.1142578125"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SelectionController: UIViewController {
+class SelectionController: UIViewController, UIViewControllerTransitioningDelegate {
 
     var items: [ItemGroup<String, [String]>] = []
     var selected: IndexPath?
@@ -15,7 +15,18 @@ class SelectionController: UIViewController {
     var didSelectItemAt: (IndexPath) -> Void = {_ in}
     
     override var modalPresentationStyle: UIModalPresentationStyle {
-        set { } get { .overFullScreen }
+        set { } get { .custom }
+    }
+    
+    override var transitioningDelegate: UIViewControllerTransitioningDelegate? {
+        set { } get { self }
+    }
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        DimmingBackgroundPresentationController(
+            presentedViewController: presented,
+            presenting: presenting
+        )
     }
     
     @IBOutlet private var tableView: UITableView!
@@ -45,7 +56,7 @@ class SelectionController: UIViewController {
     
     @IBAction
     private func dismiss() {
-        self.dismiss(animated: false)
+        self.dismiss(animated: true)
     }
 
 }
