@@ -45,7 +45,7 @@ export default function HomePage() {
     return (
         <div className="relative flex gap-[20px] p-[20px] w-screen h-screen">
             {/* Left Nav */}
-            <div className="flex flex-col gap-[10px] min-w-[300px] max-w-[300px] overflow-hidden">
+            <div className="print:hidden flex flex-col gap-[10px] min-w-[300px] max-w-[300px] overflow-hidden">
                 {/* Top Nav Items */}
                 <div className="grow flex flex-col bg-background-0 border border-neutral-100 rounded-[6px] py-[20px] overflow-y-scroll">
                     <h1 className="text-center text-hl font-hl">HRMS</h1>

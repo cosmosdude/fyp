@@ -35,6 +35,9 @@ final class LeaveVM: @unchecked Sendable {
     @Sendable
     private func _fetchLeaveTypes() async throws {
         leaveTypes = (try? await leaveService.fetchLeaveBalances().map(LeaveType.init)) ?? []
+        if (selectedLeaveType == nil && leaveTypes.count > 0) {
+            selectedLeaveTypeIndex = 0
+        }
     }
     
     func fetchLeaveRequests() {

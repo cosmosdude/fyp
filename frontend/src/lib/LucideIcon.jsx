@@ -14,7 +14,7 @@ export default function LucideIcon({className, name, color, size, strokeWidth}) 
     if (!Icon) {
         // console.log("Icon not found:", name)
         // 
-        let combined = name.split('-') // "circle-dashed" => ["circle", "dashed"]
+        let combined = (name ?? "").split('-') // "circle-dashed" => ["circle", "dashed"]
             .filter(x => x) // remove empty parts
             .map(x => {  // capitalize
                 return x.substring(0, 0) + x.charAt(0).toUpperCase() + x.substring(1)

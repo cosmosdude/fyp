@@ -95,8 +95,8 @@ function LeaveRow({no, user}) {
         [&>*:first-child]:border-l-[1px]
         [&>*:last-child]:border-r-[1px]
         bg-background-0
-        hover:bg-primary-50
-        cursor-pointer
+        //hover:bg-primary-50
+        //cursor-pointer
         transition-all
         [&>*]:transition-all
         ">

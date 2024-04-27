@@ -66,7 +66,7 @@ final class ManagerVM {
         ]
         
         if (autoSelect && selectedManager == nil) {
-            selectedManager = managers.first?.first
+            selectedManager = personalManagers.first ?? hrManagers.first
         }
         
     }

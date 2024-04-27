@@ -6,6 +6,12 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 
 
 export default {
+  extend: {
+    screens: {
+      print: { raw: 'print' },
+      screen: { raw: 'screen' },
+    },
+  },
   content: [
     "./index.html",
     "./src/**/*.html",
@@ -119,6 +125,7 @@ export default {
 
       animation: {
         'slidein-rl': 'slidein-rl 0.25s ease-in',
+        wshrink: 'wshrink 5s ease-in'
       },
       keyframes: {
         'slidein-rl': {
@@ -130,6 +137,17 @@ export default {
             transform: 'scale(1, 1)' ,
             opacity: 100
           },
+        },
+
+        wshrink: {
+          '0%': {
+            transform: 'scale(1, 1)',
+            opacity: 100
+          },
+          '100%': {
+            transform: 'scale(0, 1)',
+            opacity: 0
+          }
         }
       }
     },

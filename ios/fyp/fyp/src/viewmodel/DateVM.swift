@@ -9,10 +9,13 @@ import Foundation
 
 class DateVM {
     
+    var _date: Date?
+    
     var date: Date? {
-        didSet {
-            guard let date else { return displayText = nil }
-            displayText = displayFormatter.string(from: date)
+        get { _date }
+        set {
+            _date = newValue
+            displayText = newValue.map(displayFormatter.string(from:))
         }
     }
     

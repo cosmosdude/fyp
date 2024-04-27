@@ -14,7 +14,7 @@ export default function GhostButton({
     return ( 
         <button 
             className={`
-                flex items-center gap-[10px]
+                flex items-center justify-center gap-[10px]
                 px-[16px] py-[10px]
                 text-lm font-lm
                 ${textColor} 

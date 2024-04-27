@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useReducer, useState } from "react";
+import { forwardRef, useEffect, useReducer, useRef, useState } from "react";
 import Avatar from "../../components/Avatar";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import BreadcrumbItem from "../../components/Breadcrumb/BreadcrumbItem";
@@ -26,6 +26,8 @@ export default function PayslipDetailPage() {
     let pushNoti = usePushNoti()
 
     let { id } = useParams()
+
+    let payslipRef = useRef()
 
     let auth = useAuthContext()
 
@@ -95,7 +97,7 @@ export default function PayslipDetailPage() {
     return (
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
             {/* Top nav */}
-            <div className="flex items-center gap-[20px]">
+            <div className="print:hidden flex items-center gap-[20px]">
                 <Breadcrumb>
                     <BreadcrumbItem title="Home" to='/'/>
                     <BreadcrumbItem title="/"/>
@@ -108,8 +110,8 @@ export default function PayslipDetailPage() {
             
             {/* Title */}
             <div className="flex flex-col">
-                <h1 className="text-neutral-900 text-tl font-tl">Schedule Shift</h1>
-                <p className="text-neutral-900 text-bm font-bm">Schedule weekly shift for an employee.</p>
+                <h1 className="text-neutral-900 text-tl font-tl">{payslip?.detail?.name ?? ""}</h1>
+                <p className="print:hidden text-neutral-900 text-bm font-bm">Payslip for employee.</p>
             </div>
 
             {/* User */}
@@ -119,9 +121,10 @@ export default function PayslipDetailPage() {
                     <p className="font-ll text-ll">{fullname(user.first_name, user.last_name)}</p>
                     <p className="font-ls text-ls">{position(user.designation_name, user.department_name)}</p>
                 </div>
+                
             </div>
 
-            <div className="grid grid-cols-2 gap-[20px]">
+            <div className="grid print:grid-cols-1 grid-cols-2 gap-[20px]">
                 <div className="grid grid-cols-2 gap-[20px]">
                     <div className="flex flex-col p-[10px] bg-background-1 rounded-[6px]">
                         <h3 className="text-bl font-bold">{fromText}</h3>
@@ -133,7 +136,7 @@ export default function PayslipDetailPage() {
                     </div>
                 </div>
                 <div/>
-                <div className="flex flex-col">
+                <div className="flex flex-col" ref={payslipRef}>
                     <PayslipItem boldTitle title="Income"/>
 
                     <PayslipItem title="Base Salary" amount={getKyat(payslip.detail?.salary)} boldAmount/>
@@ -172,6 +175,15 @@ export default function PayslipDetailPage() {
                     <Separator/>
                 </div>
             </div>
+
+            <div className="print:hidden grid grid-cols-2 items-center gap-[10px]">
+                <GhostButton 
+                    className="!p-[4px] grow mx-auto" icon="download"
+                    onClick={() => {print()}}
+                >
+                    Download PDF
+                </GhostButton>
+            </div>
         </div>
 
     );
@@ -192,5 +204,8 @@ function PayslipItem({title, boldTitle = false, amount, boldAmount = false, styl
 }
 
 function Separator() {
-    return (<div className="h-[1px] bg-background-2"/>)
+    return (
+        <hr/>
+        // <div className="h-[1px] bg-background-2"/>
+    )
 }

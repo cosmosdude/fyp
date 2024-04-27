@@ -105,6 +105,7 @@ function ScheduleRow({no, shift, onClick}) {
 
     return (
         <tr className="
+        
         group
         [&>*]:px-[16px] [&>*]:py-[12px] 
         bg-background-0
@@ -127,7 +128,7 @@ function ScheduleRow({no, shift, onClick}) {
                     <p className="font-ll text-ll">{name}</p>
                     <p className="font-ls text-ls">{position}</p>
                 </div>
-                
+                <div className="w-[0px] h-[40px]"/>
             </td>
             <ShiftCell shift={schedule(shift.sun_start_at, shift.sun_end_at) ?? "Off Day"}/>
             <ShiftCell shift={schedule(shift.mon_start_at, shift.mon_end_at) ?? "Off Day"}/>

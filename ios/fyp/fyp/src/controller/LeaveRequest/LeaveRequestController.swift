@@ -72,21 +72,24 @@ class LeaveRequestController: UIViewController {
             }.store(in: &bag)
         
         leaveVM.$selectedLeaveType.receive(on: DispatchQueue.main)
-            .sink { [weak leaveBox = leaveSelectBox] in
+            .sink { [weak self,  weak leaveBox = leaveSelectBox] in
                 guard let leave = $0 else { return }
                 leaveBox?.text = "\(leave.name) - \(leave.balance) day(s)"
+                self?.renderAccordingToLeaveType()
             }.store(in: &bag)
         
         fromDateVM.date = Date()
         fromDateVM.$displayText.receive(on: DispatchQueue.main)
-            .sink { [weak box = fromDateSelectBox] in
+            .sink { [weak self, weak box = fromDateSelectBox] in
                 box?.text = $0 ?? "Select date"
+                self?.renderAccordingToDates()
             }.store(in: &bag)
         
         toDateVM.date = Date()
         toDateVM.$displayText.receive(on: DispatchQueue.main)
-            .sink { [weak box = toDateSelectBox] in
+            .sink { [weak self, weak box = toDateSelectBox] in
                 box?.text = $0 ?? "Select date"
+                self?.renderAccordingToDates()
             }.store(in: &bag)
         
         typeVM.index = 0
@@ -105,6 +108,28 @@ class LeaveRequestController: UIViewController {
         
         leaveVM.fetchLeaveTypes()
         managerVM.fetchManagers()
+    }
+    
+    private func renderAccordingToLeaveType() {
+        render()
+    }
+    
+    private func renderAccordingToDates() {
+        render()
+    }
+    
+    private func render() {
+        let leave = leaveVM.selectedLeaveType
+        typeSelectBox.isHidden = false
+        
+        let start = fromDateVM.date ?? Date()
+        let end = toDateVM.date ?? Date()
+        let calendar = Calendar(identifier: .gregorian)
+        
+        if (leave?.halfday != 1 || !calendar.isDate(start, inSameDayAs: end)) {
+            typeSelectBox.isHidden = true
+            typeVM.index = 0
+        }
     }
     
     private func pickImage() {
@@ -138,6 +163,7 @@ class LeaveRequestController: UIViewController {
     @IBAction
     private func didTapToDate() {
         let picker = DateSelectionController()
+        picker.date = toDateVM.date
         picker.didSelectDate = { [weak toDateVM] in
             toDateVM?.date = $0
         }

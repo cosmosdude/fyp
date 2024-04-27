@@ -18,7 +18,7 @@ function NotiCard({title, message, style = 'default', onDismiss}) {
         fg = 'text-success-700'
     }
 
-    let timer
+    let timer = null;
     const clearTimer = () => {
         clearTimeout(timer)
         timer = null
@@ -47,6 +47,7 @@ function NotiCard({title, message, style = 'default', onDismiss}) {
             <div className="flex flex-col gap-[0px] grow">
                 <h3 className="text-lm font-lm">{title ?? ' '}</h3>
                 <p className="text-ls font-ls">{message ?? ' '}</p>
+                <div className="mt-[5px] h-[3px] w-full bg-neutral-900/25 rounded-full animate-wshrink"/>
             </div>
             <button className="hover:opacity-25 transition-all" onClick={e => {
                 clearTimer()
@@ -54,6 +55,7 @@ function NotiCard({title, message, style = 'default', onDismiss}) {
             }}>
                 <LucideIcon name="x" size={18}/>
             </button>
+            
         </div>
     );
 }
