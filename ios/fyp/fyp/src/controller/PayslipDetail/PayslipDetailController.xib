@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -11,6 +12,9 @@
     <customFonts key="customFonts">
         <array key="Inter-Bold.ttf">
             <string>Inter-Bold</string>
+        </array>
+        <array key="Inter-Medium.ttf">
+            <string>Inter-Medium</string>
         </array>
         <array key="Inter-Regular.ttf">
             <string>Inter-Regular</string>
@@ -23,6 +27,7 @@
                 <outlet property="buttonContainer" destination="qkV-Qn-oSw" id="L9j-Y2-Uxp"/>
                 <outlet property="endDateLabel" destination="HIx-b0-oBx" id="Oyv-EK-JIg"/>
                 <outlet property="navBar" destination="DgK-Oj-Zk2" id="zkX-8x-yMO"/>
+                <outlet property="payslipView" destination="chO-ZQ-wcR" id="Y6y-Vs-79b"/>
                 <outlet property="spinner" destination="GM7-ZW-s8e" id="HbW-ym-hJ7"/>
                 <outlet property="startDateLabel" destination="blB-Mz-nij" id="AMO-V5-ECz"/>
                 <outlet property="tableView" destination="vr1-ui-35i" id="JgV-By-0Ka"/>
@@ -131,17 +136,17 @@
                             </constraints>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vr1-ui-35i">
-                            <rect key="frame" x="0.0" y="75.666666666666686" width="393" height="575.33333333333326"/>
+                            <rect key="frame" x="0.0" y="75.666666666666686" width="393" height="527.33333333333326"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </tableView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qkV-Qn-oSw">
-                            <rect key="frame" x="0.0" y="651" width="393" height="58"/>
+                            <rect key="frame" x="0.0" y="603" width="393" height="106"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3xh-C3-l5V">
-                                    <rect key="frame" x="10" y="10" width="373" height="38"/>
+                                    <rect key="frame" x="10" y="10" width="373" height="86"/>
                                     <subviews>
                                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="GM7-ZW-s8e">
-                                            <rect key="frame" x="0.0" y="0.0" width="373" height="38"/>
+                                            <rect key="frame" x="0.0" y="-38" width="373" height="38"/>
                                             <color key="backgroundColor" name="primary-0"/>
                                             <color key="tintColor" name="primary-0"/>
                                             <constraints>
@@ -157,6 +162,23 @@
                                             <state key="normal" title="Acknowledge"/>
                                             <connections>
                                                 <action selector="didTapAcknowledge" destination="-1" eventType="touchUpInside" id="3bR-DP-b7F"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pio-Ul-oIn" userLabel="Save Pay Slip">
+                                            <rect key="frame" x="0.0" y="48" width="373" height="38"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="38" id="ZcK-Ar-6HK"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                            <color key="tintColor" name="primary-500"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="24" maxY="0.0"/>
+                                            <state key="normal" title="Save">
+                                                <color key="titleColor" name="primary-500"/>
+                                                <imageReference key="image" image="arrowshape.down.circle" catalog="system" symbolScale="small"/>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="savePayslip" destination="-1" eventType="touchUpInside" id="La4-Wf-sKE"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -189,11 +211,15 @@
         </view>
     </objects>
     <resources>
+        <image name="arrowshape.down.circle" catalog="system" width="128" height="123"/>
         <namedColor name="bg-1">
             <color red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary-0">
             <color red="0.9137254901960784" green="0.92941176470588238" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary-500">
+            <color red="0.12549019607843137" green="0.29411764705882354" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

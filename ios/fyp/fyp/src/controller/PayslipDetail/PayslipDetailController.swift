@@ -32,6 +32,8 @@ class PayslipDetailController: UIViewController {
     @IBOutlet private var endDateLabel: UILabel!
     @IBOutlet private var tableView: UITableView!
     
+    @IBOutlet private var payslipView: UIView!
+    
     @IBOutlet private var buttonContainer: UIView!
     @IBOutlet private var spinner: UIActivityIndicatorView!
     @IBOutlet private var button: UIButton!
@@ -93,6 +95,26 @@ class PayslipDetailController: UIViewController {
     @IBAction
     private func didTapAcknowledge() {
         acknowledgeVM.acknowledge()
+    }
+    
+    @IBAction
+    private func savePayslip() {
+        guard let snapshot = takeSnapshotOfView(view: payslipView)
+        else { return }
+        print(snapshot)
+        UIImageWriteToSavedPhotosAlbum(snapshot, nil, nil, nil)
+        presentAlert(title: "Payroll Saved")
+    }
+    
+    private func takeSnapshotOfView(view: UIView) -> UIImage? {
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawHierarchy(
+            in: view.bounds,
+            afterScreenUpdates: true
+        )
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
     }
 }
 
