@@ -50,6 +50,16 @@ class LeaveController: UIViewController {
                 detail, animated: true
             )
         }
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(didReceiveNoti),
+            name: .didReceiveRemoteNotification, object: nil
+        )
+    }
+    
+    @objc
+    private func didReceiveNoti() {
+        leaveViewModel.fetchLeaveTypes()
+        leaveViewModel.fetchLeaveRequests()
     }
     
     override func viewDidAppear(_ animated: Bool) {

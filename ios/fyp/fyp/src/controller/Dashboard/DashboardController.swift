@@ -62,6 +62,18 @@ class DashboardController: UIViewController {
         teamVM.fetch()
         userVM.fetchUser()
         otVM.fetch()
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(didReceiveNoti),
+            name: .didReceiveRemoteNotification, object: nil
+        )
+    }
+    
+    @objc
+    private func didReceiveNoti() {
+        attendanceVM.fetch()
+        teamVM.fetch()
+        userVM.fetchUser()
+        otVM.fetch()
     }
     
     override func viewDidAppear(_ animated: Bool) {

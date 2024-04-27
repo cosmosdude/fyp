@@ -1,7 +1,8 @@
 const db = require('../mysql');
 const {randomUUID: uuid} = require('crypto');
 const {format} = require('../utils/datefns-fast-wrapper');
-const z = require("zod")
+const z = require("zod");
+const apns = require('../utils/apns');
 
 /**
  * Get all attendance records
@@ -293,6 +294,17 @@ exports.requestAttendance = async (req, res, next) => {
         attendance_request_id: insertedRequest.id
     })
 
+    // send noti
+    apns.send({
+        title: "Attendance",
+        body: `${requester.first_name} has made an attendance request.`,
+        payload: {
+            user_id: data.recipient_id,
+            attendance_request_id: insertedRequest.id,
+            type: 'attendance_request'
+        }
+    })
+
     res.json(insertedRequest)
 
     // res.send("requestAttendance")
@@ -361,6 +373,17 @@ exports.respondAttendanceRequest = async (req, res, next) => {
         type: "attendance_request",
         attendance_request_id: request.id
     }])
+
+    // send noti
+    apns.send({
+        title: "Attendance",
+        body: `${responder.first_name} has ${data.status} your attendance request.`,
+        payload: {
+            user_id: request.requester_id,
+            attendance_request_id: request.id,
+            type: 'attendance_request'
+        }
+    })
 
     // res.send("respondAttendanceRequest")
     res.sendStatus(202)

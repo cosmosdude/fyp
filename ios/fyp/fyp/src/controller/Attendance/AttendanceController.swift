@@ -25,11 +25,19 @@ class AttendanceController: UIViewController {
             .store(in: &bag)
         attendanceVM.setDateFromMonthStartToCurrentDate()
         attendanceVM.fetch()
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(didReceiveNoti),
+            name: .didReceiveRemoteNotification, object: nil
+        )
+    }
+    
+    @objc
+    private func didReceiveNoti() {
+        attendanceVM.fetch()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         attendanceVM.fetch()
     }
 

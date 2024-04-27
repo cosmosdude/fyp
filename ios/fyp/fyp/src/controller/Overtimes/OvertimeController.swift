@@ -46,6 +46,22 @@ class OvertimeController: UIViewController {
         
         vm.fetchRequests()
         otVM.fetch()
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(didReceiveNoti),
+            name: .didReceiveRemoteNotification, object: nil
+        )
+    }
+    
+    @objc
+    private func didReceiveNoti() {
+        vm.fetchRequests()
+        otVM.fetch()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        vm.fetchRequests()
+        otVM.fetch()
     }
 
     @IBAction

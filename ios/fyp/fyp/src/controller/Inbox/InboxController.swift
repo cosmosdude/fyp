@@ -15,6 +15,7 @@ class InboxController: UIViewController {
     var bag = Set<AnyCancellable>()
     
     @IBOutlet private var tableView: UITableView!
+    private let refresh = UIRefreshControl()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -32,16 +33,37 @@ class InboxController: UIViewController {
                 print("Notifications", $0)
                 self?.tableView.reloadData()
             }.store(in: &bag)
+        
+        notiViewModel.$status.receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                ($0?.isProcessing ?? false)
+                ? self?.refresh.beginRefreshing()
+                : self?.refresh.endRefreshing()
+            }.store(in: &bag)
+        
         tableView.register(NotificationCell.self)
+        tableView.refreshControl = refresh
         tableView.delegate = self
         tableView.dataSource = self
+        refresh.addTarget(self, action: #selector(didReceiveNoti), for: .valueChanged)
+        
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(didReceiveNoti),
+            name: .didReceiveRemoteNotification, object: nil
+        )
+    }
+    
+    @objc
+    private func didReceiveNoti() {
+        refresh.beginRefreshing()
+        notiViewModel.fetchNotifications()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         notiViewModel.fetchNotifications()
     }
-
+    
 }
 
 extension InboxController: UITableViewDelegate {

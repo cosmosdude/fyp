@@ -96,6 +96,15 @@ class OvertimeRequestDetailController: UIViewController {
         if (request.status == "pending" && roleId < 4) {
             responseContainer.isHidden = false
         }
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(didReceiveNoti),
+            name: .didReceiveRemoteNotification, object: nil
+        )
+    }
+    
+    @objc
+    private func didReceiveNoti() {
+        detailVM.fetchDetail()
     }
     
     @IBAction

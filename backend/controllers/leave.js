@@ -3,6 +3,7 @@ const db = require('../mysql')
 const datefns = require('date-fns')
 const { moveToUploads } = require('../services/fileHandling')
 const filedao = require('../dao/files')
+const apns = require('../utils/apns')
 /**
  * Get all leave types.
 */
@@ -336,6 +337,17 @@ exports.user = {
             type: 'leave_request'
         }])
 
+        // send noti
+        apns.send({
+            title: "Leave",
+            body: `${requester.first_name} has requested ${requiredBalance} day(s) of ${leaveSetting.name}.`,
+            payload: {
+                user_id: recipient.id,
+                leave_request_id: insertedLeaveRequest.id,
+                type: 'leave_request'
+            }
+        })
+
         res.sendStatus(201)
     },
 
@@ -525,7 +537,7 @@ exports.user = {
             let [userLeaves] = await db.promise().query(/*sql*/`
                 select * from users_leaves
                 where user_id=? AND leave_id=?
-            `, [auth.id, leaveRequest.leave_id])
+            `, [leaveRequest.requester_id, leaveRequest.leave_id])
             let userLeave = userLeaves[0]
 
             // Calculate new balance
@@ -535,7 +547,7 @@ exports.user = {
             db.promise().query(/*sql*/`
                 update users_leaves set balance=?
                 where user_id=? AND leave_id=?
-            `, [newBalance, auth.id, leaveRequest.leave_id])
+            `, [newBalance, leaveRequest.requester_id, leaveRequest.leave_id])
         }
 
         // update leave request status
@@ -554,6 +566,16 @@ exports.user = {
             type: 'leave_request'
         }])
         
+        // send noti
+        apns.send({
+            title: "Leave",
+            body: `${responder.first_name} has ${data.status} the request for ${leaveRequest.outstanding_balance} day(s) of ${leaveSetting.name}.`,
+            payload: {
+                user_id: leaveRequest.requester_id,
+                leave_request_id: leaveRequest.id,
+                type: 'leave_request'
+            }
+        })
 
         res.sendStatus(201)
     }

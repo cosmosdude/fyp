@@ -1324,6 +1324,21 @@ video {
   border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
 }
 
+.rotate-90 {
+  --tw-rotate: 90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.rotate-45 {
+  --tw-rotate: 45deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.rotate-0 {
+  --tw-rotate: 0deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
@@ -1503,6 +1518,10 @@ video {
 
 .gap-\[-8px\] {
   gap: -8px;
+}
+
+.gap-\[8px\] {
+  gap: 8px;
 }
 
 .self-end {
@@ -2408,6 +2427,10 @@ video {
   font-weight: 600;
 }
 
+.font-tm {
+  font-weight: 500;
+}
+
 .capitalize {
   text-transform: capitalize;
 }
@@ -2749,6 +2772,10 @@ video {
   opacity: 0.75;
 }
 
+.hover\:opacity-65:hover {
+  opacity: 0.65;
+}
+
 .focus\:bg-primary-700:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(19 46 134 / var(--tw-bg-opacity));
@@ -2909,6 +2936,14 @@ video {
   transition-duration: 150ms;
 }
 
+.\[\&\>a\]\:text-bm>a {
+  font-size: 16px;
+}
+
+.\[\&\>a\]\:font-bm>a {
+  font-weight: 400;
+}
+
 .\[\&\>fieldset\>legend\]\:p-\[4px\]>fieldset>legend {
   padding: 4px;
 }
@@ -2918,5 +2953,45 @@ video {
 }
 
 .\[\&\>fieldset\>legend\]\:font-bs>fieldset>legend {
+  font-weight: 600;
+}
+
+.\[\&\>h2\]\:text-ts>h2 {
+  font-size: 20px;
+}
+
+.\[\&\>h2\]\:text-tm>h2 {
+  font-size: 24px;
+}
+
+.\[\&\>h2\]\:text-tl>h2 {
+  font-size: 28px;
+}
+
+.\[\&\>h2\]\:text-bm>h2 {
+  font-size: 16px;
+}
+
+.\[\&\>h2\]\:text-bl>h2 {
+  font-size: 18px;
+}
+
+.\[\&\>h2\]\:font-bm>h2 {
+  font-weight: 400;
+}
+
+.\[\&\>h2\]\:font-bl>h2 {
+  font-weight: 300;
+}
+
+.\[\&\>p\]\:text-bm>p {
+  font-size: 16px;
+}
+
+.\[\&\>p\]\:text-bs>p {
+  font-size: 14px;
+}
+
+.\[\&\>p\]\:font-bs>p {
   font-weight: 600;
 }

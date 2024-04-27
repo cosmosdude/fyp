@@ -4,6 +4,7 @@ const { format } = require('date-fns');
 //const {format} = require('date-fns');
 const z = require('zod');
 const { getWeek, getMonth } = require('../utils/date');
+const apns = require('../utils/apns');
 
 exports.getAllRequests = async (req, res) => {
     let [requests] = await db.promise().query(/*sql*/`
@@ -147,6 +148,17 @@ exports.requestOT = async (req, res) => {
         type: 'overtime_request'
     }])
 
+    // send noti
+    apns.send({
+        title: "Overtime",
+        body: `${requester.first_name} has requested overtime.`,
+        payload: {
+            user_id: data.recipient_id,
+            overtime_request_id: otReq.id,
+            type: 'overtime_request'
+        }
+    })
+
     res.json(otReq)
     // res.send("requestOT")
 }
@@ -192,6 +204,17 @@ exports.respondOT = async (req, res) => {
         overtime_request_id: otReq.id,
         type: 'overtime_request'
     }])
+
+    // send noti
+    apns.send({
+        title: "Overtime",
+        body: `Overtime request has been ${data.status} by ${responder.first_name}.`,
+        payload: {
+            user_id: otReq.requester_id,
+            overtime_request_id: otReq.id,
+            type: 'overtime_request'
+        }
+    })
 
     res.sendStatus(202)
 }

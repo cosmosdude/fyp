@@ -46,9 +46,10 @@ function App() {
       <AuthContext.Provider value={authState[0]}>
         <Routes>
         <Route path="signin" element={<LoginPage/>}/>
-        <Route path="acknowledgements" element={<FrontendLicensesPage/>}/>
         <Route element={<HomePage/>}>
             <Route path="/" element={<DashboardPage/>}/>
+            <Route path="/acknowledgements" element={<FrontendLicensesPage/>}/>
+
             <Route path="/employees" element={<EmployeesPage/>}/>
             <Route path="/employees/new" element={<EmployeeNewPage/>}/>
             <Route path="/employees/:id" element={<EmployeeNewPage/>}/>

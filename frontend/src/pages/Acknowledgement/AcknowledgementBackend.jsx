@@ -1,4 +1,12 @@
-<div className='flex flex-col text-ls font-ls p-[24px]'>
+function AcknowledgementBackend() {
+    return (
+        <div className='
+        flex flex-col text-ls font-ls p-[24px] 
+        gap-[8px]
+        [&>h2]:text-bl [&>h2]:font-bl
+        [&>a]:text-bm [&>a]:font-bm
+        [&>p]:text-bs [&>p]:font-bs
+        '>
 <h2 className="font-bs text-bs">@cspotcode/source-map-support (v0.8.1)</h2>
 <a className="text-lm font-lm text-primary-500 hover:opacity-25 transition-all" href="https://github.com/cspotcode/node-source-map-support">Repository</a>
 <code>
@@ -380,29 +388,52 @@
 <a className="text-lm font-lm text-primary-500 hover:opacity-25 transition-all" href="https://github.com/MikeMcl/bignumber.js">Repository</a>
 <code>
 
-<p>{`The MIT Licence.`}</p>
-<p>{``}</p>
-<p>{`Copyright (c) 2019 Michael Mclaughlin`}</p>
-<p>{``}</p>
-<p>{`Permission is hereby granted, free of charge, to any person obtaining`}</p>
-<p>{`a copy of this software and associated documentation files (the`}</p>
-<p>{`&apos;Software&apos;), to deal in the Software without restriction, including`}</p>
-<p>{`without limitation the rights to use, copy, modify, merge, publish,`}</p>
-<p>{`distribute, sublicense, and/or sell copies of the Software, and to`}</p>
-<p>{`permit persons to whom the Software is furnished to do so, subject to`}</p>
-<p>{`the following conditions:`}</p>
-<p>{``}</p>
-<p>{`The above copyright notice and this permission notice shall be`}</p>
-<p>{`included in all copies or substantial portions of the Software.`}</p>
-<p>{``}</p>
-<p>{`THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND,`}</p>
-<p>{`EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF`}</p>
-<p>{`MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.`}</p>
-<p>{`IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY`}</p>
-<p>{`CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,`}</p>
-<p>{`TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE`}</p>
-<p>{`SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`}</p>
-<p>{``}</p>
+<p>{`The MIT Licence.
+`}</p>
+<p>{`
+`}</p>
+<p>{`Copyright (c) 2019 Michael Mclaughlin
+`}</p>
+<p>{`
+`}</p>
+<p>{`Permission is hereby granted, free of charge, to any person obtaining
+`}</p>
+<p>{`a copy of this software and associated documentation files (the
+`}</p>
+<p>{`&apos;Software&apos;), to deal in the Software without restriction, including
+`}</p>
+<p>{`without limitation the rights to use, copy, modify, merge, publish,
+`}</p>
+<p>{`distribute, sublicense, and/or sell copies of the Software, and to
+`}</p>
+<p>{`permit persons to whom the Software is furnished to do so, subject to
+`}</p>
+<p>{`the following conditions:
+`}</p>
+<p>{`
+`}</p>
+<p>{`The above copyright notice and this permission notice shall be
+`}</p>
+<p>{`included in all copies or substantial portions of the Software.
+`}</p>
+<p>{`
+`}</p>
+<p>{`THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND,
+`}</p>
+<p>{`EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+`}</p>
+<p>{`MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+`}</p>
+<p>{`IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+`}</p>
+<p>{`CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+`}</p>
+<p>{`TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+`}</p>
+<p>{`SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+`}</p>
+<p>{`
+`}</p>
 <br/>
 <hr/>
 <br/>
@@ -582,13 +613,20 @@
 <a className="text-lm font-lm text-primary-500 hover:opacity-25 transition-all" href="git@github.com:colorjs/color-name">Repository</a>
 <code>
 
-<p>{`The MIT License (MIT)`}</p>
-<p>{`Copyright (c) 2015 Dmitry Ivanov`}</p>
-<p>{``}</p>
-<p>{`Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:`}</p>
-<p>{``}</p>
-<p>{`The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.`}</p>
-<p>{``}</p>
+<p>{`The MIT License (MIT)
+`}</p>
+<p>{`Copyright (c) 2015 Dmitry Ivanov
+`}</p>
+<p>{`
+`}</p>
+<p>{`Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+`}</p>
+<p>{`
+`}</p>
+<p>{`The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+`}</p>
+<p>{`
+`}</p>
 <p>{`THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`}</p>
 <br/>
 <hr/>
@@ -1452,29 +1490,52 @@
 <a className="text-lm font-lm text-primary-500 hover:opacity-25 transition-all" href="http://github.com/manishsaraan/email-validator">Repository</a>
 <code>
 
-<p>{`This is free and unencumbered software released into the public domain.`}</p>
-<p>{``}</p>
-<p>{`Anyone is free to copy, modify, publish, use, compile, sell, or`}</p>
-<p>{`distribute this software, either in source code form or as a compiled`}</p>
-<p>{`binary, for any purpose, commercial or non-commercial, and by any`}</p>
-<p>{`means.`}</p>
-<p>{``}</p>
-<p>{`In jurisdictions that recognize copyright laws, the author or authors`}</p>
-<p>{`of this software dedicate any and all copyright interest in the`}</p>
-<p>{`software to the public domain. We make this dedication for the benefit`}</p>
-<p>{`of the public at large and to the detriment of our heirs and`}</p>
-<p>{`successors. We intend this dedication to be an overt act of`}</p>
-<p>{`relinquishment in perpetuity of all present and future rights to this`}</p>
-<p>{`software under copyright law.`}</p>
-<p>{``}</p>
-<p>{`THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,`}</p>
-<p>{`EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF`}</p>
-<p>{`MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.`}</p>
-<p>{`IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR`}</p>
-<p>{`OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,`}</p>
-<p>{`ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR`}</p>
-<p>{`OTHER DEALINGS IN THE SOFTWARE.`}</p>
-<p>{``}</p>
+<p>{`This is free and unencumbered software released into the public domain.
+`}</p>
+<p>{`
+`}</p>
+<p>{`Anyone is free to copy, modify, publish, use, compile, sell, or
+`}</p>
+<p>{`distribute this software, either in source code form or as a compiled
+`}</p>
+<p>{`binary, for any purpose, commercial or non-commercial, and by any
+`}</p>
+<p>{`means.
+`}</p>
+<p>{`
+`}</p>
+<p>{`In jurisdictions that recognize copyright laws, the author or authors
+`}</p>
+<p>{`of this software dedicate any and all copyright interest in the
+`}</p>
+<p>{`software to the public domain. We make this dedication for the benefit
+`}</p>
+<p>{`of the public at large and to the detriment of our heirs and
+`}</p>
+<p>{`successors. We intend this dedication to be an overt act of
+`}</p>
+<p>{`relinquishment in perpetuity of all present and future rights to this
+`}</p>
+<p>{`software under copyright law.
+`}</p>
+<p>{`
+`}</p>
+<p>{`THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
+`}</p>
+<p>{`EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+`}</p>
+<p>{`MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+`}</p>
+<p>{`IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+`}</p>
+<p>{`OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+`}</p>
+<p>{`ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+`}</p>
+<p>{`OTHER DEALINGS IN THE SOFTWARE.
+`}</p>
+<p>{`
+`}</p>
 <p>{`For more information, please refer to &lt;http://unlicense.org&gt;`}</p>
 <br/>
 <hr/>
@@ -4289,3 +4350,8 @@
 <br/>
 </code>
 </div>
+
+    );
+}
+
+export default AcknowledgementBackend;

@@ -85,6 +85,15 @@ class AttendanceRequestDetailController: UIViewController {
             }.store(in: &bag)
         
         detailVM.fetch()
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(didReceiveNoti),
+            name: .didReceiveRemoteNotification, object: nil
+        )
+    }
+    
+    @objc
+    private func didReceiveNoti() {
+        detailVM.fetch()
     }
     
     private func render(_ request: AttendanceRequest?) {

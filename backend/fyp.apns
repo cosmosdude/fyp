@@ -1,0 +1,14 @@
+{
+    "Simulator Target Bundle": "com.ta1458z.fyp",
+    "aps": {
+        "alert": {
+            "title": "Test Title",
+            "subtitle": "Test Subtitle",
+            "body": "Test notification body"
+        }
+    },
+    "fyp": {
+        "userId": "Testing 1 2 3",
+        "userName": "Username"
+    }
+}

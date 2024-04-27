@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import TANetworking
 
-final class NotificationVM {
+final class NotificationVM: StatusVM<Void, String> {
     
     @Published
     private(set) var notifications = [Noti]()
@@ -17,10 +17,6 @@ final class NotificationVM {
     let notiService = NotificationService(
         accessToken: LoginModel.accessToken ?? ""
     )
-    
-    init() {
-        
-    }
     
     func fetchNotifications() {
         Task(operation: _fetchNotifications)

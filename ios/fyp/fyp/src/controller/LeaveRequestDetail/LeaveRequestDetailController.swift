@@ -83,6 +83,16 @@ class LeaveRequestDetailController: UIViewController {
         
         // setup UI
         render(nil)
+        
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(didReceiveNoti),
+            name: .didReceiveRemoteNotification, object: nil
+        )
+    }
+    
+    @objc
+    private func didReceiveNoti() {
+        detailVM.fetch(id: leaveRequestID)
     }
     
     private func render(_ request: LeaveRequest?) {
