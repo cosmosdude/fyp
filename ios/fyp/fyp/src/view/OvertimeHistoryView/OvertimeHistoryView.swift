@@ -48,7 +48,8 @@ extension OvertimeHistoryView: UITableViewDataSource {
         )
         let item = items[indexPath.row]
         cell.dayView.setDate(item.date ?? Date())
-        cell.titleLabel.text = overtimeDurationText(seconds: item.durationSec) 
+        let duration = item.durationSec
+        cell.titleLabel.text = duration == 0 ? "Off In Lieu" : overtimeDurationText(seconds: item.durationSec)
         cell.statusLabel.text = item.status.capitalized
         let color: UIColor?
         switch item.status {

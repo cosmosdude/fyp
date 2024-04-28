@@ -5,11 +5,11 @@ module.exports = {
             select users.id as user_id, shifts.* from users
             cross join (
                 select 'sun' as 'day', null as start_at, null as end_at, 0 as break_seconds union all
-                select 'mon' as 'day', '06:00:00' as start_at, '18:00:00' as end_at, 3600 as break_seconds union all
-                select 'tue' as 'day', '06:00:00' as start_at, '18:00:00' as end_at, 3600 as break_seconds union all
-                select 'wed' as 'day', '06:00:00' as start_at, '18:00:00' as end_at, 3600 as break_seconds union all
-                select 'thu' as 'day', '06:00:00' as start_at, '18:00:00' as end_at, 3600 as break_seconds union all
-                select 'fri' as 'day', '06:00:00' as start_at, '18:00:00' as end_at, 3600 as break_seconds union all
+                select 'mon' as 'day', '09:00:00' as start_at, '18:00:00' as end_at, 3600 as break_seconds union all
+                select 'tue' as 'day', '09:00:00' as start_at, '18:00:00' as end_at, 3600 as break_seconds union all
+                select 'wed' as 'day', '09:00:00' as start_at, '18:00:00' as end_at, 3600 as break_seconds union all
+                select 'thu' as 'day', '09:00:00' as start_at, '18:00:00' as end_at, 3600 as break_seconds union all
+                select 'fri' as 'day', '09:00:00' as start_at, '18:00:00' as end_at, 3600 as break_seconds union all
                 select 'sat' as 'day', null as start_at, null as end_at, 0 as break_seconds
             ) as shifts
         ) as shifts

@@ -89,7 +89,8 @@ class OvertimeRequestDetailController: UIViewController {
         f.dateFormat = "d MMM, yyyy"
         
         dateBox.text = request.date.map(f.string(from:))
-        durationBox.text = overtimeDurationText(seconds: request.durationSec)
+        let duration = request.durationSec
+        durationBox.text = duration == 0 ? "Off in lieu" : overtimeDurationText(seconds: request.durationSec)
         
         statusBox.text = request.status.capitalized
         

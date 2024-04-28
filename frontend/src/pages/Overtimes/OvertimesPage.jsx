@@ -178,6 +178,9 @@ export default function OvertimesPage() {
 }
 
 function RequestRow({no, overtime, date, duration, status, onApprove, onReject}) {
+    let durationText = breakTimeDisplayText(duration)
+    if (duration === 0) durationText = "Off in lieu"
+
     return (
         <tr className="
         group
@@ -191,7 +194,7 @@ function RequestRow({no, overtime, date, duration, status, onApprove, onReject})
             <td className="sticky left-0 text-center font-bs text-bs">
                 {no ?? ''}
             </td>
-            <td className="sticky left-0 bg-white group-hover:bg-primary-50 text-left min-w-[200px]">
+            <td className="sticky left-0 bg-white //group-hover:bg-primary-50 text-left min-w-[200px]">
                 <div className="flex items-center gap-[10px]">
                     <Avatar 
                         className="" 
@@ -207,7 +210,7 @@ function RequestRow({no, overtime, date, duration, status, onApprove, onReject})
                 {date}
             </td>
             <td className="text-center font-ll text-ll">
-                {breakTimeDisplayText(duration)}
+                {durationText}
             </td>
             {/* <td className="text-center font-ll text-ll">
                 -
