@@ -9,7 +9,7 @@ const apns = require('../utils/apns')
 */
 exports.getAll = async (req, res) => {
     let [results] = await db.promise().query(/*sql*/`
-        select * from leaves
+        select * from leaves where deleted_at is NULL
     `)
     res.json(results)
 }
@@ -21,7 +21,7 @@ exports.get = async (req, res) => {
     let { id } = req.params
     
     let [result] = await db.promise().query(/*sql*/`
-        select * from leaves where id=?
+        select * from leaves where deleted_at is NULL and id=?
     `, [id])
 
     if (result.length === 0) return res.status(404).send("No such leave")
@@ -127,7 +127,7 @@ exports.delete = async (req, res) => {
     if (!id) return res.sendStatus(404)
 
     await db.promise().query(/*sql*/`
-        update leaves set deleted_at=CURRENT_TIMESTAMP() where id=?
+        update leaves set deleted_at=CURRENT_TIMESTAMP(), enabled=false where id=?
     `, id)
 
     let [results] = await db.promise().query(/*sql*/`
@@ -496,7 +496,7 @@ exports.user = {
         try {
             data = z.object({
                 status: z.enum(['approved', 'rejected']),
-                response_msg: z.string().optional()
+                response_msg: z.string().optional(),
             }).parse(req.body)
         } catch(error) { return res.zod.sendError(error) }
 

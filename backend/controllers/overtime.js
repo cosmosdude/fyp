@@ -175,11 +175,17 @@ exports.respondOT = async (req, res) => {
         }).parse(req.body)
     } catch(error) { res.zod.sendError(error) }
 
+    let isOffInLieu = Number(req.body.off_in_lieu) === 1
+
     // Get Responder (Auth User)
     let responder = (await db.promise().query(/*sql*/`
         select * from users where id=?
     `, auth.id))[0]?.[0]
 
+    // update off in lieu
+    if (isOffInLieu) {
+        data.duration_sec = 0
+    }
     await db.promise().query(/*sql*/`
         update users_overtimes_requests set ? where id=?
     `, [{
@@ -187,32 +193,63 @@ exports.respondOT = async (req, res) => {
         responded_at: new Date()
     }, id])
 
+    // get the request back
     let otReq = (await db.promise().query(/*sql*/`
         select * from users_overtimes_requests where id=?
     `, id))[0]?.[0]
 
     if (!otReq) return res.status(400).send("No such request")
 
+    //
+    let [offInLieus] = await db.promise().query(/*sql*/`
+        select ul.*, l.* from users_leaves as ul
+        join leaves as l on l.id=ul.leave_id and l.enabled = true and l.deleted_at is NULL
+        where l.earnable = true and ul.user_id=?
+    `, [otReq.requester_id])
+    let offInLieu = offInLieus[0]
+
+    // return res.json(leaves)
+    if (offInLieu && data.status === 'approved') {
+        // give 1 off in lieu
+        await db.promise().query(/*sql*/`
+        update users_leaves set balance = balance+1
+        where user_id=? and leave_id=?
+        `,[otReq.requester_id, offInLieu.id])
+
+        // return res.json(offInLieu)
+    }
+
+    let noti = {
+        title: "Overtime",
+        body: `Overtime request has been ${data.status} by ${responder.first_name}.`,
+        overtime_request_id: otReq.id,
+        type: 'overtime_request',
+        user_id: otReq.requester_id
+    }
+
+    if (isOffInLieu && data.status === 'approved') {
+        noti.body = `You have gained Off-in-lieu instead of overtime.`
+    }
     // create noti
     await db.promise().query(/*sql*/`
         insert into users_notifications
         set ?
     `, [{
-        user_id: otReq.requester_id, // <- target user is original requester
-        title: "Overtime",
-        body: `Overtime request has been ${data.status} by ${responder.first_name}.`,
-        overtime_request_id: otReq.id,
-        type: 'overtime_request'
+        user_id: noti.user_id, // <- target user is original requester
+        title: noti.title,
+        body: noti.body,
+        overtime_request_id: noti.overtime_request_id,
+        type: noti.type
     }])
 
     // send noti
     apns.send({
-        title: "Overtime",
-        body: `Overtime request has been ${data.status} by ${responder.first_name}.`,
+        title: noti.title,
+        body: noti.body,
         payload: {
-            user_id: otReq.requester_id,
-            overtime_request_id: otReq.id,
-            type: 'overtime_request'
+            user_id: noti.user_id,
+            overtime_request_id: noti.overtime_request_id,
+            type: noti.type
         }
     })
 

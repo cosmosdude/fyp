@@ -8,15 +8,57 @@ import { useAuthContext } from "../../hooks/AuthStateContext";
 import useAllLeaveTypes from "../../hooks/useAllLeaveTypes";
 import { useNavigate } from "react-router-dom";
 import EmptyView from "../../components/EmptyView";
+import { AlertActions, AlertBody, AlertButton, AlertDialog, AlertTitle } from "../../components/AlertDialog/AlertDialog";
+import LucideIcon from "../../lib/LucideIcon";
+import { apiPaths, apiRoute } from "../../configs/api.config";
+import { usePushNoti } from "../../components/Noti/NotiSystem";
 
 export default function LeaveTypesPage() {
 
     let navigate = useNavigate()
+    let pushNoti = usePushNoti()
+
+    let accessToken = useAuthContext()
 
     // let schedules = []
     // for (let i = 0; i < 12; i++) schedules.push({id: i})
-    let leaves = useAllLeaveTypes()
+    let allLeaves = useAllLeaveTypes()
+    let [leaves, setLeaves] = useState([])
+    useEffect(() => { setLeaves(allLeaves) }, [allLeaves])
+
+    let [itemId, setItemId] = useState(null);
+
+    async function deleteItem(id) {
+        try {
+            let res = await fetch(
+                apiRoute(apiPaths.leave.system.delete(id)), 
+                {
+                    method: "DELETE",
+                    headers: { 
+                        // 'content-type': "application/json",
+                        'authorization': `Bearer ${accessToken}`
+                    }
+                }
+            )
+
+            if (res.status >= 200 && res.status < 300) {
+                let text = await res.text()
+                pushNoti({
+                    title: "Deleted", 
+                    message: `Leave type has been successfully deleted.`, 
+                    style: "success"
+                })
+                setLeaves(leaves.filter(d => d.id !== id))
+            } else {
+                pushNoti({title: "Error", message: "Unable to delete leave type()", style: "danger"})
+            }
+        } catch (error) {
+            pushNoti({title: "Error", message: `Unable to delete leave type ${error}`, style: "danger"})
+        }
+    }
+
     return (
+        <>
         <div className="flex flex-col w-full h-full gap-[20px] overflow-x-hidden overflow-y-scroll">
             {/* Top nav */}
             <div className="flex items-center gap-[20px]">
@@ -66,6 +108,7 @@ export default function LeaveTypesPage() {
                                     <th><div>Halfday</div></th>
                                     <th><div>Carried</div></th>
                                     <th><div>Earnable</div></th>
+                                    <th><div/></th>
                                 </tr>
                             </thead>
                             <tbody className="
@@ -76,6 +119,7 @@ export default function LeaveTypesPage() {
                                 {leaves.map((x, i) => <LeaveTypeRow 
                                     key={x.id} 
                                     no={i + 1}
+                                    leave={x}
                                     name={x.name}
                                     initial={x.initial}
                                     gender={x.gender}
@@ -85,6 +129,11 @@ export default function LeaveTypesPage() {
                                     earnable={x.earnable}
                                     onClick={() => {
                                         navigate(x.id)
+                                    }}
+                                    onDelete={e => {
+                                        e.stopPropagation()
+                                        e.preventDefault()
+                                        setItemId(x.id)
                                     }}
                                 />)}
                             </tbody>
@@ -101,11 +150,26 @@ export default function LeaveTypesPage() {
                 />}
             </div>
         </div>
-
+        <AlertDialog isOpen={itemId !== null}>
+            <AlertTitle>Delete</AlertTitle>
+            <AlertBody>Are you sure you wish to delete this department? This operation can't be undone.</AlertBody>
+            <AlertActions>
+                <AlertButton onClick={() => setItemId(null)}>
+                    Dismiss
+                </AlertButton>
+                <AlertButton style="danger" onClick={() => {
+                    deleteItem(itemId)
+                    setItemId(null)
+                }}>
+                    Confirm
+                </AlertButton>
+            </AlertActions>
+        </AlertDialog>
+        </>
     );
 }
 
-function LeaveTypeRow({no, name, initial, gender, max, halfday, carried, earnable, onClick}) {
+function LeaveTypeRow({no, leave, name, initial, gender, max, halfday, carried, earnable, onClick, onDelete}) {
     return (
         <tr className="
         group
@@ -143,6 +207,11 @@ function LeaveTypeRow({no, name, initial, gender, max, halfday, carried, earnabl
             </td>
             <td className="items-center gap-[4px] text-center font-ll text-ll min-w-[100px]">
                 {!!earnable ? 'Yes' : 'No'}
+            </td>
+            <td className="font-ll text-ll whitespace-nowrap">
+                <button className="my-auto text-danger-600 hover:opacity-25 transition-all" onClick={onDelete}>
+                    <LucideIcon size={18} name="trash-2"/>
+                </button>
             </td>
             {/* <td className="text-center font-ll text-ll">
 

@@ -17,6 +17,7 @@ final class RespondOTVM: StatusVM<Void, String> {
     struct Response {
         let message: String
         let status: OvertimeService.ResponseStatus
+        var offInLieu: Bool = false
     }
     
     func respond(_ response: Response) {
@@ -29,7 +30,8 @@ final class RespondOTVM: StatusVM<Void, String> {
         do {
             try await service.respondOvertimeRequest(
                 id: id ?? "", reason: res.message,
-                status: res.status
+                status: res.status,
+                offInLieu: res.offInLieu
             )
             status = .success
         } catch {

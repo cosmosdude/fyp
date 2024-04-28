@@ -8,13 +8,19 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Medium.ttf">
+            <string>Inter-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OvertimeRequestDetailController" customModule="fyp" customModuleProvider="target">
             <connections>
-                <outlet property="buttonStack" destination="0hK-zj-dlF" id="jdj-gF-hBv"/>
+                <outlet property="buttonStack" destination="00h-BO-TuQ" id="yGg-Go-KRx"/>
                 <outlet property="dateBox" destination="bCt-eE-Na3" id="SIC-Ut-gio"/>
                 <outlet property="durationBox" destination="wbk-34-mmH" id="Bv6-H5-ui5"/>
                 <outlet property="navBar" destination="xqi-NV-Msf" id="ESu-7i-4P7"/>
+                <outlet property="offInLieuButton" destination="QeO-gH-PsL" id="6UR-VJ-LGW"/>
                 <outlet property="reasonBox" destination="3Y7-1a-7py" id="ppz-Vn-Zka"/>
                 <outlet property="requestFromBox" destination="ulH-TB-bV9" id="gSD-Ju-Way"/>
                 <outlet property="requestToBox" destination="JDv-Rs-bRd" id="U1U-hW-yIN"/>
@@ -145,7 +151,7 @@
                             <viewLayoutGuide key="frameLayoutGuide" id="m2V-GG-dWe"/>
                         </scrollView>
                         <view hidden="YES" contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b6m-XL-VE6" userLabel="response_container">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="98"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="146"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ef-va-s7f" userLabel="separator">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="1"/>
@@ -155,7 +161,7 @@
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="twq-QM-DHX">
-                                    <rect key="frame" x="20" y="20" width="353" height="58"/>
+                                    <rect key="frame" x="20" y="20" width="353" height="106"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" placeholderIntrinsicWidth="353" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="bYx-T5-Z6M" customClass="TextBox" customModule="fyp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="353" height="0.0"/>
@@ -171,35 +177,60 @@
                                                 <constraint firstAttribute="height" constant="38" id="3DK-fe-DlC"/>
                                             </constraints>
                                         </activityIndicatorView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0hK-zj-dlF">
-                                            <rect key="frame" x="0.0" y="20" width="353" height="38"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="00h-BO-TuQ">
+                                            <rect key="frame" x="0.0" y="20" width="353" height="86"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEj-QS-eAa" customClass="FilledButton" customModule="fyp" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="166.66666666666666" height="38"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0hK-zj-dlF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="353" height="38"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEj-QS-eAa" customClass="FilledButton" customModule="fyp" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="166.66666666666666" height="38"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="38" id="a9w-H2-yVt"/>
+                                                            </constraints>
+                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                            <state key="normal" title="Reject"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="__style" value="danger"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="didTapReject" destination="-1" eventType="touchUpInside" id="cnN-tE-KIK"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJA-e9-WWc" customClass="FilledButton" customModule="fyp" customModuleProvider="target">
+                                                            <rect key="frame" x="186.66666666666663" y="0.0" width="166.33333333333337" height="38"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="38" id="ast-zE-3rD"/>
+                                                            </constraints>
+                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                            <state key="normal" title="Approve"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="__style" value="success"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="didTapApprove" destination="-1" eventType="touchUpInside" id="sXq-NV-YQX"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeO-gH-PsL" userLabel="Give Off In Lieu">
+                                                    <rect key="frame" x="0.0" y="48" width="353" height="38"/>
+                                                    <color key="backgroundColor" name="primary-0"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="38" id="a9w-H2-yVt"/>
+                                                        <constraint firstAttribute="height" constant="38" id="dCe-O7-8jx"/>
                                                     </constraints>
+                                                    <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                    <state key="normal" title="Reject"/>
+                                                    <state key="normal" title="Give Off In Lieu">
+                                                        <color key="titleColor" name="primary-500"/>
+                                                    </state>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="__style" value="danger"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
+                                                            <integer key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="didTapReject" destination="-1" eventType="touchUpInside" id="cnN-tE-KIK"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJA-e9-WWc" customClass="FilledButton" customModule="fyp" customModuleProvider="target">
-                                                    <rect key="frame" x="186.66666666666663" y="0.0" width="166.33333333333337" height="38"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="38" id="ast-zE-3rD"/>
-                                                    </constraints>
-                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                    <state key="normal" title="Approve"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="__style" value="success"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="didTapApprove" destination="-1" eventType="touchUpInside" id="sXq-NV-YQX"/>
+                                                        <action selector="didTapOffInLieu" destination="-1" eventType="touchUpInside" id="pAB-Y6-VQs"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -243,6 +274,12 @@
         </namedColor>
         <namedColor name="neutral-900">
             <color red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary-0">
+            <color red="0.9137254901960784" green="0.92941176470588238" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary-500">
+            <color red="0.12549019607843137" green="0.29411764705882354" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

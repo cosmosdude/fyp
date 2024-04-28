@@ -154,7 +154,8 @@ extension OvertimeService {
     public func respondOvertimeRequest(
         id: String, // approved | rejected
         reason: String,
-        status: ResponseStatus
+        status: ResponseStatus,
+        offInLieu: Bool
     ) async throws {
         
         let req = AF.request(
@@ -162,7 +163,8 @@ extension OvertimeService {
             method: .put,
             parameters: [
                 "response_msg": reason,
-                "status": status.rawValue
+                "status": status.rawValue,
+                "off_in_lieu": String(offInLieu ? 1 : 0)
             ],
             encoder: URLEncodedFormParameterEncoder(destination: .httpBody),
             headers: [

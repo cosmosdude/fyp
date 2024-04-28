@@ -28,6 +28,7 @@ class OvertimeRequestDetailController: UIViewController {
     
     @IBOutlet private var spinner: UIActivityIndicatorView!
     @IBOutlet private var buttonStack: UIStackView!
+    @IBOutlet private var offInLieuButton: UIButton!
     
     var bag = Set<AnyCancellable>()
     
@@ -35,6 +36,7 @@ class OvertimeRequestDetailController: UIViewController {
     var id: String = ""
     let detailVM = OTRequestDetailVM()
     let responseVM = RespondOTVM()
+    let leaveVM = LeaveVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +67,18 @@ class OvertimeRequestDetailController: UIViewController {
                 default: ()
                 }
             }.store(in: &bag)
+        
+        leaveVM.$leaveTypes.receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.showHideOffInLieu($0)
+            }.store(in: &bag)
+        leaveVM.fetchLeaveTypes()
+    }
+    
+    private func showHideOffInLieu(_ types: [LeaveType]) {
+//        let types = leaveVM.leaveTypes
+        let earnable = types.filter { $0.earnable == 1 }.first
+        offInLieuButton.isHidden = earnable == nil
     }
     
     private func render(_ request: OTRequest?) {
@@ -105,6 +119,14 @@ class OvertimeRequestDetailController: UIViewController {
     @objc
     private func didReceiveNoti() {
         detailVM.fetchDetail()
+    }
+    
+    @IBAction
+    private func didTapOffInLieu() {
+        responseVM.respond(.init(
+            message: responseTextBox.text ?? "", status: .approve,
+            offInLieu: true
+        ))
     }
     
     @IBAction
