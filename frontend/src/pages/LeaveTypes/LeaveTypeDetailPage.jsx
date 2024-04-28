@@ -12,6 +12,7 @@ import { apiPaths, apiRoute } from "../../configs/api.config";
 import runAsyncWithAborter from "../../utils/runAsyncWithAborter";
 import { useAuthContext } from "../../hooks/AuthStateContext";
 import { usePushNoti } from "../../components/Noti/NotiSystem";
+import useAllLeaveTypes from "../../hooks/useAllLeaveTypes";
 
 export default function LeaveTypeDetailPage() {
     let navigate = useNavigate()
@@ -28,6 +29,9 @@ export default function LeaveTypeDetailPage() {
         halfday: 0, carried: 0, 
         earnable: 0, enabled: 1
     })
+
+    let leaves = useAllLeaveTypes()
+    let offInLieu = leaves?.filter(x => x.earnable)?.[0]
 
     useEffect(() => {
         let aborter = runAsyncWithAborter(async aborter => {
@@ -63,6 +67,13 @@ export default function LeaveTypeDetailPage() {
     }
 
     async function create() {
+        // if (leave.earnable && offInLieu) {
+        //     return pushNoti({
+        //         title: "Error", 
+        //         message: "Earnable leave already exists",
+        //         style: "danger"
+        //     })
+        // }
         let f = new FormData()
         for(const [k,v] of Object.entries(leave)) {
             // console.log(k, v)
@@ -196,6 +207,7 @@ export default function LeaveTypeDetailPage() {
                             // disabled={type === 'detail'}
                             selected={['All', 'Male', 'Female', 'Unspecified'].indexOf(leave.gender)}
                             required
+                            disabled={leave.earnable}
                             options={['All', 'Male', 'Female', 'Unspecified']}
                             onSelect={(item) => {
                                 setLeave({
@@ -227,16 +239,18 @@ export default function LeaveTypeDetailPage() {
                                 })
                             }}
                         />
-                        <CheckBox
+                        {(!offInLieu || offInLieu?.id === leave?.id) && <CheckBox
                             label="Earnable"
                             checked={!!leave.earnable}
                             onChange={e => {
+                                let isChecked = Number(e.target.checked)
                                 setLeave({
                                     ...leave, 
-                                    earnable: Number(e.target.checked)
+                                    earnable: Number(e.target.checked),
+                                    gender: isChecked ? "All" : leave.gender
                                 })
                             }}
-                        />
+                        />}
                         {type !== 'new' && <CheckBox
                             label="Enabled"
                             checked={!!leave.enabled}
