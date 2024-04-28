@@ -372,11 +372,12 @@ exports.getTeamMembers = async (req, res) => {
                 status='approved'
         ) as ulr on ulr.requester_id=u.id
         left join leaves as l on l.id=ulr.leave_id
-        where u.report_to=? and ua.date=?
+        where (u.report_to=? or u.report_to=? or u.id=?) and u.id <> ? and ua.date=?
     `, [
         formattedDate, // holiday join
         formattedDate, formattedDate, // leave join
-        user.report_to, formattedDate
+        user.report_to, user.id, user.report_to, user.id,
+        formattedDate
     ])
 
     res.json(team)

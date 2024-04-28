@@ -17,9 +17,9 @@ public struct UserService {
     }
     
     /// Me info.
-    public func me(accessToken: String? = nil) async throws -> UserData {
+    public func me(accessToken: String? = nil, id: String = "me") async throws -> UserData {
         let req = AF.request(
-            Api.route(.me), method: .get,
+            Api.route(.user(id: id)), method: .get,
             headers: [
                 .authorization(bearerToken: accessToken ?? self.accessToken)
             ]

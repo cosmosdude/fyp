@@ -9,11 +9,18 @@ import UIKit
 import Kingfisher
 import TANetworking
 import Combine
+import MessageUI
 
 class ProfileController: UIViewController {
 
     let userViewModel = UserVM()
     var bag = Set<AnyCancellable>()
+    
+    var id = "me"
+    
+    @IBOutlet private var backButton: UIButton!
+    @IBOutlet private var logoutButton: UIButton!
+    @IBOutlet private var documentSection: UIView!
     
     @IBOutlet private var profileImageView: UIImageView!
     
@@ -53,10 +60,17 @@ class ProfileController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let isMe = id == "me"
+        backButton.isHidden = isMe
+        documentSection.isHidden = !isMe
+        logoutButton.isHidden = !isMe
+        
         userViewModel.$user.receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 self?.render(user: $0)
             }.store(in: &bag)
+        userViewModel.id = id
         userViewModel.fetchUser()
         super.viewDidLoad()
     }
@@ -98,6 +112,72 @@ class ProfileController: UIViewController {
     }
     
     @IBAction
+    private func didTapEmail() {
+        mail(userViewModel.user?.email)
+    }
+    
+    @IBAction
+    private func didTapWorkEmail() {
+        mail(userViewModel.user?.workEmail)
+    }
+    
+    private func mail(_ email:String?) {
+        guard let email else  { return }
+        
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients([email])
+            mail.setMessageBody("<p>Hello!</p>", isHTML: true)
+
+            present(mail, animated: true)
+        } else {
+            // show failure alert
+            presentAlert(
+                title: "Unable to send mail at the moment",
+                message: "Configure mail in settings",
+                actions: [
+                    UIAlertAction(title: "Settings", style: .default, handler: { _ in
+                        UIApplication.shared.open(
+                            URL(string: UIApplication.openSettingsURLString)!
+                        )
+                    }),
+                    UIAlertAction(title: "Dismiss", style: .cancel)
+                ]
+            )
+        }
+    }
+
+    
+    @IBAction
+    private func didTapPhone() {
+        call(phone: userViewModel.user?.phone)
+    }
+    
+    @IBAction
+    private func didTapWorkPhone() {
+        call(phone: userViewModel.user?.workPhone)
+    }
+    @IBAction
+    private func didTapPhone1() {
+        call(phone: userViewModel.user?.emergencyNumber1)
+    }
+    @IBAction
+    private func didTapPhone2() {
+        call(phone: userViewModel.user?.emergencyNumber2)
+    }
+    
+    private func call(phone: String?) {
+        UIPasteboard.general.string = phone
+        presentAlert(title: "Copied")
+//        guard let phone, !phone.isEmpty else { return }
+//        guard let url = URL(string: "tel://\(phone)") else { return }
+////        if UIApplication.shared.canOpenURL(url) {
+//            UIApplication.shared.open(url)
+////        }
+    }
+    
+    @IBAction
     private func didLogout() {
         presentAlert(
             title: "Logout",
@@ -116,4 +196,11 @@ class ProfileController: UIViewController {
         
     }
     
+}
+
+extension ProfileController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
 }

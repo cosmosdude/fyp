@@ -31,6 +31,7 @@ class DashboardController: UIViewController {
             .sink(receiveValue: { [weak self] in
                 self?.avatar.render(name: $0?.fullName ?? "")
                 self?.avatar.render(image: $0?.avatarURL)
+                self?.nameLabel.text = $0?.fullName ?? ""
             })
             .store(in: &bag)
         
@@ -66,6 +67,17 @@ class DashboardController: UIViewController {
             self, selector: #selector(didReceiveNoti),
             name: .didReceiveRemoteNotification, object: nil
         )
+        
+        teamListView.onClick = { [weak self, weak navigationController, weak teamVM] index in
+            guard let team = teamVM?.teamMembers else { return }
+            let teamMember = team[index]
+            let profile = ProfileController()
+            profile.id = teamMember.id
+            self?.navigationController?.pushViewController(
+                profile,
+                animated: true
+            )
+        }
     }
     
     @objc

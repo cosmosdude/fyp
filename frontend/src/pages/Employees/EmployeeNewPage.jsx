@@ -97,7 +97,7 @@ function EmployeeNewPage() {
         if (!employee.username) {
             errors = {...errors, username: "Must not be empty"}
             result = false
-        } else if (employee.username.length < 8) {
+        } else if (employee.username !== 'admin' && employee.username.length < 8) {
             errors = {...errors, username: "Must be at least 8 characters long."}
             result = false
         }

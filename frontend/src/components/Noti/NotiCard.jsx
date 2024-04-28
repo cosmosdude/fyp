@@ -32,11 +32,11 @@ function NotiCard({title, message, style = 'default', onDismiss}) {
 
     return (
         <div className={`
-            p-[10px] 
+            p-[20px] 
             flex items-start gap-[10px] 
             w-[375px]
             ${bg}
-            border ${border} rounded-[6px]
+            border ${border} rounded-[0px]
             mt-[20px] mx-[20px]
             ${fg}
             shadow-md
@@ -47,7 +47,7 @@ function NotiCard({title, message, style = 'default', onDismiss}) {
             <div className="flex flex-col gap-[0px] grow">
                 <h3 className="text-lm font-lm">{title ?? ' '}</h3>
                 <p className="text-ls font-ls">{message ?? ' '}</p>
-                <div className="mt-[5px] h-[3px] w-full bg-neutral-900/25 rounded-full animate-wshrink"/>
+                <div className="mt-[5px] h-[5px] w-full bg-neutral-900/10 rounded-full animate-wshrink"/>
             </div>
             <button className="hover:opacity-25 transition-all" onClick={e => {
                 clearTimer()

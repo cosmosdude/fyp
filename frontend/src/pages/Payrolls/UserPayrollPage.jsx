@@ -17,7 +17,9 @@ import { useAuthContext } from "../../hooks/AuthStateContext";
 import useUserPayrollItems from "../../hooks/useUserPayrollItems";
 import { useEffect, useState } from "react";
 
-import { AlertActions, AlertBody, AlertButton, AlertDialog, AlertTitle } from "../../components/AlertDialog/AlertDialog";
+import { AlertActions, AlertBody, AlertButton, AlertDialog, AlertImage, AlertTitle } from "../../components/AlertDialog/AlertDialog";
+import assets from "../../assets/Assets";
+import EmptyView from "../../components/EmptyView";
 
 export default function UsersPayrollPage() {
 
@@ -206,6 +208,11 @@ export default function UsersPayrollPage() {
                             )}
                         </tbody>
                     </PayrollItemTable>
+                    {allowances.length === 0 && <EmptyView 
+                        title="Empty Allownaces" body="Would you like to add allowance?"
+                        cta="Add"
+                        onCta={() => {navigate('items/new')}}
+                    />}
                 </div>
 
                 <div className="flex flex-col gap-[10px] overflow-hidden ">
@@ -225,11 +232,17 @@ export default function UsersPayrollPage() {
                             )}
                         </tbody>
                     </PayrollItemTable>
+                    {deductions.length === 0 && <EmptyView 
+                        title="No Deductions" body="Would you like to add deduction?"
+                        cta="Add"
+                        onCta={() => {navigate('items/new')}}
+                    />}
                 </div>
             </div>
         </div>
 
         <AlertDialog isOpen={deletingItem !== null}>
+            <AlertImage src={assets.throwAwaySVG}/>
             <AlertTitle>Delete '{deletingItem?.type === 'allowance' ? "Allowance" : "Deduction"}' Item?</AlertTitle>
             <AlertBody>Are you sure you wish to delete '{deletingItem?.name}'? This operation can't be undone.</AlertBody>
             <AlertActions>
@@ -291,8 +304,8 @@ function PayrollItemTableRow({no, item, onDelete}) {
         group
         [&>*]:px-[16px] [&>*]:py-[12px] 
         bg-background-0
-        hover:bg-primary-50
-        cursor-pointer
+        //hover:bg-primary-50
+        //cursor-pointer
         transition-all
         [&>*]:transition-all
         "

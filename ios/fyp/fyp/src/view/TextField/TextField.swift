@@ -105,4 +105,9 @@ class TextField: NibControl {
         )
     }
     
+    @IBAction
+    private func didTapRightIcon() {
+        sendActions(for: .primaryActionTriggered)
+    }
+    
 }

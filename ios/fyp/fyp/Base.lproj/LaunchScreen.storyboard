@@ -27,22 +27,43 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uog" translatesAutoresizingMaskIntoConstraints="NO" id="uqv-8i-4Ai">
+                                <rect key="frame" x="24" y="351" width="345" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="9HF-s1-kF6"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Final Year Project" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sge-Uy-bQW">
+                                <rect key="frame" x="145.66666666666666" y="525" width="102" height="14.666666666666629"/>
+                                <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uqv-8i-4Ai" secondAttribute="trailing" constant="24" id="3q7-Bg-m2W"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mRd-fq-Avj" secondAttribute="trailing" constant="25" id="6fr-59-u2Q"/>
+                            <constraint firstItem="uqv-8i-4Ai" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="CJQ-qC-6hE"/>
                             <constraint firstItem="mRd-fq-Avj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="HlW-WA-lKM"/>
+                            <constraint firstItem="sge-Uy-bQW" firstAttribute="top" secondItem="uqv-8i-4Ai" secondAttribute="bottom" constant="24" id="KVt-fE-FW4"/>
+                            <constraint firstItem="uqv-8i-4Ai" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="U8p-pG-0Kp"/>
+                            <constraint firstItem="uqv-8i-4Ai" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dzI-BQ-Sij"/>
+                            <constraint firstItem="sge-Uy-bQW" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="eJ6-pM-kQj"/>
+                            <constraint firstItem="uqv-8i-4Ai" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="mnC-wU-lvc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mRd-fq-Avj" secondAttribute="bottom" constant="25" id="oKo-qE-e21"/>
+                            <constraint firstItem="uqv-8i-4Ai" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="zQs-dv-AmW"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
         </scene>
     </scenes>
     <resources>
+        <image name="uog" width="1341" height="495"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -10,8 +10,8 @@ function NotiStackView({notiState}) {
                 className="
                 flex gap-[10px] 
                 ml-auto mt-[20px] mr-[20px] 
-                px-[12px] py-[8px]
-                rounded-[6px] border
+                px-[12px] py-[12px]
+                rounded-[2px] border
                 text-lm font-bold 
                 bg-background-1
                 hover:bg-background-2

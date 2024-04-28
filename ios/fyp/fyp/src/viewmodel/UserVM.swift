@@ -14,6 +14,8 @@ final class UserVM {
     @Published
     private(set) var user: User?
     
+    var id: String = "me"
+    
     init() {
         // load from local storage
         user = UserModel.user.map(User.init)
@@ -25,7 +27,7 @@ final class UserVM {
     
     private func fetchUser() async throws {
         guard let token = LoginModel.accessToken else { return }
-        let rawUser = try await UserService().me(accessToken: token)
+        let rawUser = try await UserService().me(accessToken: token, id: id)
         UserModel.user = rawUser
         self.user = User(rawUser)
     }

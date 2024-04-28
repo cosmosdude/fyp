@@ -22,8 +22,9 @@ import { imageRoute } from "../configs/api.config";
 import LucideIcon from "../lib/LucideIcon";
 import NotiStackView from "../components/Noti/NotiStackView";
 import NotiSystem from "../components/Noti/NotiSystem";
-import {AlertActions, AlertBody, AlertButton, AlertDialog, AlertTitle } from "../components/AlertDialog/AlertDialog";
+import {AlertActions, AlertBody, AlertButton, AlertDialog, AlertImage, AlertTitle } from "../components/AlertDialog/AlertDialog";
 import { useState } from "react";
+import assets from "../assets/Assets";
 
 
 export default function HomePage() {
@@ -79,7 +80,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Bottom profile card */}
-                <div className="flex items-center px-[16px] py-[12px] gap-[10px] bg-background-0 border border-neutral-100 rounded-[6px] max-h-[76px] overflow-hidden">
+                <div className="flex items-center px-[16px] py-[12px] gap-[10px] bg-background-0 border border-neutral-100 rounded-[6px]  min-h-[60px] max-h-[76px] overflow-hidden">
                     {/* Avatar ring */}
                     {/* <div className="min-w-[40px] w-[40px] h-[40px] border-[2px] border-primary rounded-full p-[2px]"> */}
                         {/* Avatar */}
@@ -116,6 +117,7 @@ export default function HomePage() {
             </div>
 
             <AlertDialog isOpen={isOpen}>
+                <AlertImage src={assets.loginOutSVG}/>
                 <AlertTitle>Logout</AlertTitle>
                 <AlertBody>Are you sure you wish to logout?</AlertBody>
                 <AlertActions>

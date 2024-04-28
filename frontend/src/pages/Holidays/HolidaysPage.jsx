@@ -6,12 +6,13 @@ import FilledButton from "../../components/Buttons/FilledButton";
 import useEffectGetHolidays from "../../hooks/useEffectGetHolidays";
 import { useNavigate } from "react-router-dom";
 import EmptyView from "../../components/EmptyView";
-import { AlertActions, AlertBody, AlertButton, AlertDialog, AlertTitle } from "../../components/AlertDialog/AlertDialog";
+import { AlertActions, AlertBody, AlertButton, AlertDialog, AlertImage, AlertTitle } from "../../components/AlertDialog/AlertDialog";
 import { apiPaths, apiRoute } from "../../configs/api.config";
 import { useEffect, useState } from "react";
 import LucideIcon from "../../lib/LucideIcon";
 import { usePushNoti } from "../../components/Noti/NotiSystem";
 import { useAuthContext } from "../../hooks/AuthStateContext";
+import assets from "../../assets/Assets";
 
 export default function HolidaysPage() {
 
@@ -153,6 +154,7 @@ export default function HolidaysPage() {
             </div>
         </div>
         <AlertDialog isOpen={itemId !== null}>
+            <AlertImage src={assets.throwAwaySVG}/>
             <AlertTitle>Delete</AlertTitle>
             <AlertBody>Are you sure you wish to delete `{holidays.filter(x => x.id===itemId)[0]?.name ?? ""}`? This operation can't be undone.</AlertBody>
             <AlertActions>

@@ -13,7 +13,7 @@ export function AlertDialog({children, isOpen}) {
                 px-[20px] py-[20px]
                 bg-white
                 rounded-[4px]
-                flex flex-col gap-[10px]
+                flex flex-col gap-[20px]
                 "
             >
                 {children}
@@ -21,6 +21,12 @@ export function AlertDialog({children, isOpen}) {
         </div>}
         </>
     );
+}
+
+export function AlertImage({src}) {
+    return (
+        <img className="" src={src}/>
+    )
 }
 
 export function AlertTitle({children}) {

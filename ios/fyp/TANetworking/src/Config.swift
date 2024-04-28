@@ -40,6 +40,9 @@ public struct ApiPath: RawRepresentable, ExpressibleByStringLiteral {
     
     static let login: Self = "api/auth/login"
     static let me: Self = "api/users/user/me"
+    static func user(id: String = "me") -> Self {
+        .init("api/users/user/\(id)")
+    }
     
     static let leaveBalance: Self = "api/leaves/balance"
     

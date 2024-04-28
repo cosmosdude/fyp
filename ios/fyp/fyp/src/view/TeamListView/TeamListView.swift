@@ -13,6 +13,8 @@ class TeamListView: NibView {
     
     var team = [TeamMember]() { didSet { tableView.reloadData() } }
     
+    var onClick = { (index: Int) in }
+    
     override func didLoadNibFile() {
         tableView.register(EmptyViewCell.self)
         tableView.register(TeamCell.self)
@@ -24,7 +26,10 @@ class TeamListView: NibView {
 }
 
 extension TeamListView: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        onClick(indexPath.row)
+    }
 }
 
 extension TeamListView: UITableViewDataSource {

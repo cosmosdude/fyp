@@ -1908,6 +1908,7 @@
 				DEVELOPMENT_TEAM = WXE55A32E5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = fyp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Thwin FYP";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1937,6 +1938,7 @@
 				DEVELOPMENT_TEAM = WXE55A32E5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = fyp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Thwin FYP";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

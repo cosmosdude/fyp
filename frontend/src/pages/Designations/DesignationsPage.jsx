@@ -13,8 +13,9 @@ import SearchBox from "../../components/SearchBox";
 import { usePushNoti } from "../../components/Noti/NotiSystem";
 import { apiPaths, apiRoute } from "../../configs/api.config";
 
-import { AlertActions, AlertBody, AlertButton, AlertDialog, AlertTitle } from "../../components/AlertDialog/AlertDialog";
+import { AlertActions, AlertBody, AlertButton, AlertDialog, AlertImage, AlertTitle } from "../../components/AlertDialog/AlertDialog";
 import EmptyView from "../../components/EmptyView";
+import assets from "../../assets/Assets";
 
 export default function DesignationsPage() {
     let navigate = useNavigate()
@@ -137,6 +138,7 @@ export default function DesignationsPage() {
                 />}
         </div>
         <AlertDialog isOpen={itemId !== null}>
+        <AlertImage src={assets.throwAwaySVG}/>
             <AlertTitle>Delete</AlertTitle>
             <AlertBody>Are you sure you wish to delete this department? This operation can't be undone.</AlertBody>
             <AlertActions>

@@ -8,10 +8,11 @@ import { useAuthContext } from "../../hooks/AuthStateContext";
 import useAllLeaveTypes from "../../hooks/useAllLeaveTypes";
 import { useNavigate } from "react-router-dom";
 import EmptyView from "../../components/EmptyView";
-import { AlertActions, AlertBody, AlertButton, AlertDialog, AlertTitle } from "../../components/AlertDialog/AlertDialog";
+import { AlertActions, AlertBody, AlertButton, AlertDialog, AlertImage, AlertTitle } from "../../components/AlertDialog/AlertDialog";
 import LucideIcon from "../../lib/LucideIcon";
 import { apiPaths, apiRoute } from "../../configs/api.config";
 import { usePushNoti } from "../../components/Noti/NotiSystem";
+import assets from "../../assets/Assets";
 
 export default function LeaveTypesPage() {
 
@@ -151,6 +152,7 @@ export default function LeaveTypesPage() {
             </div>
         </div>
         <AlertDialog isOpen={itemId !== null}>
+            <AlertImage src={assets.throwAwaySVG}/>
             <AlertTitle>Delete</AlertTitle>
             <AlertBody>Are you sure you wish to delete `{leaves.filter(x => x.id === itemId)[0]?.name ?? ""}`? This operation can't be undone.</AlertBody>
             <AlertActions>

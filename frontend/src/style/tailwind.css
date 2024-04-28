@@ -1070,6 +1070,38 @@ video {
   height: 100vh;
 }
 
+.h-\[20px\] {
+  height: 20px;
+}
+
+.h-\[100px\] {
+  height: 100px;
+}
+
+.h-\[50px\] {
+  height: 50px;
+}
+
+.h-\[30px\] {
+  height: 30px;
+}
+
+.h-4\/5 {
+  height: 80%;
+}
+
+.h-4 {
+  height: 1rem;
+}
+
+.h-\[2px\] {
+  height: 2px;
+}
+
+.h-\[5px\] {
+  height: 5px;
+}
+
 .max-h-\[160px\] {
   max-height: 160px;
 }
@@ -1092,6 +1124,30 @@ video {
 
 .min-h-full {
   min-height: 100%;
+}
+
+.min-h-\[150px\] {
+  min-height: 150px;
+}
+
+.min-h-\[175px\] {
+  min-height: 175px;
+}
+
+.min-h-\[300px\] {
+  min-height: 300px;
+}
+
+.min-h-\[76px\] {
+  min-height: 76px;
+}
+
+.min-h-\[50px\] {
+  min-height: 50px;
+}
+
+.min-h-\[60px\] {
+  min-height: 60px;
 }
 
 .w-0 {
@@ -1148,6 +1204,10 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-\[3px\] {
+  width: 3px;
 }
 
 .min-w-\[100px\] {
@@ -1576,6 +1636,14 @@ video {
   border-radius: 9999px;
 }
 
+.rounded-\[2px\] {
+  border-radius: 2px;
+}
+
+.rounded-\[0px\] {
+  border-radius: 0px;
+}
+
 .rounded-tr-\[6px\] {
   border-top-right-radius: 6px;
 }
@@ -1969,6 +2037,14 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-900\/5 {
+  background-color: rgb(26 26 26 / 0.05);
+}
+
+.bg-neutral-900\/10 {
+  background-color: rgb(26 26 26 / 0.1);
 }
 
 .bg-gradient-to-r {

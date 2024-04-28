@@ -7,17 +7,19 @@ exports.departments = async (req, res) => {
 
     let [results] = await db.promise().query(
         /*sql*/`
-        (select departments.name as "name", COUNT(users.department_id) as "value"
-        from departments
-        left join users on departments.id=users.department_id
-        group by departments.id
-        union all
-        select "No Department" as "name", count(users.id) as "value"
-        from users 
-        where department_id is null) 
+        select 
+            Count(IFNULL(u.department_id, "#null")) as "value", 
+            IFNULL(d.name, "No Department") as "name"
+        from users as u
+        left join departments as d on d.id=u.department_id and d.deleted_at is null
+        group by u.department_id
         order by value
         `
     )
+    // results = results.map(x => {
+    //     x.name = x.name ?? "Unassigned"
+    //     return x
+    // })
     console.log(results)
     res.json(results)
 }
@@ -25,18 +27,12 @@ exports.departments = async (req, res) => {
 exports.designations = async(req, res) => {
     let [results] = await db.promise().query(
         /*sql*/`
-        (select designations.name as "name", COUNT(users.designation_id) as "value"
-        from designations
-        left join users on designations.id=users.designation_id
-        group by designations.id
-
-        union all
-
-        select "Not Assigned" as "name", count(users.id) as "value"
-        from users 
-        where designation_id is null)
-        order by value
-
+        select 
+            Count(IFNULL(u.designation_id, "#null")) as "value",
+            IFNULL(d.name, "Unassigned") as "name"
+        from users as u
+        left join designations as d on u.designation_id=d.id
+        group by u.designation_id
         `
     )
     res.json(results)
@@ -70,7 +66,7 @@ exports.leaveTrends = async (req, res) => {
             (select 
                 l.id, l.name, count(l.id) as count
             from users_leaves_requests as ulr
-            join leaves as l on l.id=ulr.leave_id
+            join leaves as l on l.id=ulr.leave_id and l.deleted_at is null
             where status='approved' and from_date>=? and from_date<=?
             group by l.id, l.name 
 
@@ -78,8 +74,9 @@ exports.leaveTrends = async (req, res) => {
 
             select 
                 l.id, l.name, 0 as count
-            from leaves as l
+                from leaves as l where l.deleted_at is NULL
             ) as l 
+            
             group by l.id
             order by l.name asc
         `, [format(first, 'yyyy-MM-dd'), format(last, 'yyyy-MM-dd')])

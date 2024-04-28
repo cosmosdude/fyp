@@ -11,7 +11,8 @@ import UIKit
 extension UIViewController {
     
     /// Pop nearest navigation controller.
-    @objc func pop() {
+    @IBAction
+    func pop() {
         popNavigation(animated: true)
     }
     
