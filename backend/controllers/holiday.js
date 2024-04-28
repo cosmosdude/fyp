@@ -90,12 +90,12 @@ exports.getAll = async (req, res) => {
         results = (await db.promise().query(
             /*sql*/`
             select * from holidays 
-            where date<=? 
+            where date<=? and deleted_at is NULL
             order by date desc`, date
         ))[0]
     } else if (type === 'upcoming') {
         results = (await db.promise().query(
-            /*sql*/`select * from holidays where date > ? order by date`, date
+            /*sql*/`select * from holidays where date > ? and deleted_at is NULL order by date`, date
         ))[0]
     } else {
         results = (await db.promise().query(
