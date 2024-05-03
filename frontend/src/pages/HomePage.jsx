@@ -54,14 +54,15 @@ export default function HomePage() {
                     {/* Nav Item */}
                     <ul className="flex flex-col gap-[4px] p-[6px] px-[16px] overflow-scroll">
                         <SideNavItem to='/' title='Dashboard' icon='layout-grid'/>
-                        <SideNavItem to='/employees' title='Employees' icon='users'/>
                         <SideNavItem to='/departments' title='Departments' icon='building-2'/>
                         <SideNavItem to='/designations' title='Designations' icon='briefcase'/>
+                        <SideNavItem to='/employees' title='Employees' icon='users'/>
 
+                        <SideNavItem to='/holidays' title='Holidays' icon='calendar-days'/>
                         <SideNavItem to='/schedules' title='Schedules' icon='clipboard-list'/>
                         <SideNavItem to='/attendances' title='Attendances' icon='calendar-clock'/>
                         <SideNavItem to='/overtimes' title='Overtimes' icon='timer-reset'/>
-                        <SideNavItem to='/holidays' title='Holidays' icon='calendar-days'/>
+                        
                         <SideNavItem to='/leaves' title='Leaves' icon='calendar-range'/>
 
                         <SideNavItem to='/payrolls' title='Payroll' icon='dollar-sign'/>

@@ -49,7 +49,7 @@ public struct UserData: Codable {
     public let avatarID: Int?
     public let avatarPath: String?
     
-    public let employmentAgreementID: String?
+    public let employmentAgreementID: Int?
     public let employmentAgreementPath: String?
     public let employmentAgreementFilename: String?
     
@@ -82,7 +82,7 @@ public struct UserData: Codable {
         case emergencyNumber2 = "emergency_number2"
         case emergencyRelation2 = "emergency_relation2"
         
-        
+        case employmentAgreementID = "employment_agreement_id"
         case employmentAgreementPath = "employment_agreement_path"
         case employmentAgreementFilename = "employment_agreement_filename"
         
@@ -94,8 +94,6 @@ public struct UserData: Codable {
         case departmentID = "department_id"
         case designationID = "designation_id"
         case avatarID = "avatar_id"
-        case employmentAgreementID = "employment_agreement_id"
-        
         case roleName = "role_name"
     }
 }

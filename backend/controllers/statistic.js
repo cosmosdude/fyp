@@ -8,11 +8,13 @@ exports.departments = async (req, res) => {
     let [results] = await db.promise().query(
         /*sql*/`
         select 
-            Count(IFNULL(u.department_id, "#null")) as "value", 
+            Count(IFNULL(d.id, "#null")) as "value", 
             IFNULL(d.name, "No Department") as "name"
         from users as u
-        left join departments as d on d.id=u.department_id and d.deleted_at is null
-        group by u.department_id
+        left join departments as d 
+            on d.id=u.department_id 
+            and d.deleted_at is null
+        group by d.id
         order by value
         `
     )
@@ -28,11 +30,13 @@ exports.designations = async(req, res) => {
     let [results] = await db.promise().query(
         /*sql*/`
         select 
-            Count(IFNULL(u.designation_id, "#null")) as "value",
+            Count(IFNULL(d.id, "#null")) as "value",
             IFNULL(d.name, "Unassigned") as "name"
         from users as u
-        left join designations as d on u.designation_id=d.id
-        group by u.designation_id
+        left join designations as d 
+            on u.designation_id=d.id
+            and d.deleted_at is null
+        group by d.id
         `
     )
     res.json(results)

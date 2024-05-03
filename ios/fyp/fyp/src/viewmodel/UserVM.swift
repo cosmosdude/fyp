@@ -27,9 +27,14 @@ final class UserVM {
     
     private func fetchUser() async throws {
         guard let token = LoginModel.accessToken else { return }
-        let rawUser = try await UserService().me(accessToken: token, id: id)
-        UserModel.user = rawUser
-        self.user = User(rawUser)
+        do {
+            let rawUser = try await UserService().me(accessToken: token, id: id)
+            if (id == "me") {
+                UserModel.user = rawUser
+            }
+            self.user = User(rawUser)
+        }
+        
     }
     
 }

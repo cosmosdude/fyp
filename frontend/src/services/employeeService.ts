@@ -88,7 +88,9 @@ const employeeService = {
         let f = new FormData()
         for (const [k,v] of Object.entries(employee).filter(([_, v]) => !!v)) {
             console.log(k, v)
-            f.set(k, String(v))
+            if (v instanceof Blob) {
+                f.append(k, v)
+            } else { f.set(k, String(v)) }
         }
         
         return fetch(
@@ -117,7 +119,9 @@ const employeeService = {
         let f = new FormData()
         for (const [k,v] of Object.entries(employee).filter(([_, v]) => !!v)) {
             console.log(k, v)
-            f.set(k, String(v))
+            if (v instanceof Blob) {
+                f.append(k, v)
+            } else { f.set(k, String(v)) }
         }
         
         return fetch(

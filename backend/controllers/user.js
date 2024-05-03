@@ -161,7 +161,7 @@ exports.store = async (req, res) => {
         insert into users_payrolls set ?
     `, {
         user_id: createdUser.id,
-        salary: 17400, wage: 5800,
+        salary: 174000, wage: 5800,
         overtime_rate: 2.0,
         tax_rate: 0.0
     })
@@ -299,6 +299,9 @@ exports.update = async (req, res) => {
         let moveResult = await saveFile(req.files['employment_contract']?.[0])
         updatingUser.employment_agreement_id = moveResult?.insertId
     }
+
+    console.log("Updating User", req.files)
+    console.log("Updating User", updatingUser)
 
     let [updateResult] = await userdao.update(id, updatingUser)
     
@@ -445,7 +448,7 @@ exports.getAllManagers = async (req, res) => {
         from users as u
         join (
             select * from roles 
-            where name in ('admin', 'manager') 
+            where name in ('admin', 'hr', 'manager') 
         ) as r on r.id=u.role_id
         left join files as f on u.avatar_id=f.id
     `)

@@ -103,7 +103,7 @@ function LeaveRow({no, user}) {
             <td className="sticky left-0 text-center font-bs text-bs">
                 {no ?? ''}
             </td>
-            <td className="sticky left-0 bg-white group-hover:bg-primary-50 text-left whitespace-nowrap">
+            <td className="sticky left-0 bg-white //group-hover:bg-primary-50 text-left whitespace-nowrap">
                 <div className="flex items-center gap-[10px]">
                     <Avatar 
                         className="" src={imageRoute(user.avatar_path)} size={30} 

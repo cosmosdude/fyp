@@ -72,11 +72,11 @@ class ProfileController: UIViewController {
             }.store(in: &bag)
         userViewModel.id = id
         userViewModel.fetchUser()
-        super.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        userViewModel.fetchUser()
     }
     
     private func render(user: User?) {
@@ -96,9 +96,9 @@ class ProfileController: UIViewController {
         
         workEmailTF.text = user?.workEmail
         workPhoneTF.text = user?.workPhone
-        departmentTF.text = user?.firstName
-        designationTF.text = user?.firstName
-        statusTF.text = user?.firstName
+        departmentTF.text = user?.departmentName
+        designationTF.text = user?.designationName
+        statusTF.text = user?.status
         
         eName1TF.text = user?.emergencyName1
         eRelation1TF.text = user?.emergencyRelation1
@@ -178,6 +178,15 @@ class ProfileController: UIViewController {
     }
     
     @IBAction
+    private func didTapContract() {
+        guard let path = userViewModel.user?.employmentAgreementPath else { return }
+        guard let url = URL(
+            string: "http://localhost:3000/\(path)"
+        ) else { return }
+        UIApplication.shared.open(url)
+    }
+    
+    @IBAction
     private func didLogout() {
         presentAlert(
             title: "Logout",
@@ -193,7 +202,6 @@ class ProfileController: UIViewController {
                 })
             ]
         )
-        
     }
     
 }

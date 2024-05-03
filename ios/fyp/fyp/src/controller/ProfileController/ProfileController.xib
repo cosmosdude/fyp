@@ -462,6 +462,9 @@
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="borderHidden" value="YES"/>
                                                                 <userDefinedRuntimeAttribute type="image" keyPath="rightIcon" value="icon.external-link"/>
                                                             </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="didTapContract" destination="-1" eventType="primaryActionTriggered" id="oxm-Ci-1co"/>
+                                                            </connections>
                                                         </view>
                                                     </subviews>
                                                 </stackView>
