@@ -154,7 +154,7 @@ exports.usersOnLeaves = async (req, res) => {
         left join files as f on f.id=u.avatar_id
         left join designations as ds on ds.id=u.designation_id
         left join departments as dp on dp.id=u.department_id
-        where ulr.status="approved" and CURDATE()>=ulr.from_date and CURDATE()<=DATE_ADD(ulr.to_date, INTERVAL 1 DAY)
+        where ulr.status="approved" and CURDATE()>=ulr.from_date and CURDATE()<DATE_ADD(ulr.to_date, INTERVAL 1 DAY)
     `, [d, d])
 
     res.json(requests)

@@ -14,7 +14,7 @@ exports.login = async function login(req, res) {
     console.log(username, password)
     try {
         let [results] = await con.promise().query(
-            'select * from users where username=? and password=?', 
+            'select * from users where username=? and password=? and status="active"', 
             [username, md5(password)]
         )
         // there must be at least one result
